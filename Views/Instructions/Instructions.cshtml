@@ -1,0 +1,53 @@
+<div id="blur" class="container" onclick="toggleBlur(event)">
+    <div class="content">
+        <h1>Instructions</h1>
+
+        <div class="row g-4">
+            @for (int i = 0; i < 6; i++)
+            {
+                <div class="col-md-4 g-4 ">
+                    <a href="#" class="card">
+                        <img src="https://images.unsplash.com/photo-1526297003708-f5a1c2c9c6e7?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NjI0OTY1ODM&ixlib=rb-1.2.1&q=80" alt="balloon with an emoji face" class="card-img">
+                        <span class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </span>
+                    </a>
+                    @* <br/> *@
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<div id="popup" onclick="event.stopPropagation()">
+    <h2>
+        Что такое инструкции?
+    </h2>
+    <p>
+        Инструкция — документ, содержащий правила, указания или руководства, устанавливающие порядок и способ выполнения или осуществления чего-либо. Инструкция по эксплуатации — описание изделия и правил пользования им.
+    </p>
+    @* <a href="#" onclick="toggleBlur(event)">Close</a> *@
+</div>
+
+<script>
+    const toggleBlur = (event) => {
+        const blurEl = document.getElementById("blur");
+        const popupEl = document.getElementById("popup");
+        const isActive = blurEl.classList.contains("active");
+
+        blurEl.classList.toggle("active", !isActive);
+        popupEl.classList.toggle("active", !isActive);
+    };
+
+    document.addEventListener("click", (event) => {
+        const blurEl = document.getElementById("blur");
+        const popupEl = document.getElementById("popup");
+
+        if (!blurEl.contains(event.target) && !popupEl.contains(event.target)) {
+            blurEl.classList.remove("active");
+            popupEl.classList.remove("active");
+        }
+    });
+   
+</script>

@@ -1,0 +1,80 @@
+﻿* {
+    box-sizing: border-box;
+}
+
+body {
+    display: grid;
+}
+
+.card {
+    /*width: 400px;*/
+    min-width: 400px;
+    --blur: 16px;
+    border-radius: 2rem;
+    overflow: hidden;
+    color: rgba(255, 255, 255, 0.84);
+    transform: translateZ(0);
+    background: none;
+    outline: none;
+    border: none;
+    transition: all 0.5s ease;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.card-img {
+    object-fit: cover;
+    transform: scale(calc(1 + (var(--hover, 0) * 0.25))) rotate(calc(var(--hover, 0) * -5deg));
+    transition: transform 0.2s;
+}
+
+.card-body {
+    padding: 0 1.5rem;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: rgba(1, 83, 187, 0.48);
+    backdrop-filter: blur(var(--blur));
+    height: 40%;
+    display: grid;
+    grid-template-rows: auto auto;
+    gap: 0.5ch;
+    align-content: center;
+}
+
+.card:is(:hover, :focus-visible) {
+    --hover: 1;
+}
+
+.container {
+    transition: 0.5s;
+}
+
+.container#blur.active {
+    filter: blur(20px);
+    pointer-events: none;
+    user-select: none;
+}
+
+#popup {
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70vw;
+    height: 90vh;
+    padding: 50px;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+    background: #ffffff;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.5s;
+}
+
+#popup.active {
+    top: 50%;
+    visibility: visible;
+    opacity: 1;
+    transition: 0.5s;
+}
