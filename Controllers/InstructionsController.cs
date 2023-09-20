@@ -13,10 +13,10 @@ public class InstructionsController : Controller
         _logger = logger;
     }
 
-    public IActionResult InstructionsAlt()
-    {
-        return View();
-    }
+    // public IActionResult InstructionsAlt()
+    // {
+    //     return View();
+    // }
     
     public IActionResult Instructions()
     {
