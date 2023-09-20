@@ -1,80 +1,157 @@
-﻿* {
+﻿/*@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700');*/
+/*@import url('https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');*/
+
+*{
     box-sizing: border-box;
 }
 
+body, html {
+    font-family: 'Roboto Slab', serif;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+}
+
 body {
-    display: grid;
-}
-
-.card {
-    /*width: 400px;*/
-    min-width: 400px;
-    --blur: 16px;
-    border-radius: 2rem;
-    overflow: hidden;
-    color: rgba(255, 255, 255, 0.84);
-    transform: translateZ(0);
-    background: none;
-    outline: none;
-    border: none;
-    transition: all 0.5s ease;
-    align-items: center;
+    background-color: #D2DBDD;
+    display: flex;
+    display: -webkit-flex;
+    -webkit-justify-content: center;
+    -webkit-align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    align-items: center;
 }
 
-.card-img {
-    object-fit: cover;
-    transform: scale(calc(1 + (var(--hover, 0) * 0.25))) rotate(calc(var(--hover, 0) * -5deg));
-    transition: transform 0.2s;
+.cards {
+    width: 100%;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+    -webkit-justify-content: center;
 }
 
-.card-body {
-    padding: 0 1.5rem;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    background: rgba(1, 83, 187, 0.48);
-    backdrop-filter: blur(var(--blur));
-    height: 40%;
-    display: grid;
-    grid-template-rows: auto auto;
-    gap: 0.5ch;
-    align-content: center;
+.card--1 .card__img, .card--1 .card__img--hover {
+    background-image: url('https://images.pexels.com/photos/45202/brownie-dessert-cake-sweet-45202.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260');
 }
 
-.card:is(:hover, :focus-visible) {
-    --hover: 1;
+.card--2 .card__img, .card--2 .card__img--hover {
+    background-image: url('https://images.pexels.com/photos/307008/pexels-photo-307008.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260');
 }
 
-.container {
-    transition: 0.5s;
+.card__like {
+    width: 18px;
 }
 
-.container#blur.active {
-    filter: blur(20px);
-    pointer-events: none;
-    user-select: none;
+.card__clock {
+    width: 15px;
+    vertical-align: middle;
+    fill: #AD7D52;
+}
+.card__time {
+    font-size: 12px;
+    color: #AD7D52;
+    vertical-align: middle;
+    margin-left: 5px;
 }
 
-#popup {
-    position: fixed;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 70vw;
-    height: 90vh;
-    padding: 50px;
-    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
-    background: #ffffff;
+.card__clock-info {
+    float: right;
+}
+
+.card__img {
     visibility: hidden;
-    opacity: 0;
-    transition: 0.5s;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 235px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+
 }
 
-#popup.active {
-    top: 50%;
-    visibility: visible;
+.card__info-hover {
+    position: absolute;
+    padding: 16px;
+    width: 100%;
+    opacity: 0;
+    top: 0;
+}
+
+.card__img--hover {
+    transition: 0.2s all ease-out;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    position: absolute;
+    height: 235px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    top: 0;
+
+}
+.card {
+    margin-right: 25px;
+    transition: all .4s cubic-bezier(0.175, 0.885, 0, 1);
+    background-color: #fff;
+    width: 33.3%;
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 13px 10px -7px rgba(0, 0, 0,0.1);
+}
+.card:hover {
+    box-shadow: 0 30px 18px -8px rgba(0, 0, 0,0.1);
+    transform: scale(1.10, 1.10);
+}
+
+.card__info {
+    z-index: 2;
+    background-color: #fff;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    padding: 16px 24px 24px 24px;
+}
+
+.card__category {
+    font-family: 'Raleway', sans-serif;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 2px;
+    font-weight: 500;
+    color: #868686;
+}
+
+.card__title {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    font-family: 'Roboto Slab', serif;
+}
+
+.card__by {
+    font-size: 12px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+}
+
+.card__author {
+    font-weight: 600;
+    text-decoration: none;
+    color: #AD7D52;
+}
+
+.card:hover .card__img--hover {
+    height: 100%;
+    opacity: 0.3;
+}
+
+.card:hover .card__info {
+    background-color: transparent;
+    position: relative;
+}
+
+.card:hover .card__info-hover {
     opacity: 1;
-    transition: 0.5s;
 }
