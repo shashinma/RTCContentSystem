@@ -1,48 +1,64 @@
 ﻿@{
-  string picSrc = "https://images.unsplash.com/photo-1526297003708-f5a1c2c9c6e7?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NjI0OTY1ODM&ixlib=rb-1.2.1&q=80";
+    var picSrc = "https://images.unsplash.com/photo-1526297003708-f5a1c2c9c6e7?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NjI0OTY1ODM&ixlib=rb-1.2.1&q=80";
 
 }
 
 <div class="container">
-  @for (var i = 0; i < 1; i++) {
-    <div class="cardContainer inactive">
-      <div class="card">
-        <div class="side front">
-          <div class="img">
-            <img src="@picSrc" alt="Image Title"/>
-          </div>
-          <div class="info">
-            <h2>Super S</h2>
-            <p>A stand-on with an exceptional compact stance. Great for tight spaces and trailering.</p>
-          </div>
-        </div>
-        <div class="side back">
-          <div class="info">
-            <h2>At a glance</h2>
-            <div class="reviews">
-              <svg fill="#FFC324" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
-              <svg fill="#FFC324" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
-              <svg fill="#FFC324" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
-              <svg fill="#FFC324" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
-              <svg fill="#FFC324" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                <defs><path d="M0 0h24v24H0V0z" id="a"/></defs><clipPath id="b"><use overflow="visible" xlink:href="#a"/></clipPath><path clip-path="url(#b)" d="M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4V6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z"/>
-              </svg>
-              <p>23 Reviews</p>
+    @for (var i = 0; i < 1; i++)
+    {
+        <div class="cardContainer inactive">
+            <div class="card">
+                <div class="side front">
+                    <div class="img">
+                        <img src="@picSrc" alt="Image Title"/>
+                    </div>
+                    <div class="info">
+                        <h2>Super S</h2>
+                        <p>A stand-on with an exceptional compact stance. Great for tight spaces and trailering.</p>
+                    </div>
+                </div>
+                <div class="side back">
+                    <div class="info">
+                        <h2>At a glance</h2>
+                        <div class="reviews">
+                            <svg fill="#FFC324" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0 0h24v24H0z" fill="none"/><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/><path d="M0 0h24v24H0z" fill="none"/>
+                            </svg>
+                            <svg fill="#FFC324" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0 0h24v24H0z" fill="none"/><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/><path d="M0 0h24v24H0z" fill="none"/>
+                            </svg>
+                            <svg fill="#FFC324" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0 0h24v24H0z" fill="none"/><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/><path d="M0 0h24v24H0z" fill="none"/>
+                            </svg>
+                            <svg fill="#FFC324" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0 0h24v24H0z" fill="none"/><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/><path d="M0 0h24v24H0z" fill="none"/>
+                            </svg>
+                            <svg fill="#FFC324" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <defs>
+                                    <path d="M0 0h24v24H0V0z" id="a"/>
+                                </defs>
+                                <clipPath id="b">
+                                    <use overflow="visible" xlink:href="#a"/>
+                                </clipPath><path clip-path="url(#b)" d="M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4V6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z"/>
+                            </svg>
+                            <p>23 Reviews</p>
+                        </div>
+                        <ul>
+                            <li>Manage backyard gates with ease with the 36" deck option</li>
+                            <li>Your choice of deck sizes ranging from 36", 48", 52" and 60"</li>
+                            <li>Updated hip bolstering offers superior operator comfort and positioning</li>
+                        </ul>
+                        <div class="btn">
+                            <h4>Learn More</h4>
+                            <svg fill="#333" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"/><path d="M0-.25h24v24H0z" fill="none"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <ul>
-              <li>Manage backyard gates with ease with the 36" deck option</li>
-              <li>Your choice of deck sizes ranging from 36", 48", 52" and 60"</li>
-              <li>Updated hip bolstering offers superior operator comfort and positioning</li>
-            </ul>
-            <div class="btn">
-              <h4>Learn More</h4>
-              <svg fill="#333" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"/><path d="M0-.25h24v24H0z" fill="none"/></svg>
-            </div>
-          </div>
         </div>
-      </div>
-    </div>
-  }  
+    }
 </div>
 
 <script>
