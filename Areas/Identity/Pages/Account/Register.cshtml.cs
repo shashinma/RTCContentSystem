@@ -74,19 +74,21 @@ namespace POSTerminalWebApp.Areas.Identity.Pages.Account
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
-            [Required]
-            [EmailAddress]
+            [Required(ErrorMessage = "Заполните поле")]
+            [EmailAddress(ErrorMessage = "Некорректный почтовый адрес")]
             [RegularExpression ("[a-z0-9._%+-]+@rtc.ru", 
                 ErrorMessage = "Почтовый адрес должен соответствовать шаблону 'email@rtc.ru'")]
-            [Display(Name = "Email")]
+            [Display(Name = "Почтовый адрес")]
             public string Email { get; set; }
 
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
-            [Required]
-            [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 8)]
+            [Required(ErrorMessage = "Заполните поле")]
+            [StringLength(100, ErrorMessage = "{0} должен быть не короче {2}-ми символов.", MinimumLength = 8)] // и не длиннее {1}
+            // [RegularExpression ("[A-Za-z]+[0-9]+[!@#$%^&*-_+=:]{8,100}", ErrorMessage = "Пароль должен содержать хотя бы одну цифру и один специальный символ")]
+            // [RegularExpression("^(?=.{8,16}$)(?=.*[^a-zA-Z])", ErrorMessage = "Пароль должен содержать хотя бы одну цифру и один специальный символ")]
             [DataType(DataType.Password)]
             [Display(Name = "Пароль")]
             public string Password { get; set; }
@@ -96,8 +98,8 @@ namespace POSTerminalWebApp.Areas.Identity.Pages.Account
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
             [DataType(DataType.Password)]
-            [Display(Name = "Подтвердите пароль")]
-            [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+            [Display(Name = "Подтверждение пароля")]
+            [Compare("Password", ErrorMessage = "Поля 'Пароль' и 'Подтверждение пароля' не совпадают.")]
             public string ConfirmPassword { get; set; }
         }
 
