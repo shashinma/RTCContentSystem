@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using POSTerminalWebApp.Data;
 using POSTerminalWebApp.Models;
+using POSTerminalWebApp.Controllers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,14 +16,19 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<ApplicationContext>(options => 
     options.UseSqlite(connectionString));
 
-// builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 // builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
 //     .AddEntityFrameworkStores<ApplicationDbContext>();
 
-builder.Services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<ApplicationContext>();
+builder.Services.AddIdentity<User, IdentityRole>()
+    .AddEntityFrameworkStores<ApplicationContext>();
 
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddMvc();
+
+// builder.Services.AddHealthChecks();
 
 var app = builder.Build();
 
@@ -54,6 +60,6 @@ app.MapControllerRoute(
     "{controller=Home}/{action=Index}/{id?}");
 
 
-// app.MapRazorPages();
+app.MapRazorPages();
 
 app.Run();

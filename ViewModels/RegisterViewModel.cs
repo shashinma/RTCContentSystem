@@ -4,6 +4,8 @@ using System.ComponentModel.DataAnnotations;
 public class RegisterViewModel
 {
     [Required]
+    [DataType(DataType.EmailAddress)]
+    [RegularExpression ("[a-z0-9._%+-]+@rtc.ru")]
     [Display(Name = "Email")]
     public string Email { get; set; }
     
