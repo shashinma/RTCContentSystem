@@ -12,7 +12,7 @@ public class NewsController : Controller
     {
         _logger = logger;
     }
-    
+
     public IActionResult News()
     {
         return View();

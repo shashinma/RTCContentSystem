@@ -12,7 +12,7 @@ public class InstructionsController : Controller
     {
         _logger = logger;
     }
-    
+
     public IActionResult Instructions()
     {
         return View();

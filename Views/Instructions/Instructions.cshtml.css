@@ -66,12 +66,12 @@ svg {
     /*min-height: 400px;*/
     /*max-width: 410px;*/
     /*max-height: 400px;*/
-    
+
     margin: 4px;
     perspective: 1000px;
 }
 
-@media screen and (min-width: 768px){
+@media screen and (min-width: 768px) {
     .cardContainer {
         width: 410px;
         height: 400px;
@@ -97,6 +97,7 @@ svg {
 .active {
     transform: translateZ(0px) rotateY(180deg) !important;
 }
+
 .active:after {
     display: none;
 }
@@ -111,6 +112,7 @@ svg {
     transform: translateZ(-100px);
     transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
+
 .card:after {
     content: "";
     position: absolute;
@@ -122,12 +124,15 @@ svg {
     opacity: 0;
     transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1.4);
 }
+
 .card:hover {
     transform: translateZ(0px);
 }
+
 .card:hover:after {
     opacity: 1;
 }
+
 .card .side {
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
@@ -137,12 +142,15 @@ svg {
     border-radius: 5px;
     background-color: white;
 }
+
 .card .front {
     z-index: 2;
 }
+
 .card .back {
     transform: rotateY(180deg);
 }
+
 .card .info {
     padding: 16px;
 }
@@ -159,29 +167,35 @@ svg {
 .back {
     position: relative;
 }
+
 .back h2 {
     margin-top: 6px;
     margin-bottom: 18px;
 }
+
 .back .reviews {
     display: flex;
     align-items: center;
     margin-bottom: 12px;
     cursor: pointer;
 }
+
 .back .reviews p {
     color: #c4c4c4;
     font-weight: 300;
     margin: 1px 0 0 6px;
     transition: 0.3s ease-in-out;
 }
+
 .back .reviews:hover p {
     color: #555;
 }
+
 .back li {
     line-height: 22px;
     margin: 2px 0 6px 0;
 }
+
 .back .btn {
     position: absolute;
     bottom: 16px;
@@ -195,17 +209,21 @@ svg {
     border-radius: 5px;
     cursor: pointer;
 }
+
 .back .btn:hover h4 {
     transform: translateX(0px);
 }
+
 .back .btn:hover svg {
     transform: translateX(0px);
     opacity: 1;
 }
+
 .back .btn h4 {
     transform: translateX(12px);
     transition: transform 0.3s ease-out;
 }
+
 .back .btn svg {
     margin: 1px 0 0 4px;
     transform: translateX(-8px);
