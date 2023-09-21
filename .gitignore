@@ -11,7 +11,8 @@ autom4te.cache/
 tarballs/
 test-results/
 *.db
-*.db-*
+*.db-shm
+*.db-wal
 
 # Mac bundle stuff
 *.dmg
