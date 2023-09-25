@@ -25,4 +25,9 @@
         </Content>
     </ItemGroup>
 
+
+    <ItemGroup>
+      <None Include="wwwroot\js\auth.js" />
+    </ItemGroup>
+
 </Project>
