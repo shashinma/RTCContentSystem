@@ -119,6 +119,7 @@ body {
     font-size: 34px;
     font-weight: 700;
     line-height: 3;
+    white-space: nowrap;
     color: #181818;
 }
 
