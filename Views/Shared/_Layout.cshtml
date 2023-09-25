@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> signInManager
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
@@ -25,18 +28,24 @@
                     <li class="nav-item">
                         <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Instructions" asp-action="Instructions">Instructions</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="News" asp-action="News">News</a>
-                    </li>
+                    
+                <!-- Use for hiding block for anonimous users -->
+                @* @if (signInManager.IsSignedIn(User)) *@
+                @* { *@
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Instructions" asp-action="Instructions">Instructions</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="News" asp-action="News">News</a>
+                </li>
+                @* } *@
+
                 </ul>
                 <partial name="_LoginPartial"/>
-            </div>
-        </div>
-    </nav>
-</header>
+                </div>
+                </div>
+                </nav>
+                </header>
 <div class="container">
     <main role="main" class="pb-3">
         @RenderBody()
