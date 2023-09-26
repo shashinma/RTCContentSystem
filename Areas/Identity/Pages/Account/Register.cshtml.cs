@@ -77,7 +77,7 @@ namespace POSTerminalWebApp.Areas.Identity.Pages.Account
             [Required(ErrorMessage = "Заполните поле")]
             [EmailAddress(ErrorMessage = "Некорректный почтовый адрес")]
             [RegularExpression ("[a-z0-9._%+-]+@rtc.ru", 
-                ErrorMessage = "Почтовый адрес должен соответствовать шаблону 'email@rtc.ru'")]
+                ErrorMessage = "Почтовый адрес должен принадлежать домену '@rtc.ru'")]
             [Display(Name = "Почтовый адрес")]
             public string Email { get; set; }
 
@@ -153,7 +153,7 @@ namespace POSTerminalWebApp.Areas.Identity.Pages.Account
                     ModelState.AddModelError(string.Empty, error.Description);
                 }
             }
-
+            
             // If we got this far, something failed, redisplay form
             return Page();
         }
