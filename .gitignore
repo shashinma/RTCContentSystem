@@ -11,6 +11,8 @@ autom4te.cache/
 tarballs/
 test-results/
 *.db
+*.db-shm
+*.db-wal
 
 # Mac bundle stuff
 *.dmg
@@ -24,7 +26,6 @@ test-results/
 
 # Icon must end with two \r
 Icon
-
 
 # Thumbnails
 ._*
