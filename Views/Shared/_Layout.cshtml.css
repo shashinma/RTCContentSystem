@@ -9,6 +9,7 @@ a.navbar-brand {
 
 a {
     color: #0077cc;
+    text-decoration: none;
 }
 
 .btn-primary {
@@ -143,6 +144,7 @@ button.accept-policy {
     display: flex;
     align-items: center;
     text-decoration: none;
+    flex-shrink: 0;
 }
 .sidebar .nav-links li a .link_name{
     font-size: 18px;

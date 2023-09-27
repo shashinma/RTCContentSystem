@@ -19,6 +19,10 @@
 
 <body>
 
+@* <li class="nav-item"> *@
+@*   <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a> *@
+@* </li> *@
+
 <!-- Sidebar section -->
 <div class="sidebar open">
   <div class="logo-details">
@@ -29,17 +33,18 @@
     <li>
       <a href="#">
         <i class='bx bx-grid-alt' ></i>
-        <span class="link_name">Dashboard</span>
+        <span class="link_name">Главная</span>
       </a>
       <ul class="sub-menu blank">
-        <li><a class="link_name" href="#">Dashboard</a></li>
+        <li><a class="link_name" href="#">Главная</a></li>
       </ul>
     </li>
+    
     <li>
       <div class="iocn-link">
         <a href="#">
-          <i class='bx bx-collection' ></i>
-          <span class="link_name">Category</span>
+          <i class='bx bx-collection'></i>
+          <div class="link_name">Category</div>
         </a>
         <i class='bx bxs-chevron-down arrow' ></i>
       </div>
@@ -54,12 +59,12 @@
       <div class="iocn-link">
         <a href="#">
           <i class='bx bx-book-alt' ></i>
-          <span class="link_name">Posts</span>
+          <span class="link_name">Новости</span>
         </a>
         <i class='bx bxs-chevron-down arrow' ></i>
       </div>
       <ul class="sub-menu">
-        <li><a class="link_name" href="#">Posts</a></li>
+        <li><a class="link_name" href="#">Новости</a></li>
         <li><a href="#">Web Design</a></li>
         <li><a href="#">Login Form</a></li>
         <li><a href="#">Card Design</a></li>
@@ -177,3 +182,7 @@
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="~/js/site.js" asp-append-version="true"></script>
 @await RenderSectionAsync("Scripts", false)
+
+@* <li class="nav-item"> *@
+@*   <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a> *@
+@* </li> *@
