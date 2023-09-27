@@ -1,4 +1,4 @@
-name: GitlabSync
+name: GitlabRepoMirroring
 
 on:
   - push
@@ -7,12 +7,12 @@ on:
 jobs:
   sync:
     runs-on: ubuntu-latest
-    name: Git Repo Sync
+    name: Gitlab Repository Mirroring
     steps:
     - uses: actions/checkout@v3
       with:
         fetch-depth: 0
-    - uses: wangchucheng/git-repo-sync@v0.1.0
+    - uses: shashinma/git-repo-mirror@release
       with:
         # Such as https://github.com/wangchucheng/git-repo-sync.git
         target-url: ${{ secrets.GIT_URL }}
