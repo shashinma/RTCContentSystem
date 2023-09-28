@@ -1,4 +1,4 @@
-name: Git Repo Mirroring
+name: GitRepoMirroring
 
 on:
   - push
