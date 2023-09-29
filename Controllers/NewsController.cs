@@ -1,6 +1,8 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using POSTerminalWebApp.Models;
+using PagedList;
+using PagedList.Mvc;
 
 namespace POSTerminalWebApp.Controllers;
 
@@ -13,6 +15,7 @@ public class NewsController : Controller
         _logger = logger;
     }
 
+    private List<News> GetNews;
     public IActionResult News()
     {
         return View();

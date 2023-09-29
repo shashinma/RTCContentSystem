@@ -17,6 +17,8 @@
         <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.11" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.10" />
         <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.10" />
+        <PackageReference Include="PagedList" Version="1.17.0" />
+        <PackageReference Include="PagedList.Mvc" Version="4.5.0" />
     </ItemGroup>
 
     <ItemGroup>
