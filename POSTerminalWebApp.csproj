@@ -46,4 +46,11 @@
       <_ContentIncludedByDefault Remove="Views\Account\Register.cshtml" />
     </ItemGroup>
 
+
+
+
+    <ItemGroup>
+      <Folder Include="wwwroot\pdf\" />
+    </ItemGroup>
+
 </Project>
