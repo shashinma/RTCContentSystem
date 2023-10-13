@@ -1,0 +1,153 @@
+﻿@using POSTerminalWebApp.Services
+@inject INewsService NewsService
+
+<link rel="stylesheet" href="~/lib/font-awesome-5.15.4/css/all.css">
+
+@{
+    var title = "Новости РТК";
+    var titleForDark = "Dark News Card";
+    var titleForLight = "Light News Card";
+    var readButton = "Полный текст";
+}
+
+<section class="light"> 
+    <div class="container py-2">
+        <div class="h1 text-center text-dark" id="pageHeaderTitle">@title</div>
+            @foreach (var newsItem in NewsService.GetNews())
+            {
+                <article class="postcard light blue">
+                    <a class="postcard__img_link" href="#">
+                        <img class="postcard__img" src="@newsItem.PicSrc" alt="Image Title"/>
+                    </a>
+                    <div class="postcard__text t-dark">
+                        @* <h1 class="postcard__title red"><a href="#">@newsTitle</a></h1> *@
+                        <h1 class="postcard__title red">
+                            <a href="#">@newsItem.Title</a>
+                        </h1>
+                        <div class="postcard__subtitle small">
+                            <time datetime="25-05-2023 12:00:00">
+                                <i class="fa fa-calendar-alt mr-2"></i>@newsItem.PublishDate
+                            </time>
+                        </div>
+                        <div class="postcard__bar"></div>
+                        <div class="postcard__preview-txt">@newsItem.Content</div>
+                        <ul class="postcard__tagbox">
+                            <li class="tag__item">
+                                <i class="fa fa-tag mr-2"></i>@newsItem.Tags
+                            </li>
+                            <li class="tag__item">
+                                <i class="fas fa-user-tie mr-2"></i>@newsItem.Author
+                            </li>
+                            <li class="tag__item">
+                                <i class="fa fa-clock mr-2"></i>@newsItem.TimeToRead
+                            </li>
+                        </ul>
+                        <ul class="postcard__tagbox">
+                            <li class="tag__item play blue">
+                                <a href="#">
+                                    <i class="fas fa-glasses mr-2"></i>@readButton
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </article>
+            }
+            
+    </div>
+</section>
+
+
+@* <section class="dark"> *@
+@* 	<div class="container py-4"> *@
+@* 		<h1 class="h1 text-center" id="pageHeaderTitle">@titleForDark</h1> *@
+@* *@
+@* 		<article class="postcard dark blue"> *@
+@* 			<a class="postcard__img_link" href="#"> *@
+@* 				$1$ <img class="postcard__img" src="@picSrc" alt="Image Title" /> #1# *@
+@* 			</a> *@
+@* 			<div class="postcard__text"> *@
+@* 				<h1 class="postcard__title blue"><a href="#">@newsTitle</a></h1> *@
+@* 				<div class="postcard__subtitle small"> *@
+@* 					<time datetime="2020-05-25 12:00:00"> *@
+@* 						<i class="fas fa-calendar-alt mr-2"></i>Mon, May 25th 2020 *@
+@* 					</time> *@
+@* 				</div> *@
+@* 				<div class="postcard__bar"></div> *@
+@* 				<div class="postcard__preview-txt">@newsDescription</div> *@
+@* 				<ul class="postcard__tagbox"> *@
+@* 					<li class="tag__item"><i class="fas fa-tag mr-2"></i>@tags[0]</li> *@
+@* 					<li class="tag__item"><i class="fas fa-clock mr-2"></i>@timeToRead.</li> *@
+@* 					<li class="tag__item play blue"> *@
+@* 						<a href="#"><i class="fas fa-play mr-2"></i>@readButton</a> *@
+@* 					</li> *@
+@* 				</ul> *@
+@* 			</div> *@
+@* 		</article> *@
+@* 		<article class="postcard dark red"> *@
+@* 			<a class="postcard__img_link" href="#"> *@
+@* 				<img class="postcard__img" src="@picSrc" alt="Image Title" />	 *@
+@* 			</a> *@
+@* 			<div class="postcard__text"> *@
+@* 				<h1 class="postcard__title red"><a href="#">@newsTitle</a></h1> *@
+@* 				<div class="postcard__subtitle small"> *@
+@* 					<time datetime="2020-05-25 12:00:00"> *@
+@* 						<i class="fas fa-calendar-alt mr-2"></i>Mon, May 25th 2020 *@
+@* 					</time> *@
+@* 				</div> *@
+@* 				<div class="postcard__bar"></div> *@
+@* 				<div class="postcard__preview-txt">@newsDescription</div> *@
+@* 				<ul class="postcard__tagbox"> *@
+@* 					<li class="tag__item"><i class="fas fa-tag mr-2"></i>@tags[0]</li> *@
+@* 					<li class="tag__item"><i class="fas fa-clock mr-2"></i>@timeToRead.</li> *@
+@* 					<li class="tag__item play red"> *@
+@* 						<a href="#"><i class="fas fa-play mr-2"></i>@readButton</a> *@
+@* 					</li> *@
+@* 				</ul> *@
+@* 			</div> *@
+@* 		</article> *@
+@* 		<article class="postcard dark green"> *@
+@* 			<a class="postcard__img_link" href="#"> *@
+@* 				<img class="postcard__img" src="@picSrc" alt="Image Title" /> *@
+@* 			</a> *@
+@* 			<div class="postcard__text"> *@
+@* 				<h1 class="postcard__title green"><a href="#">@newsTitle</a></h1> *@
+@* 				<div class="postcard__subtitle small"> *@
+@* 					<time datetime="2020-05-25 12:00:00"> *@
+@* 						<i class="fas fa-calendar-alt mr-2"></i>Mon, May 25th 2020 *@
+@* 					</time> *@
+@* 				</div> *@
+@* 				<div class="postcard__bar"></div> *@
+@* 				<div class="postcard__preview-txt">@newsDescription</div> *@
+@* 				<ul class="postcard__tagbox"> *@
+@* 					<li class="tag__item"><i class="fas fa-tag mr-2"></i>@tags[0]</li> *@
+@* 					<li class="tag__item"><i class="fas fa-clock mr-2"></i>@timeToRead.</li> *@
+@* 					<li class="tag__item play green"> *@
+@* 						<a href="#"><i class="fas fa-play mr-2"></i>@readButton</a> *@
+@* 					</li> *@
+@* 				</ul> *@
+@* 			</div> *@
+@* 		</article> *@
+@* 		<article class="postcard dark yellow"> *@
+@* 			<a class="postcard__img_link" href="#"> *@
+@* 				<img class="postcard__img" src="@picSrc" alt="Image Title" /> *@
+@* 			</a> *@
+@* 			<div class="postcard__text"> *@
+@* 				<h1 class="postcard__title yellow"><a href="#">@newsTitle</a></h1> *@
+@* 				<div class="postcard__subtitle small"> *@
+@* 					<time datetime="2020-05-25 12:00:00"> *@
+@* 						<i class="fas fa-calendar-alt mr-2"></i>Mon, May 25th 2020 *@
+@* 					</time> *@
+@* 				</div> *@
+@* 				<div class="postcard__bar"></div> *@
+@* 				<div class="postcard__preview-txt">@newsDescription</div> *@
+@* 				<ul class="postcard__tagbox"> *@
+@* 					<li class="tag__item"><i class="fas fa-tag mr-2"></i>@tags[0]</li> *@
+@* 					<li class="tag__item"><i class="fas fa-clock mr-2"></i>@timeToRead.</li> *@
+@* 					<li class="tag__item play yellow"> *@
+@* 						<a href="#"><i class="fas fa-play mr-2"></i>@readButton</a> *@
+@* 					</li> *@
+@* 				</ul> *@
+@* 			</div> *@
+@* 		</article> *@
+@* 	</div> *@
+@* </section> *@
