@@ -1,5 +1,6 @@
-﻿using System.Diagnostics;
+using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using POSTerminalWebApp.Data;
 using POSTerminalWebApp.Models;
 
 namespace POSTerminalWebApp.Controllers;
@@ -7,12 +8,13 @@ namespace POSTerminalWebApp.Controllers;
 public class NewsController : Controller
 {
     private readonly ILogger<NewsController> _logger;
+    private readonly ApplicationDbContext _context;
 
     public NewsController(ILogger<NewsController> logger)
     {
         _logger = logger;
     }
-
+    
     public IActionResult News()
     {
         return View();

@@ -37,4 +37,12 @@
       <None Include="wwwroot\js\auth.js" />
     </ItemGroup>
 
+
+
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="Views\Account\Auth.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Account\Register.cshtml" />
+    </ItemGroup>
+
 </Project>

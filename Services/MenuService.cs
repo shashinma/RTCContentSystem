@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using POSTerminalWebApp.Data;
 using POSTerminalWebApp.Models;
 
-namespace POSTerminalWebApp.Controllers;
+namespace POSTerminalWebApp.Services;
 
 public interface IMenuService
 {
