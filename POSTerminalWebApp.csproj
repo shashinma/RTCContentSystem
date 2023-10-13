@@ -34,6 +34,7 @@
 
 
     <ItemGroup>
+      <None Include="wwwroot\css\keyboard.css" />
       <None Include="wwwroot\js\auth.js" />
     </ItemGroup>
 

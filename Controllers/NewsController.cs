@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using POSTerminalWebApp.Data;
 using POSTerminalWebApp.Models;
@@ -15,6 +16,7 @@ public class NewsController : Controller
         _logger = logger;
     }
     
+    [Authorize]
     public IActionResult News()
     {
         return View();
