@@ -38,6 +38,8 @@ builder.Services.AddSession(options =>
 
 builder.Services.AddRazorPages();
 
+builder.Services.AddRazorPages();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
