@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using POSTerminalWebApp.Controllers;
+using POSTerminalWebApp.Services;
 using POSTerminalWebApp.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -24,6 +24,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddScoped<IMenuService, MenuService>();
+builder.Services.AddScoped<INewsService, NewsService>();
 
 var app = builder.Build();
 

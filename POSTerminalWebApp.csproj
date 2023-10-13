@@ -34,7 +34,6 @@
 
 
     <ItemGroup>
-      <None Include="wwwroot\css\keyboard.css" />
       <None Include="wwwroot\js\auth.js" />
     </ItemGroup>
 
@@ -44,13 +43,6 @@
     <ItemGroup>
       <_ContentIncludedByDefault Remove="Views\Account\Auth.cshtml" />
       <_ContentIncludedByDefault Remove="Views\Account\Register.cshtml" />
-    </ItemGroup>
-
-
-
-
-    <ItemGroup>
-      <Folder Include="wwwroot\pdf\" />
     </ItemGroup>
 
 </Project>
