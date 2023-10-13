@@ -13,12 +13,17 @@
         <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="7.0.10" />
         <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.10" />
         <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="7.0.10" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.12">
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+          <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
         <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.10" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.11" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.10" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.12">
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+          <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
         <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.10" />
-        <PackageReference Include="PagedList" Version="1.17.0" />
-        <PackageReference Include="PagedList.Mvc" Version="4.5.0" />
     </ItemGroup>
 
     <ItemGroup>
@@ -29,7 +34,23 @@
 
 
     <ItemGroup>
+      <None Include="wwwroot\css\keyboard.css" />
       <None Include="wwwroot\js\auth.js" />
+    </ItemGroup>
+
+
+
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="Views\Account\Auth.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Account\Register.cshtml" />
+    </ItemGroup>
+
+
+
+
+    <ItemGroup>
+      <Folder Include="wwwroot\pdf\" />
     </ItemGroup>
 
 </Project>
