@@ -62,7 +62,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     "default",
-    "{controller=Home}/{action=Index}/{id?}");
+    "{controller=News}/{action=News}/{id?}");
 app.MapRazorPages();
 
 app.UseSession();
