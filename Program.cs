@@ -1,20 +1,30 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using POSTerminalWebApp.Services;
 using POSTerminalWebApp.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? 
-    throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+var identityConnectionString = builder.Configuration.GetConnectionString("IdentityConnection") ?? 
+    throw new InvalidOperationException("Connection string 'IdentityConnection' not found.");
+
+var applicationDbConnectionString = 
+    builder.Configuration.GetConnectionString("ApplicationDbConnection") ?? 
+    throw new InvalidOperationException("Connection string 'ApplicationDbConnection' not found.");
+
+builder.Services.AddDbContext<IdentityContext>(options =>
+    options.UseSqlite(identityConnectionString));
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlite(connectionString));
-builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+    options.UseSqlite(applicationDbConnectionString));
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
-    .AddEntityFrameworkStores<ApplicationDbContext>();
+    .AddEntityFrameworkStores<IdentityContext>();
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddScoped<IMenuService, MenuService>();
+builder.Services.AddScoped<INewsService, NewsService>();
 
 var app = builder.Build();
 

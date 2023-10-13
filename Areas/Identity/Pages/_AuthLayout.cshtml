@@ -1,6 +1,20 @@
 ﻿@{
-    Layout = "/Views/Shared/_Layout.cshtml";
+    Layout = null;
 }
+
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>@ViewData["Title"] - POSTerminalWebApp</title>
+  <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
+  <link rel="stylesheet" href="~/POSTerminalWebApp.styles.css" asp-append-version="true"/>
+    
+  <!-- Boxiocns CDN Link -->
+  <!-- TODO: Change to local resource -->
+  <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
 
 <div class="row justify-content-center">
     <div class="col-5 mt-5">
@@ -40,3 +54,8 @@
         })
     </script>
 }
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+@await RenderSectionAsync("Scripts", false)
