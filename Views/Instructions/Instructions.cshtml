@@ -26,14 +26,14 @@
                             <li>Your choice of deck sizes ranging from 36", 48", 52" and 60"</li>
                             <li>Updated hip bolstering offers superior operator comfort and positioning</li>
                         </ul>
-                        <form asp-page="/Instructions/Viewer" method="post">
                             <div class="btn">
-                                <h4>Читать PDF</h4>
-                                <svg fill="#333" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"/><path d="M0-.25h24v24H0z" fill="none"/>
-                                </svg>
+                                <a class="nav-link" asp-area="" asp-controller="Instructions" asp-action="Viewer" style="white-space: nowrap">
+                                    <h4>Читать PDF</h4>
+                                    <svg fill="#333" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"/><path d="M0-.25h24v24H0z" fill="none"/>
+                                    </svg>
+                                </a>
                             </div>
-                        </form>
                     </div>
                 </div>
             </div>
@@ -52,8 +52,4 @@ function transition() {
   }
 }
 cards.forEach(card => card.addEventListener('click', transition));
-
-document.querySelector('.btn').addEventListener('click', function() {
-    window.location.href = '/Instructions/Viewer';
-});
 </script>
