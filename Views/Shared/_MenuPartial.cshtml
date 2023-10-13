@@ -1,0 +1,39 @@
+@using POSTerminalWebApp.Controllers
+@inject IMenuService MenuService
+
+<!-- Sidebar section -->
+<div class="sidebar open">
+  <div class="logo-details">
+    <i class='bx bxl-c-plus-plus'></i>
+    <span class="logo_name">RTC VoteApp</span>
+  </div>
+
+  
+  <ul class="nav-links">
+    @foreach (var menuItem in MenuService.GetMenu())
+    {
+      <li>
+        <div class="iocn-link">
+          <a  href="@menuItem.Url">
+            <i class='bx bx-collection'></i>
+            <div class="link_name">@menuItem.Title</div>
+          </a>
+          @if (menuItem.SubMenuItems != null && menuItem.SubMenuItems.Any())
+          {
+            <i class='bx bxs-chevron-down arrow'></i>
+          }
+        </div>
+        @if (menuItem.SubMenuItems != null && menuItem.SubMenuItems.Any())
+        {
+          <ul class="sub-menu">
+            <li><a class="link_name" href="@menuItem.Url">@menuItem.Title</a></li>
+            @foreach (var subMenuItem in menuItem.SubMenuItems)
+            {
+              <li><a href="@subMenuItem.Url">@subMenuItem.Title</a></li>
+            }
+          </ul>
+        }
+      </li>
+    }
+  </ul>
+</div>
