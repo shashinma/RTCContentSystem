@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using POSTerminalWebApp.Services;
+using POSTerminalWebApp.Controllers;
 using POSTerminalWebApp.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -24,7 +24,6 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddScoped<IMenuService, MenuService>();
-builder.Services.AddScoped<INewsService, NewsService>();
 
 var app = builder.Build();
 
@@ -45,12 +44,11 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
     "default",
-    "{controller=News}/{action=News}/{id?}");
+    "{controller=Home}/{action=Index}/{id?}");
 app.MapRazorPages();
 
 app.Run();
