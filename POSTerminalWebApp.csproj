@@ -37,6 +37,35 @@
     <ItemGroup>
       <None Include="wwwroot\css\keyboard.css" />
       <None Include="wwwroot\js\auth.js" />
+      <None Include="wwwroot\lib\KioskBoard\.gitignore" />
+      <None Include="wwwroot\lib\KioskBoard\build\kioskboard-aio.d.ts" />
+      <None Include="wwwroot\lib\KioskBoard\build\kioskboard-aio.js" />
+      <None Include="wwwroot\lib\KioskBoard\CHANGELOG.md" />
+      <None Include="wwwroot\lib\KioskBoard\CODE_OF_CONDUCT.md" />
+      <None Include="wwwroot\lib\KioskBoard\CONTRIBUTING.md" />
+      <None Include="wwwroot\lib\KioskBoard\dist\kioskboard-2.3.0.min.css" />
+      <None Include="wwwroot\lib\KioskBoard\dist\kioskboard-2.3.0.min.js" />
+      <None Include="wwwroot\lib\KioskBoard\dist\kioskboard-aio-2.3.0.min.js" />
+      <None Include="wwwroot\lib\KioskBoard\docs\favicon.png" />
+      <None Include="wwwroot\lib\KioskBoard\docs\github-cover.png" />
+      <None Include="wwwroot\lib\KioskBoard\docs\images\Keyboard-Types-Icons-All.svg" />
+      <None Include="wwwroot\lib\KioskBoard\docs\images\Keyboard-Types-Icons-Keyboard.svg" />
+      <None Include="wwwroot\lib\KioskBoard\docs\images\Keyboard-Types-Icons-Numpad.svg" />
+      <None Include="wwwroot\lib\KioskBoard\docs\images\KioskBoard-Slider.svg" />
+      <None Include="wwwroot\lib\KioskBoard\docs\index-tooltip.js" />
+      <None Include="wwwroot\lib\KioskBoard\docs\index.css" />
+      <None Include="wwwroot\lib\KioskBoard\docs\index.html" />
+      <None Include="wwwroot\lib\KioskBoard\docs\index.js" />
+      <None Include="wwwroot\lib\KioskBoard\docs\kioskboard-aio-2.3.0.min.js" />
+      <None Include="wwwroot\lib\KioskBoard\index.d.test.ts" />
+      <None Include="wwwroot\lib\KioskBoard\index.d.ts" />
+      <None Include="wwwroot\lib\KioskBoard\LICENSE" />
+      <None Include="wwwroot\lib\KioskBoard\README.md" />
+      <None Include="wwwroot\lib\KioskBoard\SECURITY.md" />
+      <None Include="wwwroot\lib\KioskBoard\src\kioskboard.css" />
+      <None Include="wwwroot\lib\KioskBoard\src\kioskboard.d.ts" />
+      <None Include="wwwroot\lib\KioskBoard\src\kioskboard.js" />
+      <None Include="wwwroot\lib\KioskBoard\yarn.lock" />
     </ItemGroup>
 
 
@@ -51,6 +80,7 @@
 
 
     <ItemGroup>
+      <Folder Include="Modules\" />
       <Folder Include="wwwroot\pdf\" />
     </ItemGroup>
 
