@@ -1,7 +1,9 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
-
+body {
+    background-color: rgb(228, 233, 247);
+}
 
 a.navbar-brand {
     white-space: normal;
@@ -319,12 +321,11 @@ main {
     }
 }
 
-@media (min-width: 1400px) {
-    .container,
-    .container-lg,
-    .container-md,
-    .container-sm,
-    .container-xl {
-        max-width: 100% !important;
-    }
+.container,
+.container-lg,
+.container-md,
+.container-sm,
+.container-xl,
+.container{
+    max-width: 100% !important;
 }
