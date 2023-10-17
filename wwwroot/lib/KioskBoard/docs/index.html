@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>KioskBoard - Virtual Keyboard | A pure JavaScript library for using virtual keyboards.</title>
+  <meta name="description" content="KioskBoard - Virtual Keyboard | A pure JavaScript library for using virtual keyboards." />
+  <meta name="content-language" content="en" />
+  <meta name="language" content="English" />
+  <meta name="robots" content="index, follow, noodp, noydir" />
+  <meta name="googlebot" content="index, follow, noodp, noydir" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <link rel="shortcut icon" href="favicon.png" />
+  <link rel="canonical" href="https://furcan.github.io/KioskBoard/" />
+  <meta name="author" content="Furcan" />
+  <meta name="generator" content="Furcan" />
+  <meta name="designer" content="Furcan">
+  <meta name="copyright" content="2022 KioskBoard - Virtual Keyboard. All Rights Reserved.">
+  <meta name="theme-color" content="#1e1e1e" />
+
+  <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+  <link id="FontBarlow" href="https://fonts.googleapis.com/css?family=Barlow:300,400,500,600,700,800,900&display=swap&subset=latin-ext" rel="stylesheet">
+  <link id="FontBungee" href="https://fonts.googleapis.com/css?family=Bungee&display=swap&subset=latin-ext" rel="stylesheet">
+  <link id="FontConsolas" href="https://fonts.googleapis.com/css?family=Inconsolata:400,700&amp;subset=latin-ext" rel="stylesheet">
+
+  <!-- <link rel="stylesheet" href="../src/kioskboard.css" /> -->
+  <!-- <link rel="stylesheet" href="../dist/kioskboard-2.3.0.min.css" /> -->
+
+  <link rel="stylesheet" href="index.css?v=2.3.0" />
+</head>
+
+<body>
+  <section id="FurcanTop">
+    <input type="text" class="furcan furcan-top js-kioskboard-input-furcan-top" data-kioskboard-type="keyboard" data-kioskboard-specialcharacters="false" data-kioskboard-placement="top" maxlength="17" placeholder="Sol lucet omnibus" />
+  </section>
+
+  <header id="Header">
+    <a id="Logo" href="https://furcan.github.io/KioskBoard/">
+      <span class="title">KioskBoard<i class="fab fa-js-square"></i></span>
+      <span class="desc">Virtual Keyboard</span>
+    </a>
+
+    <div class="get-kioskboard">
+      <a href="https://github.com/furcan/KioskBoard" rel="noopener" target="_blank" data-toggle="tooltip" title="https://github.com/furcan/KioskBoard"><i class="fab fa-github" aria-hidden="true"></i></a>
+      <a href="https://www.npmjs.com/package/kioskboard" rel="noopener" target="_blank" data-toggle="tooltip" title="" class="npm" data-original-title="npm i kioskboard"><i class="fab fa-npm" aria-hidden="true"></i></a>
+      <a href="https://yarnpkg.com/en/package/kioskboard" rel="noopener" target="_blank" data-toggle="tooltip" title="yarn add kioskboard"><i class="fab fa-yarn" aria-hidden="true"></i></a>
+    </div>
+  </header>
+
+  <section id="Slider">
+    <div class="slider-content slider-image">
+      <img width="1024" height="850" class="image" src="images/KioskBoard-Slider.svg" alt="KioskBoard - Virtual Keyboard" />
+    </div>
+    <div class="slider-content slider-info">
+      <h1 class="title">KioskBoard<i class="fab fa-js-square"></i></h1>
+      <h4 class="sub-title">Virtual Keyboard</h4>
+      <p class="desc">A pure JavaScript library for using virtual keyboards.</p>
+      <p class="version" data-toggle="tooltip" title="Current Version">v2.3.0</p>
+      <div class="browser-compatibility">
+        <h5 class="bc-title">Browser Compatibility</h5>
+        <ul class="bc-ul">
+          <li class="browser">
+            <i class="fab fa-chrome"></i>
+            <span>Chrome</span>
+          </li>
+          <li class="browser">
+            <i class="fab fa-firefox"></i>
+            <span>Firefox</span>
+          </li>
+          <li class="browser">
+            <i class="fab fa-safari"></i>
+            <span>Safari</span>
+          </li>
+          <li class="browser">
+            <i class="fab fa-opera"></i>
+            <span>Opera</span>
+          </li>
+          <li class="browser">
+            <i class="fab fa-edge"></i>
+            <span>Edge</span>
+          </li>
+          <li class="browser">
+            <i class="fab fa-internet-explorer"></i>
+            <span>IE 11</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="KeyboardTypes" class="sections">
+    <div class="max-width">
+
+      <div class="head">
+        <h2 class="sec-title">Keyboard Types</h2>
+        <p class="sec-desc">3 types of keyboards can be used: <span class="option">all</span>, <span class="option">keyboard</span>, and <span class="option">numpad</span>.</p>
+      </div>
+      <div class="section-content keyboard-types">
+        <div class="types type-all">
+          <div class="info">
+            <img width="150" height="150" class="image" src="images/Keyboard-Types-Icons-All.svg" alt="KioskBoard - All Keyboard" />
+            <h4 class="title">All</h4>
+            <p><i class="fas fa-circle"></i>Number Keys (Static)</p>
+            <p><i class="fas fa-circle"></i>Custom Keys (From JSON or an Array of Objects)</p>
+            <p><i class="fas fa-circle"></i>Special Character Keys (Optional)</p>
+          </div>
+          <div class="demo">
+            <textarea class="js-kioskboard-input" data-kioskboard-type="all" data-kioskboard-placement="top" placeholder="Try me. (Without special character keys)" rows="4"></textarea>
+          </div>
+        </div>
+
+        <div class="types type-keyboard">
+          <div class="info">
+            <img width="150" height="150" class="image" src="images/Keyboard-Types-Icons-Keyboard.svg" alt="KioskBoard - Keyboard" />
+            <h4 class="title">Keyboard</h4>
+            <p><i class="fas fa-circle"></i>Custom Keys (From JSON or an Array of Objects)</p>
+            <p><i class="fas fa-circle"></i>Special Character Keys (Optional)</p>
+          </div>
+          <div class="demo">
+            <input class="js-kioskboard-input" data-kioskboard-type="keyboard" data-kioskboard-specialcharacters="true" type="text" placeholder="Try me. (With special character keys)" />
+          </div>
+        </div>
+
+        <div class="types type-numpad">
+          <div class="info">
+            <img width="150" height="150" class="image" src="images/Keyboard-Types-Icons-Numpad.svg" alt="KioskBoard - Numpad" />
+            <h4 class="title">Numpad</h4>
+            <p><i class="fas fa-circle"></i>Number Keys</p>
+          </div>
+          <div class="demo">
+            <input class="js-kioskboard-input" data-kioskboard-type="numpad" type="number" placeholder="Try me." readonly="false" />
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="KeyboardThemes" class="sections">
+    <div class="max-width">
+
+      <div class="head">
+        <h2 class="sec-title">Themes</h2>
+        <p class="sec-desc">5 types of themes can be used. <span class="option">light</span>, <span class="option">dark</span>, <span class="option">flat</span>, <span class="option">material</span>, and <span class="option">oldschool</span>.</p>
+      </div>
+
+      <div class="section-content keyboard-themes">
+        <div class="themes theme-light">
+          <div class="info">
+            <span class="key-preview">M</span>
+            <h4 class="title">Light</h4>
+          </div>
+          <div class="demo">
+            <input class="js-kioskboard-input-theme" data-theme="light" data-kioskboard-type="all" data-kioskboard-specialcharacters="true" type="text" placeholder="Try Light theme." />
+          </div>
+        </div>
+        <div class="themes theme-dark">
+          <div class="info">
+            <span class="key-preview">K</span>
+            <h4 class="title">Dark</h4>
+          </div>
+          <div class="demo">
+            <input class="js-kioskboard-input-theme" data-theme="dark" data-kioskboard-type="all" data-kioskboard-specialcharacters="true" type="text" placeholder="Try Dark theme." />
+          </div>
+        </div>
+        <div class="themes theme-flat">
+          <div class="info">
+            <span class="key-preview">A</span>
+            <h4 class="title">Flat</h4>
+          </div>
+          <div class="demo">
+            <input class="js-kioskboard-input-theme" data-theme="flat" data-kioskboard-type="all" data-kioskboard-specialcharacters="true" type="text" placeholder="Try Flat theme." />
+          </div>
+        </div>
+        <div class="themes theme-material">
+          <div class="info">
+            <span class="key-preview">8</span>
+            <h4 class="title">Material</h4>
+          </div>
+          <div class="demo">
+            <input class="js-kioskboard-input-theme" data-theme="material" data-kioskboard-type="all" data-kioskboard-specialcharacters="true" type="text" placeholder="Try Material theme." />
+          </div>
+        </div>
+        <div class="themes theme-oldschool">
+          <div class="info">
+            <span class="key-preview">1</span>
+            <h4 class="title">Oldschool</h4>
+          </div>
+          <div class="demo">
+            <input class="js-kioskboard-input-theme" data-theme="oldschool" data-kioskboard-type="all" data-kioskboard-specialcharacters="true" type="text" placeholder="Try Oldschool theme." />
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="KeyboardAdd" class="sections">
+    <div class="max-width">
+
+      <div class="head">
+        <h2 class="sec-title">Adding to an HTML</h2>
+        <p class="sec-desc">There are two ways to add KioskBoard. The first one is adding CSS and JS files to the HTML file one by one. The second option is adding only the All In One file (Internal CSS).</p>
+      </div>
+
+      <div class="section-content keyboard-add">
+        <code class="html">
+          <span class="label">HTML <span class="desc">CSS and JS</span></span>
+
+          <span class="l1">&lt;<span class="link">link</span> <span class="data">rel=<span class="str">"stylesheet"</span></span> <span class="data">href=<span class="str">"dist/kioskboard-2.3.0.min.css"</span></span> /&gt;</span>
+
+          <span class="l1">&lt;<span class="link">script</span> <span class="data">src=<span class="str">"dist/kioskboard-2.3.0.min.js"</span></span>&gt;&lt;/<span class="link">script</span>&gt;</span>
+        </code>
+
+        <code class="html">
+          <span class="label">HTML <span class="desc">Only JS (Internal CSS)</span></span>
+
+          <span class="l1">&lt;<span class="link">script</span> <span class="data">src=<span class="str">"dist/kioskboard-aio-2.3.0.min.js"</span></span>&gt;&lt;/<span class="link">script</span>&gt;</span>
+        </code>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="KeyboardImport" class="sections">
+    <div class="max-width">
+
+      <div class="head">
+        <h2 class="sec-title no-margin">Import</h2>
+      </div>
+
+      <div class="section-content keyboard-import">
+        <code class="js">
+            <span class="label">JS <span class="desc">Import</span></span>
+            <span class="l1"><span class="imp">import</span> <span class="fnc1">KioskBoard</span> <span class="imp">from</span> <span class="str">'kioskboard'</span>;</span>
+          </code>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="KeyboardInitRun" class="sections">
+    <div class="max-width">
+
+      <div class="head">
+        <h2 class="sec-title">Run / Initialize</h2>
+        <p class="sec-desc">KioskBoard Virtual Keyboard can be used with the <span class="option">input</span> or <span class="option">textarea</span> elements.</p>
+        <p class="sec-desc">KioskBoard must be initialized with the required options. The other ones are optional. Keyboard Type (the default value is "all") <span class="option">data-kioskboard-type</span>, Keyboard Placement (the default value is "bottom") <span class="option">data-kioskboard-placement</span>, and Special Characters <span class="option">data-kioskboard-specialcharacters</span> settings are each element-based (data attributes). </p>
+        <p class="sec-desc">All options and examples of data attribute usages are as below. Also, a custom class name can be defined as globally for all input and/or textarea elements to run KioskBoard.</p>
+      </div>
+
+      <div class="section-content keyboard-initialize">
+        <code class="html">
+          <span class="label">HTML <span class="desc">data-* options</span></span>
+
+          <span class="l1 cmmnt">&lt;!-- An example of a textarea element: The keyboard type is "all", the placement is "top", and the availability of the special characters is "true". --&gt;</span>
+          <span class="l1">&lt;textarea <span class="data">class=<span class="str">"js-kioskboard-input"</span></span> <span class="data">data-kioskboard-type=<span class="str">"all"</span></span> <span class="data">data-kioskboard-placement=<span class="str">"top"</span></span> <span class="data">data-kioskboard-specialcharacters=<span class="str">"true"</span></span> placeholder="Your Address"&gt;&lt;/textarea&gt;</span>
+
+          <span class="l1 break"></span>
+
+          <span class="l1 cmmnt">&lt;!-- An example of an input element: The keyboard type is "keyboard", the placement is "bottom", and the availability of the special characters is "false". --&gt;</span>
+          <span class="l1">&lt;input <span class="data">class=<span class="str">"js-kioskboard-input"</span></span> <span class="data">data-kioskboard-type=<span class="str">"keyboard"</span></span> <span class="data">data-kioskboard-placement=<span class="str">"bottom"</span></span> <span class="data">data-kioskboard-specialcharacters=<span class="str">"false"</span></span> placeholder="Your Name" /&gt;</span>
+
+          <span class="l1 break"></span>
+
+          <span class="l1 cmmnt">&lt;!-- An example of an input element: The keyboard type is "numpad", and the placement is "bottom". (Special characters are not allowed for "numpad".) --&gt;</span>
+          <span class="l1">&lt;input <span class="data">class=<span class="str">"js-kioskboard-input"</span></span> <span class="data">data-kioskboard-type=<span class="str">"numpad"</span></span> <span class="data">data-kioskboard-placement=<span class="str">"bottom"</span></span> placeholder="Your Number" /&gt;</span>
+        </code>
+
+        <code class="js">
+          <span class="label">JS <span class="desc">Run with Init</span></span>
+          <span class="l1 cmmnt">@param1 {string | HTMLInputElement | HTMLTextAreaElement}: CSS selector(s) that matches the element(s) or an input/textarea element.</span>
+          <span class="l1 cmmnt">@param2 {Object}: The init options.</span>
+          <span class="l1"><span class="fnc1">KioskBoard</span>.<span class="fnc2">run</span>(<span class="str">'.js-kioskboard-input'</span>, {</span>
+          <span class="l1 l2 cmmnt">// ...init options</span>
+          <span class="l1">});</span>
+        </code>
+
+        <p class="code-or">OR</p>
+
+        <code class="js">
+          <span class="label">JS <span class="desc">Step 1: Initialize</span></span>
+
+          <span class="l1 cmmnt">// Initialize KioskBoard (default/all options)</span>
+          <span class="l1"><span class="fnc1">KioskBoard</span>.<span class="fnc2">init</span>({</span>
+
+          <span class="l1 l2 cmmnt">/*!</span>
+          <span class="l1 l2 cmmnt">* Required</span>
+          <span class="l1 l2 cmmnt">* An Array of Objects has to be defined for the custom keys. Hint: Each object creates a row element (HTML) on the keyboard.</span>
+          <span class="l1 l2 cmmnt">* e.g. [{"key":"value"}, {"key":"value"}] => [{"0":"A","1":"B","2":"C"}, {"0":"D","1":"E","2":"F"}]</span>
+          <span class="l1 l2 cmmnt">*/</span>
+          <span class="l1 l2"><span class="fnc1">keysArrayOfObjects:</span> <span class="bool">null</span>,</span>
+
+          <span class="l1 l2 break"></span>
+
+          <span class="l1 l2 cmmnt">/*!</span>
+          <span class="l1 l2 cmmnt">* Required only if "keysArrayOfObjects" is "null".</span>
+          <span class="l1 l2 cmmnt">* The path of the "kioskboard-keys-${langugage}.json" file must be set to the "keysJsonUrl" option. (XMLHttpRequest to get the keys from JSON file.)</span>
+          <span class="l1 l2 cmmnt">* e.g. '/Content/Plugins/KioskBoard/dist/kioskboard-keys-english.json'</span>
+          <span class="l1 l2 cmmnt">*/</span>
+          <span class="l1 l2"><span class="fnc1">keysJsonUrl:</span> <span class="bool">null</span>,</span>
+
+          <span class="l1 l2 break"></span>
+
+          <span class="l1 l2 cmmnt">/*</span>
+          <span class="l1 l2 cmmnt">* Optional: (Special Characters)</span>
+          <span class="l1 l2 cmmnt">* An Array of Strings can be set to override the built-in special characters.</span>
+          <span class="l1 l2 cmmnt">* e.g. ["#", "€", "%", "+", "-", "*"]</span>
+          <span class="l1 l2 cmmnt">*/</span>
+          <span class="l1 l2"><span class="fnc1">keysSpecialCharsArrayOfStrings:</span> <span class="bool">null</span>,</span>
+
+          <span class="l1 l2 break"></span>
+
+          <span class="l1 l2 cmmnt">/*</span>
+          <span class="l1 l2 cmmnt">* Optional: (Numpad Keys)</span>
+          <span class="l1 l2 cmmnt">* An Array of Numbers can be set to override the built-in numpad keys. (From 0 to 9, in any order.)</span>
+          <span class="l1 l2 cmmnt">* e.g. [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]</span>
+          <span class="l1 l2 cmmnt">*/</span>
+          <span class="l1 l2"><span class="fnc1">keysNumpadArrayOfNumbers:</span> <span class="bool">null</span>,</span>
+
+          <span class="l1 l2 break"></span>
+          <span class="l1 l2 cmmnt">// Optional: (Other Options)</span>
+          <span class="l1 l2 break"></span>
+
+          <span class="l1 l2 cmmnt">// Language Code (ISO 639-1) for custom keys (for language support) => e.g. "de" || "en" || "fr" || "hu" || "tr" etc...</span>
+          <span class="l1 l2"><span class="fnc1">language:</span> <span class="str">'en'</span>,</span>
+
+          <span class="l1 l2 cmmnt">// The theme of keyboard => "light" || "dark" || "flat" || "material" || "oldschool"</span>
+          <span class="l1 l2"><span class="fnc1">theme:</span> <span class="str">'light'</span>,</span>
+
+          <span class="l1 l2 cmmnt">// Scrolls the document to the top or bottom(by the placement option) of the input/textarea element. Prevented when "false"</span>
+          <span class="l1 l2"><span class="fnc1">autoScroll:</span> <span class="bool">true</span>,</span>
+
+          <span class="l1 l2 cmmnt">// Uppercase or lowercase to start. Uppercased when "true"</span>
+          <span class="l1 l2"><span class="fnc1">capsLockActive:</span> <span class="bool">true</span>,</span>
+
+          <span class="l1 l2 cmmnt">// Allow or prevent real/physical keyboard usage. Prevented when "false"</span>
+          <span class="l1 l2 cmmnt">// In addition, the "allowMobileKeyboard" option must be "true" as well, if the real/physical keyboard has wanted to be used.</span>
+          <span class="l1 l2"><span class="fnc1">allowRealKeyboard:</span> <span class="bool">false</span>,</span>
+
+          <span class="l1 l2 cmmnt">// Allow or prevent mobile keyboard usage. Prevented when "false"</span>
+          <span class="l1 l2"><span class="fnc1">allowMobileKeyboard:</span> <span class="bool">false</span>,</span>
+
+          <span class="l1 l2 cmmnt">// CSS animations for opening or closing the keyboard</span>
+          <span class="l1 l2"><span class="fnc1">cssAnimations:</span> <span class="bool">true</span>,</span>
+
+          <span class="l1 l2 cmmnt">// CSS animations duration as millisecond</span>
+          <span class="l1 l2"><span class="fnc1">cssAnimationsDuration:</span> <span class="int">360</span>,</span>
+
+          <span class="l1 l2 cmmnt">// CSS animations style for opening or closing the keyboard => "slide" || "fade"</span>
+          <span class="l1 l2"><span class="fnc1">cssAnimationsStyle:</span> <span class="str">'slide'</span>,</span>
+
+          <span class="l1 l2 cmmnt">// Enable or Disable Spacebar functionality on the keyboard. The Spacebar will be passive when "false"</span>
+          <span class="l1 l2"><span class="fnc1">keysAllowSpacebar:</span> <span class="bool">true</span>,</span>
+
+          <span class="l1 l2 cmmnt">// Text of the Space key (Spacebar). Without text => " "</span>
+          <span class="l1 l2"><span class="fnc1">keysSpacebarText:</span> <span class="str">'Space'</span>,</span>
+
+          <span class="l1 l2 cmmnt">// Font family of the keys</span>
+          <span class="l1 l2"><span class="fnc1">keysFontFamily:</span> <span class="str">'sans-serif'</span>,</span>
+
+          <span class="l1 l2 cmmnt">// Font size of the keys</span>
+          <span class="l1 l2"><span class="fnc1">keysFontSize:</span> <span class="str">'22px'</span>,</span>
+
+          <span class="l1 l2 cmmnt">// Font weight of the keys</span>
+          <span class="l1 l2"><span class="fnc1">keysFontWeight:</span> <span class="str">'normal'</span>,</span>
+
+          <span class="l1 l2 cmmnt">// Size of the icon keys</span>
+          <span class="l1 l2"><span class="fnc1">keysIconSize:</span> <span class="str">'25px'</span>,</span>
+
+          <span class="l1 l2 cmmnt">// Text of the Enter key (Enter/Return). Without text => " "</span>
+          <span class="l1 l2"><span class="fnc1">keysEnterText:</span> <span class="str">'Enter'</span>,</span>
+
+          <span class="l1 l2 cmmnt">// The callback function of the Enter key. This function will be called when the enter key has been clicked.</span>
+          <span class="l1 l2"><span class="fnc1">keysEnterCallback:</span> <span class="bool">undefined</span>,</span>
+
+          <span class="l1 l2 cmmnt">// The Enter key can close and remove the keyboard. Prevented when "false"</span>
+          <span class="l1 l2"><span class="fnc1">keysEnterCanClose:</span> <span class="bool">true</span>,</span>
+
+          <span class="l1">});</span>
+        </code>
+
+        <code class="js">
+          <span class="label">JS <span class="desc">Step 2: Run</span></span>
+          <span class="l1 cmmnt">// Select the input or the textarea element(s) to run the KioskBoard</span>
+          <span class="l1"><span class="fnc1">KioskBoard</span>.<span class="fnc2">run</span>(<span class="str">'.js-kioskboard-input'</span>);</span>
+        </code>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="KeyboardLanguage" class="sections">
+    <div class="max-width">
+
+      <div class="head">
+        <h2 class="sec-title">Language (JSON)</h2>
+        <p class="sec-desc">The <span class="option">keysJsonUrl</span> option has to be set if custom keys are not defined with the <span class="option">keysArrayOfObjects</span> option. JSON format has to be: <span class="option">[{"key":"value", "key":"value"}, ...]</span>. Each object in that array creates a row element (HTML) on the keyboard. The "key" in the objects is used as an "index" for each Keyboard Keys. The "value" is each key's value and inner text.</p>
+        <p class="sec-desc">
+          <span>Additionally, KioskBoard includes 9 different language packages: </span>
+          <a target="_blank" rel="noopener noreferrer" href="https://github.com/furcan/KioskBoard/blob/main/dist/kioskboard-keys-arabic.json"><span class="option">Arabic</span></a>
+          <span>,</span>
+          <a target="_blank" rel="noopener noreferrer" href="https://github.com/furcan/KioskBoard/blob/main/dist/kioskboard-keys-english.json"><span class="option">English</span></a>
+          <span>,</span>
+          <a target="_blank" rel="noopener noreferrer" href="https://github.com/furcan/KioskBoard/blob/main/dist/kioskboard-keys-french.json"><span class="option">French</span></a>
+          <span>,</span>
+          <a target="_blank" rel="noopener noreferrer" href="https://github.com/furcan/KioskBoard/blob/main/dist/kioskboard-keys-german.json"><span class="option">German</span></a>
+          <span>,</span>
+          <a target="_blank" rel="noopener noreferrer" href="https://github.com/furcan/KioskBoard/blob/main/dist/kioskboard-keys-hungarian.json"><span class="option">Hungarian</span></a>
+          <span>,</span>
+          <a target="_blank" rel="noopener noreferrer" href="https://github.com/furcan/KioskBoard/blob/main/dist/kioskboard-keys-persian.json"><span class="option">Persian</span></a>
+          <span>,</span>
+          <a target="_blank" rel="noopener noreferrer" href="https://github.com/furcan/KioskBoard/blob/main/dist/kioskboard-keys-russian.json"><span class="option">Russian</span></a>
+          <span>,</span>
+          <a target="_blank" rel="noopener noreferrer" href="https://github.com/furcan/KioskBoard/blob/main/dist/kioskboard-keys-spanish.json"><span class="option">Spanish</span></a>
+          <span>, and </span>
+          <a target="_blank" rel="noopener noreferrer" href="https://github.com/furcan/KioskBoard/blob/main/dist/kioskboard-keys-turkish.json"><span class="option">Turkish</span></a>
+          <span>.</span>
+        </p>
+      </div>
+      <div class="section-content keyboard-json">
+        <code class="json">
+          <span class="label">JSON <span class="desc">Custom Keys example in English</span></span>
+
+          <span class="l1">[</span>
+          <span class="l1 l2">{</span>
+          <span class="l1 l3"><span class="key">"0"</span>: <span class="value">"Q"</span>,</span>
+          <span class="l1 l3"><span class="key">"1"</span>: <span class="value">"W"</span>,</span>
+          <span class="l1 l3"><span class="key">"2"</span>: <span class="value">"E"</span>,</span>
+          <span class="l1 l3"><span class="key">"3"</span>: <span class="value">"R"</span>,</span>
+          <span class="l1 l3"><span class="key">"4"</span>: <span class="value">"T"</span>,</span>
+          <span class="l1 l3"><span class="key">"5"</span>: <span class="value">"Y"</span>,</span>
+          <span class="l1 l3"><span class="key">"6"</span>: <span class="value">"U"</span>,</span>
+          <span class="l1 l3"><span class="key">"7"</span>: <span class="value">"I"</span>,</span>
+          <span class="l1 l3"><span class="key">"8"</span>: <span class="value">"O"</span>,</span>
+          <span class="l1 l3"><span class="key">"9"</span>: <span class="value">"P"</span></span>
+          <span class="l1 l2">},</span>
+          <span class="l1 l2">{</span>
+          <span class="l1 l3"><span class="key">"0"</span>: <span class="value">"A"</span>,</span>
+          <span class="l1 l3"><span class="key">"1"</span>: <span class="value">"S"</span>,</span>
+          <span class="l1 l3"><span class="key">"2"</span>: <span class="value">"D"</span>,</span>
+          <span class="l1 l3"><span class="key">"3"</span>: <span class="value">"F"</span>,</span>
+          <span class="l1 l3"><span class="key">"4"</span>: <span class="value">"G"</span>,</span>
+          <span class="l1 l3"><span class="key">"5"</span>: <span class="value">"H"</span>,</span>
+          <span class="l1 l3"><span class="key">"6"</span>: <span class="value">"J"</span>,</span>
+          <span class="l1 l3"><span class="key">"7"</span>: <span class="value">"K"</span>,</span>
+          <span class="l1 l3"><span class="key">"8"</span>: <span class="value">"L"</span></span>
+          <span class="l1 l2">},</span>
+          <span class="l1 l2">{</span>
+          <span class="l1 l3"><span class="key">"0"</span>: <span class="value">"Z"</span>,</span>
+          <span class="l1 l3"><span class="key">"1"</span>: <span class="value">"X"</span>,</span>
+          <span class="l1 l3"><span class="key">"2"</span>: <span class="value">"C"</span>,</span>
+          <span class="l1 l3"><span class="key">"3"</span>: <span class="value">"V"</span>,</span>
+          <span class="l1 l3"><span class="key">"4"</span>: <span class="value">"B"</span>,</span>
+          <span class="l1 l3"><span class="key">"5"</span>: <span class="value">"N"</span>,</span>
+          <span class="l1 l3"><span class="key">"6"</span>: <span class="value">"M"</span></span>
+          <span class="l1 l2">}</span>
+          <span class="l1">]</span>
+        </code>
+      </div>
+
+    </div>
+  </section>
+
+  <footer id="Footer">
+    <p class="copyright">&copy; 2022 KioskBoard - Virtual Keyboard. All rights reserved.</p>
+    <a class="github" target="_blank" rel="noopener" href="https://github.com/furcan"><i class="fab fa-github" aria-hidden="true"></i>/furcan</a>
+  </footer>
+
+  <section id="FurcanBottom">
+    <input type="text" class="furcan furcan-bottom js-kioskboard-input-furcan-bottom" data-kioskboard-type="keyboard" data-kioskboard-specialcharacters="false" data-kioskboard-placement="bottom" maxlength="12" placeholder=".js-kioskboard-input-furcan" />
+  </section>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://kit.fontawesome.com/833245c2e4.js"></script>
+  <script src="index-tooltip.js"></script>
+
+  <!-- <script src="../src/kioskboard.js"></script> -->
+  <!-- <script src="../build/kioskboard-aio.js"></script> -->
+  <!-- <script src="../dist/kioskboard-2.3.0.min.js"></script> -->
+  <!-- <script src="../dist/kioskboard-aio-2.3.0.min.js"></script> -->
+
+  <script src="kioskboard-aio-2.3.0.min.js"></script>
+  <script src="index.js?v=2.3.0"></script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+{
+  "name": "kioskboard",
+  "main": "dist/kioskboard-aio-2.3.0.min.js",
+  "types": "index.d.ts",
+  "version": "2.3.0",
+  "description": "A pure JavaScript library for using virtual keyboards.",
+  "homepage": "https://github.com/furcan/KioskBoard",
+  "files": [
+    "index.d.ts",
+    "build",
+    "dist",
+    "src"
+  ],
+  "keywords": [
+    "keyboard",
+    "virtual keyboard",
+    "kiosk",
+    "kiosk keyboard",
+    "numpad",
+    "virtual numpad"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/furcan/KioskBoard.git"
+  },
+  "bugs": {
+    "url": "https://github.com/furcan/KioskBoard/issues"
+  },
+  "author": "Furkan (https://github.com/furcan)",
+  "contributors": [
+    "Furkan (https://github.com/furcan)"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "babel-minify": "^0.5.1",
+    "clean-css": "^5.1.5",
+    "eslint": "^7.32.0",
+    "stylelint": "^13.13.1",
+    "stylelint-config-standard": "^22.0.0"
+  },
+  "scripts": {
+    "src:stylelint": "stylelint src/kioskboard.css",
+    "src:eslint": "eslint src/kioskboard.js",
+    "src:lint": "yarn src:stylelint && yarn src:eslint",
+    "dev:eslint": "eslint -c .dev/.eslintrc.json .dev",
+    "dev:lint": "yarn dev:eslint",
+    "dev:allinone": "yarn dev:lint && yarn src:lint && node .dev/dev-allinone.js",
+    "dev:minifier": "yarn dev:allinone && node .dev/dev-minifier.js",
+    "build": "yarn dev:minifier"
+  }
+}
