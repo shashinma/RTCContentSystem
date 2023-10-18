@@ -45,108 +45,41 @@
                         <ul class="postcard__tagbox">
                             <li class="tag__item play blue">
                                 <a href="#">
-                                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                                      <i class="fas fa-glasses mr-2"></i>@readButton
-                                </button>
+                                    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#modal-@newsItem.Id">
+                                        <i class="fas fa-glasses mr-2"></i>@readButton
+                                    </button>
                                 </a>
                             </li>
                         </ul>
                     </div>
                 </article>
+                
+                <div class="modal fade" id="modal-@newsItem.Id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-scrollable">
+                        <div class="modal-content w-100">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">@newsItem.Title</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p>@newsItem.Content</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             }
     </div>
-
 </section>
+
+
 
 <script src="/Views/News/News.cshtml.js" asp-append-version="true"></script>
 
-<script>
-  // создаём модальное окно
-  const modal = new ItcModal();
-  // при клике по кнопке #show-modal
-  document.querySelector('#show-modal').addEventListener('click', () => {
-    // откроем модальное окно
-    modal.show();
-  });
-</script>
-
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-<div class="modal-dialog modal-dialog-scrollable w-100">
-    <div class="modal-content w-100">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Заголовок</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-          Длинный-длинный текст <br>
-          Длинный-длинный текст <br>
-          Длинный-длинный текст <br>
-          Длинный-длинный текст <br>
-          Длинный-длинный текст <br>
-          Длинный-длинный текст <br>
-          Длинный-длинный текст <br>
-          Длинный-длинный текст <br>
-          Длинный-длинный текст <br>
-          Длинный-длинный текст <br>
-          Длинный-длинный текст <br>
-          Длинный-длинный текст <br>
-          Длинный-длинный текст <br>
-          Длинный-длинный текст <br>
-          Длинный-длинный текст <br>
-          Длинный-длинный текст <br>
-          Длинный-длинный текст <br>
-          Длинный-длинный текст <br>
-          Длинный-длинный текст <br>
-          Длинный-длинный текст <br>
-          Длинный-длинный текст <br>
-          Длинный-длинный текст <br>
-          Длинный-длинный текст <br>
-          Длинный-длинный текст <br>
-          Длинный-длинный текст <br>
-          Длинный-длинный текст <br>
-          Длинный-длинный текст <br>
-          Длинный-длинный текст <br>
-          Длинный-длинный текст <br>
-          Длинный-длинный текст <br>
-          Длинный-длинный текст <br>
-          Длинный-длинный текст <br>
-          Длинный-длинный текст <br>
-          Длинный-длинный текст <br>
-          Длинный-длинный текст <br>
-          Длинный-длинный текст <br>
-          Длинный-длинный текст <br>
-          Длинный-длинный текст <br>
-          Длинный-длинный текст <br>
-          Длинный-длинный текст <br>
-          Длинный-длинный текст <br>
-          Длинный-длинный текст <br>
-          Длинный-длинный текст <br>
-          Длинный-длинный текст <br>
-          Длинный-длинный текст <br>
-          Длинный-длинный текст <br>
-          Длинный-длинный текст <br>
-          Длинный-длинный текст <br>
-          Длинный-длинный текст <br>
-          Длинный-длинный текст <br>
-          Длинный-длинный текст <br>
-          Длинный-длинный текст <br>
-          Длинный-длинный текст <br>
-          Длинный-длинный текст <br>
-          Длинный-длинный текст <br>
-          Длинный-длинный текст <br>
-          Длинный-длинный текст <br>
-          Длинный-длинный текст <br>
-          Длинный-длинный текст <br>
-          Длинный-длинный текст <br>
-          Длинный-длинный текст <br>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-      </div>
-    </div>
-  </div>
-</div>
 
 @* <section class="dark"> *@
 @* 	<div class="container py-4"> *@
