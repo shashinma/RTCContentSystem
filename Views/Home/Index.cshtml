@@ -6,3 +6,15 @@
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+
+<script>
+  // создаём модальное окно
+  const modal = new ItcModal();
+  // при клике по кнопке #show-modal
+  document.querySelector('#show-modal').addEventListener('click', () => {
+    // откроем модальное окно
+    modal.show();
+  });
+</script>
+
+<script src="/Views/News/News.cshtml.js" asp-append-version="true"></script>

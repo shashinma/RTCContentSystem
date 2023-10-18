@@ -53,7 +53,20 @@
                 </article>
             }
     </div>
+
 </section>
+
+<script src="/Views/News/News.cshtml.js" asp-append-version="true"></script>
+
+<script>
+  // создаём модальное окно
+  const modal = new ItcModal();
+  // при клике по кнопке #show-modal
+  document.querySelector('#show-modal').addEventListener('click', () => {
+    // откроем модальное окно
+    modal.show();
+  });
+</script>
 
 
 @* <section class="dark"> *@
