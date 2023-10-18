@@ -11,7 +11,7 @@ autom4te.cache/
 tarballs/
 test-results/
 #*.db
-*.db-*
+*.db*
 
 *.db*
 !*.db
