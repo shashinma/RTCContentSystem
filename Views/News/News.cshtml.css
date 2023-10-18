@@ -196,6 +196,7 @@ a, a:hover {
     }
 
     .postcard:nth-child(2n + 1) {
+        /*flex-direction: row;*/
         flex-direction: row;
     }
 
