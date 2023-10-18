@@ -19,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-<body class="mb-3">
+<body class="mb-0">
 
 @* <li class="nav-item"> *@
 @*   <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a> *@
@@ -36,7 +36,7 @@
   @* </div> *@
   @Html.Partial("_NavBar.cshtml")
   <div class="container">
-    <main role="main" class="pb-3">
+    <main role="main" class="pb-0">
       @RenderBody()
     </main>
   </div>
@@ -45,25 +45,12 @@
 </body>
 </html>
 
-<script>
-  let arrow = document.querySelectorAll(".arrow");
-  for (var i = 0; i < arrow.length; i++) {
-    arrow[i].addEventListener("click", (e)=>{
-   let arrowParent = e.target.parentElement.parentElement;//selecting main parent of arrow
-   arrowParent.classList.toggle("showMenu");
-    });
-  }
-  let sidebar = document.querySelector(".sidebar");
-  let sidebarBtn = document.querySelector(".bx-menu");
-  console.log(sidebarBtn);
-  sidebarBtn.addEventListener("click", ()=>{
-    sidebar.classList.toggle("close");
-  });
-  </script>
-
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="~/js/site.js" asp-append-version="true"></script>
+<script src="/Views/Shared/_Layout.cshtml.js" asp-append-version="true"></script>
+
+
 @await RenderSectionAsync("Scripts", false)
 
 @* <li class="nav-item"> *@
