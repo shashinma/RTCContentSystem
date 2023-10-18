@@ -1,6 +1,11 @@
 @using POSTerminalWebApp.Services
 @inject IMenuService MenuService
 
+@{
+  string icon = "bx bx-collection";
+  string arrow = "bx bxs-chevron-down arrow";
+}
+
 <!-- Sidebar section -->
 <div class="sidebar open">
   <div class="logo-details">
@@ -14,12 +19,12 @@
       <li>
         <div class="iocn-link">
           <a  href="@menuItem.Url">
-            <i class='bx bx-collection'></i>
+            <i class='@icon'></i>
             <div class="link_name">@menuItem.Title</div>
           </a>
           @if (menuItem.SubMenuItems != null && menuItem.SubMenuItems.Any())
           {
-            <i class='bx bxs-chevron-down arrow'></i>
+            <i class='@arrow'></i>
           }
         </div>
         @if (menuItem.SubMenuItems != null && menuItem.SubMenuItems.Any())
