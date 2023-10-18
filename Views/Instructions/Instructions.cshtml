@@ -1,13 +1,13 @@
-﻿@{
+﻿
+@{
     var picSrc = "/phishing.jpg";
-
 }
 
-<div class="container">
+<div class="container p-0">
     @for (var i = 0; i < 1; i++)
     {
         <div class="cardContainer inactive">
-            <div class="card" onclick="redirectToPage('/Instructions/Viewer')">
+            <div class="card" onclick="redirectToPage('Viewer')">
                 <div class="side front">
                     <div class="img">
                         <img src="@picSrc" alt="Image Title"/>
@@ -22,8 +22,4 @@
     }
 </div>
 
-<script>
-function redirectToPage(url) {
-  window.location.href = url;
-}
-</script>
+<script src="/Views/Instructions/Instructions.cshtml.js" asp-append-version="true"></script>
