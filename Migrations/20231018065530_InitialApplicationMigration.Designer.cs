@@ -11,7 +11,7 @@ using POSTerminalWebApp.Data;
 namespace POSTerminalWebApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231013020504_InitialApplicationMigration")]
+    [Migration("20231018065530_InitialApplicationMigration")]
     partial class InitialApplicationMigration
     {
         /// <inheritdoc />
@@ -25,6 +25,10 @@ namespace POSTerminalWebApp.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("Icon")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Title")
                         .IsRequired()
