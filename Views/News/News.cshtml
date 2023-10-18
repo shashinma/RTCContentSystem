@@ -1,7 +1,7 @@
 ﻿@using POSTerminalWebApp.Services
 @inject INewsService NewsService
 
-<link rel="stylesheet" href="~/lib/font-awesome-5.15.4/css/all.css">
+<link rel="stylesheet" href="~/lib/font-awesome-5.15.4/css/all.css" xmlns="http://www.w3.org/1999/html">
 
 @{
     var title = "Новости РТК";
@@ -45,7 +45,9 @@
                         <ul class="postcard__tagbox">
                             <li class="tag__item play blue">
                                 <a href="#">
-                                    <i class="fas fa-glasses mr-2"></i>@readButton
+                                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                                      <i class="fas fa-glasses mr-2"></i>@readButton
+                                </button>
                                 </a>
                             </li>
                         </ul>
@@ -68,6 +70,83 @@
   });
 </script>
 
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-dialog-scrollable w-100">
+    <div class="modal-content w-100">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Заголовок</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          Длинный-длинный текст <br>
+          Длинный-длинный текст <br>
+          Длинный-длинный текст <br>
+          Длинный-длинный текст <br>
+          Длинный-длинный текст <br>
+          Длинный-длинный текст <br>
+          Длинный-длинный текст <br>
+          Длинный-длинный текст <br>
+          Длинный-длинный текст <br>
+          Длинный-длинный текст <br>
+          Длинный-длинный текст <br>
+          Длинный-длинный текст <br>
+          Длинный-длинный текст <br>
+          Длинный-длинный текст <br>
+          Длинный-длинный текст <br>
+          Длинный-длинный текст <br>
+          Длинный-длинный текст <br>
+          Длинный-длинный текст <br>
+          Длинный-длинный текст <br>
+          Длинный-длинный текст <br>
+          Длинный-длинный текст <br>
+          Длинный-длинный текст <br>
+          Длинный-длинный текст <br>
+          Длинный-длинный текст <br>
+          Длинный-длинный текст <br>
+          Длинный-длинный текст <br>
+          Длинный-длинный текст <br>
+          Длинный-длинный текст <br>
+          Длинный-длинный текст <br>
+          Длинный-длинный текст <br>
+          Длинный-длинный текст <br>
+          Длинный-длинный текст <br>
+          Длинный-длинный текст <br>
+          Длинный-длинный текст <br>
+          Длинный-длинный текст <br>
+          Длинный-длинный текст <br>
+          Длинный-длинный текст <br>
+          Длинный-длинный текст <br>
+          Длинный-длинный текст <br>
+          Длинный-длинный текст <br>
+          Длинный-длинный текст <br>
+          Длинный-длинный текст <br>
+          Длинный-длинный текст <br>
+          Длинный-длинный текст <br>
+          Длинный-длинный текст <br>
+          Длинный-длинный текст <br>
+          Длинный-длинный текст <br>
+          Длинный-длинный текст <br>
+          Длинный-длинный текст <br>
+          Длинный-длинный текст <br>
+          Длинный-длинный текст <br>
+          Длинный-длинный текст <br>
+          Длинный-длинный текст <br>
+          Длинный-длинный текст <br>
+          Длинный-длинный текст <br>
+          Длинный-длинный текст <br>
+          Длинный-длинный текст <br>
+          Длинный-длинный текст <br>
+          Длинный-длинный текст <br>
+          Длинный-длинный текст <br>
+          Длинный-длинный текст <br>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 @* <section class="dark"> *@
 @* 	<div class="container py-4"> *@
