@@ -12,9 +12,7 @@
 <section class="light"> 
     <div class="container py-2">
         <div class="h1 text-center text-dark" id="pageHeaderTitle">@title</div>
-        @for (int i = 0; i < 5; i++)
-        {
-        foreach (var newsItem in NewsService.GetNews())
+        @foreach (var newsItem in NewsService.GetNews())
             {
                 <article class="postcard light blue" data-bs-toggle="modal" data-bs-target="#modal-@newsItem.Id">
                     <a class="postcard__img_link" href="#">
@@ -76,7 +74,6 @@
                     </div>
                 </div>
             }
-        }
     </div>
 </section>
 
