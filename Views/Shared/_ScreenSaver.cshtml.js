@@ -12,6 +12,7 @@ function showPopup() {
 }
 
 function hidePopup() {
+    redirectToPage(/News/);
     popup.style.display = 'none';
     resetTimer(); // Start the timer again after hiding the popup
 }
