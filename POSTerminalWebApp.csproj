@@ -25,6 +25,7 @@
         </PackageReference>
         <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.10" />
         <PackageReference Include="System.DirectoryServices.Protocols" Version="7.0.1" />
+        <PackageReference Include="Westwind.AspNetCore.Markdown" Version="3.12.0" />
     </ItemGroup>
 
     <ItemGroup>
