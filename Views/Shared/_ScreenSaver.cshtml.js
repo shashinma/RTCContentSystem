@@ -1,6 +1,6 @@
 var timeout;
 var popup = document.getElementById('screen-saver');
-var minutes = 2;
+var minutes = 3;
 
 function resetTimer() {
     clearTimeout(timeout);
