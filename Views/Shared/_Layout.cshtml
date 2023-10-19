@@ -19,11 +19,6 @@
 </head>
 
 <body class="mb-0">
-
-@* <li class="nav-item"> *@
-@*   <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a> *@
-@* </li> *@
-
 <!-- Sidebar -->
 @Html.Partial("_MenuPartial.cshtml")
 
@@ -37,18 +32,22 @@
     @Html.Partial("_NavBar.cshtml")
   </nav>
   <div class="container ps-5 pe-5">
-    <main role="main" class="pb-3">
+    <main role="main" class="pb-0">
       @RenderBody()
     </main>
   </div>
 </section>
-
 </body>
+
+<footer>
+  @Html.Partial("_ScreenSaver.cshtml")
+</footer>
 
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="~/js/site.js" asp-append-version="true"></script>
 <script src="/Views/Shared/_Layout.cshtml.js" asp-append-version="true"></script>
+<script src="/Views/Shared/_ScreenSaver.cshtml.js" asp-append-version="true"></script>
 
 @await RenderSectionAsync("Scripts", false)
 
