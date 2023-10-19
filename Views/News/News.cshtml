@@ -1,4 +1,5 @@
 ﻿@using POSTerminalWebApp.Services
+@using Westwind.AspNetCore.Markdown
 @inject INewsService NewsService
 
 <link rel="stylesheet" href="~/lib/font-awesome-5.15.4/css/all.css" xmlns="http://www.w3.org/1999/html">
@@ -30,7 +31,7 @@
                             </time>
                         </div>
                         <div class="postcard__bar"></div>
-                        <div class="postcard__preview-txt">@GetLimitedWords(newsItem.Content, 25)...</div>
+                        <div class="postcard__preview-txt">@Markdown.ParseHtmlString(GetLimitedWords(newsItem.Content, 25))</div>
                         <ul class="postcard__tagbox">
                             <li class="tag__item">
                                 <i class="fa fa-tag mr-2"></i>@newsItem.Tags
@@ -43,26 +44,27 @@
                             </li>
                         </ul>
                         <ul class="postcard__tagbox">
-                            <li class="tag__item play blue">
-                                <a href="#">
-                                    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#modal-@newsItem.Id">
-                                        <i class="fas fa-glasses mr-2"></i>@readButton
-                                    </button>
-                                </a>
+                        <li class="tag__item play blue">
+                            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#modal-@newsItem.Id">
+                                    <i class="fas fa-glasses mr-2"></i>@readButton
+                            </button>
                             </li>
                         </ul>
                     </div>
                 </article>
                 
                 <div class="modal fade" id="modal-@newsItem.Id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-scrollable">
+                    @* TODO: Add "modal-*" property like "modal-lg" *@
+                    <div class="modal-dialog modal-dialog-scrollable modal-xl">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h1 class="modal-title fs-5" id="exampleModalLabel">@newsItem.Title</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <p>@newsItem.Content</p>
+                                @* <p>@newsItem.Content</p> *@
+                                @* @Markdown.Parse(newsItem.Content) *@
+                                @Markdown.ParseHtmlString(newsItem.Content)
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
@@ -89,6 +91,7 @@
         {
             string limitedContent = string.Join(' ', words.Take(wordCount));
             limitedContent = TrimPunctuation(limitedContent);
+            limitedContent += "...";
             return limitedContent;
         }
     }
