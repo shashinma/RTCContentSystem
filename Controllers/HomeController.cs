@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using POSTerminalWebApp.Models;
+using Microsoft.AspNetCore.Authorization;
+
 
 namespace POSTerminalWebApp.Controllers;
 
