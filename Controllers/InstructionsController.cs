@@ -1,9 +1,11 @@
 ﻿using System.Diagnostics;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using POSTerminalWebApp.Models;
 
 namespace POSTerminalWebApp.Controllers;
 
+[Authorize]
 public class InstructionsController : Controller
 {
     private readonly ILogger<InstructionsController> _logger;

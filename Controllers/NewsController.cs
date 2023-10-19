@@ -6,6 +6,7 @@ using POSTerminalWebApp.Models;
 
 namespace POSTerminalWebApp.Controllers;
 
+[Authorize]
 public class NewsController : Controller
 {
     private readonly ILogger<NewsController> _logger;
