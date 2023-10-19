@@ -1,18 +1,15 @@
 * {
-    min-height: auto;
     display: block;
 }
 
 html {
     font-size: 14px;
     position: relative;
-    min-height: auto;
     background-color: rgb(228, 233, 247);
 }
 
 body {
     margin-bottom: 60px;
-    min-height: auto;
 }
 
 @media (min-width: 768px) {
