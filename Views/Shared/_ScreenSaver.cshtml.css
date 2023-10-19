@@ -1,4 +1,6 @@
 #screen-saver {
+    overflow-y: auto;
+    overflow-x: auto;
     position: fixed;
     top: 0;
     left: 0;
