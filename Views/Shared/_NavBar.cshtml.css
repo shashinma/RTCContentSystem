@@ -219,7 +219,7 @@ main {
     background: #E4E9F7;
     /*height: calc(100%- 60px);*/
     left: 260px;
-    width: calc(100% - 260px);
+    width: auto;
     transition: all 0.5s ease;
 }
 .sidebar.close ~ .home-section{

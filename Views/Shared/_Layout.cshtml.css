@@ -329,3 +329,10 @@ main {
 .container{
     max-width: 100% !important;
 }
+
+.sticky {
+    /*position: -webkit-sticky;*/
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}

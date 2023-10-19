@@ -2,7 +2,7 @@
 body {
     font-family: "Baloo 2", cursive;
     font-size: 16px;
-    color: #ffffff;
+    /*color: #ffffff;*/
     text-rendering: optimizeLegibility;
     font-weight: initial;
 }
@@ -109,6 +109,10 @@ a, a:hover {
     text-align: justify;
     height: 100%;
 }
+
+/*.postcard .postcard__preview-txt p{*/
+/*    margin-bottom: 0 !important;*/
+/*}*/
 
 .postcard .postcard__tagbox {
     display: flex;

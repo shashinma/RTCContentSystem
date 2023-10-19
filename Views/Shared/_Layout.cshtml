@@ -3,8 +3,6 @@
 @inject SignInManager<IdentityUser> signInManager
 @model List<MenuItem>
 
-<!DOCTYPE html>
-<html lang="en">
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -35,16 +33,17 @@
   @* <div class="home-content"> *@
   @*   <i class='bx bx-menu' ></i> *@
   @* </div> *@
-  @Html.Partial("_NavBar.cshtml")
-  <div class="container">
-    <main role="main" class="pb-0">
+  <nav class="sticky">
+    @Html.Partial("_NavBar.cshtml")
+  </nav>
+  <div class="container p-5">
+    <main role="main" class="pb-3">
       @RenderBody()
     </main>
   </div>
 </section>
 
 </body>
-</html>
 
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
