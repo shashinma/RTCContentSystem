@@ -14,9 +14,11 @@
 <section class="light"> 
     <div class="container py-2">
         <div class="h1 text-center text-dark" id="pageHeaderTitle">@title</div>
-            @foreach (var newsItem in NewsService.GetNews())
+        @for (int i = 0; i < 5; i++)
+        {
+        foreach (var newsItem in NewsService.GetNews())
             {
-                <article class="postcard light blue">
+                <article class="postcard light blue" data-bs-toggle="modal" data-bs-target="#modal-@newsItem.Id">
                     <a class="postcard__img_link" href="#">
                         <img class="postcard__img" src="@newsItem.PicSrc" alt="Image Title"/>
                     </a>
@@ -31,7 +33,10 @@
                             </time>
                         </div>
                         <div class="postcard__bar"></div>
-                        <div class="postcard__preview-txt">@Markdown.ParseHtmlString(GetLimitedWords(newsItem.Content, 25))</div>
+                        <div class="postcard__preview-txt">
+                            @Markdown.ParseHtmlString(
+                                GetLimitedWords(newsItem.Content, 15))
+                        </div>
                         <ul class="postcard__tagbox">
                             <li class="tag__item">
                                 <i class="fa fa-tag mr-2"></i>@newsItem.Tags
@@ -43,13 +48,13 @@
                                 <i class="fa fa-clock mr-2"></i>@newsItem.TimeToRead
                             </li>
                         </ul>
-                        <ul class="postcard__tagbox">
-                        <li class="tag__item play blue">
-                            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#modal-@newsItem.Id">
-                                    <i class="fas fa-glasses mr-2"></i>@readButton
-                            </button>
-                            </li>
-                        </ul>
+                        @* <ul class="postcard__tagbox"> *@
+                        @* <li class="tag__item play blue"> *@
+                        @*     <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#modal-@newsItem.Id"> *@
+                        @*             <i class="fas fa-glasses mr-2"></i>@readButton *@
+                        @*     </button> *@
+                        @*     </li> *@
+                        @* </ul> *@
                     </div>
                 </article>
                 
@@ -72,8 +77,8 @@
                         </div>
                     </div>
                 </div>
-
             }
+        }
     </div>
 </section>
 
