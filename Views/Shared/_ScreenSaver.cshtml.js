@@ -1,6 +1,6 @@
 var timeout;
 var popup = document.getElementById('screen-saver');
-var minutes = 3;
+var minutes = 0.1;
 
 function resetTimer() {
     clearTimeout(timeout);
@@ -12,8 +12,8 @@ function showPopup() {
 }
 
 function hidePopup() {
-    redirectToPage(/News/);
     popup.style.display = 'none';
+    redirectToPage(/News/);
     resetTimer(); // Start the timer again after hiding the popup
 }
 
