@@ -1,15 +1,15 @@
 ﻿@using Microsoft.AspNetCore.Identity
+
 @inject SignInManager<IdentityUser> signInManager
 @model List<MenuItem>
 
-<!DOCTYPE html>
-<html lang="en">
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>@ViewData["Title"] - POSTerminalWebApp</title>
+  @* <title>@ViewData["Title"] - POSTerminalWebApp</title> *@
   <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
   <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
+  <link rel="stylesheet" href="~/lib/font-awesome-5.15.4/css/all.css">
   <link rel="stylesheet" href="~/POSTerminalWebApp.styles.css" asp-append-version="true"/>
     
   <!-- Boxiocns CDN Link -->
@@ -19,11 +19,6 @@
 </head>
 
 <body class="mb-0">
-
-@* <li class="nav-item"> *@
-@*   <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a> *@
-@* </li> *@
-
 <!-- Sidebar -->
 @Html.Partial("_MenuPartial.cshtml")
 
@@ -33,36 +28,27 @@
   @* <div class="home-content"> *@
   @*   <i class='bx bx-menu' ></i> *@
   @* </div> *@
-  @Html.Partial("_NavBar.cshtml")
-  <div class="container">
-    <main role="main" class="pb-3">
+  <nav class="sticky">
+    @Html.Partial("_NavBar.cshtml")
+  </nav>
+  <div class="container ps-5 pe-5">
+    <main role="main" class="pb-0">
       @RenderBody()
     </main>
   </div>
 </section>
-
 </body>
-</html>
 
-<script>
-  let arrow = document.querySelectorAll(".arrow");
-  for (var i = 0; i < arrow.length; i++) {
-    arrow[i].addEventListener("click", (e)=>{
-   let arrowParent = e.target.parentElement.parentElement;//selecting main parent of arrow
-   arrowParent.classList.toggle("showMenu");
-    });
-  }
-  let sidebar = document.querySelector(".sidebar");
-  let sidebarBtn = document.querySelector(".bx-menu");
-  console.log(sidebarBtn);
-  sidebarBtn.addEventListener("click", ()=>{
-    sidebar.classList.toggle("close");
-  });
-  </script>
+<footer>
+  @Html.Partial("_ScreenSaver.cshtml")
+</footer>
 
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="~/js/site.js" asp-append-version="true"></script>
+<script src="/Views/Shared/_Layout.cshtml.js" asp-append-version="true"></script>
+<script src="/Views/Shared/_ScreenSaver.cshtml.js" asp-append-version="true"></script>
+
 @await RenderSectionAsync("Scripts", false)
 
 @* <li class="nav-item"> *@

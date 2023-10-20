@@ -10,7 +10,9 @@ autom4te.cache/
 *.tar.gz
 tarballs/
 test-results/
-#*.db
+
+*.db*
+!*.db
 
 # Mac bundle stuff
 *.dmg

@@ -10,6 +10,19 @@ body, html {
     padding: 0;
 }
 
+h1 {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+#pageHeaderTitle {
+    margin: 2rem 0;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 2.5rem;
+}
+
 h2, h4, p, ul, li {
     margin: 0;
     padding: 0;
@@ -59,8 +72,6 @@ svg {
 .cardContainer {
     position: relative;
     width: 100%;
-    /*width: 410px;*/
-    /*height: 400px;*/
     min-width: 100%;
     /*min-width: 410px;*/
     /*min-height: 400px;*/

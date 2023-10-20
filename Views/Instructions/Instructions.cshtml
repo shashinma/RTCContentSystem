@@ -1,13 +1,16 @@
-﻿@{
+﻿<link rel="stylesheet" href="~/lib/font-awesome-5.15.4/css/all.css">
+
+@{
+    var title = "ИНСТРУКТАЖИ";
     var picSrc = "/phishing.jpg";
-
 }
+<div class="h1 text-center text-dark" id="pageHeaderTitle">@title</div>
 
-<div class="container">
+<div class="container py-2">
     @for (var i = 0; i < 1; i++)
     {
         <div class="cardContainer inactive">
-            <div class="card">
+            <div class="card" onclick="redirectToPage('Viewer')">
                 <div class="side front">
                     <div class="img">
                         <img src="@picSrc" alt="Image Title"/>
@@ -17,39 +20,9 @@
                         <p>Данное руководство поможет обезопасить ваши личные и корпоративные данные.</p>
                     </div>
                 </div>
-                <div class="side back">
-                    <div class="info">
-                        <h2>Подробнее</h2>
-
-                        <ul>
-                            <li>Manage backyard gates with ease with the 36" deck option</li>
-                            <li>Your choice of deck sizes ranging from 36", 48", 52" and 60"</li>
-                            <li>Updated hip bolstering offers superior operator comfort and positioning</li>
-                        </ul>
-                            <div class="btn">
-                                <a class="nav-link" asp-area="" asp-controller="Instructions" asp-action="Viewer" style="white-space: nowrap">
-                                    <h4>Читать PDF</h4>
-                                    <svg fill="#333" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"/><path d="M0-.25h24v24H0z" fill="none"/>
-                                    </svg>
-                                </a>
-                            </div>
-                    </div>
-                </div>
             </div>
         </div>
     }
 </div>
 
-<script>
-
-const cards = document.querySelectorAll('.card');
-function transition() {
-  if (this.classList.contains('active')) {
-    this.classList.remove('active')
-  } else {
-    this.classList.add('active');
-  }
-}
-cards.forEach(card => card.addEventListener('click', transition));
-</script>
+<script src="/Views/Instructions/Instructions.cshtml.js" asp-append-version="true"></script>

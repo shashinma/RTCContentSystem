@@ -1,21 +1,20 @@
 ﻿@using POSTerminalWebApp.Services
+@using Westwind.AspNetCore.Markdown
 @inject INewsService NewsService
 
-<link rel="stylesheet" href="~/lib/font-awesome-5.15.4/css/all.css">
+<link rel="stylesheet" href="~/lib/font-awesome-5.15.4/css/all.css" xmlns="http://www.w3.org/1999/html">
 
 @{
     var title = "Новости РТК";
-    var titleForDark = "Dark News Card";
-    var titleForLight = "Light News Card";
     var readButton = "Полный текст";
 }
 
 <section class="light"> 
     <div class="container py-2">
         <div class="h1 text-center text-dark" id="pageHeaderTitle">@title</div>
-            @foreach (var newsItem in NewsService.GetNews())
+        @foreach (var newsItem in NewsService.GetNews())
             {
-                <article class="postcard light blue">
+                <article class="postcard light blue" data-bs-toggle="modal" data-bs-target="#modal-@newsItem.Id">
                     <a class="postcard__img_link" href="#">
                         <img class="postcard__img" src="@newsItem.PicSrc" alt="Image Title"/>
                     </a>
@@ -30,7 +29,10 @@
                             </time>
                         </div>
                         <div class="postcard__bar"></div>
-                        <div class="postcard__preview-txt">@newsItem.Content</div>
+                        <div class="postcard__preview-txt">
+                            @Markdown.ParseHtmlString(
+                                GetLimitedWords(newsItem.Content, 15))
+                        </div>
                         <ul class="postcard__tagbox">
                             <li class="tag__item">
                                 <i class="fa fa-tag mr-2"></i>@newsItem.Tags
@@ -42,20 +44,67 @@
                                 <i class="fa fa-clock mr-2"></i>@newsItem.TimeToRead
                             </li>
                         </ul>
-                        <ul class="postcard__tagbox">
-                            <li class="tag__item play blue">
-                                <a href="#">
-                                    <i class="fas fa-glasses mr-2"></i>@readButton
-                                </a>
-                            </li>
-                        </ul>
+                        @* <ul class="postcard__tagbox"> *@
+                        @* <li class="tag__item play blue"> *@
+                        @*     <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#modal-@newsItem.Id"> *@
+                        @*             <i class="fas fa-glasses mr-2"></i>@readButton *@
+                        @*     </button> *@
+                        @*     </li> *@
+                        @* </ul> *@
                     </div>
                 </article>
+                
+                <div class="modal fade" id="modal-@newsItem.Id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    @* TODO: Add "modal-*" property like "modal-lg" *@
+                    <div class="modal-dialog modal-dialog-scrollable modal-xl">
+                        <div class="modal-content h-100">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">@newsItem.Title</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                @* <p>@newsItem.Content</p> *@
+                                @* @Markdown.Parse(newsItem.Content) *@
+                                @Markdown.ParseHtmlString(newsItem.Content)
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             }
-            
     </div>
 </section>
 
+<script src="/Views/News/News.cshtml.js" asp-append-version="true"></script>
+
+@functions {
+    public string GetLimitedWords(string input, int wordCount)
+    {
+        string[] words = input.Split(' ');
+        if (words.Length <= wordCount)
+        {
+            return input;
+        }
+        else
+        {
+            string limitedContent = string.Join(' ', words.Take(wordCount));
+            limitedContent = TrimPunctuation(limitedContent);
+            limitedContent += "...";
+            return limitedContent;
+        }
+    }
+
+    public string TrimPunctuation(string input)
+    {
+        char[] punctuation = { '.', ',', '!', '?' }; // Добавьте другие знаки препинания по необходимости
+        input = input.TrimEnd(punctuation);
+        return input;
+    }
+}
+
+<!-- Modal -->
 
 @* <section class="dark"> *@
 @* 	<div class="container py-4"> *@

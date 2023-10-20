@@ -7,7 +7,6 @@
 }
 
 main {
-    height: calc(100vh - 60px);
 }
 
 .sidebar{
@@ -37,6 +36,18 @@ main {
     text-align: center;
     line-height: 50px;
 }
+
+.sidebar .logo-details img{
+    font-size: 30px;
+    color: #fff;
+    height: 50px;
+    padding-left: 22px; 
+    padding-right: 22px;
+    /*min-width: 78px;*/
+    text-align: center;
+    line-height: 50px;
+}
+
 .sidebar .logo-details .logo_name{
     font-size: 22px;
     color: #fff;
@@ -89,6 +100,10 @@ main {
 }
 .sidebar .nav-links li.showMenu i.arrow{
     transform: rotate(-180deg);
+}
+.sidebar .nav-links li i.arrow{
+    min-width: 50px;
+    width: 50px;
 }
 .sidebar.close .nav-links i.arrow{
     display: none;

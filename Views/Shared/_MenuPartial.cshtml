@@ -1,13 +1,17 @@
 @using POSTerminalWebApp.Services
 @inject IMenuService MenuService
 
+@{
+  string icon = "bx bx-collection";
+  string arrow = "bx bxs-chevron-down arrow";
+}
+
 <!-- Sidebar section -->
 <div class="sidebar open">
   <div class="logo-details">
-    <i class='bx bxl-c-plus-plus'></i>
-    <span class="logo_name">RTC VoteApp</span>
+    <img src="@Url.Content("~/rtc-logo.png")" />
+    <span class="logo_name">RTC App</span>
   </div>
-
   
   <ul class="nav-links">
     @foreach (var menuItem in MenuService.GetMenu())
@@ -15,12 +19,12 @@
       <li>
         <div class="iocn-link">
           <a  href="@menuItem.Url">
-            <i class='bx bx-collection'></i>
+            <i class='@menuItem.Icon'></i>
             <div class="link_name">@menuItem.Title</div>
           </a>
           @if (menuItem.SubMenuItems != null && menuItem.SubMenuItems.Any())
           {
-            <i class='bx bxs-chevron-down arrow'></i>
+            <i class='@arrow'></i>
           }
         </div>
         @if (menuItem.SubMenuItems != null && menuItem.SubMenuItems.Any())
@@ -41,13 +45,13 @@
       <li>
         <div class="profile-details">
           <div class="profile-content">
-            <img src="image/profile.jpg" alt="profileImg">
+            <img src="@Url.Content("~/terminal-profile-image.png")" alt="profileImg">
           </div>
           <div class="name-job">
-            <div class="profile_name">a@rtc.ru</div>
-            <div class="job">Пользователь</div>
-          </div>            
-          <form id="logoutForm" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+            <div class="profile_name">Терминал</div>
+            <div class="job">PoSTerminalApp</div>
+          </div>       
+          <form class="mb-0" id="logoutForm" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
               <button type="submit" class="btn">
                   <i class="bx bx-log-out"></i>
               </button>

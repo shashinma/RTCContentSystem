@@ -2,7 +2,6 @@
 @model AuthSystem.Areas.Identity.Pages.Account.LoginModel
 
 @{
-    ViewData["Title"] = "Log in";
     Layout = "~/Areas/Identity/Pages/_AuthLayout.cshtml";
 }
 
@@ -23,9 +22,9 @@
                     <label asp-for="Input.Password" class="form-label">Пароль</label>
                     <span asp-validation-for="Input.Password" class="text-danger"></span>
                 </div>
-                <div class="checkbox mb-3">
+                <div class="checkbox mb-3" style="white-space: nowrap">
                     <label asp-for="Input.RememberMe" class="form-label use-keyboard-input">
-                        <input class="form-check-input" asp-for="Input.RememberMe" />
+                        <input class="form-check-input" asp-for="Input.RememberMe"/>
                         @Html.DisplayNameFor(m => m.Input.RememberMe)
                     </label>
                 </div>
