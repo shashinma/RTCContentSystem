@@ -85,7 +85,6 @@
 
 
     <ItemGroup>
-      <Folder Include="Modules\" />
       <Folder Include="wwwroot\pdf\" />
       <Folder Include="wwwroot\ts\" />
     </ItemGroup>
