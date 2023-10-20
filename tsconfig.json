@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": false,
+    "jsx": "preserve",
+    "incremental": false
+  },
+  "include": [
+    "wwwroot/ts/KioskBoard/index.d.ts",
+    "wwwroot/ts/KioskBoard/index.d.test.ts",
+    "wwwroot/ts/KioskBoard/build/**/*.ts"
+  ],
+  "exclude": [
+    "wwwroot/ts/KioskBoard/.dev",
+    "wwwroot/ts/KioskBoard/.github",
+    "wwwroot/ts/KioskBoard/build/**/*.js",
+    "wwwroot/ts/KioskBoard/dist",
+    "wwwroot/ts/KioskBoard/docs",
+    "wwwroot/ts/KioskBoard/node_modules",
+    "wwwroot/ts/KioskBoard/src"
+  ]
+}

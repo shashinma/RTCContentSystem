@@ -23,6 +23,10 @@
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
           <PrivateAssets>all</PrivateAssets>
         </PackageReference>
+<!--        <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="5.2.2">-->
+<!--          <PrivateAssets>all</PrivateAssets>-->
+<!--          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>-->
+<!--        </PackageReference>-->
         <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.10" />
         <PackageReference Include="System.DirectoryServices.Protocols" Version="7.0.1" />
         <PackageReference Include="Westwind.AspNetCore.Markdown" Version="3.12.0" />
@@ -38,35 +42,35 @@
     <ItemGroup>
       <None Include="wwwroot\css\keyboard.css" />
       <None Include="wwwroot\js\auth.js" />
-      <None Include="wwwroot\lib\KioskBoard\.gitignore" />
-      <None Include="wwwroot\lib\KioskBoard\build\kioskboard-aio.d.ts" />
-      <None Include="wwwroot\lib\KioskBoard\build\kioskboard-aio.js" />
-      <None Include="wwwroot\lib\KioskBoard\CHANGELOG.md" />
-      <None Include="wwwroot\lib\KioskBoard\CODE_OF_CONDUCT.md" />
-      <None Include="wwwroot\lib\KioskBoard\CONTRIBUTING.md" />
-      <None Include="wwwroot\lib\KioskBoard\dist\kioskboard-2.3.0.min.css" />
-      <None Include="wwwroot\lib\KioskBoard\dist\kioskboard-2.3.0.min.js" />
-      <None Include="wwwroot\lib\KioskBoard\dist\kioskboard-aio-2.3.0.min.js" />
-      <None Include="wwwroot\lib\KioskBoard\docs\favicon.png" />
-      <None Include="wwwroot\lib\KioskBoard\docs\github-cover.png" />
-      <None Include="wwwroot\lib\KioskBoard\docs\images\Keyboard-Types-Icons-All.svg" />
-      <None Include="wwwroot\lib\KioskBoard\docs\images\Keyboard-Types-Icons-Keyboard.svg" />
-      <None Include="wwwroot\lib\KioskBoard\docs\images\Keyboard-Types-Icons-Numpad.svg" />
-      <None Include="wwwroot\lib\KioskBoard\docs\images\KioskBoard-Slider.svg" />
-      <None Include="wwwroot\lib\KioskBoard\docs\index-tooltip.js" />
-      <None Include="wwwroot\lib\KioskBoard\docs\index.css" />
-      <None Include="wwwroot\lib\KioskBoard\docs\index.html" />
-      <None Include="wwwroot\lib\KioskBoard\docs\index.js" />
-      <None Include="wwwroot\lib\KioskBoard\docs\kioskboard-aio-2.3.0.min.js" />
-      <None Include="wwwroot\lib\KioskBoard\index.d.test.ts" />
-      <None Include="wwwroot\lib\KioskBoard\index.d.ts" />
-      <None Include="wwwroot\lib\KioskBoard\LICENSE" />
-      <None Include="wwwroot\lib\KioskBoard\README.md" />
-      <None Include="wwwroot\lib\KioskBoard\SECURITY.md" />
-      <None Include="wwwroot\lib\KioskBoard\src\kioskboard.css" />
-      <None Include="wwwroot\lib\KioskBoard\src\kioskboard.d.ts" />
-      <None Include="wwwroot\lib\KioskBoard\src\kioskboard.js" />
-      <None Include="wwwroot\lib\KioskBoard\yarn.lock" />
+      <None Include="wwwroot\ts\KioskBoard\.gitignore" />
+      <None Include="wwwroot\ts\KioskBoard\build\kioskboard-aio.d.ts" />
+      <None Include="wwwroot\ts\KioskBoard\build\kioskboard-aio.js" />
+      <None Include="wwwroot\ts\KioskBoard\CHANGELOG.md" />
+      <None Include="wwwroot\ts\KioskBoard\CODE_OF_CONDUCT.md" />
+      <None Include="wwwroot\ts\KioskBoard\CONTRIBUTING.md" />
+      <None Include="wwwroot\ts\KioskBoard\dist\kioskboard-2.3.0.min.css" />
+      <None Include="wwwroot\ts\KioskBoard\dist\kioskboard-2.3.0.min.js" />
+      <None Include="wwwroot\ts\KioskBoard\dist\kioskboard-aio-2.3.0.min.js" />
+      <None Include="wwwroot\ts\KioskBoard\docs\favicon.png" />
+      <None Include="wwwroot\ts\KioskBoard\docs\github-cover.png" />
+      <None Include="wwwroot\ts\KioskBoard\docs\images\Keyboard-Types-Icons-All.svg" />
+      <None Include="wwwroot\ts\KioskBoard\docs\images\Keyboard-Types-Icons-Keyboard.svg" />
+      <None Include="wwwroot\ts\KioskBoard\docs\images\Keyboard-Types-Icons-Numpad.svg" />
+      <None Include="wwwroot\ts\KioskBoard\docs\images\KioskBoard-Slider.svg" />
+      <None Include="wwwroot\ts\KioskBoard\docs\index-tooltip.js" />
+      <None Include="wwwroot\ts\KioskBoard\docs\index.css" />
+      <None Include="wwwroot\ts\KioskBoard\docs\index.html" />
+      <None Include="wwwroot\ts\KioskBoard\docs\index.js" />
+      <None Include="wwwroot\ts\KioskBoard\docs\kioskboard-aio-2.3.0.min.js" />
+      <None Include="wwwroot\ts\KioskBoard\index.d.test.ts" />
+      <None Include="wwwroot\ts\KioskBoard\index.d.ts" />
+      <None Include="wwwroot\ts\KioskBoard\LICENSE" />
+      <None Include="wwwroot\ts\KioskBoard\README.md" />
+      <None Include="wwwroot\ts\KioskBoard\SECURITY.md" />
+      <None Include="wwwroot\ts\KioskBoard\src\kioskboard.css" />
+      <None Include="wwwroot\ts\KioskBoard\src\kioskboard.d.ts" />
+      <None Include="wwwroot\ts\KioskBoard\src\kioskboard.js" />
+      <None Include="wwwroot\ts\KioskBoard\yarn.lock" />
     </ItemGroup>
 
 
@@ -83,6 +87,7 @@
     <ItemGroup>
       <Folder Include="Modules\" />
       <Folder Include="wwwroot\pdf\" />
+      <Folder Include="wwwroot\ts\" />
     </ItemGroup>
 
 </Project>
