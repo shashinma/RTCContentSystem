@@ -1,3 +1,17 @@
+if (localStorage.getItem("sidebarState") === null) {
+    localStorage.setItem("sidebarState", "open");
+}
+else if (localStorage.getItem("sidebarState") === "open") {
+    var className = "sidebar open";
+    var element = document.getElementById("sidebar_statement");
+    element.setAttribute("class", className);
+}
+else if (localStorage.getItem("sidebarState") === "closed") {
+    var className = "sidebar close";
+    var element = document.getElementById("sidebar_statement");
+    element.setAttribute("class", className);
+}
+
 let arrow = document.querySelectorAll(".arrow");
 for (var i = 0; i < arrow.length; i++) {
     arrow[i].addEventListener("click", (e) => {
@@ -9,11 +23,6 @@ for (var i = 0; i < arrow.length; i++) {
 let sidebar = document.querySelector(".sidebar");
 let sidebarBtn = document.querySelector(".bx-menu");
 console.log(sidebarBtn);
-
-// Проверяем, есть ли сохраненное состояние в localStorage или sessionStorage
-if (localStorage.getItem("sidebarState") === "closed") {
-    sidebar.classList.add("close");
-}
 
 sidebarBtn.addEventListener("click", () => {
     sidebar.classList.toggle("close");
