@@ -36,7 +36,8 @@
     "clean-css": "^5.1.5",
     "eslint": "^7.32.0",
     "stylelint": "^13.13.1",
-    "stylelint-config-standard": "^22.0.0"
+    "stylelint-config-standard": "^22.0.0",
+    "wwwroot": "^1.0.1"
   },
   "scripts": {
     "src:stylelint": "stylelint src/kioskboard.css",
@@ -47,5 +48,8 @@
     "dev:allinone": "yarn dev:lint && yarn src:lint && node .dev/dev-allinone.js",
     "dev:minifier": "yarn dev:allinone && node .dev/dev-minifier.js",
     "build": "yarn dev:minifier"
+  },
+  "dependencies": {
+    "kioskboard": "^2.3.0"
   }
 }

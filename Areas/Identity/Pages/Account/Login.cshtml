@@ -1,6 +1,11 @@
 ﻿@page
 @model AuthSystem.Areas.Identity.Pages.Account.LoginModel
 
+@* <link rel="stylesheet" href="~/ts/KioskBoard/dist/kioskboard-2.3.0.min.css" /> *@
+@* *@
+@* <script src="~/ts/KioskBoard/dist/kioskboard-aio-2.3.0.min.js"></script> *@
+@* <script src="~/js/KeyboardTerminal.js"></script> *@
+
 @{
     Layout = "~/Areas/Identity/Pages/_AuthLayout.cshtml";
 }
@@ -35,6 +40,9 @@
         </section>
     </div>
 </div>
+
+<!-- An example of a textarea element: The keyboard type is "all", the placement is "top", and the availability of the special characters is "true". -->
+@* <textarea class="js-virtual-keyboard" data-kioskboard-type="all" data-kioskboard-placement="bottom" data-kioskboard-specialcharacters="true" placeholder="Your Address"></textarea> *@
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
