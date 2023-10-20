@@ -1,4 +1,4 @@
-import KioskBoard from 'index.d';
+import KioskBoard from './index';
 
 KioskBoard.init({
   keysArrayOfObjects: [
