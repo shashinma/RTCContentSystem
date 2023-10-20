@@ -1,6 +1,7 @@
 using System.Net;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using POSTerminalWebApp.Controllers;
 using POSTerminalWebApp.Services;
 using POSTerminalWebApp.Data;
 
