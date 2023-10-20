@@ -1,5 +1,4 @@
 @using POSTerminalWebApp.Services
-@using Microsoft.JSInterop
 @inject IMenuService MenuService
 
 @{
@@ -8,7 +7,7 @@
 }
 
 <!-- Sidebar section -->
-<div class="sidebar open">
+<div class="sidebar open" id="sidebar_statement">
   <div class="logo-details">
     <img src="@Url.Content("~/rtc-logo.png")" />
     <span class="logo_name">RTC App</span>

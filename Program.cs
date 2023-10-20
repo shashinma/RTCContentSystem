@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using POSTerminalWebApp.Controllers;
 using POSTerminalWebApp.Services;
 using POSTerminalWebApp.Data;
+using Microsoft.AspNetCore.Http;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,6 +28,14 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddScoped<IMenuService, MenuService>();
 builder.Services.AddScoped<INewsService, NewsService>();
+
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(options =>
+{
+    options.Cookie.Name = "sidebarState";
+    options.IdleTimeout = TimeSpan.FromSeconds(3600);
+    options.Cookie.IsEssential = true;
+});
 
 builder.Services.AddRazorPages();
 
@@ -57,4 +66,11 @@ app.MapControllerRoute(
     "{controller=News}/{action=News}/{id?}");
 app.MapRazorPages();
 
-app.Run();
+app.UseSession();
+app.Run(
+    // async (context) =>
+    //     {
+    //         if (!context.Session.Keys.Contains("sidebarState"))
+    //             context.Session.SetString("sidebarState", "Open");
+    //     }
+    );
