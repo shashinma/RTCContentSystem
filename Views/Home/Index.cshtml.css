@@ -22,11 +22,11 @@ h1+p {
     width: 100%;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
+    align-items: stretch;
 }
 
 .wrap {
-    margin: 2rem;
+    margin: 1rem;
 
     transform-style: preserve-3d;
     transform: perspective(100rem);
