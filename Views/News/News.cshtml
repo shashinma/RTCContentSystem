@@ -1,4 +1,5 @@
 ﻿@using POSTerminalWebApp.Services
+@using POSTerminalWebApp.Views.News
 @using Westwind.AspNetCore.Markdown
 @inject INewsService NewsService
 
@@ -31,7 +32,7 @@
                         <div class="postcard__bar"></div>
                         <div class="postcard__preview-txt">
                             @Markdown.ParseHtmlString(
-                                GetLimitedWords(newsItem.Content, 15))
+                                NewsAction.GetLimitedWords(newsItem.Content, 15))
                         </div>
                         <ul class="postcard__tagbox">
                             <li class="tag__item">
@@ -78,31 +79,6 @@
 </section>
 
 <script src="/Views/News/News.cshtml.js" asp-append-version="true"></script>
-
-@functions {
-    public string GetLimitedWords(string input, int wordCount)
-    {
-        string[] words = input.Split(' ');
-        if (words.Length <= wordCount)
-        {
-            return input;
-        }
-        else
-        {
-            string limitedContent = string.Join(' ', words.Take(wordCount));
-            limitedContent = TrimPunctuation(limitedContent);
-            limitedContent += "...";
-            return limitedContent;
-        }
-    }
-
-    public string TrimPunctuation(string input)
-    {
-        char[] punctuation = { '.', ',', '!', '?' }; // Добавьте другие знаки препинания по необходимости
-        input = input.TrimEnd(punctuation);
-        return input;
-    }
-}
 
 <!-- Modal -->
 
