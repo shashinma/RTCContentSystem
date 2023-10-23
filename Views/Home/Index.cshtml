@@ -1,15 +1,150 @@
 @using POSTerminalWebApp.Services
+@using POSTerminalWebApp.Views.Home
+@using Westwind.AspNetCore.Markdown
 
 @inject INewsService NewsService
 
-<link rel="stylesheet" href="~/lib/font-awesome-5.15.4/css/all.css" xmlns="http://www.w3.org/1999/html">
+<link rel="stylesheet" href="~/lib/font-awesome-5.15.4/css/all.css">
 
 @{
-    ViewData["Title"] = "Home Page";
+    var title = "Новости РТК";
+    var readButton = "Полный текст";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-</div>
+<section class="light">
+    <div class="container py-2 p-0 pb-5 pt-3">
+        <section class="main_c pd-5">
+            <div class="wrap wrap--1">
+                <div class="container_c container--1">
+                    <p>01. Normal</p>
+                </div>
+            </div>
 
+            <div class="wrap wrap--2">
+                <div class="container_c container--2">
+                    <p>02. Reverse</p>
+                </div>
+            </div>
 
+            <div class="wrap wrap--3">
+                <div class="container_c container--3">
+                    <p>03. Normal</p>
+                </div>
+            </div>
+            
+            <div class="wrap wrap--3">
+                <div class="container_c container--3">
+                    <p>03. Normal</p>
+                </div>
+            </div>
+        </section>
+        
+        <div class="line"></div>
+        
+        <div class="cards-list pt-5">
+            <div class="card 1">
+                <div class="card_image"> <img src="https://i.redd.it/b3esnz5ra34y.jpg"/> </div>
+                <div class="card_title title-white">
+                    <p>Card Title</p>
+                </div>
+            </div>
+        
+            <div class="card 3">
+                <div class="card_image">
+                    <img src="https://media.giphy.com/media/10SvWCbt1ytWCc/giphy.gif"/>
+                </div>
+                <div class="card_title">
+                    <p>Card Title</p>
+                </div>
+            </div>
+        
+            <div class="card 4">
+                <div class="card_image">
+                    <img src="https://media.giphy.com/media/LwIyvaNcnzsD6/giphy.gif"/>
+                </div>
+                <div class="card_title title-black">
+                    <p>Card Title</p>
+                </div>
+            </div>
+        
+            <div class="card 4">
+                <div class="card_image">
+                    <img src="https://media.giphy.com/media/LwIyvaNcnzsD6/giphy.gif"/>
+                </div>
+                <div class="card_title title-black">
+                    <p>Card Title</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="line"></div>
+    
+        <div class="containe pt-5">
+            @* <div class="h1 text-center text-dark" id="pageHeaderTitle">@title</div> *@
+            @foreach (var newsItem in NewsService.GetNews())
+            {
+                <article class="postcard light blue" data-bs-toggle="modal" data-bs-target="#modal-@newsItem.Id">
+                    <a class="postcard__img_link" href="#">
+                        <img class="postcard__img" src="@newsItem.PicSrc" alt="Image Title"/>
+                    </a>
+                    <div class="postcard__text t-dark">
+                        @* <h1 class="postcard__title red"><a href="#">@newsTitle</a></h1> *@
+                        <h1 class="postcard__title red">
+                            <a href="#">@newsItem.Title</a>
+                        </h1>
+                        <div class="postcard__subtitle small">
+                            <time datetime="25-05-2023 12:00:00">
+                                <i class="fa fa-calendar-alt mr-2"></i>@newsItem.PublishDate
+                            </time>
+                        </div>
+                        <div class="postcard__bar"></div>
+                        <div class="postcard__preview-txt">
+                            @Markdown.ParseHtmlString(
+                                NewsAction.GetLimitedWords(newsItem.Content, 15))
+                        </div>
+                        <ul class="postcard__tagbox">
+                            <li class="tag__item">
+                                <i class="fa fa-tag mr-2"></i>@newsItem.Tags
+                            </li>
+                            <li class="tag__item">
+                                <i class="fas fa-user-tie mr-2"></i>@newsItem.Author
+                            </li>
+                            <li class="tag__item">
+                                <i class="fa fa-clock mr-2"></i>@newsItem.TimeToRead
+                            </li>
+                        </ul>
+                        @* <ul class="postcard__tagbox"> *@
+                        @* <li class="tag__item play blue"> *@
+                        @*     <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#modal-@newsItem.Id"> *@
+                        @*             <i class="fas fa-glasses mr-2"></i>@readButton *@
+                        @*     </button> *@
+                        @*     </li> *@
+                        @* </ul> *@
+                    </div>
+                </article>
+
+                <div class="modal fade" id="modal-@newsItem.Id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    @* TODO: Add "modal-*" property like "modal-lg" *@
+                    <div class="modal-dialog modal-dialog-scrollable modal-xl">
+                        <div class="modal-content h-100">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">@newsItem.Title</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                @* <p>@newsItem.Content</p> *@
+                                @* @Markdown.Parse(newsItem.Content) *@
+                                @Markdown.ParseHtmlString(newsItem.Content)
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<script src="/Views/Home/Index.cshtml.js" asp-append-version="true"></script>
