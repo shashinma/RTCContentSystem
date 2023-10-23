@@ -1,3 +1,4 @@
+using System.Net;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using POSTerminalWebApp.Services;
@@ -25,13 +26,6 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddScoped<IMenuService, MenuService>();
 builder.Services.AddScoped<INewsService, NewsService>();
-
-builder.Services.AddHttpsRedirection(options =>
-{
-    options.RedirectStatusCode = StatusCodes.Status307TemporaryRedirect;
-    options.HttpsPort = 443;
-    
-});
 
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(options =>
@@ -71,10 +65,4 @@ app.MapControllerRoute(
 app.MapRazorPages();
 
 app.UseSession();
-app.Run(
-    // async (context) =>
-    //     {
-    //         if (!context.Session.Keys.Contains("sidebarState"))
-    //             context.Session.SetString("sidebarState", "Open");
-    //     }
-    );
+app.Run();
