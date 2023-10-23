@@ -1,10 +1,7 @@
-using System.DirectoryServices.Protocols;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using POSTerminalWebApp.Controllers;
 using POSTerminalWebApp.Services;
 using POSTerminalWebApp.Data;
-using Microsoft.AspNetCore.Http;
 
 var builder = WebApplication.CreateBuilder(args);
 
