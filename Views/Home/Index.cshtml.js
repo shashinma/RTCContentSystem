@@ -1,70 +1,97 @@
-class ItcModal {
-    #elem;
-    #template = '<div class="itc-modal-backdrop"><div class="itc-modal-content itc-modal-scrollable"><div class="itc-modal-header"><div class="itc-modal-title">{{title}}</div><span class="itc-modal-btn-close" title="Закрыть">×</span></div><div class="itc-modal-body">{{content}}</div>{{footer}}</div></div>';
-    #templateFooter = '<div class="itc-modal-footer">{{buttons}}</div>';
-    #templateBtn = '<button type="button" class="{{class}}" data-action={{action}}>{{text}}</button>';
-    #eventShowModal = new Event('show.itc.modal', { bubbles: true });
-    #eventHideModal = new Event('hide.itc.modal', { bubbles: true });
-    #disposed = false;
+class parallaxTiltEffect {
 
-    constructor(options = []) {
-        this.#elem = document.createElement('div');
-        this.#elem.classList.add('itc-modal');
-        let html = this.#template.replace('{{title}}', options.title || 'Новое окно');
-        html = html.replace('{{content}}', options.content || '');
-        const buttons = (options.footerButtons || []).map((item) => {
-            let btn = this.#templateBtn.replace('{{class}}', item.class);
-            btn = btn.replace('{{action}}', item.action);
-            return btn.replace('{{text}}', item.text);
-        });
-        const footer = buttons.length ? this.#templateFooter.replace('{{buttons}}', buttons.join('')) : '';
-        html = html.replace('{{footer}}', footer);
-        this.#elem.innerHTML = html;
-        document.body.append(this.#elem);
-        this.#elem.addEventListener('click', this.#handlerCloseModal.bind(this));
+    constructor({element, tiltEffect}) {
+
+        this.element = element;
+        this.container = this.element.querySelector(".container_c");
+        this.size = [300, 360];
+        [this.w, this.h] = this.size;
+
+        this.tiltEffect = tiltEffect;
+
+        this.mouseOnComponent = false;
+
+        this.handleMouseMove = this.handleMouseMove.bind(this);
+        this.handleMouseEnter = this.handleMouseEnter.bind(this);
+        this.handleMouseLeave = this.handleMouseLeave.bind(this);
+        this.defaultStates = this.defaultStates.bind(this);
+        this.setProperty = this.setProperty.bind(this);
+        this.init = this.init.bind(this);
+
+        this.init();
     }
 
-    #handlerCloseModal(e) {
-        if (e.target.closest('.itc-modal-btn-close') || e.target.classList.contains('itc-modal-backdrop')) {
-            this.hide();
+    handleMouseMove(event) {
+        const {offsetX, offsetY} = event;
+
+        let X;
+        let Y;
+
+        if (this.tiltEffect === "reverse") {
+            X = ((offsetX - (this.w/2)) / 3) / 3;
+            Y = (-(offsetY - (this.h/2)) / 3) / 3;
         }
-    }
 
-    show() {
-        if (this.#disposed) {
-            return;
+        else if (this.tiltEffect === "normal") {
+            X = (-(offsetX - (this.w/2)) / 3) / 3;
+            Y = ((offsetY - (this.h/2)) / 3) / 3;
         }
-        this.#elem.classList.add('itc-modal-show');
-        const scrollbarWidth = Math.abs(window.innerWidth - document.documentElement.clientWidth);
-        if (window.innerWidth > document.body.clientWidth + scrollbarWidth) {
-            return;
-        }
-        document.body.style.paddingRight = `${scrollbarWidth}px`;
-        document.body.style.overflow = 'hidden';
-        this.#elem.dispatchEvent(this.#eventShowModal);
+
+        this.setProperty('--rY', X.toFixed(2));
+        this.setProperty('--rX', Y.toFixed(2));
+
+        this.setProperty('--bY', (80 - (X/4).toFixed(2)) + '%');
+        this.setProperty('--bX', (50 - (Y/4).toFixed(2)) + '%');
     }
 
-    hide() {
-        this.#elem.classList.remove('itc-modal-show');
-        this.#elem.dispatchEvent(this.#eventHideModal);
-        document.body.style.paddingRight = '';
-        document.body.offsetHeight;
-        this.#elem.addEventListener('transitionend', () => {
-            document.body.style.overflow = '';
-        }, { once: true });
+    handleMouseEnter() {
+        this.mouseOnComponent = true;
+        this.container.classList.add("container_c--active");
     }
 
-    dispose() {
-        this.#elem.remove(this.#elem);
-        this.#elem.removeEventListener('click', this.#handlerCloseModal);
-        this.#disposed = true;
+    handleMouseLeave() {
+        this.mouseOnComponent = false;
+        this.defaultStates();
     }
 
-    setBody(html) {
-        this.#elem.querySelector('.itc-modal-body').innerHTML = html;
+    defaultStates() {
+        this.container.classList.remove("container_c--active");
+        this.setProperty('--rY', 0);
+        this.setProperty('--rX', 0);
+        this.setProperty('--bY', '80%');
+        this.setProperty('--bX', '50%');
     }
 
-    setTitle(text) {
-        this.#elem.querySelector('.itc-modal-title').innerHTML = text;
+    setProperty(p, v) {
+        return this.container.style.setProperty(p, v);
     }
+
+    init() {
+        this.element.addEventListener('mousemove', this.handleMouseMove);
+        this.element.addEventListener('mouseenter', this.handleMouseEnter);
+        this.element.addEventListener('mouseleave', this.handleMouseLeave);
+    }
+
 }
+
+const $ = e => document.querySelector(e);
+
+const wrap1 = new parallaxTiltEffect({
+    element: $('.wrap--1'),
+    tiltEffect: 'reverse'
+});
+
+const wrap2 = new parallaxTiltEffect({
+    element: $('.wrap--2'),
+    tiltEffect: 'normal'
+});
+
+const wrap3 = new parallaxTiltEffect({
+    element: $('.wrap--3'),
+    tiltEffect: 'reverse'
+});
+
+const wrap4 = new parallaxTiltEffect({
+    element: $('.wrap--4'),
+    tiltEffect: 'reverse'
+});
