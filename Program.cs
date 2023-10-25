@@ -26,6 +26,7 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddScoped<IMenuService, MenuService>();
 builder.Services.AddScoped<INewsService, NewsService>();
+builder.Services.AddScoped<IJobsService, JobsService>();
 
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(options =>
