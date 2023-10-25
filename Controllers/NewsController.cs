@@ -18,7 +18,7 @@ public class NewsController : Controller
     }
     
     [Authorize]
-    public IActionResult News()
+    public IActionResult Index()
     {
         return View();
     }
