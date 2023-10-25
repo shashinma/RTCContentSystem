@@ -18,6 +18,7 @@ main {
     background: #11101d;
     z-index: 100;
     transition: all 0.5s ease;
+    border-radius: 0 30px 30px 0;
 }
 .sidebar.close{
     width: 78px;
@@ -191,16 +192,17 @@ main {
     background: #1d1b31;
     padding: 12px 0;
     transition: all 0.5s ease;
+    border-radius: 0 0 30px 0;
 }
 .sidebar.close .profile-details{
     background: none;
-}
-.sidebar.close .profile-details{
     width: 78px;
+    transition: all 0.5s ease;
 }
 .sidebar .profile-details .profile-content{
     display: flex;
     align-items: center;
+    transition: all 0.5s ease;
 }
 .sidebar .profile-details img{
     height: 52px;
@@ -220,14 +222,17 @@ main {
     font-size: 18px;
     font-weight: 500;
     white-space: nowrap;
+    transition: all 0.5s ease;
 }
 .sidebar.close .profile-details i,
 .sidebar.close .profile-details .profile_name,
 .sidebar.close .profile-details .job{
     display: none;
+    transition: all 0.5s ease;
 }
 .sidebar .profile-details .job{
     font-size: 12px;
+    transition: all 0.5s ease;
 }
 .home-section{
     position: relative;
