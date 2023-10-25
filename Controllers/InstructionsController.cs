@@ -15,7 +15,7 @@ public class InstructionsController : Controller
         _logger = logger;
     }
 
-    public IActionResult Instructions()
+    public IActionResult Index()
     {
         return View();
     }
