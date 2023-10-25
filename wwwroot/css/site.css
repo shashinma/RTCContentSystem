@@ -5,6 +5,10 @@
         width: 0;
         height: 0;
     }
+    /*
+        HIDE THE CURSOR (for realise build)
+    */
+    /*cursor: none;*/
 }
 
 html {
@@ -14,6 +18,7 @@ html {
 
 body {
     margin-bottom: 60px;
+    background-color: #E4E9F7;
 }
 
 @media (min-width: 768px) {
