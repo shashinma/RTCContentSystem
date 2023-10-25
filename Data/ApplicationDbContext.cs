@@ -12,6 +12,8 @@ public class ApplicationDbContext : DbContext
     
     public DbSet<NewsItem> NewsItems { get; set; }
     
+    public DbSet<JobsItem> JobsItems { get; set; }
+    
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
     {
     }
