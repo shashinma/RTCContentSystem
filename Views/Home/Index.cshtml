@@ -18,7 +18,7 @@
             @foreach (var shortcutItem in ShortcutService.GetShortcut())
             {
                 <div class="wrap wrap--1">
-                    <div class="article-card">
+                    <div class="article-card" onclick="redirectToPage('@shortcutItem.PageUrl')">
                                     <div class="content">
                                         <!--       <p class="date">Jan 1, 2022</p> -->
                                         <p class="title" style="font-weight:900">@shortcutItem.Title</p>
