@@ -26,7 +26,9 @@ h1+p {
 }
 
 .wrap {
-    margin: 1rem;
+    /*margin: 1rem;*/
+    display: flex;
+    margin: 0 -5px;
 
     transform-style: preserve-3d;
     transform: perspective(100rem);

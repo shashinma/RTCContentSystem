@@ -30,6 +30,7 @@ builder.Services.AddScoped<IMenuService, MenuService>();
 builder.Services.AddScoped<INewsService, NewsService>();
 builder.Services.AddScoped<IJobsService, JobsService>();
 builder.Services.AddScoped<IAboutService, AboutService>();
+builder.Services.AddScoped<IShortcutService, ShortcutService>();
 
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(options =>
