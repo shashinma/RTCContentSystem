@@ -1,7 +1,5 @@
-using System.Net;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using POSTerminalWebApp.Controllers;
 using POSTerminalWebApp.Services;
 using POSTerminalWebApp.Data;
 using Westwind.AspNetCore.Markdown;
@@ -68,9 +66,34 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
+app.MapControllers(); 
+
 app.MapControllerRoute(
-    "default",
-    "{controller=Home}/{action=Index}/{id?}");
+    name: "Viewer",
+    pattern: "/Instructions/Viewer/{searchString}",
+    defaults: new { controller = "Instructions", action = "Viewer" }
+);
+
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}"
+);
+
+// app.UseEndpoints(endpoints =>
+// {
+//     endpoints.MapControllerRoute(
+//         name: "default",
+//         pattern: "{controller=Home}/{action=Index}/{id?}");
+//
+//     endpoints.MapControllerRoute(
+//         name: "Viewer",
+//         pattern: "/Instructions/Viewer/{searchString}",
+//         defaults: new { controller = "Instructions", action = "Viewer" }
+//     );
+//
+//     endpoints.MapRazorPages();
+// });
+
 app.MapRazorPages();
 
 app.UseSession();

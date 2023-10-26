@@ -1,9 +1,12 @@
 @{
     Layout = "_LayoutPDF";
 }
+@model ViewerModel
 
 <link rel="stylesheet" href="~/lib/font-awesome-5.15.4/css/all.css">
 
+@* <h1>Search String: @Model.Page.name</h1> *@
+
 <body>
-<object><embed src="@Url.Content("~/pdf/Phishing.pdf")" width="100%" height="100%"/></object>
+<object><embed src="@Url.Content("~/pdf/" + @Model.Page.name + ".pdf")" width="100%" height="100%"/></object>
 </body>
