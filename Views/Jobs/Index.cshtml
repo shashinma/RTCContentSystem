@@ -1,8 +1,14 @@
 ﻿@using POSTerminalWebApp.Services
+@using Westwind.AspNetCore.Markdown
 
 @inject IJobsService NewsService
 
 <link rel="stylesheet" href="~/lib/font-awesome-5.15.4/css/all.css">
 
+<div class="container py-2">
+    @foreach (var jobsItem in NewsService.getJobsItems())
+    {
+        @Markdown.ParseHtmlString(jobsItem.Context)
+    }
+</div>
 
-<h1>Jobs</h1>
