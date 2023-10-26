@@ -12,74 +12,73 @@
 }
 
 <section class="light">
-    <div class="container py-2 p-0 pb-5 pt-3">
-        <section class="main_c pd-5">
-            <div class="wrap wrap--1">
-                <div class="container_c container--1">
-                    <p>01. Normal</p>
-                </div>
-            </div>
-
-            <div class="wrap wrap--2">
-                <div class="container_c container--2">
-                    <p>02. Reverse</p>
-                </div>
-            </div>
-
-            <div class="wrap wrap--3">
-                <div class="container_c container--3">
-                    <p>03. Normal</p>
-                </div>
-            </div>
-            
-            <div class="wrap wrap--3">
-                <div class="container_c container--3">
-                    <p>03. Normal</p>
-                </div>
-            </div>
-        </section>
-        
-        <div class="line"></div>
-        
-        <div class="cards-list pt-5">
-            <div class="card 1">
-                <div class="card_image"> <img src="https://i.redd.it/b3esnz5ra34y.jpg"/> </div>
-                <div class="card_title title-white">
-                    <p>Card Title</p>
-                </div>
-            </div>
-        
-            <div class="card 3">
-                <div class="card_image">
-                    <img src="https://media.giphy.com/media/10SvWCbt1ytWCc/giphy.gif"/>
-                </div>
-                <div class="card_title">
-                    <p>Card Title</p>
-                </div>
-            </div>
-        
-            <div class="card 4">
-                <div class="card_image">
-                    <img src="https://media.giphy.com/media/LwIyvaNcnzsD6/giphy.gif"/>
-                </div>
-                <div class="card_title title-black">
-                    <p>Card Title</p>
-                </div>
-            </div>
-        
-            <div class="card 4">
-                <div class="card_image">
-                    <img src="https://media.giphy.com/media/LwIyvaNcnzsD6/giphy.gif"/>
-                </div>
-                <div class="card_title title-black">
-                    <p>Card Title</p>
-                </div>
-            </div>
-        </div>
-        
-        <div class="line"></div>
-    
-        <div class="containe pt-5">
+    <div class="container py-2">
+        @* <section class="main_c pd-5"> *@
+        @*     <div class="wrap wrap--1"> *@
+        @*         <div class="container_c container--1"> *@
+        @*             <p>01. Normal</p> *@
+        @*         </div> *@
+        @*     </div> *@
+        @* *@
+        @*     <div class="wrap wrap--2"> *@
+        @*         <div class="container_c container--2"> *@
+        @*             <p>02. Reverse</p> *@
+        @*         </div> *@
+        @*     </div> *@
+        @* *@
+        @*     <div class="wrap wrap--3"> *@
+        @*         <div class="container_c container--3"> *@
+        @*             <p>03. Normal</p> *@
+        @*         </div> *@
+        @*     </div> *@
+        @*      *@
+        @*     <div class="wrap wrap--3"> *@
+        @*         <div class="container_c container--3"> *@
+        @*             <p>03. Normal</p> *@
+        @*         </div> *@
+        @*     </div> *@
+        @* </section> *@
+        @* *@
+        @* <div class="line"></div> *@
+        @* *@
+        @* <div class="cards-list pt-5"> *@
+        @*     <div class="card 1"> *@
+        @*         <div class="card_image"> <img src="https://i.redd.it/b3esnz5ra34y.jpg"/> </div> *@
+        @*         <div class="card_title title-white"> *@
+        @*             <p>Card Title</p> *@
+        @*         </div> *@
+        @*     </div> *@
+        @* *@
+        @*     <div class="card 3"> *@
+        @*         <div class="card_image"> *@
+        @*             <img src="https://media.giphy.com/media/10SvWCbt1ytWCc/giphy.gif"/> *@
+        @*         </div> *@
+        @*         <div class="card_title"> *@
+        @*             <p>Card Title</p> *@
+        @*         </div> *@
+        @*     </div> *@
+        @* *@
+        @*     <div class="card 4"> *@
+        @*         <div class="card_image"> *@
+        @*             <img src="https://media.giphy.com/media/LwIyvaNcnzsD6/giphy.gif"/> *@
+        @*         </div> *@
+        @*         <div class="card_title title-black"> *@
+        @*             <p>Card Title</p> *@
+        @*         </div> *@
+        @*     </div> *@
+        @* *@
+        @*     <div class="card 4"> *@
+        @*         <div class="card_image"> *@
+        @*             <img src="https://media.giphy.com/media/LwIyvaNcnzsD6/giphy.gif"/> *@
+        @*         </div> *@
+        @*         <div class="card_title title-black"> *@
+        @*             <p>Card Title</p> *@
+        @*         </div> *@
+        @*     </div> *@
+        @* </div> *@
+        @* *@
+        @* <div class="line"></div> *@
+        @* *@
             @* <div class="h1 text-center text-dark" id="pageHeaderTitle">@title</div> *@
             @foreach (var newsItem in NewsService.GetNews())
             {
@@ -144,7 +143,6 @@
                 </div>
             }
         </div>
-    </div>
 </section>
 
 <script src="/Views/Home/Index.cshtml.js" asp-append-version="true"></script>
