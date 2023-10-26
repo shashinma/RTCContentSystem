@@ -192,7 +192,7 @@ main {
     background: #1d1b31;
     padding: 12px 0;
     transition: all 0.5s ease;
-    border-radius: 0 0 30px 0;
+    border-radius: 0 0 20px 0;
 }
 .sidebar.close .profile-details{
     background: none;
