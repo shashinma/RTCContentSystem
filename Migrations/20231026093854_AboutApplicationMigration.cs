@@ -5,13 +5,13 @@
 namespace POSTerminalWebApp.Migrations
 {
     /// <inheritdoc />
-    public partial class JobsApplicationMigration : Migration
+    public partial class AboutApplicationMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "JobsItems",
+                name: "AboutItems",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
@@ -21,7 +21,7 @@ namespace POSTerminalWebApp.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_JobsItems", x => x.Id);
+                    table.PrimaryKey("PK_AboutItems", x => x.Id);
                 });
         }
 
@@ -29,7 +29,7 @@ namespace POSTerminalWebApp.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "JobsItems");
+                name: "AboutItems");
         }
     }
 }

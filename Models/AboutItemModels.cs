@@ -1,6 +1,6 @@
-﻿namespace POSTerminalWebApp.Models;
+namespace POSTerminalWebApp.Models;
 
-public class JobsItem
+public class AboutItem
 {
     public int Id { get; set; }
     public string Title { get; set; }

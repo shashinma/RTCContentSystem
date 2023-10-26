@@ -7,7 +7,7 @@ namespace POSTerminalWebApp.Services;
 
 public interface IJobsService
 {
-    List<JobsItem> getJobsItems();
+    List<JobsItem> getJobs();
 }
 
 public class JobsService : IJobsService
@@ -19,7 +19,7 @@ public class JobsService : IJobsService
         _context = context;
     }
 
-    public List<JobsItem> getJobsItems()
+    public List<JobsItem> getJobs()
     {
         return _context.JobsItems.ToList();
 
