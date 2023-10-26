@@ -5,9 +5,11 @@
 
 <link rel="stylesheet" href="~/lib/font-awesome-5.15.4/css/all.css">
 
-<div class="container py-2">
-    @foreach (var aboutItem in AboutService.getAbout())
-    {
-        @Markdown.ParseHtmlString(aboutItem.Content)
-    }
-</div>
+@* <div class="container py-2"> *@
+@*     @foreach (var aboutItem in AboutService.getAbout()) *@
+@*     { *@
+@*         @Markdown.ParseHtmlString(aboutItem.Content) *@
+@*     } *@
+@* </div> *@
+
+<script src="/Views/About/Index.cshtml.js" asp-append-version="true"></script>

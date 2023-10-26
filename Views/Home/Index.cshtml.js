@@ -1,13 +1,13 @@
-// Dark & Light toggle
-
-document.querySelector(".day-night input").addEventListener("change", () => {
-    document.querySelector("body").classList.add("toggle");
-    setTimeout(() => {
-        document.querySelector("body").classList.toggle("light");
-
-        setTimeout(
-            () => document.querySelector("body").classList.remove("toggle"),
-            10
-        );
-    }, 5);
+var swiper = new Swiper('.blog-slider', {
+    spaceBetween: 30,
+    effect: 'fade',
+    loop: true,
+    mousewheel: {
+        invert: false,
+    },
+    // autoHeight: true,
+    pagination: {
+        el: '.blog-slider__pagination',
+        clickable: true,
+    }
 });
