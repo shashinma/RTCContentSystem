@@ -8,8 +8,7 @@
 <div class="container py-2">
     @foreach (var jobsItem in AboutService.getJobs())
     {
-        @* @Markdown.ParseHtmlString(jobsItem.Content) *@
-        @Markdown.ParseHtmlStringFromFile(@Url.Content("~/markdown/Jobs.md"))
+        @Markdown.ParseHtmlStringFromFile(@Url.Content(@jobsItem.Content.ToString()))
     }
 </div>
 
