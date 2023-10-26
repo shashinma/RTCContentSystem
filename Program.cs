@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using POSTerminalWebApp.Controllers;
 using POSTerminalWebApp.Services;
 using POSTerminalWebApp.Data;
+using Westwind.AspNetCore.Markdown;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -38,7 +39,7 @@ builder.Services.AddSession(options =>
     options.Cookie.IsEssential = true;
 });
 
-builder.Services.AddRazorPages();
+builder.Services.AddMarkdown();
 
 builder.Services.AddRazorPages();
 
@@ -55,6 +56,8 @@ else
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+
+app.UseMarkdown();
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
