@@ -70,8 +70,8 @@ app.MapControllers();
 
 app.MapControllerRoute(
     name: "Viewer",
-    pattern: "/Instructions/Viewer/{searchString}",
-    defaults: new { controller = "Instructions", action = "Viewer" }
+    pattern: "/Viewer/{searchString}",
+    defaults: new { controller = "Viewer", action = "Index" }
 );
 
 app.MapControllerRoute(

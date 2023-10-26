@@ -20,26 +20,6 @@ public class InstructionsController : Controller
         return View();
     }
     
-    // public IActionResult Viewer(string searchString = "Phishing")
-    public IActionResult Viewer([FromRoute(Name = "searchString")] string? searchString)
-    {
-        if (searchString == null) return RedirectToAction("Index");
-        
-        var layoutModel = new MenuItem();
-        var pageModel = new ViewerItem()
-        {
-            name = searchString
-        };
-    
-        var viewerModel = new ViewerModel()
-        {
-            Layout = layoutModel,
-            Page = pageModel
-        };
-    
-        return View(viewerModel);
-    }
-
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {
