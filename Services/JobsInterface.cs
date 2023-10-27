@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using POSTerminalWebApp.Data;
+﻿using POSTerminalWebApp.Data;
 using POSTerminalWebApp.Models;
 
 namespace POSTerminalWebApp.Services;
@@ -22,6 +20,5 @@ public class JobsService : IJobsService
     public List<JobsItem> getJobs()
     {
         return _context.JobsItems.ToList();
-
     }
 }
