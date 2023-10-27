@@ -29,6 +29,7 @@ builder.Services.AddScoped<INewsService, NewsService>();
 builder.Services.AddScoped<IJobsService, JobsService>();
 builder.Services.AddScoped<IAboutService, AboutService>();
 builder.Services.AddScoped<IShortcutService, ShortcutService>();
+builder.Services.AddScoped<IInstructionsService, InstructionsService>();
 
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(options =>
@@ -78,21 +79,6 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}"
 );
-
-// app.UseEndpoints(endpoints =>
-// {
-//     endpoints.MapControllerRoute(
-//         name: "default",
-//         pattern: "{controller=Home}/{action=Index}/{id?}");
-//
-//     endpoints.MapControllerRoute(
-//         name: "Viewer",
-//         pattern: "/Instructions/Viewer/{searchString}",
-//         defaults: new { controller = "Instructions", action = "Viewer" }
-//     );
-//
-//     endpoints.MapRazorPages();
-// });
 
 app.MapRazorPages();
 

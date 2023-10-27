@@ -935,9 +935,9 @@ h2 {
 }
 h3 {
     margin: 0 0 10px;
-    font-size: 17px;
+    font-size: 14px;
     font-weight: 900;
-    line-height: 30px;
+    line-height: 25px;
 }
 
 button {
@@ -991,7 +991,7 @@ button {
     display: -webkit-flex;
     align-items: flex-end;
     -webkit-align-items: flex-end;
-    background: #343434 no-repeat center center / cover;
+    background: #a1a1a1 no-repeat center center / cover;
     border-radius: 16px;
     overflow: hidden;
     position: relative;
@@ -1012,7 +1012,9 @@ button {
     width: 100%;
     left: 0;
     top: 0;
-    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+    background-image: linear-gradient(
+            rgba(0, 0, 0, 0),
+            rgba(0, 0, 0, 0.6));
 }
 .game-section .item-desc {
     padding: 0 24px 12px;
@@ -1030,7 +1032,7 @@ button {
     -webkit-transform: none;
 }
 .game-section .item-desc p {
-    font-size: 14px;
+    font-size: 12px;
     opacity: 0;
     -webkit-transform: translateY(32px);
     transform: translateY(32px);
