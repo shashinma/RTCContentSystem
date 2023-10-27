@@ -36,7 +36,7 @@
         
         <section class="game-section pt-3">
             <h2>Актуальные новости</h2>
-            <div class="owl-carousel custom-carousel owl-theme">
+            <div class="owl-carousel custom-carousel owl-theme owl-loaded">
                 @foreach (var newsItem in NewsService.GetNews())
                 {
                     <div class="item" style="background-image: url(@newsItem.PicSrc);">
