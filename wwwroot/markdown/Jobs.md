@@ -2,7 +2,7 @@
 		<h3 style="text-align: center;">Вакансии в ЦНИИ РТК</h3>
 
 <p style="text-align: center;">тел. 552-15-15, 552-16-00</p>
-<p style="text-align: center;"><a href="mailto:i.ahmetova@rtc.ru">i.ahmetova@rtc.ru</a>, <a href="mailto:n.priluckaja@rtc.ru">n.priluckaja@rtc.ru</a></p>
+<p style="text-align: center;"><a href="mailto:i.ahmetova@rtc.ru">i.ahmetova@rtc.ru</a></p>
 <p style="text-align: center;">&nbsp;</p>
 
 <table class="myTables" style="width: 100%;" cellspacing="0" cellpadding="0" border="1">
