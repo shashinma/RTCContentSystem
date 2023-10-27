@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
-using POSTerminalWebApp.Data;
+﻿using POSTerminalWebApp.Data;
 using POSTerminalWebApp.Models;
 
 namespace POSTerminalWebApp.Services;

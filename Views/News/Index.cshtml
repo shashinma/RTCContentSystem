@@ -1,8 +1,7 @@
-﻿@using POSTerminalWebApp.Services
+﻿@using Microsoft.IdentityModel.Tokens
+@using POSTerminalWebApp.Services
 @using POSTerminalWebApp.Views.Home
 @using Westwind.AspNetCore.Markdown
-@using Microsoft.IdentityModel.Tokens
-
 @inject INewsService NewsService
 
 <link rel="stylesheet" href="~/lib/font-awesome-5.15.4/css/all.css">
@@ -13,15 +12,16 @@
 }
 
 <section class="light">
-    
+
     <div class="h1 text-center text-dark" id="pageHeaderTitle">@title</div>
-    
+
     <div class="container py-2">
         @foreach (var newsItem in NewsService.GetNews())
         {
             <article class="postcard light blue" data-bs-toggle="modal" data-bs-target="#modal-@newsItem.Id">
                 <a class="postcard__img_link" href="#">
-                    @if(!newsItem.PicSrc.IsNullOrEmpty()){
+                    @if (!newsItem.PicSrc.IsNullOrEmpty())
+                    {
                         <img class="postcard__img" src="@newsItem.PicSrc" alt="Image Title"/>
                     }
                 </a>
@@ -42,9 +42,11 @@
                     </div>
 
                     <ul class="postcard__tagbox">
-                        @if(!newsItem.Tags.IsNullOrEmpty()){
+                        @if (!newsItem.Tags.IsNullOrEmpty())
+                        {
                             <li class="tag__item">
-                                <i class="fa fa-tag mr-2"></i>@newsItem.Tags</li>
+                                <i class="fa fa-tag mr-2"></i>@newsItem.Tags
+                            </li>
                         }
                         @if (!newsItem.Author.IsNullOrEmpty())
                         {
@@ -52,10 +54,11 @@
                                 <i class="fas fa-user-tie mr-2"></i>@newsItem.Author
                             </li>
                         }
-                        @if (!newsItem.TimeToRead.IsNullOrEmpty()){
-                        <li class="tag__item">
-                            <i class="fa fa-clock mr-2"></i>@newsItem.TimeToRead
-                        </li>
+                        @if (!newsItem.TimeToRead.IsNullOrEmpty())
+                        {
+                            <li class="tag__item">
+                                <i class="fa fa-clock mr-2"></i>@newsItem.TimeToRead
+                            </li>
                         }
                     </ul>
                 </div>

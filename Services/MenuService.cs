@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using POSTerminalWebApp.Data;
 using POSTerminalWebApp.Models;

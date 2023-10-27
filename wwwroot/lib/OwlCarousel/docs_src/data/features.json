@@ -23,8 +23,7 @@
     "title": "Zombie Browsers",
     "subtitle": "CSS2 fallback supported for older browser.",
     "image": "feature-zombie.png"
-  }
-  ,
+  },
   {
     "title": "Modules and Plugins",
     "subtitle": "Owl Carousel supports plugin modular structure. Therefore, you can detach plugins that you won't use on your project or create new ones that fit your needs",

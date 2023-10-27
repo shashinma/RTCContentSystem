@@ -10,11 +10,6 @@
 /*}*/
 
 
-
-
-
-
-
 .line {
     border-bottom: 1px solid rgba(82, 82, 82, 0.5); /* Параметры линии */
     padding-top: 50px;
@@ -27,7 +22,7 @@ h1 {
     padding-top: 2rem;
 }
 
-h1+p {
+h1 + p {
     font-size: 1.8rem;
     padding: 2rem 0 3rem;
 }
@@ -187,8 +182,8 @@ h1+p {
 
 .card:hover {
     transform: scale(0.9, 0.9);
-    box-shadow: 5px 5px 30px 15px rgba(0,0,0,0.25),
-    -5px -5px 30px 15px rgba(0,0,0,0.22);
+    box-shadow: 5px 5px 30px 15px rgba(0, 0, 0, 0.25),
+    -5px -5px 30px 15px rgba(0, 0, 0, 0.22);
 }
 
 .title-white {
