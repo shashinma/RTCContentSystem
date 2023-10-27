@@ -903,7 +903,8 @@ a:hover {
 }
 
 h2 {
-    margin-bottom: 48px;
+    /*margin-bottom: 48px;*/
+    padding-top: 16px;
     padding-bottom: 16px;
     font-size: 20px;
     line-height: 28px;
@@ -955,17 +956,19 @@ button {
 /* -------- Landing page ------- */
 .game-section {
     height: 250px;
+    max-height: 250px;
 }
 
 .game-section .owl-stage {
     margin: 15px 0;
     display: flex;
-    display: -webkit-flex;
-    width: 100%;
+    flex-wrap: nowrap;
+    /*display: -webkit-box;*/
+    width: 4000px !important;
 }
 
 .game-section .owl-stage-outer {
-    width: 100%;
+    width: 4000px !important;
     border-radius: 16px;
 }
 
@@ -974,6 +977,7 @@ button {
     width: 265px;
     height: 100%;
     display: flex;
+    flex-wrap: nowrap;
     display: -webkit-flex;
     align-items: flex-end;
     -webkit-align-items: flex-end;
