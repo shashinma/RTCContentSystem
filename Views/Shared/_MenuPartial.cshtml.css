@@ -15,7 +15,7 @@ main {
     left: 0;
     height: 100%;
     width: 260px;
-    background: #11101d;
+    background: rgba(231, 132, 29, 0.90);
     z-index: 100;
     transition: all 0.5s ease;
     border-radius: 0 20px 20px 0;
@@ -79,7 +79,7 @@ main {
     transition: all 0.4s ease;
 }
 .sidebar .nav-links li:hover{
-    background: #1d1b31;
+    background: rgba(227, 127, 22, 0.91);
 }
 .sidebar .nav-links li .iocn-link{
     display: flex;
@@ -128,7 +128,13 @@ main {
 .sidebar .nav-links li .sub-menu{
     padding: 6px 6px 14px 80px;
     margin-top: -10px;
-    background: #1d1b31;
+    /*background: rgba(231, 132, 29, 0.91);*/
+    display: none;
+}
+.sidebar.close .nav-links li .sub-menu{
+    padding: 6px 6px 14px 80px;
+    margin-top: -10px;
+    background: rgb(222, 128, 30);
     display: none;
 }
 .sidebar .nav-links li.showMenu .sub-menu{
@@ -189,7 +195,7 @@ main {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: #1d1b31;
+    background: rgba(227, 127, 22, 0.91);
     padding: 12px 0;
     transition: all 0.5s ease;
     border-radius: 0 0 20px 0;
@@ -210,7 +216,7 @@ main {
     object-fit: cover;
     border-radius: 16px;
     margin: 0 14px 0 12px;
-    background: #1d1b31;
+    background: lightsteelblue;
     transition: all 0.5s ease;
 }
 .sidebar.close .profile-details img{
