@@ -89,4 +89,11 @@
       <Folder Include="wwwroot\ts\" />
     </ItemGroup>
 
+
+
+
+    <ItemGroup>
+      <_JsFileModuleStaticWebAsset Include="Views\Shared\_MenuPartialPDF.cshtml.js" />
+    </ItemGroup>
+
 </Project>

@@ -1,0 +1,10 @@
+﻿@{
+    Layout = "_LayoutPDF";
+}
+@model ViewerModel
+
+<link rel="stylesheet" href="~/lib/font-awesome-5.15.4/css/all.css">
+
+<body>
+<object><embed src="@Url.Content("~/pdf/" + @Model.Page.name + ".pdf")" width="100%" height="100%"/></object>
+</body>

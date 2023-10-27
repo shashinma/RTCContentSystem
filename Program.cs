@@ -1,9 +1,8 @@
-using System.Net;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using POSTerminalWebApp.Controllers;
 using POSTerminalWebApp.Services;
 using POSTerminalWebApp.Data;
+using Westwind.AspNetCore.Markdown;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,6 +27,9 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IMenuService, MenuService>();
 builder.Services.AddScoped<INewsService, NewsService>();
 builder.Services.AddScoped<IJobsService, JobsService>();
+builder.Services.AddScoped<IAboutService, AboutService>();
+builder.Services.AddScoped<IShortcutService, ShortcutService>();
+builder.Services.AddScoped<IInstructionsService, InstructionsService>();
 
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(options =>
@@ -37,7 +39,7 @@ builder.Services.AddSession(options =>
     options.Cookie.IsEssential = true;
 });
 
-builder.Services.AddRazorPages();
+builder.Services.AddMarkdown();
 
 builder.Services.AddRazorPages();
 
@@ -55,6 +57,8 @@ else
     app.UseHsts();
 }
 
+app.UseMarkdown();
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
@@ -63,9 +67,19 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
+app.MapControllers(); 
+
 app.MapControllerRoute(
-    "default",
-    "{controller=Home}/{action=Index}/{id?}");
+    name: "Viewer",
+    pattern: "/Viewer/{searchString}",
+    defaults: new { controller = "Viewer", action = "Index" }
+);
+
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}"
+);
+
 app.MapRazorPages();
 
 app.UseSession();

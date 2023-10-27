@@ -1,7 +1,7 @@
 @using Microsoft.AspNetCore.Identity
 
 @inject SignInManager<IdentityUser> signInManager
-@model List<MenuItem>
+@model ViewerModel
 
 <head>
   <meta charset="utf-8"/>
@@ -20,7 +20,7 @@
 
 <body class="mb-0">
 <!-- Sidebar -->
-@Html.Partial("_MenuPartial.cshtml")
+@Html.Partial("_MenuPartialPDF.cshtml")
 
 <!-- TODO: To center <div class="container"> and <main> -->
 <!-- Content section -->

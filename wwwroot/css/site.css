@@ -1,5 +1,4 @@
 * {
-    display: block;
     /*Убрать полосу прокрутки для всей страницы*/
     ::-webkit-scrollbar {
         width: 0;
