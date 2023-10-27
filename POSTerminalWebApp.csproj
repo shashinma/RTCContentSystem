@@ -6,6 +6,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <UserSecretsId>aspnet-POSTerminalWebApp-FF3ECF36-0FB8-4881-9AF7-2A5FA683C3AF</UserSecretsId>
         <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
+        <IsPackable>true</IsPackable>
     </PropertyGroup>
 
     <ItemGroup>
