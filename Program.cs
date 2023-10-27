@@ -40,6 +40,7 @@ builder.Services.AddSession(options =>
 });
 
 builder.Services.AddMarkdown();
+
 builder.Services.AddRazorPages();
 
 var app = builder.Build();
