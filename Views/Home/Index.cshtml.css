@@ -925,7 +925,7 @@ a:hover {
     color: #e73700;
 }
 h2 {
-    margin-bottom: 48px;
+    /*margin-bottom: 48px;*/
     padding-bottom: 16px;
     font-size: 20px;
     line-height: 28px;
