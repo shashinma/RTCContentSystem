@@ -975,15 +975,16 @@ button {
     height: 250px;
     max-height: 250px;
 }
+
 .game-section .owl-stage {
     margin: 15px 0;
     display: flex;
     flex-wrap: nowrap;
     /*display: -webkit-box;*/
-    width: 100%;
+    width: 4000px !important;
 }
 .game-section .owl-stage-outer {
-    width: 100%;
+    width: 4000px !important;
     border-radius: 16px;
 }
 .game-section .item {
@@ -1031,6 +1032,7 @@ button {
     transition: all 0.4s ease-in-out;
     -webkit-transition: all 0.4s ease-in-out;
 }
+
 .game-section .item.active .item-desc {
     transform: none;
     -webkit-transform: none;

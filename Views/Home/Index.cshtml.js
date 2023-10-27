@@ -1,6 +1,7 @@
 $(".custom-carousel").owlCarousel({
     autoWidth: true,
-    loop: true
+    loop: false,
+    items:4
 });
 $(document).ready(function () {
     $(".custom-carousel .item").click(function () {

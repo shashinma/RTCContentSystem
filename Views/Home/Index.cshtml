@@ -36,16 +36,20 @@
         
         <section class="game-section pt-3">
             <h2>Актуальные новости</h2>
+            @* 
+            TODO: Сделать ширину блока больше ширины страницы, но контент скрывался 
+            (см <div class="owl-stage" style="transform: translate3d(0px, 0px, 0px);">)
+            width:4000px;*@
             <div class="owl-carousel custom-carousel owl-theme owl-loaded">
-                @foreach (var newsItem in NewsService.GetNews())
-                {
-                    <div class="item" style="background-image: url(@newsItem.PicSrc);">
-                        <div class="item-desc">
-                            <h3>@newsItem.Title</h3>
-                            <p>@NewsAction.GetLimitedWords(newsItem.Content, 15))</p>
+                    @foreach (var newsItem in NewsService.GetNews())
+                    {
+                        <div class="item" style="background-image: url(@newsItem.PicSrc);">
+                            <div class="item-desc">
+                                <h3>@newsItem.Title</h3>
+                                <p>@NewsAction.GetLimitedWords(newsItem.Content, 15))</p>
+                            </div>
                         </div>
-                    </div>
-                }
+                    }
             </div>
         </section>
         
