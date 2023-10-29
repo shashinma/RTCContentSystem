@@ -1,21 +1,20 @@
-@using Microsoft.AspNetCore.Identity
-
 @inject SignInManager<IdentityUser> signInManager
+@using Microsoft.AspNetCore.Identity
 @model ViewerModel
 
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  @* <title>@ViewData["Title"] - POSTerminalWebApp</title> *@
-  <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
-  <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
-  <link rel="stylesheet" href="~/lib/font-awesome-5.15.4/css/all.css">
-  <link rel="stylesheet" href="~/POSTerminalWebApp.styles.css" asp-append-version="true"/>
-    
-  <!-- Boxiocns CDN Link -->
-  <!-- TODO: Change to local resource -->
-  <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    @* <title>@ViewData["Title"] - POSTerminalWebApp</title> *@
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="~/lib/font-awesome-5.15.4/css/all.css">
+    <link rel="stylesheet" href="~/POSTerminalWebApp.styles.css" asp-append-version="true"/>
+
+    <!-- Boxiocns CDN Link -->
+    <!-- TODO: Change to local resource -->
+    <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body class="mb-0">
@@ -25,22 +24,22 @@
 <!-- TODO: To center <div class="container"> and <main> -->
 <!-- Content section -->
 <section class="home-section">
-  @* <div class="home-content"> *@
-  @*   <i class='bx bx-menu' ></i> *@
-  @* </div> *@
-  <nav class="sticky">
-    @Html.Partial("_NavBar.cshtml")
-  </nav>
-  <div class="container p-0">
-    <main role="main" class="p-0">
-      @RenderBody()
-    </main>
-  </div>
+    @* <div class="home-content"> *@
+    @*   <i class='bx bx-menu' ></i> *@
+    @* </div> *@
+    <nav class="sticky">
+        @Html.Partial("_NavBar.cshtml")
+    </nav>
+    <div class="container p-0">
+        <main role="main" class="p-0">
+            @RenderBody()
+        </main>
+    </div>
 </section>
 </body>
 
 <footer>
-  @Html.Partial("_ScreenSaver.cshtml")
+    @Html.Partial("_ScreenSaver.cshtml")
 </footer>
 
 <script src="~/lib/jquery/dist/jquery.min.js"></script>

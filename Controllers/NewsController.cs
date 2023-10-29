@@ -9,20 +9,20 @@ namespace POSTerminalWebApp.Controllers;
 [Authorize]
 public class NewsController : Controller
 {
-    private readonly ILogger<NewsController> _logger;
     private readonly ApplicationDbContext _context;
+    private readonly ILogger<NewsController> _logger;
 
     public NewsController(ILogger<NewsController> logger)
     {
         _logger = logger;
     }
-    
+
     [Authorize]
     public IActionResult Index()
     {
         return View();
     }
-    
+
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {

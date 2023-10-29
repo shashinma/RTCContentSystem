@@ -1,5 +1,3 @@
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using POSTerminalWebApp.Data;
 using POSTerminalWebApp.Models;
 
@@ -22,6 +20,5 @@ public class AboutService : IAboutService
     public List<AboutItem> getAbout()
     {
         return _context.AboutItems.ToList();
-
     }
 }

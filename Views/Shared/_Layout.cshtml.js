@@ -1,12 +1,10 @@
 if (localStorage.getItem("sidebarState") === null) {
     localStorage.setItem("sidebarState", "open");
-}
-else if (localStorage.getItem("sidebarState") === "open") {
+} else if (localStorage.getItem("sidebarState") === "open") {
     var className = "sidebar open";
     var element = document.getElementById("sidebar_statement");
     element.setAttribute("class", className);
-}
-else if (localStorage.getItem("sidebarState") === "closed") {
+} else if (localStorage.getItem("sidebarState") === "closed") {
     var className = "sidebar close";
     var element = document.getElementById("sidebar_statement");
     element.setAttribute("class", className);

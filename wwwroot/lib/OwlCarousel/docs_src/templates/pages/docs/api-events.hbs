@@ -10,87 +10,89 @@ tags:
 ---
 
 {{#markdown }}
-## Events
+    ## Events
 
-> Events are provided by Owl Carousel in strategic code locations. This gives you the ability to listen for any changes and perform your own actions.
+    > Events are provided by Owl Carousel in strategic code locations. This gives you the ability to listen for any changes and perform your own actions.
 
-```
-var owl = $('.owl-carousel');
-owl.owlCarousel();
+    ```
+    var owl = $('.owl-carousel');
+    owl.owlCarousel();
 
-// Listen to owl events:
-owl.on('changed.owl.carousel', function(event) {
-	...
-})
+    // Listen to owl events:
+    owl.on('changed.owl.carousel', function(event) {
+    ...
+    })
 
-```
+    ```
 
-You could also trigger events by yourself to control Owl Carousel:
+    You could also trigger events by yourself to control Owl Carousel:
 
-```
-var owl = $('.owl-carousel');
-owl.owlCarousel();
+    ```
+    var owl = $('.owl-carousel');
+    owl.owlCarousel();
 
-// Go to the next item
-$('.customNextBtn').click(function() {
-	owl.trigger('next.owl.carousel');
-})
+    // Go to the next item
+    $('.customNextBtn').click(function() {
+    owl.trigger('next.owl.carousel');
+    })
 
-// Go to the previous item
-$('.customPrevBtn').click(function() {
-	// With optional speed parameter
-	// Parameters has to be in square bracket '[]'
-	owl.trigger('prev.owl.carousel', [300]);
-})
+    // Go to the previous item
+    $('.customPrevBtn').click(function() {
+    // With optional speed parameter
+    // Parameters has to be in square bracket '[]'
+    owl.trigger('prev.owl.carousel', [300]);
+    })
 
-```
+    ```
 
-### Callbacks
+    ### Callbacks
 
-Instead of attaching an event handler you can also just add a callback to the options of Owl Carousel.
+    Instead of attaching an event handler you can also just add a callback to the options of Owl Carousel.
 
-```
-$('.owl-carousel').owlCarousel({
-	onDragged: callback
-});
+    ```
+    $('.owl-carousel').owlCarousel({
+    onDragged: callback
+    });
 
-function callback(event) {
-	...
-}
-```
+    function callback(event) {
+    ...
+    }
+    ```
 
-### Data
+    ### Data
 
-Each event passes very useful information within the [event object](https://api.jquery.com/category/events/event-object/). Based on the example above:
+    Each event passes very useful information within the [event object](https://api.jquery.com/category/events/event-object/). Based on the example above:
 
-```Javascript
-function callback(event) {
-	// Provided by the core
-	var element   = event.target;         // DOM element, in this example .owl-carousel
-	var name      = event.type;           // Name of the event, in this example dragged
-	var namespace = event.namespace;      // Namespace of the event, in this example owl.carousel
-	var items     = event.item.count;     // Number of items
-	var item      = event.item.index;     // Position of the current item
-	// Provided by the navigation plugin
-	var pages     = event.page.count;     // Number of pages
-	var page      = event.page.index;     // Position of the current page
-	var size      = event.page.size;      // Number of items per page
-}
-```
+    ```Javascript
+    function callback(event) {
+    // Provided by the core
+    var element   = event.target;         // DOM element, in this example .owl-carousel
+    var name      = event.type;           // Name of the event, in this example dragged
+    var namespace = event.namespace;      // Namespace of the event, in this example owl.carousel
+    var items     = event.item.count;     // Number of items
+    var item      = event.item.index;     // Position of the current item
+    // Provided by the navigation plugin
+    var pages     = event.page.count;     // Number of pages
+    var page      = event.page.index;     // Position of the current page
+    var size      = event.page.size;      // Number of items per page
+    }
+    ```
 
-{{#each events}}
-### {{namespace}}
+    {{#each events}}
+        ### {{namespace}}
 
-{{#each events}}
-#### {{name}}
+        {{#each events}}
+            #### {{name}}
 
-Type: `{{type}}`<br />{{#isnt callback undefined}}Callback: `{{callback}}`<br/>{{/isnt}}{{#isnt param undefined}}Parameter: `{{param}}`<br/>{{/isnt}}
+            Type: `{{type}}`<br/>{{#isnt callback undefined}}Callback: `{{callback}}`<br/>{{/isnt}}{{#isnt param
+                                                                                                           undefined}}Parameter: `{{param}}`
+            <br/>{{/isnt}}
 
-{{desc}}
+            {{desc}}
 
-------
-{{/each}}
+            ------
+        {{/each}}
 
-{{/each}}
+    {{/each}}
 
 {{/markdown }}

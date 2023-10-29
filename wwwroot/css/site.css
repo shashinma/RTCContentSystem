@@ -1,9 +1,11 @@
 * {
     /*Убрать полосу прокрутки для всей страницы*/
+
     ::-webkit-scrollbar {
         width: 0;
         height: 0;
     }
+
     /*
         HIDE THE CURSOR (for realise build)
     */

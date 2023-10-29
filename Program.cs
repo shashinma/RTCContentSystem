@@ -1,17 +1,17 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using POSTerminalWebApp.Services;
 using POSTerminalWebApp.Data;
+using POSTerminalWebApp.Services;
 using Westwind.AspNetCore.Markdown;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-var identityConnectionString = builder.Configuration.GetConnectionString("IdentityConnection") ?? 
-    throw new InvalidOperationException("Connection string 'IdentityConnection' not found.");
+var identityConnectionString = builder.Configuration.GetConnectionString("IdentityConnection") ??
+                               throw new InvalidOperationException("Connection string 'IdentityConnection' not found.");
 
-var applicationDbConnectionString = 
-    builder.Configuration.GetConnectionString("ApplicationDbConnection") ?? 
+var applicationDbConnectionString =
+    builder.Configuration.GetConnectionString("ApplicationDbConnection") ??
     throw new InvalidOperationException("Connection string 'ApplicationDbConnection' not found.");
 
 builder.Services.AddDbContext<IdentityContext>(options =>
@@ -67,17 +67,17 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapControllers(); 
+app.MapControllers();
 
 app.MapControllerRoute(
-    name: "Viewer",
-    pattern: "/Viewer/{searchString}",
-    defaults: new { controller = "Viewer", action = "Index" }
+    "Viewer",
+    "/Viewer/{searchString}",
+    new { controller = "Viewer", action = "Index" }
 );
 
 app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}"
+    "default",
+    "{controller=Home}/{action=Index}/{id?}"
 );
 
 app.MapRazorPages();

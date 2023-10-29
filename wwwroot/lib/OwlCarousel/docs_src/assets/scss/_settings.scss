@@ -41,7 +41,7 @@ $row-width: rem-calc(1000);
 // We use these to control various global styles
 // $body-bg: #fff;
 // $body-font-color: #222;
-$body-font-family: "Lato","Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+$body-font-family: "Lato", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 // $body-font-weight: normal;
 // $body-font-style: normal;
 
@@ -186,7 +186,7 @@ $anchor-font-color: #1ccacd;
 // We use these to style blockquotes
 // $blockquote-font-color: scale-color($header-font-color, $lightness: 35%);
 // $blockquote-padding: rem-calc(9 20 1 19);
- $blockquote-border: 7px solid #ddd;
+$blockquote-border: 7px solid #ddd;
 // $blockquote-cite-font-size: rem-calc(13);
 // $blockquote-cite-font-color: scale-color($header-font-color, $lightness: 23%);
 // $blockquote-cite-link-color: $blockquote-cite-font-color;
@@ -946,13 +946,12 @@ $side-nav-list-margin: rem-calc(0);
 // We use these to control link styles.
 $side-nav-link-color: #8A9191;
 // $side-nav-link-color-active: scale-color($side-nav-link-color, $lightness: 30%);
-$side-nav-link-color-hover: #000;//scale-color($side-nav-link-color, $lightness: 30%);
+$side-nav-link-color-hover: #000; //scale-color($side-nav-link-color, $lightness: 30%);
 $side-nav-font-size: rem-calc(16);
 // $side-nav-font-weight: normal;
 // $side-nav-font-weight-active: $side-nav-font-weight;
 // $side-nav-font-family: $body-font-family;
 // $side-nav-active-font-family: $side-nav-font-family;
-
 
 
 // We use these to control border styles

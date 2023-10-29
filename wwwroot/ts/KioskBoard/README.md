@@ -3,12 +3,19 @@
 </p>
 
 [npm-version-badge]: https://img.shields.io/npm/v/kioskboard.svg
+
 [npm-version-url]: https://www.npmjs.com/package/kioskboard
+
 [synk-badge]: https://snyk.io/test/github/furcan/KioskBoard/badge.svg?targetFile=package.json
+
 [synk-url]: https://snyk.io/test/github/furcan/KioskBoard?targetFile=package.json
+
 [typescript-badge]: https://badgen.net/badge/icon/Typed?icon=typescript&label&labelColor=3178c6&color=555
+
 [typescript-url]: https://github.com/furcan/KioskBoard/blob/main/index.d.ts
+
 [lic-badge]: https://img.shields.io/github/license/furcan/KioskBoard.svg
+
 [lic-url]: https://github.com/furcan/KioskBoard/blob/main/LICENSE
 
 [![NPM Version][npm-version-badge]][npm-version-url]
@@ -17,36 +24,45 @@
 [![License][lic-badge]][lic-url]
 
 # KioskBoard - Virtual Keyboard
+
 A pure JavaScript library for using virtual keyboards.
 
 ---------
 
 ## Current Version
+
 2.3.0 [*](https://github.com/furcan/KioskBoard/blob/main/CHANGELOG.md)
 
 ---------
 
 ## Documentation and Demo
+
 https://furcan.github.io/KioskBoard/
 
 ---------
 
 ## Browser Compatibility
+
 `Chrome` || `Firefox` || `Safari` || `Opera` || `Edge` || `IE 11`
 
 ---------
+
 ## (A) Install & Import
 
 ### Install
+
 #### [yarn](https://yarnpkg.com/package/kioskboard)
+
 ```js
 yarn add kioskboard
 ```
 
 #### [npm](https://www.npmjs.com/package/kioskboard)
+
 ```js
 npm i kioskboard
 ```
+
 ### Import
 
 ```jsx
@@ -56,6 +72,7 @@ import KioskBoard from 'kioskboard';
 ---------
 
 ## (B) Adding to an HTML Document
+
 ### CSS and JS
 
 ```html
@@ -72,8 +89,8 @@ import KioskBoard from 'kioskboard';
 
 ---------
 
-
 ## Keyboard Types and Themes
+
 3 types of keyboards can be used: `all`, `keyboard`, and `numpad`.
 
 5 types of themes can be used. `light`, `dark`, `flat`, `material`, and `oldschool`.
@@ -81,15 +98,20 @@ import KioskBoard from 'kioskboard';
 ---------
 
 ## Run / Initialize
+
 KioskBoard Virtual Keyboard can be used with the `input` or `textarea` elements.
 
-KioskBoard must be initialized with the required options. The other ones are optional. Keyboard Type (the default value is "all") `data-kioskboard-type`, Keyboard Placement (the default value is "bottom") `data-kioskboard-placement`, and Special Characters `data-kioskboard-specialcharacters` settings are each element-based (data attributes).
+KioskBoard must be initialized with the required options. The other ones are optional. Keyboard Type (the default value
+is "all") `data-kioskboard-type`, Keyboard Placement (the default value is "bottom") `data-kioskboard-placement`, and
+Special Characters `data-kioskboard-specialcharacters` settings are each element-based (data attributes).
 
-All options and examples of data attribute usages are as below. Also, a custom class name can be defined as globally for all input and/or textarea elements to run KioskBoard.
+All options and examples of data attribute usages are as below. Also, a custom class name can be defined as globally for
+all input and/or textarea elements to run KioskBoard.
 
 ---------
 
 ### HTML => (data-* options)
+
 ```html
 <!-- An example of a textarea element: The keyboard type is "all", the placement is "top", and the availability of the special characters is "true". -->
 <textarea class="js-virtual-keyboard" data-kioskboard-type="all" data-kioskboard-placement="top" data-kioskboard-specialcharacters="true" placeholder="Your Address"></textarea>
@@ -220,11 +242,17 @@ KioskBoard.run('.js-virtual-keyboard');
 ---------
 
 ## Language (JSON)
-The `keysJsonUrl` option has to be set if custom keys are not defined with the `keysArrayOfObjects` option. JSON format has to be: `[{"key":"value", "key":"value"}, ...]`. Each object in that array creates a row element (HTML) on the keyboard. The "key" in the objects is used as an "index" for each Keyboard Keys. The "value" is each key's value and inner text.
 
-Additionally, KioskBoard includes 9 different language packages: `Arabic`, `English`, `French`, `German`, `Hungarian`, `Persian`, `Russian`, `Spanish`, and `Turkish`.
+The `keysJsonUrl` option has to be set if custom keys are not defined with the `keysArrayOfObjects` option. JSON format
+has to be: `[{"key":"value", "key":"value"}, ...]`. Each object in that array creates a row element (HTML) on the
+keyboard. The "key" in the objects is used as an "index" for each Keyboard Keys. The "value" is each key's value and
+inner text.
+
+Additionally, KioskBoard includes 9 different language
+packages: `Arabic`, `English`, `French`, `German`, `Hungarian`, `Persian`, `Russian`, `Spanish`, and `Turkish`.
 
 An example of a JSON file (for custom keys) in English.
+
 ```json
 [
    {
@@ -268,7 +296,9 @@ An example of a JSON file (for custom keys) in English.
 ---------
 
 ## Copyright
+
 Copyright © 2022 KioskBoard - Virtual Keyboard
 
 ## License
+
 MIT license - https://opensource.org/licenses/MIT

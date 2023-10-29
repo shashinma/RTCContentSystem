@@ -10,49 +10,49 @@ tags:
 ---
 
 {{#markdown }}
-## Classes
+    ## Classes
 
-This is an example of how html is rendered. With the following options you can change almost every class the way you want
+    This is an example of how html is rendered. With the following options you can change almost every class the way you want
 
 
-```
-<div class="owl-carousel owl-theme owl-loaded">
-    <div class="owl-stage-outer">
-        <div class="owl-stage">
-            <div class="owl-item">...</div>
-            <div class="owl-item">...</div>
-            <div class="owl-item">...</div>
+    ```
+    <div class="owl-carousel owl-theme owl-loaded">
+        <div class="owl-stage-outer">
+            <div class="owl-stage">
+                <div class="owl-item">...</div>
+                <div class="owl-item">...</div>
+                <div class="owl-item">...</div>
+            </div>
+        </div>
+        <div class="owl-nav">
+            <div class="owl-prev">prev</div>
+            <div class="owl-next">next</div>
+        </div>
+        <div class="owl-dots">
+            <div class="owl-dot active"><span></span></div>
+            <div class="owl-dot"><span></span></div>
+            <div class="owl-dot"><span></span></div>
         </div>
     </div>
-    <div class="owl-nav">
-        <div class="owl-prev">prev</div>
-        <div class="owl-next">next</div>
-    </div>
-    <div class="owl-dots">
-        <div class="owl-dot active"><span></span></div>
-        <div class="owl-dot"><span></span></div>
-        <div class="owl-dot"><span></span></div>
-    </div>
-</div>
-```
-### Options
+    ```
+    ### Options
 
-{{#each classes}}
-#### {{name}}
+    {{#each classes}}
+        #### {{name}}
 
-Type: `{{type}}`<br />
-Default: `{{Default}}`
+        Type: `{{type}}`<br/>
+        Default: `{{Default}}`
 
-{{desc}}
+        {{desc}}
 
-------
-{{/each}}
+        ------
+    {{/each}}
 
 
 
-### Next Step
+    ### Next Step
 
-####[Events](api-events.html)
+    ####[Events](api-events.html)
 
 {{/markdown }}
 
