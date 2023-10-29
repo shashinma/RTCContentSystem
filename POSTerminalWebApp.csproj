@@ -81,8 +81,9 @@
 
 
     <ItemGroup>
-        <Folder Include="wwwroot\pdf\"/>
-        <Folder Include="wwwroot\ts\"/>
+      <Folder Include="wwwroot\pdf\" />
+      <Folder Include="wwwroot\resources\images\" />
+      <Folder Include="wwwroot\ts\" />
     </ItemGroup>
 
 
