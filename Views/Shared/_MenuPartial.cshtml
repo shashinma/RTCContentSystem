@@ -23,12 +23,12 @@
                         <i class='@menuItem.Icon'></i>
                         <div class="link_name">@menuItem.Title</div>
                     </a>
-                    @if (menuItem.SubMenuItems.IsNullOrEmpty())
+                    @if (menuItem.SubMenuItems.IsNullOrEmpty() && menuItem.SubMenuItems.Any())
                     {
                         <i class='@arrow'></i>
                     }
                 </div>
-                @if (menuItem.SubMenuItems.IsNullOrEmpty())
+                @if (menuItem.SubMenuItems.IsNullOrEmpty() && menuItem.SubMenuItems.Any())
                 {
                     <ul class="sub-menu">
                         <li>
