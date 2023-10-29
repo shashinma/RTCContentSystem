@@ -1,16 +1,19 @@
 @using POSTerminalWebApp.Services
+@using Microsoft.IdentityModel.Tokens
 @inject IMenuService MenuService
 
 @{
     var icon = "bx bx-collection";
     var arrow = "bx bxs-chevron-down arrow";
+    string logoName = "ЦНИИ РТК";
+
 }
 
 <!-- Sidebar section -->
 <div class="sidebar open" id="sidebar_statement">
     <div class="logo-details">
         <img src="@Url.Content("~/rtc-logo.png")"/>
-        <span class="logo_name">RTC App</span>
+        <span class="logo_name">@logoName</span>
     </div>
 
     <ul class="nav-links">
@@ -22,12 +25,12 @@
                         <i class='@menuItem.Icon'></i>
                         <div class="link_name">@menuItem.Title</div>
                     </a>
-                    @if (menuItem.SubMenuItems != null && menuItem.SubMenuItems.Any())
+                    @if (menuItem.SubMenuItems.IsNullOrEmpty() && menuItem.SubMenuItems.Any())
                     {
                         <i class='@arrow'></i>
                     }
                 </div>
-                @if (menuItem.SubMenuItems != null && menuItem.SubMenuItems.Any())
+                @if (menuItem.SubMenuItems.IsNullOrEmpty() && menuItem.SubMenuItems.Any())
                 {
                     <ul class="sub-menu">
                         <li>
@@ -56,7 +59,7 @@
                         <div class="job">PoSTerminalApp</div>
                     </div>
                     <form class="mb-0" id="logoutForm" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
-                        <button type="submit" class="btn">
+                        <button type="submit" class="btn disabled">
                             <i class="bx bx-log-out"></i>
                         </button>
                     </form>
