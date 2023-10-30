@@ -23,7 +23,7 @@
 }
 
 <section class="light">
-    <div class="container py-2">
+    <div class="container py-2 h-100">
         <section class="main_c pb-4 border-bottom">
             @foreach (var shortcutItem in ShortcutService.GetShortcut())
             {
@@ -90,17 +90,20 @@
             }
         </section>
         
-        <section class="footer d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top bottom-0 position-sticky">
-            <p class="col-md-4 mb-0 text-muted">© 1998-@currentYear ЦНИИ РТК. Все права защищены</p>
-        
-            <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none" >
-                <img src="@Url.Content("~/resources/qr-codes/qr-code-telegram.png")" width="120px" height="120px" style="background:transparent">
-            </a>
+            <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+                <p class="col-md-4 mb-0 text-muted">
+                    © 1998-@currentYear ЦНИИ РТК. <br/>
+                    Все права защищены
+                </p>
             
-            <ul class="nav col-md-4 justify-content-end" style="flex-wrap: wrap">
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Связь с разработчиком</a></li>
-            </ul>
-        </section>
+                <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none" >
+                    <img src="@Url.Content("~/resources/qr-codes/qr-code-telegram.png")" width="120px" height="120px" style="background:transparent">
+                </a>
+            
+                <ul class="nav col-md-4 justify-content-end" style="flex-wrap: wrap">
+                    <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Связь с разработчиком</a></li>
+                </ul>
+            </footer>
     </div>
 </section>
 
