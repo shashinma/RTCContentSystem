@@ -1,5 +1,8 @@
 @using POSTerminalWebApp.Services
 @using POSTerminalWebApp.Views.Home
+@using Westwind.AspNetCore.Markdown
+@using Microsoft.IdentityModel.Tokens
+
 @inject INewsService NewsService
 @inject IShortcutService ShortcutService
 
@@ -11,6 +14,9 @@
 @{
     var title = "Новости РТК";
     var readButton = "Полный текст";
+
+    int newsLimit = 3;
+    List<NewsItem> limitedNewsItems = NewsService.GetNews().Take(newsLimit).ToList();
 }
 
 <section class="light">
@@ -29,29 +35,83 @@
                 </div>
             }
         </section>
+        
+        <section class="pt-3">
+            <h4>Актуальные новости</h4>
+            @foreach (var newsItem in limitedNewsItems)
+            {
+                <article class="postcard light blue" data-bs-toggle="modal" data-bs-target="#modal-@newsItem.Id">
+                    <a class="postcard__img_link" href="#">
+                        @if (!newsItem.PicSrc.IsNullOrEmpty())
+                        {
+                            <img class="postcard__img" src="@newsItem.PicSrc" alt="Image Title"/>
+                        }
+                    </a>
+                    <div class="postcard__text t-dark">
+                        <h1 class="postcard__title red">
+                            <a href="#">@newsItem.Title</a>
+                        </h1>
+                        <div class="postcard__subtitle small">
+                            @if (newsItem.PublishDate.TimeOfDay.ToString() == "00:00:00")
+                            {
+                                <time datetime="25-05-2023 12:00:00">
+                                    <i class="fa fa-calendar-alt mr-2"></i>@newsItem.PublishDate.Date.ToString("dd/MM/yyyy")
+                                </time>
+                            }
+                            else
+                            {
+                                <time datetime="25-05-2023 12:00:00">
+                                    <i class="fa fa-calendar-alt mr-2"></i>@newsItem.PublishDate
+                                </time>
+                            }
+                        </div>
+                        @* <div class="postcard__bar"></div> *@
+                        @* <div class="postcard__preview-txt"> *@
+                        @*     @Markdown.ParseHtmlString( *@
+                        @*         NewsAction.GetLimitedWords(newsItem.Content, 15)) *@
+                        @* </div> *@
 
-        <div class="line pt-3"></div>
+                        @* <ul class="postcard__tagbox"> *@
+                        @*     @if (!newsItem.Tags.IsNullOrEmpty()) *@
+                        @*     { *@
+                        @*         <li class="tag__item"> *@
+                        @*             <i class="fa fa-tag mr-2"></i>@newsItem.Tags *@
+                        @*         </li> *@
+                        @*     } *@
+                        @*     @if (!newsItem.Author.IsNullOrEmpty()) *@
+                        @*     { *@
+                        @*         <li class="tag__item"> *@
+                        @*             <i class="fas fa-user-tie mr-2"></i>@newsItem.Author *@
+                        @*         </li> *@
+                        @*     } *@
+                        @*     @if (!newsItem.TimeToRead.IsNullOrEmpty()) *@
+                        @*     { *@
+                        @*         <li class="tag__item"> *@
+                        @*             <i class="fa fa-clock mr-2"></i>@newsItem.TimeToRead *@
+                        @*         </li> *@
+                        @*     } *@
+                        @* </ul> *@
+                    </div>
+                </article>
 
-        <section class="game-section pt-3">
-            <h2>Актуальные новости</h2>
-            @* 
-            TODO: Сделать ширину блока больше ширины страницы, но контент скрывался 
-            (см <div class="owl-stage" style="transform: translate3d(0px, 0px, 0px);">)
-            width:4000px;*@
-            <div class="owl-carousel custom-carousel owl-theme owl-loaded">
-                    @foreach (var newsItem in NewsService.GetNews())
-                    {
-                        <div class="item" style="background-image: url(@newsItem.PicSrc);">
-                            <div class="item-desc">
-                                <h3>@newsItem.Title</h3>
-                                <p>@NewsAction.GetLimitedWords(newsItem.Content, 15))</p>
+                <div class="modal fade" id="modal-@newsItem.Id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-scrollable modal-xl">
+                        <div class="modal-content h-100">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">@newsItem.Title</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                @Markdown.ParseHtmlString(newsItem.Content)
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
                             </div>
                         </div>
-                    }
-            </div>
+                    </div>
+                </div>
+            }
         </section>
-
-        <footer></footer>
     </div>
 </section>
 
