@@ -98,7 +98,7 @@ main {
 }
 
 .sidebar.close .nav-links li .iocn-link {
-    display: block
+    display: flex
 }
 
 .sidebar .nav-links li i {
@@ -107,7 +107,7 @@ main {
     text-align: center;
     line-height: 50px;
     color: #fff;
-    font-size: 20px;
+    font-size: 30px;
     cursor: pointer;
     transition: all 0.3s ease;
 }
@@ -133,7 +133,7 @@ main {
 }
 
 .sidebar .nav-links li a .link_name {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 400;
     color: #fff;
     transition: all 0.4s ease;
