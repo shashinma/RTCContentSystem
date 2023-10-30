@@ -1175,9 +1175,15 @@ button {
     }
 }
 
-footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
+.footer {
+    background: rgba(228, 233, 247, 0.5);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(7.7px);
+    -webkit-backdrop-filter: blur(7.7px);
+    padding: 1.5rem;
+    max-height: 131px;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
 }
