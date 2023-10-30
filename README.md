@@ -1,7 +1,6 @@
 # POSTerminalWebApp
 
 [![.NET](https://github.com/shashinma/POSTerminalWebApp/actions/workflows/dotnet.yml/badge.svg)](https://github.com/shashinma/POSTerminalWebApp/actions/workflows/dotnet.yml)
-[![CodeQL](https://github.com/shashinma/POSTerminalWebApp/actions/workflows/github-code-scanning/codeql/badge.svg?branch=main)](https://github.com/shashinma/POSTerminalWebApp/actions/workflows/github-code-scanning/codeql)
 [![CodeQL](https://github.com/shashinma/POSTerminalWebApp/actions/workflows/codeql.yml/badge.svg)](https://github.com/shashinma/POSTerminalWebApp/actions/workflows/codeql.yml)
 [![ESLint](https://github.com/shashinma/POSTerminalWebApp/actions/workflows/eslint.yml/badge.svg)](https://github.com/shashinma/POSTerminalWebApp/actions/workflows/eslint.yml) </br>
 
