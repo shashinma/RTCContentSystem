@@ -6,7 +6,7 @@
     ViewData["ActivePage"] = ManageNavPages.TwoFactorAuthentication;
 }
 
-<partial name="_StatusMessage" for="StatusMessage" />
+<partial name="_StatusMessage" for="StatusMessage"/>
 <h3>@ViewData["Title"]</h3>
 @{
     var consentFeature = HttpContext.Features.Get<ITrackingConsentFeature>();
@@ -67,5 +67,5 @@
 }
 
 @section Scripts {
-    <partial name="_ValidationScriptsPartial" />
+    <partial name="_ValidationScriptsPartial"/>
 }

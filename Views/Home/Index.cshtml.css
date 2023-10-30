@@ -4,7 +4,7 @@
 
 /*CARDS 1 STYLES*/
 
-h1+p {
+h1 + p {
     font-size: 1.8rem;
     padding: 2rem 0 3rem;
 }
@@ -23,7 +23,7 @@ h1+p {
 .wrap {
     /*margin: 0 auto;*/
     /*padding: 20px 0;*/
-    
+
     transform-style: preserve-3d;
     transform: perspective(100rem);
 
@@ -167,8 +167,8 @@ h1+p {
 
 .card:hover {
     transform: scale(0.9, 0.9);
-    box-shadow: 5px 5px 30px 15px rgba(0,0,0,0.25),
-    -5px -5px 30px 15px rgba(0,0,0,0.22);
+    box-shadow: 5px 5px 30px 15px rgba(0, 0, 0, 0.25),
+    -5px -5px 30px 15px rgba(0, 0, 0, 0.22);
 }
 
 .title-white {
@@ -247,7 +247,7 @@ a, a:hover {
     flex-wrap: wrap;
     box-shadow: 0 4px 21px -12px rgba(0, 0, 0, 0.66);
     border-radius: 10px;
-    margin: 0 0 2rem 0;
+    margin: 0 0 1rem 0;
     overflow: hidden;
     position: relative;
     color: #ffffff;
@@ -374,7 +374,7 @@ a, a:hover {
     }
 
     .postcard .postcard__title {
-        font-size: 2rem;
+        font-size: 1.3rem;
     }
 
     .postcard .postcard__tagbox {
@@ -383,12 +383,13 @@ a, a:hover {
 
     .postcard .postcard__img {
         max-width: 300px;
-        max-height: 100%;
+        max-height: 131px;
+        /*max-height: 100%;*/
         transition: transform 0.3s ease;
     }
 
     .postcard .postcard__text {
-        padding: 3rem;
+        padding: 1.5rem;
         width: 100%;
     }
 
@@ -399,7 +400,7 @@ a, a:hover {
         background: #18151f;
         top: -20%;
         height: 130%;
-        width: 55px;
+        width: 25px;
     }
 
     .postcard:hover .postcard__img {
@@ -407,22 +408,23 @@ a, a:hover {
     }
 
     .postcard:nth-child(2n + 1) {
-        /*flex-direction: row;*/
         flex-direction: row;
+        height: 131px;
     }
 
     .postcard:nth-child(2n + 0) {
-        flex-direction: row-reverse;
+        flex-direction: row;
+        height: 131px;
     }
 
     .postcard:nth-child(2n + 1) .postcard__text::before {
-        left: -12px !important;
-        transform: rotate(4deg);
+        left: -35px !important;
+        transform: rotate(3deg);
     }
 
     .postcard:nth-child(2n + 0) .postcard__text::before {
-        right: -12px !important;
-        transform: rotate(-4deg);
+        left: -35px !important;
+        transform: rotate(3deg);
     }
 }
 
@@ -495,7 +497,7 @@ a, a:hover {
 }
 
 .blue:nth-child(2n)::before {
-    background-image: linear-gradient(30deg, rgba(0, 118, 189, 0.1), transparent 50%);
+    /*background-image: linear-gradient(30deg, rgba(0, 118, 189, 0.1), transparent 50%);*/
 }
 
 .postcard .postcard__tagbox .red.play {
@@ -562,7 +564,7 @@ a, a:hover {
     }
 
     .blue:nth-child(2n)::before {
-        background-image: linear-gradient(80deg, rgba(0, 118, 189, 0.1), transparent 50%);
+        /*background-image: linear-gradient(80deg, rgba(0, 118, 189, 0.1), transparent 50%);*/
     }
 
     .red::before {
@@ -811,10 +813,6 @@ a, a:hover {
 }
 
 
-
-
-
-
 .center {
     display: flex;
     align-items: center;
@@ -823,7 +821,7 @@ a, a:hover {
 
 .article-card {
     width: auto;
-    height: 170px;
+    height: 200px;
     border-radius: 12px;
     overflow: hidden;
     position: relative;
@@ -872,41 +870,20 @@ a, a:hover {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .clear {
     clear: both;
 }
+
 img {
     max-width: 100%;
     border: 0px;
 }
+
 ul,
 ol {
     list-style: none;
 }
+
 a {
     text-decoration: none;
     color: inherit;
@@ -914,6 +891,7 @@ a {
     transition: all 0.4s ease-in-out;
     -webkit-transition: all 0.4s ease-in-out;
 }
+
 a:focus,
 a:active,
 a:visited,
@@ -921,9 +899,11 @@ a:hover {
     text-decoration: none;
     outline: none;
 }
+
 a:hover {
     color: #e73700;
 }
+
 h2 {
     /*margin-bottom: 48px;*/
     padding-top: 16px;
@@ -934,6 +914,7 @@ h2 {
     position: relative;
     text-transform: capitalize;
 }
+
 h3 {
     margin: 0 0 10px;
     font-size: 14px;
@@ -941,9 +922,17 @@ h3 {
     line-height: 25px;
 }
 
+h4 {
+    margin: 5px 0 10px 10px;
+    font-size: 20px;
+    font-weight: 900;
+    line-height: 25px;
+}
+
 button {
     outline: none !important;
 }
+
 /******* Common Element CSS End *********/
 
 /* -------- title style ------- */
@@ -951,6 +940,7 @@ button {
     position: relative;
     width: 100%;
 }
+
 .line-title::before,
 .line-title::after {
     content: "";
@@ -960,10 +950,12 @@ button {
     height: 4px;
     border-radius: 2px;
 }
+
 .line-title::before {
     width: 100%;
     background: #f2f2f2;
 }
+
 .line-title::after {
     width: 32px;
     background: #e73700;
@@ -983,10 +975,12 @@ button {
     /*display: -webkit-box;*/
     width: 4000px !important;
 }
+
 .game-section .owl-stage-outer {
     width: 4000px !important;
     border-radius: 16px;
 }
+
 .game-section .item {
     margin-right: 1rem;
     width: 265px;
@@ -1004,11 +998,13 @@ button {
     -webkit-transition: all 0.4s ease-in-out;
     cursor: pointer;
 }
+
 .game-section .item.active {
     width: 500px;
     /*box-shadow: 12px 40px 40px rgba(0, 0, 0, 0.25);*/
     /*-webkit-box-shadow: 12px 40px 40px rgba(0, 0, 0, 0.25);*/
 }
+
 .game-section .item:after {
     content: "";
     display: block;
@@ -1021,6 +1017,7 @@ button {
             rgba(0, 0, 0, 0),
             rgba(0, 0, 0, 0.6));
 }
+
 .game-section .item-desc {
     padding: 0 24px 12px;
     color: #fff;
@@ -1037,6 +1034,7 @@ button {
     transform: none;
     -webkit-transform: none;
 }
+
 .game-section .item-desc p {
     font-size: 12px;
     opacity: 0;
@@ -1045,17 +1043,20 @@ button {
     transition: all 0.4s ease-in-out 0.2s;
     -webkit-transition: all 0.4s ease-in-out 0.2s;
 }
+
 .game-section .item.active .item-desc p {
     font-size: 14px;
     opacity: 1;
     -webkit-transform: translateY(0);
     transform: translateY(0);
 }
+
 .game-section .owl-theme.custom-carousel .owl-dots {
     margin-top: -20px;
     position: relative;
     z-index: 5;
 }
+
 /******** Middle section CSS End *******/
 
 /***** responsive css Start ******/
@@ -1064,6 +1065,7 @@ button {
     h2 {
         margin-bottom: 32px;
     }
+
     h3 {
         margin: 0 0 8px;
         font-size: 17px;
@@ -1075,14 +1077,17 @@ button {
     .game-section {
         height: 2rem;
     }
+
     .game-section .item {
         margin: 0 12px 60px;
         width: 260px;
         height: 100%;
     }
+
     .game-section .item.active {
         width: 265px;
     }
+
     .game-section .item-desc {
         transform: translateY(calc(100% - 46px));
         -webkit-transform: translateY(calc(100% - 46px));
@@ -1093,12 +1098,14 @@ button {
     h2 {
         margin-bottom: 32px;
     }
+
     h3 {
         margin: 0 0 8px;
         font-size: 17px;
         font-weight: 900;
         line-height: 32px;
     }
+
     .line-title {
         width: 330px;
     }
@@ -1107,14 +1114,17 @@ button {
     .game-section {
         padding: 50px 30px 40px;
     }
+
     .game-section .item {
         margin: 0 12px 60px;
         width: 240px;
         height: 330px;
     }
+
     .game-section .item.active {
         width: 360px;
     }
+
     .game-section .item-desc {
         transform: translateY(calc(100% - 42px));
         -webkit-transform: translateY(calc(100% - 42px));
@@ -1125,16 +1135,18 @@ button {
     body {
         font-size: 14px;
     }
+
     h2 {
         margin-bottom: 20px;
     }
+
     h3 {
         margin: 0 0 8px;
         font-size: 17px;
         font-weight: 900;
         line-height: 24px;
     }
-    
+
     .line-title {
         width: 250px;
     }
@@ -1143,16 +1155,19 @@ button {
     .game-section {
         padding: 30px 15px 20px;
     }
+
     .game-section .item {
         margin: 0 10px 40px;
         width: 250px;
         height: 280px;
     }
+
     .game-section .item.active {
         width: 270px;
         box-shadow: 6px 10px 10px rgba(0, 0, 0, 0.25);
         -webkit-box-shadow: 6px 10px 10px rgba(0, 0, 0, 0.25);
     }
+
     .game-section .item-desc {
         padding: 0 14px 5px;
         transform: translateY(calc(100% - 42px));

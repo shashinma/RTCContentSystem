@@ -5,98 +5,98 @@ nav: demos
 description: RTL usage demo
 sort: 9
 
-tags: 
+tags:
 - demo
 - core
 ---
 
 <div class="owl-carousel owl-theme">
-	<div class="item"><h4>1</h4></div>
-	<div class="item"><h4>2</h4></div>
-	<div class="item"><h4>3</h4></div>
-	<div class="item"><h4>4</h4></div>
-	<div class="item"><h4>5</h4></div>
-	<div class="item"><h4>6</h4></div>
-	<div class="item"><h4>7</h4></div>
-	<div class="item"><h4>8</h4></div>
-	<div class="item"><h4>9</h4></div>
-	<div class="item"><h4>10</h4></div>
-	<div class="item"><h4>11</h4></div>
-	<div class="item"><h4>12</h4></div>
+    <div class="item"><h4>1</h4></div>
+    <div class="item"><h4>2</h4></div>
+    <div class="item"><h4>3</h4></div>
+    <div class="item"><h4>4</h4></div>
+    <div class="item"><h4>5</h4></div>
+    <div class="item"><h4>6</h4></div>
+    <div class="item"><h4>7</h4></div>
+    <div class="item"><h4>8</h4></div>
+    <div class="item"><h4>9</h4></div>
+    <div class="item"><h4>10</h4></div>
+    <div class="item"><h4>11</h4></div>
+    <div class="item"><h4>12</h4></div>
 </div>
 
 {{#markdown }}
-### Overview
+    ### Overview
 
-By adding `rtl:true` Owl will change direction from Right to left.
+    By adding `rtl:true` Owl will change direction from Right to left.
 
-Default:
-```
-rtl: false
-```
+    Default:
+    ```
+    rtl: false
+    ```
 
-### Setup
-```
-$('.owl-carousel').owlCarousel({
-	rtl:true,
-	loop:true,
-	margin:10,
-	nav:true,
-	responsive:{
-		0:{
-			items:1
-		},
-		600:{
-			items:3
-		},
-		1000:{
-			items:5
-		}
-	}
-})
-```
-### html
-```
-<div class="owl-carousel owl-theme">
-	<div class="item"><h4>1</h4></div>
-	<div class="item"><h4>2</h4></div>
-	<div class="item"><h4>3</h4></div>
-	<div class="item"><h4>4</h4></div>
-	<div class="item"><h4>5</h4></div>
-	<div class="item"><h4>6</h4></div>
-	<div class="item"><h4>7</h4></div>
-	<div class="item"><h4>8</h4></div>
-	<div class="item"><h4>9</h4></div>
-	<div class="item"><h4>10</h4></div>
-	<div class="item"><h4>11</h4></div>
-	<div class="item"><h4>12</h4></div>
-</div>
-```
+    ### Setup
+    ```
+    $('.owl-carousel').owlCarousel({
+    rtl:true,
+    loop:true,
+    margin:10,
+    nav:true,
+    responsive:{
+    0:{
+    items:1
+    },
+    600:{
+    items:3
+    },
+    1000:{
+    items:5
+    }
+    }
+    })
+    ```
+    ### html
+    ```
+    <div class="owl-carousel owl-theme">
+        <div class="item"><h4>1</h4></div>
+        <div class="item"><h4>2</h4></div>
+        <div class="item"><h4>3</h4></div>
+        <div class="item"><h4>4</h4></div>
+        <div class="item"><h4>5</h4></div>
+        <div class="item"><h4>6</h4></div>
+        <div class="item"><h4>7</h4></div>
+        <div class="item"><h4>8</h4></div>
+        <div class="item"><h4>9</h4></div>
+        <div class="item"><h4>10</h4></div>
+        <div class="item"><h4>11</h4></div>
+        <div class="item"><h4>12</h4></div>
+    </div>
+    ```
 
-{{/markdown }} 
+{{/markdown }}
 
 <script>
-$(document).ready(function(){
-	var owl = $('.owl-carousel');
+    $(document).ready(function () {
+        var owl = $('.owl-carousel');
 
-	owl.owlCarousel({
-		rtl:true,
-		margin:10,
-		nav:true,
-		loop:true,
-		responsive:{
-			0:{
-				items:1
-			},
-			600:{
-				items:3
-			},
-			1000:{
-				items:5
-			}
-		}
-	})
-})
+        owl.owlCarousel({
+            rtl: true,
+            margin: 10,
+            nav: true,
+            loop: true,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 3
+                },
+                1000: {
+                    items: 5
+                }
+            }
+        })
+    })
 
 
 </script>
