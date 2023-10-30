@@ -223,6 +223,7 @@ body {
     /*background: #f3f5f7;*/
     /*background: #ffffff;*/
     background: transparent;
+    height: calc(100vh - 60px);
 }
 
 i {
@@ -1173,4 +1174,17 @@ button {
         transform: translateY(calc(100% - 42px));
         -webkit-transform: translateY(calc(100% - 42px));
     }
+}
+
+.footer {
+    background: rgba(228, 233, 247, 0.5);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(7.7px);
+    -webkit-backdrop-filter: blur(7.7px);
+    padding: 1.5rem;
+    max-height: 131px;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
 }
