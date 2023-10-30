@@ -1,7 +1,8 @@
 @using POSTerminalWebApp.Services
-@using POSTerminalWebApp.Views.Home
+@using POSTerminalWebApp.Views.News
 @using Westwind.AspNetCore.Markdown
 @using Microsoft.IdentityModel.Tokens
+@using System.Runtime.InteropServices.JavaScript
 
 @inject INewsService NewsService
 @inject IShortcutService ShortcutService
@@ -15,13 +16,15 @@
     var title = "Новости РТК";
     var readButton = "Полный текст";
 
+    var currentYear = DateTime.Now.Year;
+
     int newsLimit = 3;
     List<NewsItem> limitedNewsItems = NewsService.GetNews().Take(newsLimit).ToList();
 }
 
 <section class="light">
     <div class="container py-2">
-        <section class="main_c">
+        <section class="main_c pb-4 border-bottom">
             @foreach (var shortcutItem in ShortcutService.GetShortcut())
             {
                 <div class="wrap wrap--1">
@@ -36,7 +39,7 @@
             }
         </section>
         
-        <section class="pt-3">
+        <section class="pt-2">
             <h4>Актуальные новости</h4>
             @foreach (var newsItem in limitedNewsItems)
             {
@@ -65,32 +68,6 @@
                                 </time>
                             }
                         </div>
-                        @* <div class="postcard__bar"></div> *@
-                        @* <div class="postcard__preview-txt"> *@
-                        @*     @Markdown.ParseHtmlString( *@
-                        @*         NewsAction.GetLimitedWords(newsItem.Content, 15)) *@
-                        @* </div> *@
-
-                        @* <ul class="postcard__tagbox"> *@
-                        @*     @if (!newsItem.Tags.IsNullOrEmpty()) *@
-                        @*     { *@
-                        @*         <li class="tag__item"> *@
-                        @*             <i class="fa fa-tag mr-2"></i>@newsItem.Tags *@
-                        @*         </li> *@
-                        @*     } *@
-                        @*     @if (!newsItem.Author.IsNullOrEmpty()) *@
-                        @*     { *@
-                        @*         <li class="tag__item"> *@
-                        @*             <i class="fas fa-user-tie mr-2"></i>@newsItem.Author *@
-                        @*         </li> *@
-                        @*     } *@
-                        @*     @if (!newsItem.TimeToRead.IsNullOrEmpty()) *@
-                        @*     { *@
-                        @*         <li class="tag__item"> *@
-                        @*             <i class="fa fa-clock mr-2"></i>@newsItem.TimeToRead *@
-                        @*         </li> *@
-                        @*     } *@
-                        @* </ul> *@
                     </div>
                 </article>
 
@@ -112,6 +89,18 @@
                 </div>
             }
         </section>
+        
+        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 mb-0 border-top">
+            <p class="col-md-4 mb-0 text-muted">© 1998-@currentYear ЦНИИ РТК. Все права защищены</p>
+        
+            <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none" >
+                <img src="@Url.Content("~/resources/qr-codes/qr-code-telegram.png")" width="120px" height="120px" style="background:transparent">
+            </a>
+            
+            <ul class="nav col-md-4 justify-content-end" style="flex-wrap: wrap">
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Связь с разработчиком</a></li>
+            </ul>
+        </footer>
     </div>
 </section>
 
