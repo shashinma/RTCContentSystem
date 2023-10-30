@@ -98,7 +98,7 @@ main {
 }
 
 .sidebar.close .nav-links li .iocn-link {
-    display: block
+    display: flex;
 }
 
 .sidebar .nav-links li i {
