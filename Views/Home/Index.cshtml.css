@@ -1174,3 +1174,10 @@ button {
         -webkit-transform: translateY(calc(100% - 42px));
     }
 }
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
