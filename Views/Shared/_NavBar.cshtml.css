@@ -322,8 +322,10 @@ main {
 
 .home-section .home-content {
     height: 60px;
+    width: 100%;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     background-color: transparent;
 }
 
@@ -382,4 +384,35 @@ main {
     position: sticky;
     top: 0;
     z-index: 100;
+}
+
+/* == Clock == */
+
+.clock-block
+{
+    /*margin: auto;*/
+    display: flex;
+    /*justify-content: flex-end;*/
+    justify-items: flex-end;
+    align-items: center;
+    height: 100%;
+    flex-direction: row;
+    margin: 0 80px 0 0;
+}
+.date{
+    margin: 0 5px 0 15px;
+    text-align: center;
+    font-size: 20px;
+    color: #11101d;
+}
+.clock{
+    text-align: center;
+    font-size: 20px;
+    color: #11101d;
+}
+.dayOfWeek
+{
+    display: block;
+    font-weight: normal;
+    font-size: 18px;
 }
