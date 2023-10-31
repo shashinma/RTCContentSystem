@@ -17,6 +17,9 @@ test-results/
 *.db*
 !*.db
 
+# GitHub
+.github/
+
 # Mac bundle stuff
 *.dmg
 *.app
