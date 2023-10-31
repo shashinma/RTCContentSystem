@@ -20,7 +20,7 @@ jobs:
           dotnet build
       - name: Analyze
         run: |
-          pvs-studio-analyzer analyze -f bin/Debug/net7.0/*.json -j
+          pvs-studio-analyzer analyze
       - name: Convert report
         run: |
           plog-converter -t sarif -o pvs-report.sarif PVS-Studio.log
