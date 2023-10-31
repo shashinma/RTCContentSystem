@@ -823,7 +823,7 @@ a, a:hover {
 .article-card {
     width: auto;
     height: 230px;
-    border-radius: 12px;
+    border-radius: 10px;
     overflow: hidden;
     position: relative;
     font-family: Arial, Helvetica, sans-serif;

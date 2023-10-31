@@ -1,10 +1,14 @@
-<div class="home-content">
-    <i class="bx bx-menu"></i>
-    @* @{ *@
-    @*     while (true) *@
-    @*     { *@
-    @*         DateTime.Now.ToString("HH:mm:ss"); *@
-    @*     } *@
-    @* } *@
+<body onload="clockTimer()">
+	<div class="home-content">
+		<i class="bx bx-menu"></i>
+		<div class="clock-block">
+			<div class="date-time">
+				<i class='fa fa-clock mr-2'></i>
+				<div class="date" id="dayOfWeek"></div>
+				<div class="clock" id="time"></div>
+			</div>
+		</div>
+	</div>
+</body>
 
-</div>
+<script src="/Views/Shared/_NavBar.cshtml.js" asp-append-version="true"></script>
