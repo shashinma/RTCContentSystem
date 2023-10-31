@@ -17,8 +17,7 @@ jobs:
           pvs-studio-analyzer credentials ${{ secrets.PVS_STUDIO_CREDENTIALS }}
       - name: Build
         run: |
-          cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=On -B build .
-          cmake --build build -j
+          dotnet build --no-restore
       - name: Analyze
         run: |
           pvs-studio-analyzer analyze -f build/compile_commands.json -j
@@ -26,7 +25,7 @@ jobs:
         run: |
           plog-converter -t sarif -o pvs-report.sarif PVS-Studio.log
       - name: Publish report
-        uses: github/codeql-action/upload-sarif@v1
+        uses: github/codeql-action/upload-sarif@v2
         with:
           sarif_file: pvs-report.sarif
           category: PVS-Studio
