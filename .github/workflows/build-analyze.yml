@@ -17,7 +17,7 @@ jobs:
           pvs-studio-analyzer credentials ${{ secrets.PVS_STUDIO_CREDENTIALS }}
       - name: Build
         run: |
-          dotnet build --no-restore
+          dotnet build
       - name: Analyze
         run: |
           pvs-studio-analyzer analyze -f build/compile_commands.json -j
