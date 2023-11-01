@@ -41,12 +41,12 @@
             @foreach (var newsItem in limitedNewsItems)
             {
                 <article class="postcard light blue" data-bs-toggle="modal" data-bs-target="#modal-@newsItem.Id">
-                    <a class="postcard__img_link" href="#">
-                        @if (!newsItem.PicSrc.IsNullOrEmpty())
-                        {
+                    @if (!newsItem.PicSrc.IsNullOrEmpty())
+                    {
+                        <a class="postcard__img_link" href="#">
                             <img class="postcard__img" src="@newsItem.PicSrc" alt="Image Title"/>
-                        }
-                    </a>
+                        </a>
+                    }
                     <div class="postcard__text t-dark">
                         <h1 class="postcard__title red">
                             <a href="#">@newsItem.Title</a>
