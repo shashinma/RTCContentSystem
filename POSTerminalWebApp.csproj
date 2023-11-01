@@ -32,12 +32,6 @@
         <PackageReference Include="Westwind.AspNetCore.Markdown" Version="3.12.0"/>
     </ItemGroup>
 
-    <ItemGroup>
-        <Content Include="..\.dockerignore">
-            <Link>.dockerignore</Link>
-        </Content>
-    </ItemGroup>
-
 
     <ItemGroup>
         <None Include="wwwroot\css\keyboard.css"/>
