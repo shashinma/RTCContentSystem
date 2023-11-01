@@ -410,12 +410,14 @@ a, a:hover {
 
     .postcard:nth-child(2n + 1) {
         flex-direction: row;
-        height: 131px;
+        height: min-content;
+        /*height: 131px;*/
     }
 
     .postcard:nth-child(2n + 0) {
         flex-direction: row;
-        height: 131px;
+        height: min-content;
+        /*height: 131px;*/
     }
 
     .postcard:nth-child(2n + 1) .postcard__text::before {
