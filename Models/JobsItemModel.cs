@@ -9,4 +9,6 @@ public class JobsItem
     public string Requirements { get; set; }
     
     public string Responsibilities { get; set; }
+
+    public string? PicSrc { get; set; }
 }
