@@ -1,12 +1,30 @@
 ﻿@using POSTerminalWebApp.Services
 @using Westwind.AspNetCore.Markdown
-@inject IJobsService AboutService
+
+@inject IJobsService JobsService
 
 <link rel="stylesheet" href="~/lib/font-awesome-5.15.4/css/all.css">
 
 <div class="container py-2">
-    @foreach (var jobsItem in AboutService.getJobs())
+    @foreach (var jobsItem in JobsService.getJobs())
     {
-        @Markdown.ParseHtmlStringFromFile(Url.Content(jobsItem.Content))
+        @* <article class="postcard light blue" data-bs-toggle="modal" data-bs-target="#modal-@jobsItem.Id"> *@
+        <article class="postcard light blue">
+            <div class="postcard__text t-dark">
+                <h1 class="postcard__title red">
+                    <a href="#">@jobsItem.Vacancy</a>
+                </h1>
+                
+                <div class="postcard__bar"></div>
+                <div class="postcard__preview-txt">
+                    @jobsItem.Responsibilities
+                </div>
+                
+                <div class="postcard__bar"></div>
+                <div class="postcard__preview-txt">
+                    @jobsItem.Requirements
+                </div>
+            </div>
+        </article>
     }
 </div>

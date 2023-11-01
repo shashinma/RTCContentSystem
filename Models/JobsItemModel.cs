@@ -3,6 +3,10 @@
 public class JobsItem
 {
     public int Id { get; set; }
-    public string Title { get; set; }
-    public string Content { get; set; }
+    
+    public string Vacancy { get; set; }
+    
+    public string Requirements { get; set; }
+    
+    public string Responsibilities { get; set; }
 }
