@@ -65,6 +65,9 @@ namespace POSTerminalWebApp.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("PicSrc")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Requirements")
                         .IsRequired()
                         .HasColumnType("TEXT");
