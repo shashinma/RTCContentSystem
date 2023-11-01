@@ -932,6 +932,15 @@ h4 {
     line-height: 25px;
 }
 
+h5 {
+    /*margin: 5px 0 10px 10px;*/
+    margin: 5px 0 0 0;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: Poppins, sans-serif;
+    /*line-height: 25px;*/
+}
+
 button {
     outline: none !important;
 }
