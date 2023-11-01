@@ -4,36 +4,45 @@
 
 @inject IJobsService JobsService
 
+@{
+    var title = "Вакансии";
+}
+
 <link rel="stylesheet" href="~/lib/font-awesome-5.15.4/css/all.css">
 
-<div class="container py-2">
-    @foreach (var jobsItem in JobsService.getJobs())
-    {
+<section class="light">
+    <div class="h1 text-center text-dark mb-3" id="pageHeaderTitle">@title</div>
+    <h5 class="text-center">тел. 552-15-15, 552-16-00</h5>
+    <h5 class="text-center mb-5">hr@rtc.ru, i.ahmetova@rtc.ru</h5>
+    <div class="container py-2">
+        @foreach (var jobsItem in JobsService.getJobs())
+        {
         @* <article class="postcard light blue" data-bs-toggle="modal" data-bs-target="#modal-@jobsItem.Id"> *@
-        <article class="postcard light blue">
-            @if (!jobsItem.PicSrc.IsNullOrEmpty())
-            {
-                <a class="postcard__img_link" href="#">
-                    <img class="postcard__img" src="@jobsItem.PicSrc" alt="Image Title"/>
-                </a>
-            }
-            <div class="postcard__text t-dark">
-                <h1 class="postcard__title red">
-                    <a href="#">@jobsItem.Vacancy</a>
-                </h1>
+            <article class="postcard light blue">
+                @if (!jobsItem.PicSrc.IsNullOrEmpty())
+                {
+                    <a class="postcard__img_link" href="#">
+                        <img class="postcard__img" src="@jobsItem.PicSrc" alt="Image Title"/>
+                    </a>
+                }
+                <div class="postcard__text t-dark">
+                    <h1 class="postcard__title red">
+                        <a href="#">@jobsItem.Vacancy</a>
+                    </h1>
 
-                <h5>Обязанности</h5>
-                <div class="postcard__bar"></div>
-                <div class="postcard__preview-txt">
-                    @jobsItem.Responsibilities
-                </div>
+                    <h5>Обязанности</h5>
+                    <div class="postcard__bar"></div>
+                    <div class="postcard__preview-txt">
+                        @jobsItem.Responsibilities
+                    </div>
 
-                <h5>Требования</h5>
-                <div class="postcard__bar"></div>
-                <div class="postcard__preview-txt">
-                    @jobsItem.Requirements
+                    <h5>Требования</h5>
+                    <div class="postcard__bar"></div>
+                    <div class="postcard__preview-txt">
+                        @jobsItem.Requirements
+                    </div>
                 </div>
-            </div>
-        </article>
-    }
-</div>
+            </article>
+        }
+    </div>
+</section>
