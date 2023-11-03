@@ -1,8 +1,9 @@
 # POSTerminalWebApp
 
 [![.NET](https://github.com/shashinma/POSTerminalWebApp/actions/workflows/dotnet.yml/badge.svg)](https://github.com/shashinma/POSTerminalWebApp/actions/workflows/dotnet.yml)
+[![Docker Image CI](https://github.com/shashinma/POSTerminalWebApp/actions/workflows/docker-image.yml/badge.svg)](https://github.com/shashinma/POSTerminalWebApp/actions/workflows/docker-image.yml)
+[![Dependency Review](https://github.com/shashinma/POSTerminalWebApp/actions/workflows/dependency-review.yml/badge.svg)](https://github.com/shashinma/POSTerminalWebApp/actions/workflows/dependency-review.yml)<br>
 [![CodeQL](https://github.com/shashinma/POSTerminalWebApp/actions/workflows/codeql.yml/badge.svg)](https://github.com/shashinma/POSTerminalWebApp/actions/workflows/codeql.yml)
-[![Dependency Review](https://github.com/shashinma/POSTerminalWebApp/actions/workflows/dependency-review.yml/badge.svg)](https://github.com/shashinma/POSTerminalWebApp/actions/workflows/dependency-review.yml)
 [![Lint Code Base](https://github.com/shashinma/POSTerminalWebApp/actions/workflows/super-linter.yml/badge.svg)](https://github.com/shashinma/POSTerminalWebApp/actions/workflows/super-linter.yml)
 [![OSSAR](https://github.com/shashinma/POSTerminalWebApp/actions/workflows/ossar.yml/badge.svg)](https://github.com/shashinma/POSTerminalWebApp/actions/workflows/ossar.yml)
 [![LICENSE](https://img.shields.io/github/license/shashinma/POSTerminalWebApp.svg)](LICENSE)
