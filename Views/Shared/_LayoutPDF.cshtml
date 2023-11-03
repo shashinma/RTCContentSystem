@@ -19,7 +19,7 @@
 
 <body class="mb-0">
 <!-- Sidebar -->
-@Html.Partial("_MenuPartialPDF.cshtml")
+@await Html.PartialAsync("_MenuPartialPDF.cshtml")
 
 <!-- TODO: To center <div class="container"> and <main> -->
 <!-- Content section -->
@@ -28,7 +28,7 @@
     @*   <i class='bx bx-menu' ></i> *@
     @* </div> *@
     <nav class="sticky">
-        @Html.Partial("_NavBar.cshtml")
+        @await Html.PartialAsync("_NavBar.cshtml")
     </nav>
     <div class="container p-0">
         <main role="main" class="p-0">
