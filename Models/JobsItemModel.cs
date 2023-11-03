@@ -1,4 +1,4 @@
-﻿namespace POSTerminalWebApp.Models;
+﻿namespace POSTerminal.Models;
 
 public class JobsItem
 {

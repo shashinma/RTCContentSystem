@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace POSTerminalWebApp.ViewModels;
+namespace POSTerminal.ViewModels;
 
 public class RegisterViewModel
 {

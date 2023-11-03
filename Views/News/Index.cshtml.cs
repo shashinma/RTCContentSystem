@@ -1,4 +1,4 @@
-﻿namespace POSTerminalWebApp.Views.News;
+﻿namespace POSTerminal.Views.News;
 
 public class NewsAction
 {

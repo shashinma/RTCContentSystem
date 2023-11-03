@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using POSTerminalWebApp.Data;
+using POSTerminal.Data;
 
 #nullable disable
 
-namespace POSTerminalWebApp.Data.Migrations
+namespace POSTerminal.Data.Migrations
 {
     [DbContext(typeof(IdentityContext))]
     [Migration("20231013004624_InitialIdentityMigration")]

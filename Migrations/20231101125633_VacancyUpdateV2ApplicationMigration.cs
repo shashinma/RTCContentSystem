@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace POSTerminalWebApp.Migrations
+namespace POSTerminal.Migrations
 {
     /// <inheritdoc />
     public partial class VacancyUpdateV2ApplicationMigration : Migration

@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using POSTerminalWebApp.Data;
+using POSTerminal.Data;
 
 #nullable disable
 
-namespace POSTerminalWebApp.Migrations
+namespace POSTerminal.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20231101115516_VacancyUpdateApplicationMigration")]
@@ -20,7 +20,7 @@ namespace POSTerminalWebApp.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.13");
 
-            modelBuilder.Entity("POSTerminalWebApp.Models.AboutItem", b =>
+            modelBuilder.Entity("POSTerminal.Models.AboutItem", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -39,7 +39,7 @@ namespace POSTerminalWebApp.Migrations
                     b.ToTable("AboutItems");
                 });
 
-            modelBuilder.Entity("POSTerminalWebApp.Models.InstructionItem", b =>
+            modelBuilder.Entity("POSTerminal.Models.InstructionItem", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -62,7 +62,7 @@ namespace POSTerminalWebApp.Migrations
                     b.ToTable("InstructionItems");
                 });
 
-            modelBuilder.Entity("POSTerminalWebApp.Models.JobsItem", b =>
+            modelBuilder.Entity("POSTerminal.Models.JobsItem", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -85,7 +85,7 @@ namespace POSTerminalWebApp.Migrations
                     b.ToTable("JobsItems");
                 });
 
-            modelBuilder.Entity("POSTerminalWebApp.Models.MenuItem", b =>
+            modelBuilder.Entity("POSTerminal.Models.MenuItem", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -108,7 +108,7 @@ namespace POSTerminalWebApp.Migrations
                     b.ToTable("MenuItems");
                 });
 
-            modelBuilder.Entity("POSTerminalWebApp.Models.NewsItem", b =>
+            modelBuilder.Entity("POSTerminal.Models.NewsItem", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -146,7 +146,7 @@ namespace POSTerminalWebApp.Migrations
                     b.ToTable("NewsItems");
                 });
 
-            modelBuilder.Entity("POSTerminalWebApp.Models.ShortcutItems", b =>
+            modelBuilder.Entity("POSTerminal.Models.ShortcutItems", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -169,7 +169,7 @@ namespace POSTerminalWebApp.Migrations
                     b.ToTable("ShortcutItems");
                 });
 
-            modelBuilder.Entity("POSTerminalWebApp.Models.SubMenuItem", b =>
+            modelBuilder.Entity("POSTerminal.Models.SubMenuItem", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -193,9 +193,9 @@ namespace POSTerminalWebApp.Migrations
                     b.ToTable("SubMenuItems");
                 });
 
-            modelBuilder.Entity("POSTerminalWebApp.Models.SubMenuItem", b =>
+            modelBuilder.Entity("POSTerminal.Models.SubMenuItem", b =>
                 {
-                    b.HasOne("POSTerminalWebApp.Models.MenuItem", "MenuItem")
+                    b.HasOne("POSTerminal.Models.MenuItem", "MenuItem")
                         .WithMany("SubMenuItems")
                         .HasForeignKey("MenuItemId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -204,7 +204,7 @@ namespace POSTerminalWebApp.Migrations
                     b.Navigation("MenuItem");
                 });
 
-            modelBuilder.Entity("POSTerminalWebApp.Models.MenuItem", b =>
+            modelBuilder.Entity("POSTerminal.Models.MenuItem", b =>
                 {
                     b.Navigation("SubMenuItems");
                 });

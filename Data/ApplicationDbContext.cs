@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using POSTerminalWebApp.Models;
+using POSTerminal.Models;
 
-namespace POSTerminalWebApp.Data;
+namespace POSTerminal.Data;
 
 public class ApplicationDbContext : DbContext
 {

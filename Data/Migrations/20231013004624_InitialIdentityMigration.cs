@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace POSTerminalWebApp.Data.Migrations
+namespace POSTerminal.Data.Migrations
 {
     /// <inheritdoc />
     public partial class InitialIdentityMigration : Migration
