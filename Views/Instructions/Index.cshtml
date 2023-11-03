@@ -11,23 +11,6 @@
 <div class="h1 text-center text-dark" id="pageHeaderTitle">@title</div>
 
 <div class="container py-2">
-    @* @for (var i = 0; i < 1; i++) *@
-    @* { *@
-    @*     <div class="cardContainer inactive"> *@
-    @*         <div class="card" onclick="redirectToPage('Viewer/phishing')"> *@
-    @*             <div class="side front"> *@
-    @*                 <div class="img"> *@
-    @*                     <img src="@picSrc" alt="Image Title"/> *@
-    @*                 </div> *@
-    @*                 <div class="info"> *@
-    @*                     <h2>Фишинг</h2> *@
-    @*                     <p>Данное руководство поможет обезопасить ваши личные и корпоративные данные.</p> *@
-    @*                 </div> *@
-    @*             </div> *@
-    @*         </div> *@
-    @*     </div> *@
-    @* } *@
-
     <section class="main_c">
         @foreach (var instructionItem in InstructionsService.GetInstructions())
         {
