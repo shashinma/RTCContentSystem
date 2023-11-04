@@ -1,0 +1,19 @@
+name: GitRepoMirroring
+
+on:
+  - push
+  - delete
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    name: Git Repo Mirroring
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    - uses: shashinma/git-repo-mirror@v1.0.0
+      with:
+        target-url: ${{ secrets.GIT_URL }}
+        target-username: ${{ secrets.GIT_USERNAME }}
+        target-token: ${{ secrets.GIT_MIRROR_TOKEN }}
