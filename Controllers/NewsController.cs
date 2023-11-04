@@ -1,10 +1,10 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using POSTerminalWebApp.Data;
-using POSTerminalWebApp.Models;
+using POSTerminal.Data;
+using POSTerminal.Models;
 
-namespace POSTerminalWebApp.Controllers;
+namespace POSTerminal.Controllers;
 
 [Authorize]
 public class NewsController : Controller
