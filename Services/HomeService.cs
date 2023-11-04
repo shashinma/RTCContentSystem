@@ -1,4 +1,4 @@
-namespace POSTerminalWebApp.Services;
+namespace POSTerminal.Services;
 
 public class HomeService
 {

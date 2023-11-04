@@ -1,7 +1,7 @@
-﻿using POSTerminalWebApp.Data;
-using POSTerminalWebApp.Models;
+﻿using POSTerminal.Data;
+using POSTerminal.Models;
 
-namespace POSTerminalWebApp.Services;
+namespace POSTerminal.Services;
 
 public interface INewsService
 {

@@ -1,9 +1,9 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using POSTerminalWebApp.Models;
+using POSTerminal.Models;
 
-namespace POSTerminalWebApp.Controllers;
+namespace POSTerminal.Controllers;
 
 [Authorize]
 public class InstructionsController : Controller

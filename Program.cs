@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using POSTerminalWebApp.Data;
-using POSTerminalWebApp.Services;
+using POSTerminal.Data;
+using POSTerminal.Services;
 using Westwind.AspNetCore.Markdown;
 
 var builder = WebApplication.CreateBuilder(args);
