@@ -5,16 +5,16 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
-COPY ["POSTerminalWebApp.csproj", "./"]
-RUN dotnet restore "POSTerminalWebApp.csproj"
+COPY ["POSTerminal.csproj", "./"]
+RUN dotnet restore "POSTerminal.csproj"
 COPY . .
 WORKDIR "/src/"
-RUN dotnet build "POSTerminalWebApp.csproj" -c Release -o /app/build
+RUN dotnet build "POSTerminal.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "POSTerminalWebApp.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "POSTerminal.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "POSTerminalWebApp.dll"]
+ENTRYPOINT ["dotnet", "POSTerminal.dll"]
