@@ -5,10 +5,10 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
-COPY ["POSTerminal.csproj", "./"]
-RUN dotnet restore "POSTerminal.csproj"
+COPY ["POSTerminal/POSTerminal.csproj", "POSTerminal/"]
+RUN dotnet restore "POSTerminal/POSTerminal.csproj"
 COPY . .
-WORKDIR "/src/"
+WORKDIR "/src/ESPDumpsterWebApp.API"
 RUN dotnet build "POSTerminal.csproj" -c Release -o /app/build
 
 FROM build AS publish
