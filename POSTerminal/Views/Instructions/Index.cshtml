@@ -1,0 +1,29 @@
+﻿@using POSTerminal.Services
+@inject IInstructionsService InstructionsService
+
+<link rel="stylesheet" href="~/lib/font-awesome-5.15.4/css/all.css">
+
+@{
+    var title = "ИНСТРУКТАЖИ";
+    var picSrc = "/phishing.jpg";
+}
+
+<div class="h1 text-center text-dark" id="pageHeaderTitle">@title</div>
+
+<div class="container py-2">
+    <section class="main_c">
+        @foreach (var instructionItem in InstructionsService.GetInstructions())
+        {
+            <div class="wrap wrap--1">
+                <div class="article-card" onclick="redirectToPage('@instructionItem.LinkToPage')">
+                    <div class="content">
+                        <p class="title" style="font-weight:900">@instructionItem.Title</p>
+                    </div>
+                    <img src="@instructionItem.ImageUrl" alt="article-cover"/>
+                </div>
+            </div>
+        }
+    </section>
+</div>
+
+<script src="/Views/Instructions/Index.cshtml.js" asp-append-version="true"></script>
