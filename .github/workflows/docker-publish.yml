@@ -16,7 +16,7 @@ env:
 
 jobs:
   Build-ESPDumpsterWebApp:
-    environment: ESPDumpsterWebApp
+    environment: POSTerminal
       
     runs-on: ubuntu-latest
     
