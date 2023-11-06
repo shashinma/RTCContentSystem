@@ -2,6 +2,7 @@
 
 [![.NET](https://github.com/shashinma/RTCContentSystem/actions/workflows/dotnet.yml/badge.svg)](https://github.com/shashinma/RTCContentSystem/actions/workflows/dotnet.yml)
 [![Docker Image CI](https://github.com/shashinma/RTCContentSystem/actions/workflows/docker-image.yml/badge.svg)](https://github.com/shashinma/RTCContentSystem/actions/workflows/docker-image.yml)
+[![Docker Packages](https://github.com/shashinma/RTCContentSystem/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/shashinma/RTCContentSystem/actions/workflows/docker-publish.yml)
 [![Dependency Review](https://github.com/shashinma/RTCContentSystem/actions/workflows/dependency-review.yml/badge.svg)](https://github.com/shashinma/RTCContentSystem/actions/workflows/dependency-review.yml)<br>
 [![CodeQL](https://github.com/shashinma/RTCContentSystem/actions/workflows/codeql.yml/badge.svg)](https://github.com/shashinma/RTCContentSystem/actions/workflows/codeql.yml)
 [![Lint Code Base](https://github.com/shashinma/RTCContentSystem/actions/workflows/super-linter.yml/badge.svg)](https://github.com/shashinma/RTCContentSystem/actions/workflows/super-linter.yml)
