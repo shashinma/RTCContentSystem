@@ -15,7 +15,7 @@ env:
 
 
 jobs:
-  Build-ESPDumpsterWebApp:
+  Build-RTCContentSystem_POSTerminal:
     environment: POSTerminal
       
     runs-on: ubuntu-latest
@@ -65,7 +65,7 @@ jobs:
 
       # Build and push Docker image with Buildx (don't push on PR)
       # https://github.com/docker/build-push-action
-      - name: Build and push POSTerminal Docker image
+      - name: Build and push RTCContentSystem.POSTerminal Docker image
         id: build-and-push
         uses: docker/build-push-action@0565240e2d4ab88bba5387d719585280857ece09 # v5.0.0
         with:
@@ -81,7 +81,7 @@ jobs:
       # repository is public to avoid leaking data.  If you would like to publish
       # transparency data even for private images, pass --force to cosign below.
       # https://github.com/sigstore/cosign
-      - name: Sign the published POSTerminal Docker image
+      - name: Sign the published RTCContentSystem.POSTerminal Docker image
         if: ${{ github.event_name != 'pull_request' }}
         env:
           context: ./POSTerminal/
