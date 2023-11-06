@@ -8,7 +8,9 @@ WORKDIR /src
 COPY ["POSTerminal.csproj", "POSTerminal.csproj"]
 RUN dotnet restore "POSTerminal.csproj"
 COPY . .
+
 WORKDIR "/src"
+
 RUN dotnet build "POSTerminal.csproj" -c Release -o /app/build
 
 FROM build AS publish

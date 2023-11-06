@@ -15,8 +15,3 @@ jobs:
       - name: Build the POSTerminal Docker image
         working-directory: ./POSTerminal/
         run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
-
-#      - uses: actions/checkout@v3
-#      - name: Build the ESPDumpsterWebApp.API Docker image
-#        working-directory: ./ESPDumpsterWebApp.API/
-#        run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
