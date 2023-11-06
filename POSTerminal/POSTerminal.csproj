@@ -39,11 +39,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <_ContentIncludedByDefault Remove="Views\Account\Auth.cshtml" />
-        <_ContentIncludedByDefault Remove="Views\Account\Register.cshtml" />
-    </ItemGroup>
-
-    <ItemGroup>
         <Folder Include="wwwroot\pdf\" />
         <Folder Include="wwwroot\resources\images\" />
     </ItemGroup>
