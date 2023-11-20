@@ -36,6 +36,12 @@ sidebarBtn.addEventListener("click", () => {
 var sidebarState = localStorage.getItem('sidebarState');
 console.log(sidebarState);
 
+let btn = document.querySelector('.btn');
+btn.addEventListener('click', () =>{
+    // Ваш код обработчика клика
+    console.log('Кнопка нажата');
+});
+
 
 // let value = localStorage.getItem("sidebarState");
 // let sidebarClass = value === null || value === "" ? "sidebar open" : value === "open" ? "sidebar open" : "sidebar";
