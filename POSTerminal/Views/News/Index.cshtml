@@ -5,8 +5,6 @@
 
 @inject INewsService NewsService
 
-@model NewsItem
-
 <link rel="stylesheet" href="~/lib/font-awesome-5.15.4/css/all.css">
 
 @{
@@ -16,70 +14,67 @@
 
 <section class="light">
     <div class="h1 text-center text-dark" id="pageHeaderTitle">@title</div>
-    @if (User.Identity.Name == "admin@rtc.ru")
-    {
-        <div class="newsActions">
-            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#CreateModal">
-                <i class="actionsBtn far fa-plus"> Добавить новость</i>
-            </button>
-        </div>
-    }
-    
-    <input type="hidden" id="NewsId" />
+        @if (User.Identity.Name == "admin@rtc.ru")
+        {
+            <div class="newsActions">
+                <form>
+                    <button onclick="window.location.href = 'News/Create';" type="button" class="btn">
+                        <i class="actionsBtn far fa-plus"> Добавить новость</i>
+                    </button>
+                </form>
+            </div>
+        }
     <div class="container py-2">
         @foreach (var newsItem in NewsService.GetNews())
         {
-            <div>
-                <article class="postcard light blue">
-                    @if (!newsItem.PicSrc.IsNullOrEmpty())
-                    {
-                        <a class="postcard__img_link" data-bs-toggle="modal" data-bs-target="#modal-@newsItem.Id">
-                            <img class="postcard__img" src="@newsItem.PicSrc" alt="Image Title"/>
-                        </a>
-                    }
-                    
-                    <div class="postcard__text t-dark" data-bs-toggle="modal" data-bs-target="#modal-@newsItem.Id">
-                        <h1 class="postcard__title red">
-                            <a href="#">@newsItem.Title</a>
-                        </h1>
-                        <div class="postcard__subtitle small">
-                            <time datetime="25-05-2023 12:00:00">
-                                <i class="fa fa-calendar-alt mr-2"></i>@newsItem.PublishDate
-                            </time>
-                        </div>
-                        <div class="postcard__bar"></div>
-                        <div class="postcard__preview-txt">
-                            @Markdown.ParseHtmlString(
-                                NewsAction.GetLimitedWords(newsItem.Content, 15))
-                        </div>
-                        @if (!newsItem.Tags.IsNullOrEmpty() && !newsItem.Author.IsNullOrEmpty() && !newsItem.TimeToRead.IsNullOrEmpty())
-                        {
-                            <ul class="postcard__tagbox">
-                                @if (!newsItem.Tags.IsNullOrEmpty())
-                                {
-                                    <li class="tag__item">
-                                        <i class="fa fa-tag mr-2"></i>@newsItem.Tags
-                                    </li>
-                                }
-                                @if (!newsItem.Author.IsNullOrEmpty())
-                                {
-                                    <li class="tag__item">
-                                        <i class="fas fa-user-tie mr-2"></i>@newsItem.Author
-                                    </li>
-                                }
-                                @if (!newsItem.TimeToRead.IsNullOrEmpty())
-                                {
-                                    <li class="tag__item">
-                                        <i class="fa fa-clock mr-2"></i>@newsItem.TimeToRead
-                                    </li>
-                                }
-                            </ul>
-                        }
+            <article class="postcard light blue" data-bs-toggle="modal" data-bs-target="#modal-@newsItem.Id">
+                @if (!newsItem.PicSrc.IsNullOrEmpty())
+                {
+                    <a class="postcard__img_link" href="#">
+                        <img class="postcard__img" src="@newsItem.PicSrc" alt="Image Title"/>
+                    </a>
+                }
+
+                <div class="postcard__text t-dark">
+                    <h1 class="postcard__title red">
+                        <a href="#">@newsItem.Title</a>
+                    </h1>
+                    <div class="postcard__subtitle small">
+                        <time datetime="25-05-2023 12:00:00">
+                            <i class="fa fa-calendar-alt mr-2"></i>@newsItem.PublishDate
+                        </time>
                     </div>
-                </article>
-            </div>
-            
-            @* Show news details *@
+                    <div class="postcard__bar"></div>
+                    <div class="postcard__preview-txt">
+                        @Markdown.ParseHtmlString(
+                            NewsAction.GetLimitedWords(newsItem.Content, 15))
+                    </div>
+                    @if (!newsItem.Tags.IsNullOrEmpty() && !newsItem.Author.IsNullOrEmpty() && !newsItem.TimeToRead.IsNullOrEmpty())
+                    {
+                        <ul class="postcard__tagbox">
+                            @if (!newsItem.Tags.IsNullOrEmpty())
+                            {
+                                <li class="tag__item">
+                                    <i class="fa fa-tag mr-2"></i>@newsItem.Tags
+                                </li>
+                            }
+                            @if (!newsItem.Author.IsNullOrEmpty())
+                            {
+                                <li class="tag__item">
+                                    <i class="fas fa-user-tie mr-2"></i>@newsItem.Author
+                                </li>
+                            }
+                            @if (!newsItem.TimeToRead.IsNullOrEmpty())
+                            {
+                                <li class="tag__item">
+                                    <i class="fa fa-clock mr-2"></i>@newsItem.TimeToRead
+                                </li>
+                            }
+                        </ul>
+                    }
+                </div>
+            </article>
+
             <div class="modal fade" id="modal-@newsItem.Id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-scrollable modal-xl">
                     <div class="modal-content h-100">
@@ -90,13 +85,7 @@
                         <div class="modal-body">
                             @Markdown.ParseHtmlString(newsItem.Content)
                         </div>
-
                         <div class="modal-footer">
-                            @if (User.Identity.Name == "admin@rtc.ru")
-                            {
-                                <button class="btn btn-primary disabled" onclick="EditForm(@newsItem.Id);" id="EditForm">Редактировать</button>
-                                <button class="btn btn-danger" onclick="ConfirmDelete(@newsItem.Id);" id="showModal">Удалить</button>
-                            }
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
                         </div>
                     </div>
@@ -106,166 +95,4 @@
     </div>
 </section>
 
-@if (User.Identity.Name == "admin@rtc.ru")
-{
-    @* Add new news *@
-    <div class="modal fade" id="CreateModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <form id="saveForm" method="post">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="createModalLabel">Добавить новость</h5>
-                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label asp-for="Title" class="control-label"></label>
-                            <input asp-for="Title" type="text" class="form-control">
-                            <span asp-validation-for="Title" class="text-danger"></span>
-                            @* <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> *@
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="Content" class="control-label"></label>
-                            <input asp-for="Content" type="text" class="form-control">
-                            <span asp-validation-for="Content" class="text-danger"></span>
-                            @* <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> *@
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="PicSrc" class="control-label"></label>
-                            <input asp-for="PicSrc" type="text" class="form-control">
-                            <span asp-validation-for="PicSrc" class="text-danger"></span>
-                            @* <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> *@
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary btnCancel" data-bs-dismiss="modal">Закрыть</button>
-                        <button id="btnSave" type="button" class="btn btn-primary">Сохранить</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    @* Delete news *@
-    <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <form id="saveForm" method="post">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Удалить новость</h5>
-                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <h5>Вы уверены, что хотите удалить эту новость?</h5>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary btnCancel" data-bs-dismiss="modal">Закрыть</button>
-                        <button id="btnDelete" type="button" class="btn btn-primary">Удалить</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    @* Edit news *@
-    <div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <form asp-action="Update" id="EditForm" method="post">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Редактировать новость</h5>
-                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <input asp-for="Id" class="updateId" type="hidden" />
-                            <label asp-for="Title" class="control-label"></label>
-                            <input asp-for="Title" class="form-control" id="newsTitle">
-                            <span asp-validation-for="Title" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <input asp-for="Id" class="updateId" type="hidden" />
-                            <label asp-for="Content" class="control-label"></label>
-                            <input asp-for="Content" class="form-control" id="newsContent">
-                            <span asp-validation-for="Content" class="text-danger"></span>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary btnCancel" data-bs-dismiss="modal">Закрыть</button>
-                        <button id="btnSave" type="button" class="btn btn-primary">Изменить</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-}
-
 <script src="/Views/News/Index.cshtml.js" asp-append-version="true"></script>
-
-@section Scripts
-{
-    <script>
-        $(document).ready(function () {
-            $('#btnSave').click(function () {
-                var newsForm = $('#saveForm').serialize();
-                $.ajax({
-                    type: "POST",
-                    url: "/News/Create/",
-                    data: newsForm,
-                    success: function () {
-                        $('#CreateModal').modal('hide');
-                        window.location.href = "/News/Index";
-                    }
-                })
-            })
-            $('#btnDelete').click(function () {
-                var idD = $('#NewsId').val();
-                $.ajax({
-                    type: "POST",
-                    url: "/News/Delete/",
-                    data: { id: idD },
-                    success: function (result) {
-                        if (result) 
-                        {
-                            $('#NewsId').val(null);
-                            $('#DeleteModal').modal('hide');
-                            window.location.href = "/News/Index";
-                        }
-                        else {
-                            alert("Не удалось удалить новость");
-                        }
-                    }
-                })
-            })
-            $('.btnCancel').click(function () {
-                            // $('#createModal').modal('hide');
-                            window.location.href("/News/Index");
-                        })
-        })
-        
-        var ConfirmDelete = function (id) {
-            $('#NewsId').val(id);
-            $('#DeleteModal').modal('show');
-        }
-        
-        var EditForm = function (id) {
-            $.ajax({
-                type: "POST",
-                url: "/News/GetNews/",
-                data: { id: id },
-                success: function (news) {
-                    $('#EditModal').modal('show');
-                    $('#newsTitle').val(news.title);
-                    $('#newsContent').val(news.content);
-                    $('.updateId').val(news.id);
-                }
-            })
-        }
-    </script>
-}
