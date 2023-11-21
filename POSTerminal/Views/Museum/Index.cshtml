@@ -4,7 +4,7 @@
 @inject IMuseumService MuseumService
 
 @{
-    var title = "О нас";
+    var title = "Музей";
 }
 
 <link rel="stylesheet" href="~/lib/font-awesome-5.15.4/css/all.css">
@@ -24,7 +24,7 @@
     }
 
 <div class="container py-2">
-    <section class="main_c">
+    <section>
         <markdown>
             @foreach (var museumItem in MuseumService.getMuseumItems())
             {
@@ -37,7 +37,7 @@
 
     @* Add new news *@
 <div class="modal fade" id="CreateModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
         <div class="modal-content">
             <form id="saveForm" method="post">
                 <div class="modal-header">
@@ -49,7 +49,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label asp-for="Content" class="control-label"></label>
-                        <input asp-for="Content" type="text" class="form-control">
+                        <textarea asp-for="Content" type="text" rows="15" class="form-control"></textarea>
                         <span asp-validation-for="Content" class="text-danger"></span>
                         @* <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> *@
                     </div>
