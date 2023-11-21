@@ -40,13 +40,16 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="Views\Files\" />
         <Folder Include="wwwroot\pdf\" />
         <Folder Include="wwwroot\resources\images\" />
     </ItemGroup>
 
     <ItemGroup>
         <_JsFileModuleStaticWebAsset Include="Views\Shared\_MenuPartialPDF.cshtml.js" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="Views\Files\Index.cshtml" />
     </ItemGroup>
 
 </Project>
