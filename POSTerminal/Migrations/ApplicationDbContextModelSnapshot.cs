@@ -17,6 +17,21 @@ namespace POSTerminal.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.13");
 
+            modelBuilder.Entity("MuseumItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("MuseumItems");
+                });
+
             modelBuilder.Entity("POSTerminal.Models.AboutItem", b =>
                 {
                     b.Property<int>("Id")
@@ -28,7 +43,6 @@ namespace POSTerminal.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Title")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -74,7 +88,6 @@ namespace POSTerminal.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("LinkToPage")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Title")
