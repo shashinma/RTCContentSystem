@@ -24,14 +24,7 @@ public class NewsController : Controller
     {
         return View();
     }
-
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
-    {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-    }
-
-
+    
     // // GET: NewsControllerAlt/Details/5
     // public ActionResult Details(int id)
     // {
@@ -39,78 +32,107 @@ public class NewsController : Controller
     // }
     //
     
-    public ActionResult Create()
-    {
-        return View();
-    }
+    // public ActionResult Create()
+    // {
+    //     return View();
+    // }
+    
+    // [HttpPost]
+    // public IActionResult Create(NewsItem model)
+    // {
+    //         try
+    //         {
+    //             var newsItem = new NewsItem
+    //             {
+    //                 Title = model.Title,
+    //                 Content = model.Content,
+    //                 PicSrc = model.PicSrc,
+    //                 PublishDate = DateTime.Now
+    //             };
+    //             
+    //             _context.NewsItems.Add(newsItem);
+    //             _context.SaveChanges();
+    //         }
+    //         catch (Exception ex)
+    //         {
+    //             Console.WriteLine(ex.Message);
+    //         }
+    //
+    //         return RedirectToAction("Index");
+    //     }
     
     [HttpPost]
     public IActionResult Create(NewsItem model)
     {
-            try
-            {
-                var newsItem = new NewsItem
-                {
-                    Title = model.Title,
-                    Content = model.Content,
-                    PicSrc = model.PicSrc,
-                    PublishDate = DateTime.Now
-                };
-                _context.NewsItems.Add(newsItem);
-                _context.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-
-            return RedirectToAction("Index");
-        }
+        _context.NewsItems.Add(model);
+        _context.SaveChanges();
+        return RedirectToAction("Index");
+    }
     
-    //
-    // // GET: NewsControllerAlt/Edit/5
-    // public ActionResult Edit(int id)
-    // {
-    //     return View();
-    // }
-    //
-    // // POST: NewsControllerAlt/Edit/5
-    // [HttpPost]
-    // [ValidateAntiForgeryToken]
-    // public ActionResult Edit(int id, IFormCollection collection)
-    // {
-    //     try
-    //     {
-    //         // TODO: Add update logic here
-    //
-    //         return RedirectToAction(nameof(Index));
-    //     }
-    //     catch
-    //     {
-    //         return View();
-    //     }
-    // }
-    //
-    // // GET: NewsControllerAlt/Delete/5
+    public ActionResult GetNews(int id)
+    {
+        var news = _context.NewsItems.Find(id);
+        return Json(news);
+    }
+
+    public IActionResult Update(NewsItem model)
+    {
+        var newsFromDb = _context.NewsItems.Find(model.Id);
+        newsFromDb.Title = model.Title;
+        _context.NewsItems.Update(newsFromDb);
+        _context.SaveChanges();
+        return RedirectToAction("Index");
+    }
+    
+    // POST: NewsControllerAlt/Edit/5
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public IActionResult Edit(int id, IFormCollection collection)
+    {
+        var news = _context.NewsItems.Find(id);
+        return Json(news);
+    }
+
+    public JsonResult Delete(int id)
+    {
+        bool result = false;
+        var news = _context.NewsItems.Find(id);
+
+        if (news != null)
+        {
+            result = true;
+            _context.NewsItems.Remove(news);
+            _context.SaveChanges();
+        }
+        
+        return Json(result);
+    }
+    
+    
+    // GET: NewsControllerAlt/Delete/5
     // public ActionResult Delete(int id)
     // {
     //     return View();
     // }
-    //
-    // // POST: NewsControllerAlt/Delete/5
+    
+    // POST: NewsControllerAlt/Delete/id
     // [HttpPost]
     // [ValidateAntiForgeryToken]
     // public ActionResult Delete(int id, IFormCollection collection)
     // {
-    //     try
+    //     NewsItem news = _context.NewsItems.Find(id);
+    //     if (news != null)
     //     {
-    //         // TODO: Add delete logic here
+    //         _context.NewsItems.Remove(news);
+    //         _context.SaveChanges();
+    //     }
     //
-    //         return RedirectToAction(nameof(Index));
-    //     }
-    //     catch
-    //     {
-    //         return View();
-    //     }
+    //     return RedirectToAction("Index");
     // }
+    
+    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+    public IActionResult Error()
+    {
+        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+    }
 }
