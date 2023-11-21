@@ -1,0 +1,8 @@
+.newsActions {
+    display: flex;
+    justify-content: end;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    height: 40px;
+    margin-right: 10px;
+}
