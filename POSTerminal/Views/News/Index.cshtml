@@ -12,6 +12,7 @@
 @{
     var title = "Новости РТК";
     var readButton = "Полный текст";
+    var newsList = NewsService.GetNews();
 }
 
 <section class="light">
@@ -27,7 +28,7 @@
     
     <input type="hidden" id="NewsId" />
     <div class="container py-2">
-        @foreach (var newsItem in NewsService.GetNews())
+        @foreach (var newsItem in NewsService.GetNews().Reverse())
         {
             <div>
                 <article class="postcard light blue">
@@ -220,7 +221,7 @@
                     data: newsForm,
                     success: function () {
                         $('#CreateModal').modal('hide');
-                        window.location.href = "/News/Index";
+                        window.location.href = "/News";
                     }
                 })
             })
@@ -235,7 +236,7 @@
                         {
                             $('#NewsId').val(null);
                             $('#DeleteModal').modal('hide');
-                            window.location.href = "/News/Index";
+                            window.location.href = "/News";
                         }
                         else {
                             alert("Не удалось удалить новость");
@@ -245,7 +246,7 @@
             })
             $('.btnCancel').click(function () {
                             // $('#createModal').modal('hide');
-                            window.location.href("/News/Index");
+                            window.location.href("/News");
                         })
         })
         
