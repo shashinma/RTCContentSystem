@@ -39,7 +39,22 @@
 </section>
 </body>
 
+@section Scripts{
+    <script>
+        $(function () {
+            const currentPage = location.pathname;
+            $('.nav-tabs li a').each(function () {
+                const $this = $(this);
+                if (currentPage.toLowerCase().indexOf($this.attr('href').toLowerCase()) !== -1) {
+                    $this.addClass('active');
+                }
+            })
+        })
+    </script>
+}
+
 <footer>
+    @await Html.PartialAsync("~/Views/Shared/_KeyboardPartial.cshtml")
     @await Html.PartialAsync("_ScreenSaver.cshtml")
 </footer>
 
@@ -48,6 +63,7 @@
 <script src="~/js/site.js" asp-append-version="true"></script>
 <script src="/Views/Shared/_Layout.cshtml.js" asp-append-version="true"></script>
 <script src="/Views/Shared/_ScreenSaver.cshtml.js" asp-append-version="true"></script>
+<script src="~/js/keyboard.js" asp-append-version="true"></script>
 
 @await RenderSectionAsync("Scripts", false)
 
