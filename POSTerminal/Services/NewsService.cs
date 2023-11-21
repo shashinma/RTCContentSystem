@@ -5,7 +5,7 @@ namespace POSTerminal.Services;
 
 public interface INewsService
 {
-    List<NewsItem> GetNews();
+    IEnumerable<NewsItem> GetNews();
 }
 
 public class NewsService : INewsService
@@ -17,8 +17,9 @@ public class NewsService : INewsService
         _context = context;
     }
 
-    public List<NewsItem> GetNews()
+    public IEnumerable<NewsItem> GetNews()
     {
         return _context.NewsItems.ToList();
     }
+
 }

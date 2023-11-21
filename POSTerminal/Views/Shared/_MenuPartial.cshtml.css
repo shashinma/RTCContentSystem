@@ -9,6 +9,11 @@
 main {
 }
 
+.feedback {
+    width: 100%;
+    font-size: 12px;
+}
+
 .sidebar {
     position: fixed;
     top: 0;
@@ -16,7 +21,6 @@ main {
     height: 100%;
     width: 260px;
     background: rgba(231, 132, 29, 0.90);
-    z-index: 100;
     transition: all 0.5s ease;
     border-radius: 0 20px 20px 0;
 }

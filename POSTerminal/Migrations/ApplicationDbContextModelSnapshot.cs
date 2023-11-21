@@ -15,7 +15,22 @@ namespace POSTerminal.Migrations
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "7.0.13");
+            modelBuilder.HasAnnotation("ProductVersion", "7.0.14");
+
+            modelBuilder.Entity("MuseumItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("MuseumItems");
+                });
 
             modelBuilder.Entity("POSTerminal.Models.AboutItem", b =>
                 {
@@ -27,13 +42,36 @@ namespace POSTerminal.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Title")
+                    b.HasKey("Id");
+
+                    b.ToTable("AboutItems");
+                });
+
+            modelBuilder.Entity("POSTerminal.Models.FeedbackItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Author")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Mail")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Message")
                         .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("PublishDate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Title")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
-                    b.ToTable("AboutItems");
+                    b.ToTable("FeedbackItems");
                 });
 
             modelBuilder.Entity("POSTerminal.Models.InstructionItem", b =>
@@ -47,7 +85,6 @@ namespace POSTerminal.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("LinkToPage")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Title")
@@ -115,7 +152,6 @@ namespace POSTerminal.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Author")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Content")
@@ -123,18 +159,15 @@ namespace POSTerminal.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("PicSrc")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("PublishDate")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Tags")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("TimeToRead")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Title")

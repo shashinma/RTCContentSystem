@@ -1,6 +1,7 @@
 ﻿@using POSTerminal.Services
 @using Microsoft.IdentityModel.Tokens
-@* @using Westwind.AspNetCore.Markdown *@
+
+@model JobsItem
 
 @inject IJobsService JobsService
 
@@ -14,6 +15,15 @@
     <div class="h1 text-center text-dark mb-3" id="pageHeaderTitle">@title</div>
     <h5 class="text-center">тел. 552-15-15, 552-16-00</h5>
     <h5 class="text-center mb-5">hr@rtc.ru, i.ahmetova@rtc.ru</h5>
+    @if (User.Identity.Name == "admin@rtc.ru")
+    {
+        <div class="newsActions">
+            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#CreateModal">
+                <i class="actionsBtn far fa-plus"> Добавить вакансию</i>
+            </button>
+        </div>
+    }
+        
     <div class="container py-2">
         @foreach (var jobsItem in JobsService.getJobs())
         {
@@ -46,3 +56,68 @@
         }
     </div>
 </section>
+
+<div class="modal fade" id="CreateModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl" role="document">
+            <div class="modal-content">
+                <form id="saveForm" method="post">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="createModalLabel">Добавить вакансию</h5>
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label asp-for="Vacancy" class="control-label"></label>
+                            <input asp-for="Vacancy" type="text" class="form-control">
+                            <span asp-validation-for="Vacancy" class="text-danger"></span>
+                            @* <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> *@
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Requirements" class="control-label"></label>
+                            <textarea asp-for="Requirements" class="form-control" id="formControlTextarea" rows="3" placeholder="Ваше сообщение" required></textarea>
+                            <span asp-validation-for="Requirements" class="text-danger"></span>
+                            @* <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> *@
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Responsibilities" class="control-label"></label>
+                            <textarea asp-for="Responsibilities" class="form-control" id="formControlTextarea" rows="3" placeholder="Ваше сообщение" required></textarea>
+                            <span asp-validation-for="Responsibilities" class="text-danger"></span>
+                            @* <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> *@
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="PicSrc" class="control-label"></label>
+                            <input asp-for="PicSrc" type="text" class="form-control">
+                            <span asp-validation-for="PicSrc" class="text-danger"></span>
+                            @* <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> *@
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary btnCancel" data-bs-dismiss="modal">Закрыть</button>
+                        <button id="btnSave" type="button" class="btn btn-primary">Сохранить</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+                $('#btnSave').click(function () {
+                    var newsForm = $('#saveForm').serialize();
+                    $.ajax({
+                        type: "POST",
+                        url: "/Jobs/Create/",
+                        data: newsForm,
+                        success: function () {
+                            $('#CreateModal').modal('hide');
+                            window.location.href = "/Jobs";
+                        }
+                    })
+                })
+            })
+    </script>
+}

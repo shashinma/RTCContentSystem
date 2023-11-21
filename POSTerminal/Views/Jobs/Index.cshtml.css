@@ -2,6 +2,22 @@
     border-bottom: 1px solid rgba(82, 82, 82, 0.5); /* Параметры линии */
 }
 
+.newsActions {
+    display: flex;
+    justify-content: end;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.actionsBtn {
+    display: inline-block;
+    background-color: transparent;
+    cursor: pointer;
+    font-weight: bold;
+}
+
 /*CARDS 1 STYLES*/
 
 h1 + p {
@@ -285,7 +301,6 @@ a, a:hover {
 }
 
 .postcard .postcard__img {
-    max-height: 180px;
     width: 100%;
     object-fit: cover;
     position: relative;
@@ -384,7 +399,6 @@ a, a:hover {
 
     .postcard .postcard__img {
         max-width: 300px;
-        height: min-content;
         /*max-height: 131px;*/
         transition: transform 0.3s ease;
     }
@@ -422,12 +436,12 @@ a, a:hover {
 
     .postcard:nth-child(2n + 1) .postcard__text::before {
         left: -35px !important;
-        transform: rotate(3deg);
+        transform: rotate(2.5deg);
     }
 
     .postcard:nth-child(2n + 0) .postcard__text::before {
         left: -35px !important;
-        transform: rotate(3deg);
+        transform: rotate(2.5deg);
     }
 }
 

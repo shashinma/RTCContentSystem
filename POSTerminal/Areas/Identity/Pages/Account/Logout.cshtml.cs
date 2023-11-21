@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace POSTerminalWebApp.Areas.Identity.Pages.Account;
+namespace POSTerminal.Areas.Identity.Pages.Account;
 
 public class LogoutModel : PageModel
 {

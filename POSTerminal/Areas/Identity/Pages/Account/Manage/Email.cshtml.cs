@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 
-namespace POSTerminalWebApp.Areas.Identity.Pages.Account.Manage;
+namespace POSTerminal.Areas.Identity.Pages.Account.Manage;
 
 public class EmailModel : PageModel
 {

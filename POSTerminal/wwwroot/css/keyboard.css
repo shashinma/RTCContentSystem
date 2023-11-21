@@ -8,6 +8,7 @@
     box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
     user-select: none;
     transition: bottom 0.4s;
+    /*z-index: 9999;*/
 }
 
 .keyboard--hidden {
