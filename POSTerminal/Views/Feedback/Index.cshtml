@@ -1,0 +1,93 @@
+@using POSTerminal.Services
+
+@model FeedbackItem
+
+@inject IFeedbackService FeedbackService
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<link rel="stylesheet" href="~/lib/font-awesome-5.15.4/css/all.css">
+
+<h2>Оставить отзыв</h2>
+
+<form id="saveForm" method="post">
+    <div class="mb-3">
+        <label for="formControlEmail" class="form-label">Контактная почта</label>
+        <input asp-for="Mail" type="email" class="form-control" id="formControlEmail" placeholder="name@example.com" required>
+    </div>
+    <div class="mb-3">
+        <label for="formControlTheme" class="form-label">Тема обращения</label>
+        <input asp-for="Title" type="text" class="form-control" id="formControlTheme" placeholder="Тема">
+    </div>
+    <div class="mb-3">
+        <label for="formControlTextarea" class="form-label">Сообщение</label>
+        <textarea asp-for="Message" class="form-control" id="formControlTextarea" rows="3" placeholder="Ваше сообщение" required></textarea>
+    </div>
+    <div class="mb-3">
+        <label for="formControlContact" class="form-label">Имя</label>
+        <textarea asp-for="Author" class="form-control" id="formControlContact" placeholder="Как к Вам обращаться?"></textarea>
+    </div>
+
+    <button id="btnSave" type="button" class="btn btn-primary">Отправить</button>
+</form>
+
+<br/>
+
+<p>
+  <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    Развернуть список обращений
+  </button>
+</p>
+<div class="collapse" id="collapseExample" style="padding-bottom: 20px">
+    <div class="card card-body">
+        @if (User.Identity.Name == "admin@rtc.ru")
+        {
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Title</th>
+                    <th scope="col">Message</th>
+                    <th scope="col">Mail</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">PublishDate</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var feedbackItems in FeedbackService.GetFeedbackItems().Reverse())
+                {
+                    <tr>
+                        <td>@feedbackItems.Title</td>
+                        <td>@feedbackItems.Message</td>
+                        <td>@feedbackItems.Mail</td>
+                        <td>@feedbackItems.Author</td>
+                        <td>@feedbackItems.PublishDate</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        }
+    </div>
+</div>
+
+
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+            $('#btnSave').click(function () {
+                var feedbackForm = $('#saveForm').serialize();
+                $.ajax({
+                    type: "POST",
+                    url: "/Feedback/Create/",
+                    data: feedbackForm,
+                    success: function () {
+                        window.location.href = "/";
+                    }
+                })
+            })
+        })
+    </script>
+}
