@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using Markdig;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using POSTerminal.Data;
@@ -26,6 +27,13 @@ public class AboutController : Controller
     [HttpPost]
     public IActionResult Create(AboutItem model)
     {
+        // Обработка полученного значения Markdown
+        string markdownContent = model.Content;
+        string htmlContent = Markdown.ToHtml(markdownContent);
+
+        // Сохранение в базу данных
+        model.Content = htmlContent;
+        
         _context.AboutItems.Add(model);
         _context.SaveChanges();
         return RedirectToAction("Index", "Home");
