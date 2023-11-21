@@ -24,4 +24,6 @@ public class ApplicationDbContext : DbContext
     public DbSet<InstructionItem> InstructionItems { get; set; }
     
     public DbSet<FeedbackItem> FeedbackItems { get; set; }
+    
+    public DbSet<MuseumItem> MuseumItems { get; set; }
 }
