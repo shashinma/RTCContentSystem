@@ -30,6 +30,21 @@ public class InstructionsController : Controller
         _context.SaveChanges();
         return RedirectToAction("Index");
     }
+    
+    public JsonResult Delete(int id)
+    {
+        bool result = false;
+        var instructions = _context.InstructionItems.Find(id);
+
+        if (instructions != null)
+        {
+            result = true;
+            _context.InstructionItems.Remove(instructions);
+            _context.SaveChanges();
+        }
+        
+        return Json(result);
+    }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
