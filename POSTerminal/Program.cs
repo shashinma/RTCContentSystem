@@ -18,7 +18,12 @@ builder.Services.AddDbContext<IdentityContext>(options =>
     options.UseSqlite(identityConnectionString));
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlite(applicationDbConnectionString));
+    options.UseSqlite(
+        builder.Configuration.GetConnectionString("ApplicationDbConnection"),
+        b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
+
+// builder.Services.AddDbContext<ApplicationDbContext>(options =>
+//     options.UseSqlite(applicationDbConnectionString));
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
     .AddEntityFrameworkStores<IdentityContext>();
