@@ -21,7 +21,6 @@ main {
     height: 100%;
     width: 260px;
     background: rgba(231, 132, 29, 0.90);
-    z-index: 100;
     transition: all 0.5s ease;
     border-radius: 0 20px 20px 0;
 }
@@ -234,8 +233,6 @@ main {
     padding: 12px 0;
     transition: all 0.5s ease;
     border-radius: 0 0 20px 0;
-    
-    flex-wrap: wrap;
 }
 
 .sidebar.close .profile-details {
