@@ -21,4 +21,5 @@ public class NewsService : INewsService
     {
         return _context.NewsItems.ToList();
     }
+
 }
