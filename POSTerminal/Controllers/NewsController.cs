@@ -86,7 +86,6 @@ public class NewsController : Controller
     
     // POST: NewsControllerAlt/Edit/5
     [HttpPost]
-    [ValidateAntiForgeryToken]
     public IActionResult Edit(int id, IFormCollection collection)
     {
         var news = _context.NewsItems.Find(id);
