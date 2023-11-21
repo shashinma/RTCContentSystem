@@ -37,7 +37,7 @@
 </div>
 
     @* Add new news *@
-    <div class="modal fade" id="CreateModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
+<div class="modal fade" id="CreateModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <form id="saveForm" method="post">
@@ -71,3 +71,23 @@
     </div>
 
 <script src="/Views/Instructions/Index.cshtml.js" asp-append-version="true"></script>
+
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+                $('#btnSave').click(function () {
+                    var newsForm = $('#saveForm').serialize();
+                    $.ajax({
+                        type: "POST",
+                        url: "/Instructions/Create/",
+                        data: newsForm,
+                        success: function () {
+                            $('#CreateModal').modal('hide');
+                            window.location.href = "/Instructions";
+                        }
+                    })
+                })
+            })
+    </script>
+}
