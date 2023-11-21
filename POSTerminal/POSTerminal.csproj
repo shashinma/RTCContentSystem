@@ -6,7 +6,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <UserSecretsId>50f6137d-3809-4818-ae54-9b34911d8f11</UserSecretsId>
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-        <RootNamespace>POSTerminalWebApp</RootNamespace>
+        <RootNamespace>POSTerminal</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
