@@ -180,8 +180,9 @@
                         <span asp-validation-for="Title" class="text-danger"></span>
                     </div>
                     <div class="form-group">
+                        <input asp-for="Id" class="updateId" type="hidden" />
                         <label asp-for="Content" class="control-label"></label>
-                        <input asp-for="Content" class="form-control"></input>
+                        <input asp-for="Content" class="form-control" id="newsContent"></input>
                         <span asp-validation-for="Content" class="text-danger"></span>
                     </div>
                 </div>
@@ -249,8 +250,9 @@
                 data: { id: id },
                 success: function (news) {
                     $('#EditModal').modal('show');
-                    $('#NewsTitle').val(news.Title);
-                    $('.updateId').val(news.Id);
+                    $('#newsTitle').val(news.title);
+                    $('#newsContent').val(news.title);
+                    $('.updateId').val(news.id);
                 }
             })
         }
