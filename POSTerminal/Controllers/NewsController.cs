@@ -64,6 +64,8 @@ public class NewsController : Controller
     [HttpPost]
     public IActionResult Create(NewsItem model)
     {
+        model.PublishDate = DateTime.Now;
+        
         _context.NewsItems.Add(model);
         _context.SaveChanges();
         return RedirectToAction("Index");
