@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using POSTerminal.Data;
 using POSTerminal.Models;
 
 namespace POSTerminal.Controllers;
@@ -8,16 +9,26 @@ namespace POSTerminal.Controllers;
 [Authorize]
 public class InstructionsController : Controller
 {
+    private readonly ApplicationDbContext _context;
     private readonly ILogger<InstructionsController> _logger;
-
-    public InstructionsController(ILogger<InstructionsController> logger)
+    
+    public InstructionsController(ApplicationDbContext context, ILogger<InstructionsController> logger)
     {
+        _context = context;
         _logger = logger;
     }
 
     public IActionResult Index()
     {
         return View();
+    }
+    
+    [HttpPost]
+    public IActionResult Create(InstructionItem model)
+    {
+        _context.InstructionItems.Add(model);
+        _context.SaveChanges();
+        return RedirectToAction("Index");
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
