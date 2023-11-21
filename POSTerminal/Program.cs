@@ -30,6 +30,7 @@ builder.Services.AddScoped<IJobsService, JobsService>();
 builder.Services.AddScoped<IAboutService, AboutService>();
 builder.Services.AddScoped<IShortcutService, ShortcutService>();
 builder.Services.AddScoped<IInstructionsService, InstructionsService>();
+builder.Services.AddScoped<IFeedbackService, FeedbackService>();
 
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(options =>
