@@ -6,7 +6,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <UserSecretsId>50f6137d-3809-4818-ae54-9b34911d8f11</UserSecretsId>
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-        <RootNamespace>POSTerminalWebApp</RootNamespace>
+        <RootNamespace>POSTerminal</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
@@ -14,6 +14,7 @@
         <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="7.0.13" />
         <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.13" />
         <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="7.0.13" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.14" />
         
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.13">
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -45,6 +46,10 @@
 
     <ItemGroup>
         <_JsFileModuleStaticWebAsset Include="Views\Shared\_MenuPartialPDF.cshtml.js" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="Views\Files\Index.cshtml" />
     </ItemGroup>
 
 </Project>

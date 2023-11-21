@@ -1,11 +1,105 @@
+@using POSTerminal.Services
+@model MuseumItem
+
+@inject IMuseumService MuseumService
+
+@{
+    var title = "Музей";
+}
+
 <link rel="stylesheet" href="~/lib/font-awesome-5.15.4/css/all.css">
 
-<h1>Музей</h1>
+<div class="h1 text-center text-dark" id="pageHeaderTitle">@title</div>
+    @if (User.Identity.Name == "admin@rtc.ru")
+    {
+        <div class="newsActions">
+            <button class="btn btn-danger" onclick="ConfirmDelete();" id="showModal">
+                <i class="actionsBtn far fa-plus"> Добавить описание</i>
+            </button>
+            
+            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#CreateModal">
+                <i class="actionsBtn far fa-plus"> Добавить описание</i>
+            </button>
+        </div>
+    }
 
 <div class="container py-2">
-    <markdown>
+    <section>
+        <markdown>
+            @foreach (var museumItem in MuseumService.getMuseumItems())
+            {
+                @museumItem.Content
+            }
+        </markdown>
+    </section>
+</div>
 
-    </markdown>
+
+    @* Add new news *@
+<div class="modal fade" id="CreateModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+        <div class="modal-content">
+            <form id="saveForm" method="post">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="createModalLabel">Добавить описание</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label asp-for="Content" class="control-label"></label>
+                        <textarea asp-for="Content" type="text" rows="15" class="form-control"></textarea>
+                        <span asp-validation-for="Content" class="text-danger"></span>
+                        @* <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> *@
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btnCancel" data-bs-dismiss="modal">Закрыть</button>
+                    <button id="btnSave" type="button" class="btn btn-primary">Сохранить</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 
 <script src="/Views/About/Index.cshtml.js" asp-append-version="true"></script>
+
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+                $('#btnSave').click(function () {
+                    var newsForm = $('#saveForm').serialize();
+                    $.ajax({
+                        type: "POST",
+                        url: "/Museum/Create/",
+                        data: newsForm,
+                        success: function () {
+                            $('#CreateModal').modal('hide');
+                            window.location.href = "/Museum";
+                        }
+                    })
+                })
+                $('#btnDelete').click(function () {
+                    var idD = $('#NewsId').val();
+                    $.ajax({
+                        type: "POST",
+                        url: "/News/DeleteAll/",
+                        data: { id: idD, deleteAll: true }, // Add deleteAll parameter
+                        success: function (result) {
+                            if (result) 
+                            {
+                                $('#NewsId').val(null);
+                                $('#DeleteModal').modal('hide');
+                                window.location.href = "/News";
+                            }
+                            else {
+                                alert("Не удалось удалить новость");
+                            }
+                        }
+                    })
+                })
+            })
+    </script>
+}
