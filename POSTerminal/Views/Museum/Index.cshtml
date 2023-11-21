@@ -13,6 +13,10 @@
     @if (User.Identity.Name == "admin@rtc.ru")
     {
         <div class="newsActions">
+            <button class="btn btn-danger" onclick="ConfirmDelete();" id="showModal">
+                <i class="actionsBtn far fa-plus"> Добавить описание</i>
+            </button>
+            
             <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#CreateModal">
                 <i class="actionsBtn far fa-plus"> Добавить описание</i>
             </button>
@@ -74,6 +78,25 @@
                         success: function () {
                             $('#CreateModal').modal('hide');
                             window.location.href = "/Museum";
+                        }
+                    })
+                })
+                $('#btnDelete').click(function () {
+                    var idD = $('#NewsId').val();
+                    $.ajax({
+                        type: "POST",
+                        url: "/News/DeleteAll/",
+                        data: { id: idD, deleteAll: true }, // Add deleteAll parameter
+                        success: function (result) {
+                            if (result) 
+                            {
+                                $('#NewsId').val(null);
+                                $('#DeleteModal').modal('hide');
+                                window.location.href = "/News";
+                            }
+                            else {
+                                alert("Не удалось удалить новость");
+                            }
                         }
                     })
                 })
