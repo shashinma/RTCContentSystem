@@ -92,8 +92,11 @@
                         </div>
 
                         <div class="modal-footer">
-                            <button class="btn btn-primary" onclick="EditForm(@newsItem.Id);" id="EditForm">Редактировать</button>
-                            <button class="btn btn-danger" onclick="ConfirmDelete(@newsItem.Id);" id="showModal">Удалить</button>
+                            @if (User.Identity.Name == "admin@rtc.ru")
+                            {
+                                <button class="btn btn-primary disabled" onclick="EditForm(@newsItem.Id);" id="EditForm">Редактировать</button>
+                                <button class="btn btn-danger" onclick="ConfirmDelete(@newsItem.Id);" id="showModal">Удалить</button>
+                            }
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
                         </div>
                     </div>
@@ -103,96 +106,105 @@
     </div>
 </section>
 
-@* Add new news *@
-<div class="modal fade" id="CreateModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <form id="saveForm" method="post">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="createModalLabel">Добавить новость</h5>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label asp-for="Title" class="control-label"></label>
-                        <input asp-for="Title" type="text" class="form-control">
-                        <span asp-validation-for="Title" class="text-danger"></span>
-                        @* <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> *@
+@if (User.Identity.Name == "admin@rtc.ru")
+{
+    @* Add new news *@
+    <div class="modal fade" id="CreateModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form id="saveForm" method="post">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="createModalLabel">Добавить новость</h5>
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
-                    <div class="form-group">
-                        <label asp-for="Content" class="control-label"></label>
-                        <input asp-for="Content" type="text" class="form-control">
-                        <span asp-validation-for="Content" class="text-danger"></span>
-                        @* <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> *@
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label asp-for="Title" class="control-label"></label>
+                            <input asp-for="Title" type="text" class="form-control">
+                            <span asp-validation-for="Title" class="text-danger"></span>
+                            @* <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> *@
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Content" class="control-label"></label>
+                            <input asp-for="Content" type="text" class="form-control">
+                            <span asp-validation-for="Content" class="text-danger"></span>
+                            @* <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> *@
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="PicSrc" class="control-label"></label>
+                            <input asp-for="PicSrc" type="text" class="form-control">
+                            <span asp-validation-for="PicSrc" class="text-danger"></span>
+                            @* <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> *@
+                        </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary btnCancel" data-bs-dismiss="modal">Закрыть</button>
-                    <button id="btnSave" type="button" class="btn btn-primary">Сохранить</button>
-                </div>
-            </form>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary btnCancel" data-bs-dismiss="modal">Закрыть</button>
+                        <button id="btnSave" type="button" class="btn btn-primary">Сохранить</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-</div>
 
-@* Delete news *@
-<div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <form id="saveForm" method="post">
-                <div class="modal-header">
-                    <h5 class="modal-title">Удалить новость</h5>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <h5>Вы уверены, что хотите удалить эту новость?</h5>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary btnCancel" data-bs-dismiss="modal">Закрыть</button>
-                    <button id="btnDelete" type="button" class="btn btn-primary">Удалить</button>
-                </div>
-            </form>
+    @* Delete news *@
+    <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <form id="saveForm" method="post">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Удалить новость</h5>
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h5>Вы уверены, что хотите удалить эту новость?</h5>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary btnCancel" data-bs-dismiss="modal">Закрыть</button>
+                        <button id="btnDelete" type="button" class="btn btn-primary">Удалить</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-</div>
-            
-@* Edit news *@
-<div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <form asp-action="Update" id="EditForm" method="post">
-                <div class="modal-header">
-                    <h5 class="modal-title">Редактировать новость</h5>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <input asp-for="Id" class="updateId" type="hidden" />
-                        <label asp-for="Title" class="control-label"></label>
-                        <input asp-for="Title" class="form-control" id="newsTitle">
-                        <span asp-validation-for="Title" class="text-danger"></span>
+
+    @* Edit news *@
+    <div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form asp-action="Update" id="EditForm" method="post">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Редактировать новость</h5>
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
-                    <div class="form-group">
-                        <input asp-for="Id" class="updateId" type="hidden" />
-                        <label asp-for="Content" class="control-label"></label>
-                        <input asp-for="Content" class="form-control" id="newsContent">
-                        <span asp-validation-for="Content" class="text-danger"></span>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <input asp-for="Id" class="updateId" type="hidden" />
+                            <label asp-for="Title" class="control-label"></label>
+                            <input asp-for="Title" class="form-control" id="newsTitle">
+                            <span asp-validation-for="Title" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <input asp-for="Id" class="updateId" type="hidden" />
+                            <label asp-for="Content" class="control-label"></label>
+                            <input asp-for="Content" class="form-control" id="newsContent">
+                            <span asp-validation-for="Content" class="text-danger"></span>
+                        </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary btnCancel" data-bs-dismiss="modal">Закрыть</button>
-                    <button id="btnSave" type="button" class="btn btn-primary">Изменить</button>
-                </div>
-            </form>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary btnCancel" data-bs-dismiss="modal">Закрыть</button>
+                        <button id="btnSave" type="button" class="btn btn-primary">Изменить</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-</div>
+}
 
 <script src="/Views/News/Index.cshtml.js" asp-append-version="true"></script>
 
