@@ -1,7 +1,7 @@
 @using POSTerminal.Services
-@model 
+@model MuseumItem
 
-@inject IAboutService AboutService
+@inject IMuseumService MuseumService
 
 @{
     var title = "О нас";
@@ -22,9 +22,9 @@
 <div class="container py-2">
     <section class="main_c">
         <markdown>
-            @foreach (var aboutItem in AboutService.getAbout())
+            @foreach (var museumItem in MuseumService.getMuseumItems())
             {
-                @aboutItem.Content
+                @museumItem.Content
             }
         </markdown>
     </section>
@@ -69,11 +69,11 @@
                     var newsForm = $('#saveForm').serialize();
                     $.ajax({
                         type: "POST",
-                        url: "/About/Create/",
+                        url: "/Museum/Create/",
                         data: newsForm,
                         success: function () {
                             $('#CreateModal').modal('hide');
-                            window.location.href = "/About";
+                            window.location.href = "/Museum";
                         }
                     })
                 })
