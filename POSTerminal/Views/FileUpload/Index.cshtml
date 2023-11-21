@@ -1,0 +1,15 @@
+@model TModel
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<h2>Выберите файл для загрузки</h2>
+
+<form action="upload" method="post" enctype="multipart/form-data">
+    <input type="file" name="uploads" /><br>
+    <input type="file" name="uploads" /><br>
+    <input type="file" name="uploads" /><br>
+    <input type="submit" value="Загрузить" />
+</form>
