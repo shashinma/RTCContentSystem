@@ -69,28 +69,32 @@ public class NewsController : Controller
         return RedirectToAction("Index");
     }
     
-    public ActionResult GetNews(int id)
+    public IActionResult GetNews(int id)
     {
         var news = _context.NewsItems.Find(id);
         return Json(news);
     }
-
+    
+    [HttpPost]
     public IActionResult Update(NewsItem model)
     {
         var newsFromDb = _context.NewsItems.Find(model.Id);
         newsFromDb.Title = model.Title;
+        newsFromDb.Content = model.Content;
+        
         _context.NewsItems.Update(newsFromDb);
         _context.SaveChanges();
+        
         return RedirectToAction("Index");
     }
     
-    // POST: NewsControllerAlt/Edit/5
-    [HttpPost]
-    public IActionResult Edit(int id, IFormCollection collection)
-    {
-        var news = _context.NewsItems.Find(id);
-        return Json(news);
-    }
+    // // POST: NewsControllerAlt/Edit/5
+    // [HttpPost]
+    // public IActionResult Edit(int id, IFormCollection collection)
+    // {
+    //     var news = _context.NewsItems.Find(id);
+    //     return Json(news);
+    // }
 
     public JsonResult Delete(int id)
     {
