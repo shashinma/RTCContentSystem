@@ -15,19 +15,30 @@
     {
         <div class="newsActions">
             <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#CreateModal">
-                <i class="actionsBtn far fa-plus"> Добавить инструкцию</i>
+                <i class="actionsBtn far fa-plus"> Добавить новость</i>
             </button>
         </div>
     }
 
+<input type="hidden" id="NewsId" />
 <div class="container py-2">
     <section class="main_c">
         @foreach (var instructionItem in InstructionsService.GetInstructions())
         {
             <div class="wrap wrap--1">
                 <div class="article-card" onclick="redirectToPage('@instructionItem.LinkToPage')">
-                    <div class="content">
+                    <div class="content" style="flex-wrap: nowrap">
                         <p class="title" style="font-weight:900">@instructionItem.Title</p>
+                        @* <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#DeleteModal" onclick="event.stopPropagation();"> *@
+                        @*     <i class="actionsBtn far fa-plus"> Удалить</i> *@
+                        @* </button> *@
+                        @if (User.Identity.Name == "admin@rtc.ru")
+                        {
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#DeleteModal"
+                                    onclick="event.stopPropagation(); ConfirmDelete(@instructionItem.Id);" id="showModal">
+                                <i class="actionsBtn far fa-plus"> Удалить</i>
+                            </button>
+                        }
                     </div>
                     <img src="@instructionItem.ImageUrl" alt="article-cover"/>
                 </div>
@@ -70,6 +81,29 @@
     </div>
 </div>
 
+    @* Delete news *@
+<div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <form id="saveForm" method="post">
+                <div class="modal-header">
+                    <h5 class="modal-title">Удалить новость</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h5>Вы уверены, что хотите удалить эту новость?</h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btnCancel" data-bs-dismiss="modal">Закрыть</button>
+                    <button id="btnDelete" type="button" class="btn btn-danger">Удалить</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 <script src="/Views/Instructions/Index.cshtml.js" asp-append-version="true"></script>
 
 @section Scripts
@@ -88,6 +122,46 @@
                         }
                     })
                 })
+                                        $('#btnDelete').click(function () {
+                                            var idD = $('#NewsId').val();
+                                            $.ajax({
+                                                type: "POST",
+                                                url: "/Instructions/Delete/",
+                                                data: { id: idD },
+                                                success: function (result) {
+                                                    if (result) 
+                                                    {
+                                                        $('#NewsId').val(null);
+                                                        $('#DeleteModal').modal('hide');
+                                                        window.location.href = "/Instructions";
+                                                    }
+                                                    else {
+                                                        alert("Не удалось удалить инструкцию");
+                                                    }
+                                                }
+                                            })
+                                        })
             })
-    </script>
+                    var ConfirmDelete = function (id) {
+                        $('#NewsId').val(id);
+                        $('#DeleteModal').modal('show');
+                    }
+                    
+                    // var EditForm = function (id) {
+                    //     $.ajax({
+                    //         type: "POST",
+                    //         url: "/Instructions//",
+                    //         data: { id: id },
+                    //         success: function (news) {
+                    //             $('#EditModal').modal('show');
+                    //             $('#newsTitle').val(news.title);
+                    //             $('#newsContent').val(news.content);
+                    //             $('.updateId').val(news.id);
+                    //         }
+                    //     })
+                    // }
+                   
+
+</script>
+    
 }
