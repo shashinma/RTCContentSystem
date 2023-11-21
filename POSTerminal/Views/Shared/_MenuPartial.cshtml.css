@@ -9,6 +9,11 @@
 main {
 }
 
+.feedback {
+    width: 100%;
+    font-size: 12px;
+}
+
 .sidebar {
     position: fixed;
     top: 0;
@@ -229,6 +234,8 @@ main {
     padding: 12px 0;
     transition: all 0.5s ease;
     border-radius: 0 0 20px 0;
+    
+    flex-wrap: wrap;
 }
 
 .sidebar.close .profile-details {
