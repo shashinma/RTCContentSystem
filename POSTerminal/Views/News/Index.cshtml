@@ -111,7 +111,7 @@
 {
     @* Add new news *@
     <div class="modal fade" id="CreateModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
             <div class="modal-content">
                 <form id="saveForm" method="post">
                     <div class="modal-header">
@@ -129,7 +129,7 @@
                         </div>
                         <div class="form-group">
                             <label asp-for="Content" class="control-label"></label>
-                            <input asp-for="Content" type="text" class="form-control">
+                            <textarea asp-for="Content" type="text" class="form-control"></textarea>
                             <span asp-validation-for="Content" class="text-danger"></span>
                             @* <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> *@
                         </div>
@@ -141,7 +141,8 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary btnCancel" data-bs-dismiss="modal">Закрыть</button>
+                        @* <button type="button" class="btn btn-secondary btnCancel" data-bs-dismiss="modal">Закрыть</button> *@
+                        <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal">Open second modal</button>
                         <button id="btnSave" type="button" class="btn btn-primary">Сохранить</button>
                     </div>
                 </form>
