@@ -14,21 +14,20 @@
 <h2>Обратная связь</h2>
 <br/>
 <form id="saveForm" method="post">
-    <div class="mb-3">
-        <label for="formControlEmail" class="form-label">Контактная почта</label>
-        <input asp-for="Mail" type="email" class="form-control use-keyboard-input" id="formControlEmail" placeholder="name@example.com" required>
+    <div class="input-group mb-3">
+        <span class="input-group-text">Контактная почта и имя</span>
+        <input asp-for="Mail" type="email" class="form-control use-keyboard-input" id="formControlEmail" placeholder="name@example.com" required />
+        <input asp-for="Author" class="form-control use-keyboard-input" id="formControlContact" placeholder="Как к Вам обращаться?" />
     </div>
-    <div class="mb-3">
-        <label for="formControlTheme" class="form-label">Тема обращения</label>
-        <input asp-for="Title" type="text" class="form-control use-keyboard-input" id="formControlTheme" placeholder="Тема">
+    
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="Theme">Тема сообщения</span>
+        <input asp-for="Title" type="text" class="form-control use-keyboard-input" id="formControlTheme" placeholder="">
     </div>
-    <div class="mb-3">
-        <label for="formControlTextarea" class="form-label">Сообщение</label>
-        <textarea asp-for="Message" class="form-control use-keyboard-input" id="formControlTextarea" rows="3" placeholder="Ваше сообщение" required></textarea>
-    </div>
-    <div class="mb-3">
-        <label for="formControlContact" class="form-label">Имя</label>
-        <textarea asp-for="Author" class="form-control use-keyboard-input" id="formControlContact" placeholder="Как к Вам обращаться?"></textarea>
+
+    <div class="input-group mb-3">
+        <span class="input-group-text">Ваше сообщение</span>
+        <textarea asp-for="Message" class="form-control use-keyboard-input" id="formControlTextarea" rows="3" placeholder="" required></textarea>
     </div>
 
     <button id="btnSave" type="button" class="btn btn-primary">Отправить</button>
@@ -69,7 +68,6 @@
                         }
                         </tbody>
                     </table>
-                    }
                 </div>
             </div>
         }
