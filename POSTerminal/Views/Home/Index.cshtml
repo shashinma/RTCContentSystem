@@ -16,7 +16,6 @@
     var currentYear = DateTime.Now.Year;
 
     int newsLimit = 3;
-    List<NewsItem> limitedNewsItems = NewsService.GetNews().Take(newsLimit).ToList();
 }
 
 <section class="light">
@@ -38,7 +37,7 @@
         
         <section class="pt-2">
             <h4>Актуальные новости</h4>
-            @foreach (var newsItem in limitedNewsItems)
+            @foreach (var newsItem in NewsService.GetNews().Take(newsLimit).Take(newsLimit).Reverse())
             {
                 <article class="postcard light blue" data-bs-toggle="modal" data-bs-target="#modal-@newsItem.Id">
                     @if (!newsItem.PicSrc.IsNullOrEmpty())
