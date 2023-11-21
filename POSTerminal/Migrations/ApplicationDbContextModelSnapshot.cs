@@ -36,6 +36,33 @@ namespace POSTerminal.Migrations
                     b.ToTable("AboutItems");
                 });
 
+            modelBuilder.Entity("POSTerminal.Models.FeedbackItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Author")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Mail")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("PublishDate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("FeedbackItems");
+                });
+
             modelBuilder.Entity("POSTerminal.Models.InstructionItem", b =>
                 {
                     b.Property<int>("Id")
@@ -115,7 +142,6 @@ namespace POSTerminal.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Author")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Content")
@@ -123,18 +149,15 @@ namespace POSTerminal.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("PicSrc")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("PublishDate")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Tags")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("TimeToRead")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Title")
