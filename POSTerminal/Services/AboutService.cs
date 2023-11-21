@@ -6,6 +6,7 @@ namespace POSTerminal.Services;
 public interface IAboutService
 {
     List<AboutItem> getAbout();
+    string getItem(int id);
 }
 
 public class AboutService : IAboutService
@@ -20,5 +21,11 @@ public class AboutService : IAboutService
     public List<AboutItem> getAbout()
     {
         return _context.AboutItems.ToList();
+    }
+    
+    public string getItem(int id)
+    {
+        var news = _context.AboutItems.Find(id);
+        return news.Content;
     }
 }

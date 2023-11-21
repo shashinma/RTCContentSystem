@@ -16,7 +16,6 @@
     var currentYear = DateTime.Now.Year;
 
     int newsLimit = 3;
-    List<NewsItem> limitedNewsItems = NewsService.GetNews().Take(newsLimit).ToList();
 }
 
 <section class="light">
@@ -38,7 +37,7 @@
         
         <section class="pt-2">
             <h4>Актуальные новости</h4>
-            @foreach (var newsItem in limitedNewsItems)
+            @foreach (var newsItem in NewsService.GetNews().Take(newsLimit).Take(newsLimit).Reverse())
             {
                 <article class="postcard light blue" data-bs-toggle="modal" data-bs-target="#modal-@newsItem.Id">
                     @if (!newsItem.PicSrc.IsNullOrEmpty())
@@ -89,7 +88,7 @@
         
             <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
                 <p class="col-md-4 mb-0 text-muted">
-                    © 1998-@currentYear ЦНИИ РТК <br/>
+                    © @currentYear ЦНИИ РТК <br/>
                     Все права защищены
                 </p>
             
@@ -98,7 +97,7 @@
                 </a>
             
                 <ul class="nav col-md-4 justify-content-end" style="flex-wrap: wrap">
-                    <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Связь с разработчиком</a></li>
+                    <li class="nav-item"><a href="@Url.Action("Index", "Feedback")" class="nav-link px-2 text-muted">Связь с разработчиком</a></li>
                 </ul>
             </footer>
     </div>

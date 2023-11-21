@@ -1,6 +1,8 @@
 ﻿@using POSTerminal.Services
 @inject IInstructionsService InstructionsService
 
+@model InstructionItem
+
 <link rel="stylesheet" href="~/lib/font-awesome-5.15.4/css/all.css">
 
 @{
@@ -9,15 +11,34 @@
 }
 
 <div class="h1 text-center text-dark" id="pageHeaderTitle">@title</div>
+    @if (User.Identity.Name == "admin@rtc.ru")
+    {
+        <div class="newsActions">
+            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#CreateModal">
+                <i class="actionsBtn far fa-plus"> Добавить новость</i>
+            </button>
+        </div>
+    }
 
+<input type="hidden" id="NewsId" />
 <div class="container py-2">
     <section class="main_c">
         @foreach (var instructionItem in InstructionsService.GetInstructions())
         {
             <div class="wrap wrap--1">
                 <div class="article-card" onclick="redirectToPage('@instructionItem.LinkToPage')">
-                    <div class="content">
+                    <div class="content" style="flex-wrap: nowrap">
                         <p class="title" style="font-weight:900">@instructionItem.Title</p>
+                        @* <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#DeleteModal" onclick="event.stopPropagation();"> *@
+                        @*     <i class="actionsBtn far fa-plus"> Удалить</i> *@
+                        @* </button> *@
+                        @if (User.Identity.Name == "admin@rtc.ru")
+                        {
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#DeleteModal"
+                                    onclick="event.stopPropagation(); ConfirmDelete(@instructionItem.Id);" id="showModal">
+                                <i class="actionsBtn far fa-plus"> Удалить</i>
+                            </button>
+                        }
                     </div>
                     <img src="@instructionItem.ImageUrl" alt="article-cover"/>
                 </div>
@@ -26,4 +47,121 @@
     </section>
 </div>
 
+    @* Add new news *@
+<div class="modal fade" id="CreateModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <form id="saveForm" method="post">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="createModalLabel">Добавить инструкцию</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label asp-for="Title" class="control-label"></label>
+                        <input asp-for="Title" type="text" class="form-control">
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                        @* <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> *@
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ImageUrl" class="control-label"></label>
+                        <input asp-for="ImageUrl" type="text" class="form-control">
+                        <span asp-validation-for="ImageUrl" class="text-danger"></span>
+                        @* <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> *@
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btnCancel" data-bs-dismiss="modal">Закрыть</button>
+                    <button id="btnSave" type="button" class="btn btn-primary">Сохранить</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+    @* Delete news *@
+<div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <form id="saveForm" method="post">
+                <div class="modal-header">
+                    <h5 class="modal-title">Удалить новость</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h5>Вы уверены, что хотите удалить эту новость?</h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btnCancel" data-bs-dismiss="modal">Закрыть</button>
+                    <button id="btnDelete" type="button" class="btn btn-danger">Удалить</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 <script src="/Views/Instructions/Index.cshtml.js" asp-append-version="true"></script>
+
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+                $('#btnSave').click(function () {
+                    var newsForm = $('#saveForm').serialize();
+                    $.ajax({
+                        type: "POST",
+                        url: "/Instructions/Create/",
+                        data: newsForm,
+                        success: function () {
+                            $('#CreateModal').modal('hide');
+                            window.location.href = "/Instructions";
+                        }
+                    })
+                })
+                                        $('#btnDelete').click(function () {
+                                            var idD = $('#NewsId').val();
+                                            $.ajax({
+                                                type: "POST",
+                                                url: "/Instructions/Delete/",
+                                                data: { id: idD },
+                                                success: function (result) {
+                                                    if (result) 
+                                                    {
+                                                        $('#NewsId').val(null);
+                                                        $('#DeleteModal').modal('hide');
+                                                        window.location.href = "/Instructions";
+                                                    }
+                                                    else {
+                                                        alert("Не удалось удалить инструкцию");
+                                                    }
+                                                }
+                                            })
+                                        })
+            })
+                    var ConfirmDelete = function (id) {
+                        $('#NewsId').val(id);
+                        $('#DeleteModal').modal('show');
+                    }
+                    
+                    // var EditForm = function (id) {
+                    //     $.ajax({
+                    //         type: "POST",
+                    //         url: "/Instructions//",
+                    //         data: { id: id },
+                    //         success: function (news) {
+                    //             $('#EditModal').modal('show');
+                    //             $('#newsTitle').val(news.title);
+                    //             $('#newsContent').val(news.content);
+                    //             $('.updateId').val(news.id);
+                    //         }
+                    //     })
+                    // }
+                   
+
+</script>
+    
+}
