@@ -31,6 +31,7 @@ builder.Services.AddScoped<IAboutService, AboutService>();
 builder.Services.AddScoped<IShortcutService, ShortcutService>();
 builder.Services.AddScoped<IInstructionsService, InstructionsService>();
 builder.Services.AddScoped<IFeedbackService, FeedbackService>();
+builder.Services.AddScoped<IMuseumService, MuseumService>();
 
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(options =>
