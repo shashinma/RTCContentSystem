@@ -22,4 +22,6 @@ public class ApplicationDbContext : DbContext
     public DbSet<ShortcutItems> ShortcutItems { get; set; }
     
     public DbSet<InstructionItem> InstructionItems { get; set; }
+    
+    public DbSet<FeedbackItem> FeedbackItems { get; set; }
 }
