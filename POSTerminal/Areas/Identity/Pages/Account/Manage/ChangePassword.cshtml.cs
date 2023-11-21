@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace POSTerminalWebApp.Areas.Identity.Pages.Account.Manage;
+namespace POSTerminal.Areas.Identity.Pages.Account.Manage;
 
 public class ChangePasswordModel : PageModel
 {
