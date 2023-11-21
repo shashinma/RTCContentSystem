@@ -30,6 +30,21 @@ public class JobsController : Controller
         _context.SaveChanges();
         return RedirectToAction("Index");
     }
+    
+    public JsonResult Delete(int id)
+    {
+        bool result = false;
+        var jobs = _context.JobsItems.Find(id);
+
+        if (jobs != null)
+        {
+            result = true;
+            _context.JobsItems.Remove(jobs);
+            _context.SaveChanges();
+        }
+        
+        return Json(result);
+    }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
