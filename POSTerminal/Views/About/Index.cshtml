@@ -14,7 +14,7 @@
     {
         <div class="newsActions">
             <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#CreateModal">
-                <i class="actionsBtn far fa-plus"> Удадить текст</i>
+                <i class="actionsBtn far fa-plus"> Удалить текст</i>
             </button>
             <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#CreateModal">
                 <i class="actionsBtn far fa-plus"> Добавить описание</i>
@@ -23,7 +23,7 @@
     }
 
 <div class="container py-2">
-    <section class="main_c">
+    <section>
         <markdown>
             @foreach (var aboutItem in AboutService.getAbout())
             {
@@ -33,10 +33,9 @@
     </section>
 </div>
 
-
-    @* Add new news *@
+@* Add new news *@
 <div class="modal fade" id="CreateModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
         <div class="modal-content">
             <form id="saveForm" method="post">
                 <div class="modal-header">
@@ -48,7 +47,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label asp-for="Content" class="control-label"></label>
-                        <input asp-for="Content" type="text" class="form-control">
+                        <textarea asp-for="Content" type="text" rows="15" class="form-control"></textarea>
                         <span asp-validation-for="Content" class="text-danger"></span>
                         @* <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> *@
                     </div>
@@ -86,5 +85,51 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalToggleLabel">Modal 1</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Show a second modal and hide this one with the button below.
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal">Open second modal</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalToggleLabel2">Modal 2</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Hide this modal and show the first with the button below.
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal" data-bs-dismiss="modal">Back to first</button>
+      </div>
+    </div>
+  </div>
+</div>
+<a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Open first modal</a>
 
 
