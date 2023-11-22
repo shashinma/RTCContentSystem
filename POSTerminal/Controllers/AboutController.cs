@@ -30,7 +30,7 @@ public class AboutController : Controller
         // Обработка полученного значения Markdown
         string markdownContent = model.Content;
         string htmlContent = Markdown.ToHtml(markdownContent);
-
+        
         // Сохранение в базу данных
         model.Content = htmlContent;
         
