@@ -20,13 +20,16 @@
     }
 
 <div class="container py-2">
-    <section>
+    <section style="max-width: 100%;">
+    <div class="container-sm">
+
         <markdown>
             @foreach (var aboutItem in AboutService.getAbout())
             {
                 @aboutItem.Content
             }
         </markdown>
+        </div>
     </section>
 </div>
 
