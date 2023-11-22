@@ -52,14 +52,18 @@
                     <div class="postcard__preview-txt">
                         @jobsItem.Requirements
                     </div>
+                        @if (User.Identity.Name == "admin@rtc.ru")
+                        {
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#EditModal"
+                                    onclick="event.stopPropagation(); EditForm(@jobsItem.Id);" id="showModal">
+                                <i class="actionsBtn far fa-trash-alt"> Редактировать</i>
+                            </button>
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#DeleteModal"
+                                    onclick="event.stopPropagation(); ConfirmDelete(@jobsItem.Id);" id="showModal">
+                                <i class="actionsBtn far fa-trash-alt"> Удалить</i>
+                            </button>
+                        }
                 </div>
-                            @if (User.Identity.Name == "admin@rtc.ru")
-                            {
-                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#DeleteModal"
-                                        onclick="ConfirmDelete(@jobsItem.Id);" id="showModal">
-                                    <i class="actionsBtn far fa-trash-alt"> Удалить</i>
-                                </button>
-                            }
             </article>
         }
     </div>
@@ -71,9 +75,8 @@
             <form id="saveForm" method="post">
                 <div class="modal-header">
                     <h5 class="modal-title" id="createModalLabel">Добавить вакансию</h5>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
@@ -84,13 +87,13 @@
                     </div>
                     <div class="form-group">
                         <label asp-for="Requirements" class="control-label"></label>
-                        <textarea asp-for="Requirements" class="form-control" id="formControlTextarea" rows="3" placeholder="Ваше сообщение" required></textarea>
+                        <textarea asp-for="Requirements" class="form-control" rows="3" placeholder="Ваше сообщение" required></textarea>
                         <span asp-validation-for="Requirements" class="text-danger"></span>
                         @* <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> *@
                     </div>
                     <div class="form-group">
                         <label asp-for="Responsibilities" class="control-label"></label>
-                        <textarea asp-for="Responsibilities" class="form-control" id="formControlTextarea" rows="3" placeholder="Ваше сообщение" required></textarea>
+                        <textarea asp-for="Responsibilities" class="form-control" rows="3" placeholder="Ваше сообщение" required></textarea>
                         <span asp-validation-for="Responsibilities" class="text-danger"></span>
                         @* <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> *@
                     </div>
@@ -117,9 +120,8 @@
             <form id="saveForm" method="post">
                 <div class="modal-header">
                     <h5 class="modal-title">Удалить инструкцию</h5>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
                 </div>
                 <div class="modal-body">
                     <h5>Вы уверены, что хотите удалить эту инструкцию?</h5>
@@ -133,11 +135,60 @@
     </div>
 </div>
 
+    @* Edit news *@
+    <div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+            <div class="modal-content">
+                <form asp-action="Update" id="EditForm" method="post">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Редактировать инструкцию</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <input asp-for="Id" class="updateId" type="hidden"/>
+                            <label asp-for="Vacancy" class="control-label"></label>
+                            <input asp-for="Vacancy" type="text" id="formControlVacancy" class="form-control">
+                            <span asp-validation-for="Vacancy" class="text-danger"></span>
+                            @* <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> *@
+                        </div>
+                        <div class="form-group">
+                            <input asp-for="Id" class="updateId" type="hidden" />
+                            <label asp-for="Requirements" class="control-label"></label>
+                            <textarea asp-for="Requirements" class="form-control" id="formControlRequirements" rows="3" placeholder="Ваше сообщение" required></textarea>
+                            <span asp-validation-for="Requirements" class="text-danger"></span>
+                            @* <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> *@
+                        </div>
+                        <div class="form-group">
+                            <input asp-for="Id" class="updateId" type="hidden" />
+                            <label asp-for="Responsibilities" class="control-label"></label>
+                            <textarea asp-for="Responsibilities" class="form-control" id="formControlResponsibilities" rows="3" placeholder="Ваше сообщение" required></textarea>
+                            <span asp-validation-for="Responsibilities" class="text-danger"></span>
+                            @* <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> *@
+                        </div>
+                        <div class="form-group">
+                            <input asp-for="Id" class="updateId" type="hidden" />
+                            <label asp-for="PicSrc" class="control-label"></label>
+                            <input asp-for="PicSrc" type="text" id="formPicSrc" class="form-control">
+                            <span asp-validation-for="PicSrc" class="text-danger"></span>
+                            @* <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> *@
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary btnCancel" data-bs-dismiss="modal">Закрыть</button>
+                        <button id="btnSave" type="submit" class="btn btn-primary">Изменить</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
 @section Scripts
 {
     <script>
         $(document).ready(function () {
-                $('#btnSave').click(function () {
+            $('#btnSave').click(function () {
                     var jobsForm = $('#saveForm').serialize();
                     $.ajax({
                         type: "POST",
@@ -149,7 +200,7 @@
                         }
                     })
                 })
-                $('#btnDelete').click(function () {
+            $('#btnDelete').click(function () {
                                             var idD = $('#NewsId').val();
                                             $.ajax({
                                                 type: "POST",
@@ -168,24 +219,28 @@
                                                 }
                                             })
                                         })
-            })
-                    var ConfirmDelete = function (id) {
+        })
+        
+        var ConfirmDelete = function (id) {
                         $('#NewsId').val(id);
                         $('#DeleteModal').modal('show');
                     }
                     
-                    // var EditForm = function (id) {
-                    //     $.ajax({
-                    //         type: "POST",
-                    //         url: "/Instructions//",
-                    //         data: { id: id },
-                    //         success: function (news) {
-                    //             $('#EditModal').modal('show');
-                    //             $('#newsTitle').val(news.title);
-                    //             $('#newsContent').val(news.content);
-                    //             $('.updateId').val(news.id);
-                    //         }
-                    //     })
-                    // }
+        var EditForm = function (id) {
+                        $.ajax({
+                            type: "POST",
+                            url: "/Jobs/GetJobs/",
+                            data: { id: id },
+                            success: function (jobs) {
+                                $('#EditModal').modal('show');
+                                $('#formControlVacancy').val(jobs.vacancy);
+                                $('#formControlRequirements').val(jobs.requirements);
+                                $('#formControlResponsibilities').val(jobs.responsibilities);
+                                $('#formPicSrc').val(jobs.picSrc);
+                                $('.updateId').val(jobs.id);
+                                console.log(jobs)
+                            }
+                        })
+                    }
 </script>
 }
