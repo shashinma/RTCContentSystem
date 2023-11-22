@@ -14,14 +14,24 @@
 <h2>Обратная связь</h2>
 <br/>
 <form id="saveForm" method="post">
+    @* <div class="input-group mb-3"> *@
+    @*     <span class="input-group-text">Контактная почта и имя</span> *@
+    @*     <input asp-for="Mail" type="email" class="form-control use-keyboard-input" id="formControlEmail" placeholder="name@example.com" required /> *@
+    @*     <input asp-for="Author" class="form-control use-keyboard-input" id="formControlContact" placeholder="Как к Вам обращаться?" /> *@
+    @* </div> *@
+    
     <div class="input-group mb-3">
-        <span class="input-group-text">Контактная почта и имя</span>
+        <span class="input-group-text">Ваша контактная почта</span>
         <input asp-for="Mail" type="email" class="form-control use-keyboard-input" id="formControlEmail" placeholder="name@example.com" required />
-        <input asp-for="Author" class="form-control use-keyboard-input" id="formControlContact" placeholder="Как к Вам обращаться?" />
     </div>
     
     <div class="input-group mb-3">
-        <span class="input-group-text" id="Theme">Тема сообщения</span>
+        <span class="input-group-text">Ваше имя</span>
+        <input asp-for="Author" class="form-control use-keyboard-input" id="formControlContact" placeholder="" />
+    </div>
+    
+    <div class="input-group mb-3">
+        <span class="input-group-text">Тема сообщения</span>
         <input asp-for="Title" type="text" class="form-control use-keyboard-input" id="formControlTheme" placeholder="">
     </div>
 
