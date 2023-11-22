@@ -37,8 +37,7 @@
         
         <section class="pt-2">
             <h4>Актуальные новости</h4>
-            @foreach (var newsItem in NewsService.GetNews().Take(newsLimit).Take(newsLimit).Reverse())
-            {
+@foreach (var newsItem in NewsService.GetNews().OrderByDescending(n => n.PublishDate).Take(newsLimit)){
                 <article class="postcard light blue" data-bs-toggle="modal" data-bs-target="#modal-@newsItem.Id">
                     @if (!newsItem.PicSrc.IsNullOrEmpty())
                     {
