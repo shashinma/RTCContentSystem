@@ -45,6 +45,25 @@ public class InstructionsController : Controller
         
         return Json(result);
     }
+    
+    public IActionResult GetInstructions(int id)
+    {
+        var news = _context.InstructionItems.Find(id);
+        return Json(news);
+    }
+    
+    [HttpPost]
+    public IActionResult Update(InstructionItem model)
+    {
+        var InstructionFromDb = _context.InstructionItems.Find(model.Id);
+        InstructionFromDb.Title = model.Title;
+        InstructionFromDb.ImageUrl = model.ImageUrl;
+        
+        _context.InstructionItems.Update(InstructionFromDb);
+        _context.SaveChanges();
+        
+        return RedirectToAction("Index");
+    }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()

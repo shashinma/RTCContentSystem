@@ -40,6 +40,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <Folder Include="wwwroot\modules\" />
         <Folder Include="wwwroot\pdf\" />
         <Folder Include="wwwroot\resources\images\" />
     </ItemGroup>

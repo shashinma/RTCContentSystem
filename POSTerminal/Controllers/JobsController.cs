@@ -45,6 +45,27 @@ public class JobsController : Controller
         
         return Json(result);
     }
+    
+    public IActionResult GetJobs(int id)
+    {
+        var jobs = _context.JobsItems.Find(id);
+        return Json(jobs);
+    }
+    
+    [HttpPost]
+    public IActionResult Update(JobsItem model)
+    {
+        var jobsFromDb = _context.JobsItems.Find(model.Id);
+        jobsFromDb.Vacancy = model.Vacancy;
+        jobsFromDb.Requirements = model.Requirements;
+        jobsFromDb.Responsibilities = model.Responsibilities;
+        jobsFromDb.PicSrc = model.PicSrc;
+        
+        _context.JobsItems.Update(jobsFromDb);
+        _context.SaveChanges();
+        
+        return RedirectToAction("Index");
+    }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()

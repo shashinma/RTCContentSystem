@@ -34,6 +34,10 @@
                         @* </button> *@
                         @if (User.Identity.Name == "admin@rtc.ru")
                         {
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#EditModal"
+                                    onclick="event.stopPropagation(); EditForm(@instructionItem.Id);" id="showModal">
+                                <i class="actionsBtn far fa-trash-alt"> Редактировать</i>
+                            </button>
                             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#DeleteModal"
                                     onclick="event.stopPropagation(); ConfirmDelete(@instructionItem.Id);" id="showModal">
                                 <i class="actionsBtn far fa-trash-alt"> Удалить</i>
@@ -54,9 +58,8 @@
             <form id="saveForm" method="post">
                 <div class="modal-header">
                     <h5 class="modal-title" id="createModalLabel">Добавить инструкцию</h5>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
@@ -88,9 +91,8 @@
             <form id="saveForm" method="post">
                 <div class="modal-header">
                     <h5 class="modal-title">Удалить инструкцию</h5>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
                 </div>
                 <div class="modal-body">
                     <h5>Вы уверены, что хотите удалить эту инструкцию?</h5>
@@ -103,6 +105,39 @@
         </div>
     </div>
 </div>
+
+    @* Edit news *@
+    <div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+            <div class="modal-content">
+                <form asp-action="Update" id="EditForm" method="post">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Редактировать инструкцию</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <input asp-for="Id" class="updateId" type="hidden" />
+                            <label asp-for="Title" class="control-label"></label>
+                            <input asp-for="Title" class="form-control" id="newsTitle">
+                            <span asp-validation-for="Title" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <input asp-for="Id" class="updateId" type="hidden" />
+                            <label asp-for="ImageUrl" class="control-label"></label>
+                            <textarea asp-for="ImageUrl" class="form-control" rows="18" id="newsContent"></textarea>
+                            <span asp-validation-for="ImageUrl" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary btnCancel" data-bs-dismiss="modal">Закрыть</button>
+                        <button id="btnSave" type="submit" class="btn btn-primary">Изменить</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
 <script src="/Views/Instructions/Index.cshtml.js" asp-append-version="true"></script>
 
@@ -147,18 +182,18 @@
                         $('#DeleteModal').modal('show');
                     }
                     
-                    // var EditForm = function (id) {
-                    //     $.ajax({
-                    //         type: "POST",
-                    //         url: "/Instructions//",
-                    //         data: { id: id },
-                    //         success: function (news) {
-                    //             $('#EditModal').modal('show');
-                    //             $('#newsTitle').val(news.title);
-                    //             $('#newsContent').val(news.content);
-                    //             $('.updateId').val(news.id);
-                    //         }
-                    //     })
-                    // }
+                    var EditForm = function (id) {
+                        $.ajax({
+                            type: "POST",
+                            url: "/Instructions/GetInstructions/",
+                            data: { id: id },
+                            success: function (news) {
+                                $('#EditModal').modal('show');
+                                $('#newsTitle').val(news.title);
+                                $('#newsContent').val(news.imageUrl);
+                                $('.updateId').val(news.id);
+                            }
+                        })
+                    }
 </script>
 }
