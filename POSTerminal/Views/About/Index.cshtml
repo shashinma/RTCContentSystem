@@ -1,6 +1,8 @@
 ﻿@using POSTerminal.Services
 @model AboutItem
 
+<link href="~/modules/KioskBoard/dist/kioskboard-2.3.0.min.css" rel="stylesheet">
+
 @inject IAboutService AboutService
 
 @{
@@ -47,6 +49,7 @@
                     <div class="form-group">
                         <label asp-for="Content" class="control-label"></label>
                         <textarea asp-for="Content" id="editor" type="text" rows="15" class="form-control"></textarea>
+                        <textarea class="virtual-keyboard" data-kioskboard-type="all" data-kioskboard-placement="top" data-kioskboard-specialcharacters="true" placeholder="Your Address"></textarea>
                         <span asp-validation-for="Content" class="text-danger"></span>
                         @* <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> *@
                     </div>
@@ -61,6 +64,7 @@
 </div>
 
 <script src="~/modules/ckeditor5/ckeditor.js"></script>
+<script src="~/modules/KioskBoard/dist/kioskboard-2.3.0.min.js"></script>
 <script src="/Views/About/Index.cshtml.js" asp-append-version="true"></script>
 
 @section Scripts
@@ -80,10 +84,9 @@
                     })
                 })
             })
-                    // ClassicEditor
-                    //     .create( document.querySelector( '#editor' ) )
-                    //     .catch( error => {
-                    //         console.error( error );
-                    //     } );
+        // ClassicEditor.create( document.querySelector('#editor'))
+        //                     .catch( error => {
+        //                         console.error( error );
+        //                     });
     </script>
 }
