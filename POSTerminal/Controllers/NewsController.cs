@@ -83,6 +83,7 @@ public class NewsController : Controller
         var newsFromDb = _context.NewsItems.Find(model.Id);
         newsFromDb.Title = model.Title;
         newsFromDb.Content = model.Content;
+        newsFromDb.PicSrc = model.PicSrc;
         
         _context.NewsItems.Update(newsFromDb);
         _context.SaveChanges();
