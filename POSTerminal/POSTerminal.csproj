@@ -49,7 +49,6 @@
 
     <ItemGroup>
         <_JsFileModuleStaticWebAsset Include="Views\Shared\_MenuPartialPDF.cshtml.js" />
-        <_JsFileModuleStaticWebAsset Include="\Views\Shared\_NavBar.cshtml.js" />
     </ItemGroup>
 
 </Project>
