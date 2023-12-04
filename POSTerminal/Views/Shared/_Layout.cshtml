@@ -29,7 +29,7 @@
     @*   <i class='bx bx-menu' ></i> *@
     @* </div> *@
     <nav class="sticky">
-        @await Html.PartialAsync("_NavBar.cshtml")
+        <body>@await Html.PartialAsync("_NavBar.cshtml")</body>
     </nav>
     <div class="container ps-5 pe-5">
         <main role="main" class="pb-0">
@@ -66,7 +66,3 @@
 <script src="~/js/keyboard.js" asp-append-version="true"></script>
 
 @await RenderSectionAsync("Scripts", false)
-
-@* <li class="nav-item"> *@
-@*   <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a> *@
-@* </li> *@
