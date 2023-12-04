@@ -44,11 +44,12 @@
         <Folder Include="wwwroot\lib\font-awesome-5.15.4\" />
         <Folder Include="wwwroot\pdf\" />
         <Folder Include="wwwroot\resources\images\" />
-        <Folder Include="Views\" />
     </ItemGroup>
 
     <ItemGroup>
         <_JsFileModuleStaticWebAsset Include="Views\Shared\_MenuPartialPDF.cshtml.js" />
+        <_JsFileModuleStaticWebAsset Include="Views\Shared\_NavBar.cshtml.js" />
+        <_JsFileModuleStaticWebAsset Include="Views\Shared\_Layout.cshtml.js" />
     </ItemGroup>
 
 </Project>
