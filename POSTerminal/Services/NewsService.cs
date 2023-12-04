@@ -1,4 +1,6 @@
-﻿using POSTerminal.Data;
+﻿using System.Collections.Generic;
+using System.Linq;
+using POSTerminal.Data;
 using POSTerminal.Models;
 
 namespace POSTerminal.Services;
@@ -21,5 +23,4 @@ public class NewsService : INewsService
     {
         return _context.NewsItems.ToList();
     }
-
 }

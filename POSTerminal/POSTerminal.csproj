@@ -37,20 +37,19 @@
     <ItemGroup>
         <None Include="wwwroot\css\keyboard.css" />
         <None Include="wwwroot\js\auth.js" />
+        <None Include="\Views\Shared\_NavBar.cshtml.js" />
     </ItemGroup>
 
     <ItemGroup>
         <Folder Include="wwwroot\modules\" />
+        <Folder Include="wwwroot\lib\font-awesome-5.15.4\" />
         <Folder Include="wwwroot\pdf\" />
         <Folder Include="wwwroot\resources\images\" />
+        <Folder Include="Views\" />
     </ItemGroup>
 
     <ItemGroup>
         <_JsFileModuleStaticWebAsset Include="Views\Shared\_MenuPartialPDF.cshtml.js" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <_ContentIncludedByDefault Remove="Views\Files\Index.cshtml" />
     </ItemGroup>
 
 </Project>

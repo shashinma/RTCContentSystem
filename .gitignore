@@ -13,9 +13,9 @@ test-results/
 
 *.db*
 !*.db
-
-*.db*
-!*.db
+docker-compose.yml
+*.icloud
+.DS_Store
 
 # GitHub
 .github/
