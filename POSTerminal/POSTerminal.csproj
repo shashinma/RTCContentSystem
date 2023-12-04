@@ -37,7 +37,6 @@
     <ItemGroup>
         <None Include="wwwroot\css\keyboard.css" />
         <None Include="wwwroot\js\auth.js" />
-        <None Include="\Views\Shared\_NavBar.cshtml.js" />
     </ItemGroup>
 
     <ItemGroup>
@@ -50,6 +49,7 @@
 
     <ItemGroup>
         <_JsFileModuleStaticWebAsset Include="Views\Shared\_MenuPartialPDF.cshtml.js" />
+        <_JsFileModuleStaticWebAsset Include="\Views\Shared\_NavBar.cshtml.js" />
     </ItemGroup>
 
 </Project>
