@@ -1,3 +1,5 @@
+using System;
+
 namespace POSTerminal.Models;
 
 public class NewsItem
