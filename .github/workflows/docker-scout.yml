@@ -9,10 +9,8 @@ on:
     branches: ["**"]
 
 env:
-  # Hostname of your registry
-  REGISTRY: docker.io
-  # Image repository, without hostname and tag
-  IMAGE_NAME: ${{ github.repository }}
+  # Use docker.io for Docker Hub if empty
+  REGISTRY: ${{ vars.REGISTRY }}
   SHA: ${{ github.event.pull_request.head.sha || github.event.after }}
 
 jobs:
