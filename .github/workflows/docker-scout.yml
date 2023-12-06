@@ -1,12 +1,8 @@
 name: Docker Scout
 
 on:
-  push:
-    tags: ["*"]
-    branches:
-      - "master"
-  pull_request:
-    branches: ["**"]
+  release:
+    types: [published]
 
 env:
   # Use docker.io for Docker Hub if empty
@@ -65,3 +61,16 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+
+          # Compare the image built in the pull request with the one in production
+      - name: Docker Scout
+        id: docker-scout
+        if: ${{ github.event_name == 'pull_request' }}
+        uses: docker/scout-action@v1
+        with:
+          command: compare
+          image: ${{ steps.meta.outputs.tags }}
+          to-env: production
+          ignore-unchanged: true
+          only-severities: critical,high
+          token: ${{ secrets.GH_TOKEN }}
