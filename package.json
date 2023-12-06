@@ -1,0 +1,14 @@
+{
+  "name": "rtccontentsystem",
+  "version": "1.0.0",
+  "description": "[![CodeQL](https://github.com/shashinma/RTCContentSystem/actions/workflows/codeql.yml/badge.svg)](https://github.com/shashinma/RTCContentSystem/actions/workflows/codeql.yml) [![Lint Code Base](https://github.com/shashinma/RTCContentSystem/actions/workflows/super-linter.yml/badge.svg)](https://github.com/shashinma/RTCContentSystem/actions/workflows/super-linter.yml) [![OSSAR](https://github.com/shashinma/RTCContentSystem/actions/workflows/ossar.yml/badge.svg)](https://github.com/shashinma/RTCContentSystem/actions/workflows/ossar.yml) [![LICENSE](https://img.shields.io/github/license/shashinma/RTCContentSystem.svg)](LICENSE)",
+  "main": "index.js",
+  "dependencies": {
+    "kioskboard": "^2.3.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mikhail Shashin",
+  "license": "ISC"
+}
