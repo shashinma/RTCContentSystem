@@ -28,7 +28,7 @@
 > services:
 > posterminal:
 >   container_name: rtccontentsystem.posterminal
->   image: ghcr.io/shashinma/rtccontentsystem.posterminal:v0.0.5
+>   image: ghcr.io/shashinma/rtccontentsystem.posterminal:latest
 >   build:
 >     context: POSTerminal
 >     dockerfile: Dockerfile
