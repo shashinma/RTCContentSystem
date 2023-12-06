@@ -45,24 +45,8 @@ jobs:
             type=edge,branch=$repo.default_branch
             type=semver,pattern=v{{version}}
             type=sha,prefix=,suffix=,format=short
-    
-      # Build and push Docker image with Buildx
-      # (don't push on PR, load instead)
-      - name: Build and push Docker image
-        id: build-and-push
-        uses: docker/build-push-action@v5
-        with:
-          context: POSTerminal
-          sbom: ${{ github.event_name != 'pull_request' }}
-          provenance: ${{ github.event_name != 'pull_request' }}
-          push: ${{ github.event_name != 'pull_request' }}
-          load: ${{ github.event_name == 'pull_request' }}
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
 
-          # Compare the image built in the pull request with the one in production
+      # Compare the image built in the pull request with the one in production
       - name: Docker Scout
         id: docker-scout
         if: ${{ github.event_name == 'pull_request' }}
