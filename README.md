@@ -14,9 +14,9 @@
 
 ## Состояние сборки
 
-| Branches | Dependencies | .NET | Docker Image  | Docker Packages | Docker Scout |
+| Branches | Dependencies | .NET | Docker Image  | Docker Scout | Docker Packages | 
 |:--------:|:------------:|:----:|:-------------:|:---------------:|:---------------:|
-|  **`master`**  | [![Dependency Review](https://github.com/shashinma/RTCContentSystem/actions/workflows/dependency-review.yml/badge.svg)](https://github.com/shashinma/RTCContentSystem/actions/workflows/dependency-review.yml) | [![Build status](https://github.com/shashinma/RTCContentSystem/actions/workflows/dotnet.yml/badge.svg)](https://github.com/shashinma/RTCContentSystem/actions/workflows/dotnet.yml) | [![Build status](https://github.com/shashinma/RTCContentSystem/actions/workflows/docker-image.yml/badge.svg)](https://github.com/shashinma/RTCContentSystem/actions/workflows/docker-image.yml) |  [![Build status](https://github.com/shashinma/RTCContentSystem/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/shashinma/RTCContentSystem/actions/workflows/docker-publish.yml) | [![Docker Scout](https://github.com/shashinma/RTCContentSystem/actions/workflows/docker-scout.yml/badge.svg?branch=master)](https://github.com/shashinma/RTCContentSystem/actions/workflows/docker-scout.yml) |
+|  **`master`**  | [![Dependency Review](https://github.com/shashinma/RTCContentSystem/actions/workflows/dependency-review.yml/badge.svg)](https://github.com/shashinma/RTCContentSystem/actions/workflows/dependency-review.yml) | [![Build status](https://github.com/shashinma/RTCContentSystem/actions/workflows/dotnet.yml/badge.svg)](https://github.com/shashinma/RTCContentSystem/actions/workflows/dotnet.yml) | [![Build status](https://github.com/shashinma/RTCContentSystem/actions/workflows/docker-image.yml/badge.svg)](https://github.com/shashinma/RTCContentSystem/actions/workflows/docker-image.yml) | [![Docker Scout](https://github.com/shashinma/RTCContentSystem/actions/workflows/docker-scout.yml/badge.svg?branch=master)](https://github.com/shashinma/RTCContentSystem/actions/workflows/docker-scout.yml) | [![Build status](https://github.com/shashinma/RTCContentSystem/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/shashinma/RTCContentSystem/actions/workflows/docker-publish.yml) |
 
 
 ## Развертывание
