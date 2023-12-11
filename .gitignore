@@ -16,6 +16,7 @@ test-results/
 docker-compose.yml
 *.icloud
 .DS_Store
+appsetting.Development.json
 
 # GitHub
 .github/
