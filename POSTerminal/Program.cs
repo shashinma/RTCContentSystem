@@ -18,12 +18,7 @@ builder.Services.AddDbContext<IdentityContext>(options =>
     options.UseSqlite(identityConnectionString));
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlite(
-        builder.Configuration.GetConnectionString("ApplicationDbConnection"),
-        b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
-
-// builder.Services.AddDbContext<ApplicationDbContext>(options =>
-//     options.UseSqlite(applicationDbConnectionString));
+    options.UseSqlite(applicationDbConnectionString));
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
     .AddEntityFrameworkStores<IdentityContext>();
@@ -87,7 +82,20 @@ app.MapControllerRoute(
     "{controller=Home}/{action=Index}/{id?}"
 );
 
-app.MapRazorPages();
+using (var scope = app.Services.CreateScope())
+{
+    var identityContext = scope.ServiceProvider.GetRequiredService<IdentityContext>();
+    var pendingAppDbContextMigrations = identityContext.Database.GetPendingMigrations().ToList();
 
+    if (pendingAppDbContextMigrations.Count > 0)
+    {
+        identityContext.Database.Migrate();
+    }
+    
+    await SampleData.CreateDefaultUser(scope.ServiceProvider);
+}
+
+app.MapRazorPages();
 app.UseSession();
+
 app.Run();
