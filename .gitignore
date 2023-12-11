@@ -527,3 +527,4 @@ fabric.properties
 # *.iml
 # *.ipr
 POSTerminal/appsettings.json
+POSTerminal/identity.db
