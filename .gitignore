@@ -526,4 +526,4 @@ fabric.properties
 # .idea/modules
 # *.iml
 # *.ipr
-POSTerminal/appsettings.Development.json
+POSTerminal/appsettings.json
