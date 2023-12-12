@@ -1,4 +1,4 @@
-﻿# globs
+# globs
 Makefile.in
 *.userprefs
 *.usertasks
@@ -16,7 +16,6 @@ test-results/
 docker-compose.yml
 *.icloud
 .DS_Store
-*/appsettings.Development.json
 
 # GitHub
 .github/
@@ -527,3 +526,4 @@ fabric.properties
 # *.iml
 # *.ipr
 POSTerminal/appsettings.json
+POSTerminal/identity.db
