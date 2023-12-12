@@ -5,6 +5,7 @@ EXPOSE 8080
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 COPY ["POSTerminal.csproj", "POSTerminal.csproj"]
+COPY ["app.db", "app.db"]
 RUN dotnet restore "POSTerminal.csproj"
 COPY . .
 
@@ -17,5 +18,6 @@ RUN dotnet publish "POSTerminal.csproj" -c Release -o /app/publish /p:UseAppHost
 
 FROM base AS final
 WORKDIR /app
+COPY ["app.db", "app.db"]
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "POSTerminal.dll"]
