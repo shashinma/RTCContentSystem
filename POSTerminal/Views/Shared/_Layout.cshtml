@@ -54,7 +54,7 @@
 }
 
 <footer>
-    @Html.Partial("~/Views/Shared/_KeyboardPartial.cshtml")
+    @await Html.PartialAsync("~/Views/Shared/_KeyboardPartial.cshtml")
     @await Html.PartialAsync("_ScreenSaver.cshtml")
 </footer>
 
@@ -63,6 +63,9 @@
 <script src="~/js/site.js" asp-append-version="true"></script>
 <script src="/Views/Shared/_Layout.cshtml.js" asp-append-version="true"></script>
 <script src="/Views/Shared/_ScreenSaver.cshtml.js" asp-append-version="true"></script>
+<script src="~/modules/Keyboard/jquery.ml-keyboard.js"></script>
+@* <script src="~/modules/KioskBoard-2.3.0/src/kioskboard.js"></script> *@
+@* <script src="~/js/keyboardAlt.js" asp-append-version="true"></script> *@
 <script src="~/js/keyboard.js" asp-append-version="true"></script>
 
 @await RenderSectionAsync("Scripts", false)
