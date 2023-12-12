@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
-    <link rel="stylesheet" href="~/css/keyboard.css" asp-append-version="true"/>
     <link rel="stylesheet" href="~/POSTerminal.styles.css" asp-append-version="true"/>
 
     <!-- Boxiocns CDN Link -->
@@ -39,7 +38,7 @@
         </div>
     </div>
 </div>
-@Html.Partial("~/Views/Shared/_KeyboardPartial.cshtml")
+@await Html.PartialAsync("~/Views/Shared/_KeyboardPartial.cshtml")
 
 @section Scripts{
     <script>
@@ -58,6 +57,13 @@
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="~/js/site.js" asp-append-version="true"></script>
-<script src="~/js/keyboard.js" asp-append-version="true"></script>
+<script src="~/modules/Keyboard/jquery.ml-keyboard.js"></script>
+
+<script>
+    $('.use-keyboard-en').mlKeyboard({
+        layout: 'en_US',
+        active_shift: false
+    });
+</script>
 
 @await RenderSectionAsync("Scripts", false)
