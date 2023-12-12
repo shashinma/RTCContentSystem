@@ -5,6 +5,7 @@ using POSTerminal.Services;
 using Westwind.AspNetCore.Markdown;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.WebHost.UseStaticWebAssets();
 
 // Add services to the container.
 var identityConnectionString = builder.Configuration.GetConnectionString("IdentityConnection") ??
