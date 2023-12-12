@@ -5,7 +5,6 @@ EXPOSE 8080
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 COPY ["POSTerminal.csproj", "POSTerminal.csproj"]
-COPY ["app.db", "app.db"]
 RUN dotnet restore "POSTerminal.csproj"
 COPY . .
 
