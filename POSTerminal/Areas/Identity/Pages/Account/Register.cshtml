@@ -13,17 +13,17 @@
             <hr/>
             <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
             <div class="form-floating mb-3">
-                <input asp-for="Input.Email" class="form-control use-keyboard-input" autocomplete="username" aria-required="true" placeholder="name@example.com"/>
+                <input asp-for="Input.Email" class="form-control use-keyboard" autocomplete="username" aria-required="true" placeholder="name@example.com"/>
                 <label asp-for="Input.Email">Почтовый адрес</label>
                 <span asp-validation-for="Input.Email" class="text-danger"></span>
             </div>
             <div class="form-floating mb-3">
-                <input asp-for="Input.Password" class="form-control use-keyboard-input" autocomplete="new-password" aria-required="true" placeholder="password"/>
+                <input asp-for="Input.Password" class="form-control use-keyboard" autocomplete="new-password" aria-required="true" placeholder="password"/>
                 <label asp-for="Input.Password">Пароль</label>
                 <span asp-validation-for="Input.Password" class="text-danger"></span>
             </div>
             <div class="form-floating mb-3">
-                <input asp-for="Input.ConfirmPassword" class="form-control use-keyboard-input" autocomplete="new-password" aria-required="true" placeholder="password"/>
+                <input asp-for="Input.ConfirmPassword" class="form-control use-keyboard" autocomplete="new-password" aria-required="true" placeholder="password"/>
                 <label asp-for="Input.ConfirmPassword">Подтверждение пароля</label>
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>

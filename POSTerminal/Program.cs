@@ -5,6 +5,7 @@ using POSTerminal.Services;
 using Westwind.AspNetCore.Markdown;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.WebHost.UseStaticWebAssets();
 
 // Add services to the container.
 var identityConnectionString = builder.Configuration.GetConnectionString("IdentityConnection") ??
@@ -18,7 +19,12 @@ builder.Services.AddDbContext<IdentityContext>(options =>
     options.UseSqlite(identityConnectionString));
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlite(applicationDbConnectionString));
+    options.UseSqlite(
+        builder.Configuration.GetConnectionString("ApplicationDbConnection"),
+        b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
+
+// builder.Services.AddDbContext<ApplicationDbContext>(options =>
+//     options.UseSqlite(applicationDbConnectionString));
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
     .AddEntityFrameworkStores<IdentityContext>();
@@ -82,20 +88,33 @@ app.MapControllerRoute(
     "{controller=Home}/{action=Index}/{id?}"
 );
 
+app.MapRazorPages();
+
 using (var scope = app.Services.CreateScope())
 {
-    var identityContext = scope.ServiceProvider.GetRequiredService<IdentityContext>();
-    var pendingAppDbContextMigrations = identityContext.Database.GetPendingMigrations().ToList();
-
-    if (pendingAppDbContextMigrations.Count > 0)
+    var services = scope.ServiceProvider;
+    var configuration = services.GetRequiredService<IConfiguration>();
+    try
     {
-        identityContext.Database.Migrate();
+        var context = services.GetRequiredService<IdentityContext>();
+        context.Database.Migrate();
+    }
+    catch (Exception ex)
+    {
+        var logger = services.GetRequiredService<ILogger<Program>>();
+        logger.LogError(ex, "An error occurred while migrating the database.");
     }
     
-    await SampleData.CreateDefaultUser(scope.ServiceProvider);
+    try
+    {
+        await DefaultUsers.InitializeAsync(services, configuration);
+    }
+    catch (Exception ex)
+    {
+        var logger = services.GetRequiredService<ILogger<Program>>();
+        logger.LogError(ex, "An error occurred seeding the DB.");
+    }
 }
 
-app.MapRazorPages();
 app.UseSession();
-
 app.Run();
