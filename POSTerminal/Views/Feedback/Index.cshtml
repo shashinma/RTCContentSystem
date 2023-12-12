@@ -22,22 +22,24 @@
     
     <div class="input-group mb-3">
         <span class="input-group-text">Ваша контактная почта</span>
-        <input asp-for="Mail" type="email" class="form-control use-keyboard-input" id="formControlEmail" placeholder="name@example.com" required />
+        <input asp-for="Mail" data-kioskboard-type="all" data-kioskboard-placement="top" data-kioskboard-specialcharacters="true" class="form-control use-keyboard-en" id="formControlEmail" placeholder="name@example.com" required />
     </div>
     
     <div class="input-group mb-3">
         <span class="input-group-text">Ваше имя</span>
-        <input asp-for="Author" class="form-control use-keyboard-input" id="formControlContact" placeholder="" />
+        <input asp-for="Author" data-kioskboard-type="all" data-kioskboard-placement="top" data-kioskboard-specialcharacters="true" class="form-control use-keyboard-ru" id="formControlContact" required />
+
     </div>
     
     <div class="input-group mb-3">
         <span class="input-group-text">Тема сообщения</span>
-        <input asp-for="Title" type="text" class="form-control use-keyboard-input" id="formControlTheme" placeholder="">
+        <input asp-for="Title" data-kioskboard-type="all" data-kioskboard-placement="top" data-kioskboard-specialcharacters="true" class="form-control use-keyboard-ru" id="formControlTheme" required />
+
     </div>
 
     <div class="input-group mb-3">
         <span class="input-group-text">Ваше сообщение</span>
-        <textarea asp-for="Message" class="form-control use-keyboard-input" id="formControlTextarea" rows="3" placeholder="" required></textarea>
+        <input asp-for="Message" data-kioskboard-type="all" data-kioskboard-placement="top" data-kioskboard-specialcharacters="true" class="form-control use-keyboard-ru" id="formControlTextarea" required />
     </div>
 
     <button id="btnSave" type="button" class="btn btn-primary">Отправить</button>
@@ -86,7 +88,6 @@
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="~/js/site.js" asp-append-version="true"></script>
-<script src="~/js/keyboard.js" asp-append-version="true"></script>
 
 @section Scripts
 {
