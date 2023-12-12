@@ -13,7 +13,7 @@ function showPopup() {
 
 function hidePopup() {
     popup.style.display = 'none';
-    redirectToPage(/Home/);
+    redirectToPage("/Home");
     resetTimer(); // Start the timer again after hiding the popup
 }
 
