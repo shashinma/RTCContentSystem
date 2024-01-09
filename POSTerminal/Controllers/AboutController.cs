@@ -24,20 +24,20 @@ public class AboutController : Controller
         return View();
     }
 
-    [HttpPost]
-    public IActionResult Create(AboutItem model)
-    {
-        // Обработка полученного значения Markdown
-        string markdownContent = model.Content;
-        string htmlContent = Markdown.ToHtml(markdownContent);
-        
-        // Сохранение в базу данных
-        model.Content = htmlContent;
-        
-        _context.AboutItems.Add(model);
-        _context.SaveChanges();
-        return RedirectToAction("Index", "Home");
-    }
+    // [HttpPost]
+    // public IActionResult Create(AboutItem model)
+    // {
+    //     // Обработка полученного значения Markdown
+    //     string markdownContent = model.Content;
+    //     string htmlContent = Markdown.ToHtml(markdownContent);
+    //     
+    //     // Сохранение в базу данных
+    //     model.Content = htmlContent;
+    //     
+    //     _context.AboutItems.Add(model);
+    //     _context.SaveChanges();
+    //     return RedirectToAction("Index", "Home");
+    // }
     
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
