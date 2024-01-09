@@ -47,9 +47,8 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label asp-for="Content" class="control-label"></label>
+                        <label asp-for="Content" class="control-label">Содержимое раздела</label>
                         <textarea asp-for="Content" id="editor" type="text" rows="15" class="form-control"></textarea>
-                        <textarea class="virtual-keyboard" data-kioskboard-type="all" data-kioskboard-placement="top" data-kioskboard-specialcharacters="true" placeholder="Your Address"></textarea>
                         <span asp-validation-for="Content" class="text-danger"></span>
                         @* <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> *@
                     </div>
