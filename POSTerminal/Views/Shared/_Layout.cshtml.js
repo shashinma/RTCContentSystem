@@ -13,7 +13,7 @@ if (localStorage.getItem("sidebarState") === null) {
 let arrow = document.querySelectorAll(".arrow");
 for (var i = 0; i < arrow.length; i++) {
     arrow[i].addEventListener("click", (e) => {
-        let arrowParent = e.target.parentElement.parentElement;//selecting main parent of arrow
+        let arrowParent = e.target.parentElement.parentElement; //selecting main parent of arrow
         arrowParent.classList.toggle("showMenu");
     });
 }
@@ -41,7 +41,3 @@ btn.addEventListener('click', () =>{
     // Ваш код обработчика клика
     console.log('Кнопка нажата');
 });
-
-
-// let value = localStorage.getItem("sidebarState");
-// let sidebarClass = value === null || value === "" ? "sidebar open" : value === "open" ? "sidebar open" : "sidebar";
