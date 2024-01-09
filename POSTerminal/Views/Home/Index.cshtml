@@ -1,8 +1,6 @@
 @using POSTerminal.Services
-@using POSTerminal.Views.News
 @using Westwind.AspNetCore.Markdown
 @using Microsoft.IdentityModel.Tokens
-@using System.Runtime.InteropServices.JavaScript
 
 @inject INewsService NewsService
 @inject IShortcutService ShortcutService
@@ -33,10 +31,9 @@
                 </div>
             }
         </section>
-        
         <section class="pt-2">
             <h4>Актуальные новости</h4>
-@foreach (var newsItem in NewsService.GetNews().OrderByDescending(n => n.PublishDate).Take(newsLimit)){
+            @foreach (var newsItem in NewsService.GetNews().OrderByDescending(n => n.PublishDate).Take(newsLimit)){
                 <article class="postcard light blue" data-bs-toggle="modal" data-bs-target="#modal-@newsItem.Id">
                     @if (!newsItem.PicSrc.IsNullOrEmpty())
                     {
@@ -83,7 +80,6 @@
                 </div>
             }
         </section>
-        
             <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
                 <p class="col-md-4 mb-0 text-muted">
                     © @currentYear ЦНИИ РТК <br/>
