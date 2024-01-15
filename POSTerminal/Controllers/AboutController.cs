@@ -23,6 +23,19 @@ public class AboutController : Controller
     {
         return View();
     }
+    
+    [HttpPost]
+    public IActionResult Index(string content)
+    {
+        ViewBag.Content = content;
+        return View();
+    }
+    
+    // public IActionResult Create(string contentString)
+    // {
+    //     ViewBag.Content = contentString;
+    //     return RedirectToAction("Index", "Home");
+    // }
 
     // [HttpPost]
     // public IActionResult Create(AboutItem model)
