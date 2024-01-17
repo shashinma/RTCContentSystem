@@ -25,11 +25,17 @@ public class AboutController : Controller
     }
     
     [HttpPost]
-    public IActionResult Index(string content)
+    public IActionResult SaveContent(IFormCollection content)
     {
-        ViewBag.Content = content;
-        return View();
+        AboutItem aboutItem = new AboutItem();
+        aboutItem.Content = content["content"];
+        _context.AboutItems.Add(aboutItem);
+        _context.SaveChanges();
+        return RedirectToAction("Index", "About");
+        // return View();
     }
+    
+ 
     
     // public IActionResult Create(string contentString)
     // {
