@@ -30,6 +30,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddEntityFrameworkStores<IdentityContext>();
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddScoped<IHomeService, HomeService>();
 builder.Services.AddScoped<IMenuService, MenuService>();
 builder.Services.AddScoped<INewsService, NewsService>();
 builder.Services.AddScoped<IJobsService, JobsService>();
@@ -38,6 +39,7 @@ builder.Services.AddScoped<IShortcutService, ShortcutService>();
 builder.Services.AddScoped<IInstructionsService, InstructionsService>();
 builder.Services.AddScoped<IFeedbackService, FeedbackService>();
 builder.Services.AddScoped<IMuseumService, MuseumService>();
+builder.Services.AddScoped<IImageService, ImageService>();
 
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(options =>
