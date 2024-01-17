@@ -2,7 +2,7 @@
 @using Westwind.AspNetCore.Markdown
 @using Microsoft.IdentityModel.Tokens
 
-@inject INewsService NewsService
+@inject IHomeService HomeService
 @inject IShortcutService ShortcutService
 
 <link rel="stylesheet" href="~/lib/font-awesome-5.15.4/css/all.css">
@@ -33,14 +33,22 @@
         </section>
         <section class="pt-2">
             <h4>Актуальные новости</h4>
-            @foreach (var newsItem in NewsService.GetNews().OrderByDescending(n => n.PublishDate).Take(newsLimit)){
+            @foreach (var newsItem in HomeService.GetNews().OrderByDescending(n => n.PublishDate).Take(newsLimit)){
                 <article class="postcard light blue" data-bs-toggle="modal" data-bs-target="#modal-@newsItem.Id">
-                    @if (!newsItem.PicSrc.IsNullOrEmpty())
+                    @if (newsItem.Image != null)
+                    {
+                        var base64Image = Convert.ToBase64String(newsItem.Image.Image);
+                        <a class="postcard__img_link" data-bs-toggle="modal" data-bs-target="#modal-@newsItem.Id">
+                            <img class="postcard__img" src="data:image/png;base64,@base64Image" alt="Image Title"/>
+                        </a>
+                    }
+                    else if (!newsItem.PicSrc.IsNullOrEmpty())
                     {
                         <a class="postcard__img_link" href="#">
                             <img class="postcard__img" src="@newsItem.PicSrc" alt="Image Title"/>
                         </a>
                     }
+                    
                     <div class="postcard__text t-dark">
                         <h1 class="postcard__title red">
                             <a href="#">@newsItem.Title</a>
