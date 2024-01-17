@@ -77,6 +77,35 @@ public class NewsController : Controller
         return Json(news);
     }
     
+    // [HttpPost]
+    // public async Task<IActionResult> CreateNews(NewsViewModel model, IFormFile image)
+    // {
+    //     if (!ModelState.IsValid)
+    //     {
+    //         return View(model);
+    //     }
+    //
+    //     byte[] imageData = null;
+    //
+    //     // считываем переданный файл в массив байт
+    //     using (var binaryReader = new BinaryReader(image.OpenReadStream()))
+    //     {
+    //         imageData = binaryReader.ReadBytes((int)image.Length);
+    //     }
+    //
+    //     var news = new News
+    //     {
+    //         Title = model.Title,
+    //         Content = model.Content,
+    //         Image = imageData
+    //     };
+    //
+    //     _context.News.Add(news);
+    //     await _context.SaveChangesAsync();
+    //
+    //     return RedirectToAction(nameof(Index));
+    // }
+    
     [HttpPost]
     public IActionResult Update(NewsItem model)
     {
