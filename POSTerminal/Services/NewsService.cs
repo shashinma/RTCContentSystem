@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using POSTerminal.Data;
 using POSTerminal.Models;
 
@@ -21,6 +22,6 @@ public class NewsService : INewsService
 
     public IEnumerable<NewsItem> GetNews()
     {
-        return _context.NewsItems.ToList();
+        return _context.NewsItems.Include(n => n.Image).ToList();
     }
 }
