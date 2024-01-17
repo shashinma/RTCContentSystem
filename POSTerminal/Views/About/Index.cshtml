@@ -1,8 +1,6 @@
 ﻿@using POSTerminal.Services
 @model AboutItem
 
-<link href="~/modules/KioskBoard/dist/kioskboard-2.3.0.min.css" rel="stylesheet">
-
 @inject IAboutService AboutService
 
 @{
@@ -23,65 +21,109 @@
 
 <div class="container py-2">
     <section style="max-width: 100%;">
-    <div class="container-sm">
-
-        <markdown>
-            @foreach (var aboutItem in AboutService.getAbout())
-            {
-                @aboutItem.Content
-            }
-        </markdown>
+        <div class="container-sm">
+            <text id="content-container">
+                @if (ViewBag.Content != default(string))
+                {
+                    @Html.Raw(ViewBag.Content)
+                }
+            </text>
         </div>
     </section>
 </div>
 
-@* Add new news *@
 <div class="modal fade" id="CreateModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
         <div class="modal-content">
-            <form id="saveForm" method="post">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="createModalLabel">Добавить описание</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label asp-for="Content" class="control-label">Содержимое раздела</label>
-                        <textarea asp-for="Content" id="editor" type="text" rows="15" class="form-control"></textarea>
-                        <span asp-validation-for="Content" class="text-danger"></span>
-                        @* <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> *@
+            @using (Html.BeginForm("SaveContent", "About", FormMethod.Post))
+            {
+                <form id="saveForm" method="post">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="createModalLabel">Добавить описание</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary btnCancel" data-bs-dismiss="modal">Закрыть</button>
-                    <button id="btnSave" type="button" class="btn btn-primary">Сохранить</button>
-                </div>
-            </form>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <div id="toolbar-container"></div>
+                            <!-- This container will become the editable. -->
+                            <textarea name="content" id="content" style="display: none;"></textarea>
+                            <div id="editor"></div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary btnCancel" data-bs-dismiss="modal">Закрыть</button>
+                        <button id="btnSave" type="submit" class="btn btn-primary">Сохранить</button>
+                    </div>
+                </form>
+            }
         </div>
     </div>
 </div>
 
-<script src="~/modules/ckeditor5/ckeditor.js"></script>
-<script src="~/modules/KioskBoard/dist/kioskboard-2.3.0.min.js"></script>
+<script src="~/modules/ckeditor5-document/ckeditor.js"></script>
 <script src="/Views/About/Index.cshtml.js" asp-append-version="true"></script>
 
 @section Scripts
 {
     <script>
-        $(document).ready(function () {
-                $('#btnSave').click(function () {
-                    var newsForm = $('#saveForm').serialize();
-                    $.ajax({
-                        type: "POST",
-                        url: "/About/Create/",
-                        data: newsForm,
-                        success: function () {
-                            $('#CreateModal').modal('hide');
-                            window.location.href = "/About";
-                        }
-                    })
-                })
+        DecoupledEditor
+            .create(document.querySelector('#editor'))
+            .then(editor => {
+                const toolbarContainer = document.querySelector('#toolbar-container');
+                toolbarContainer.appendChild(editor.ui.view.toolbar.element);
+
+                // Синхронизация содержимого редактора с textarea при каждом изменении
+                editor.model.document.on('change:data', () => {
+                    document.querySelector('#content').value = editor.getData();
+                });
+                
+                // Установка начального содержимого из textarea в редактор
+                // editor.setData(document.querySelector('#content-container').value);
+                
+                @if (ViewBag.Content != default(string))
+                {
+                    <text>
+                        editor.setData(`@Html.Raw(ViewBag.Content)`);
+                    </text>
+                }
             })
+            .catch(error => {
+                console.error(error);
+            });
     </script>
+    
+    @* <script> *@
+    @*     // $(document).ready(function () { *@
+    @*     //         $('#btnSave').click(function () { *@
+    @*     //             var newsForm = $('#saveForm').serialize(); *@
+    @*     //             $.ajax({ *@
+    @*     //                 type: "POST", *@
+    @*     //                 url: "/About/Create/", *@
+    @*     //                 data: newsForm, *@
+    @*     //                 success: function () { *@
+    @*     //                     $('#CreateModal').modal('hide'); *@
+    @*     //                     window.location.href = "/About"; *@
+    @*     //                 } *@
+    @*     //             }) *@
+    @*     //         }) *@
+    @*     //     }); *@
+    @*          *@
+    @*         let editor; *@
+    @*          *@
+    @*         ClassicEditor *@
+    @*             .create( document.querySelector( '#content' ) ) *@
+    @*             .then( newEditor => { *@
+    @*                 editor = newEditor; *@
+    @*             } ) *@
+    @*             .catch( error => { *@
+    @*                 console.error( error ); *@
+    @*             } ); *@
+    @*          *@
+    @*         // Assuming there is a <button id="submit">Submit</button> in your application. *@
+    @*         document.querySelector( '#submit' ).addEventListener( 'click', () => { *@
+    @*             const editorData = editor.getData(); *@
+    @*          *@
+    @*             // ... *@
+    @*         } ); *@
+    @* </script> *@
 }
