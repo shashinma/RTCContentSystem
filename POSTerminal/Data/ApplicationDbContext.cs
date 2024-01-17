@@ -15,6 +15,8 @@ public class ApplicationDbContext : DbContext
     
     public DbSet<NewsItem> NewsItems { get; set; }
     
+    public DbSet<ImageModel> ImageItems { get; set; }
+    
     public DbSet<JobsItem> JobsItems { get; set; }
     
     public DbSet<AboutItem> AboutItems { get; set; }
