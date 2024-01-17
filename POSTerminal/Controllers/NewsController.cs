@@ -2,8 +2,10 @@ using System.Diagnostics;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using POSTerminal.Data;
 using POSTerminal.Models;
+using POSTerminal.Services;
 
 namespace POSTerminal.Controllers;
 
@@ -13,10 +15,13 @@ public class NewsController : Controller
     private readonly ApplicationDbContext _context;
     private readonly ILogger<NewsController> _logger;
     
-    public NewsController(ApplicationDbContext context, ILogger<NewsController> logger)
+    private readonly IImageService _imageService;
+    
+    public NewsController(ApplicationDbContext context, ILogger<NewsController> logger, IImageService imageService)
     {
         _context = context;
         _logger = logger;
+        _imageService = imageService;
     }
 
     [Authorize]
@@ -25,86 +30,67 @@ public class NewsController : Controller
         return View();
     }
     
-    // // GET: NewsControllerAlt/Details/5
-    // public ActionResult Details(int id)
-    // {
-    //     return View();
-    // }
-    //
-    
-    // public ActionResult Create()
-    // {
-    //     return View();
-    // }
-    
-    // [HttpPost]
-    // public IActionResult Create(NewsItem model)
-    // {
-    //         try
-    //         {
-    //             var newsItem = new NewsItem
-    //             {
-    //                 Title = model.Title,
-    //                 Content = model.Content,
-    //                 PicSrc = model.PicSrc,
-    //                 PublishDate = DateTime.Now
-    //             };
-    //             
-    //             _context.NewsItems.Add(newsItem);
-    //             _context.SaveChanges();
-    //         }
-    //         catch (Exception ex)
-    //         {
-    //             Console.WriteLine(ex.Message);
-    //         }
-    //
-    //         return RedirectToAction("Index");
-    //     }
-    
-    [HttpPost]
-    public IActionResult Create(NewsItem model)
-    {
-        model.PublishDate = DateTime.Now;
-        
-        _context.NewsItems.Add(model);
-        _context.SaveChanges();
-        return RedirectToAction("Index");
-    }
-    
     public IActionResult GetNews(int id)
     {
         var news = _context.NewsItems.Find(id);
         return Json(news);
     }
     
-    // [HttpPost]
-    // public async Task<IActionResult> CreateNews(NewsViewModel model, IFormFile image)
-    // {
-    //     if (!ModelState.IsValid)
-    //     {
-    //         return View(model);
-    //     }
-    //
-    //     byte[] imageData = null;
-    //
-    //     // считываем переданный файл в массив байт
-    //     using (var binaryReader = new BinaryReader(image.OpenReadStream()))
-    //     {
-    //         imageData = binaryReader.ReadBytes((int)image.Length);
-    //     }
-    //
-    //     var news = new News
-    //     {
-    //         Title = model.Title,
-    //         Content = model.Content,
-    //         Image = imageData
-    //     };
-    //
-    //     _context.News.Add(news);
-    //     await _context.SaveChangesAsync();
-    //
-    //     return RedirectToAction(nameof(Index));
-    // }
+    [HttpPost]
+    public async Task<IActionResult> CreateNews(NewsItem model, IFormFile image)
+    {
+        ImageModel imageModel = null;
+
+        if (image != null)
+        {
+            byte[] imageData = null;
+
+            // считываем переданный файл в массив байт
+            using (var binaryReader = new BinaryReader(image.OpenReadStream()))
+            {
+                imageData = binaryReader.ReadBytes((int)image.Length);
+            }
+
+            imageModel = new ImageModel 
+            {
+                Image = imageData,
+                Name = image.FileName
+            };
+
+            _context.ImageItems.Add(imageModel);
+            await _context.SaveChangesAsync();
+        }
+        else if (!string.IsNullOrEmpty(model.PicSrc))
+        {
+            // If image file was not provided, but URL for image (PicSrc) is present, use the ImageService to download and save the image
+            var result = await _imageService.DownloadAndSaveImage(model.PicSrc);
+
+            if (result)
+            {
+                // If image is downloaded and saved successfuly, retrieve the ImageModel that we just saved
+                imageModel = await _context.ImageItems.FirstOrDefaultAsync(i => i.Name == Path.GetFileName(model.PicSrc));
+            }
+        }
+
+        var news = new NewsItem()
+        {
+            PublishDate = DateTime.Now,
+            Title = model.Title,
+            PicSrc = model.PicSrc,
+            Content = model.Content
+        };
+    
+        if (imageModel != null)
+        {
+            news.ImageId = imageModel.Id;
+            news.Image = imageModel;
+        }
+
+        _context.NewsItems.Add(news);
+        await _context.SaveChangesAsync();
+
+        return RedirectToAction(nameof(Index));
+    }
     
     [HttpPost]
     public IActionResult Update(NewsItem model)
