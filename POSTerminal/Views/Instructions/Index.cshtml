@@ -34,6 +34,7 @@
                         @* </button> *@
                         @if (User.Identity.Name == "admin@rtc.ru")
                         {
+                            <br />
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#EditModal"
                                     onclick="event.stopPropagation(); EditForm(@instructionItem.Id);" id="showModal">
                                 <i class="actionsBtn far fa-trash-alt"> Редактировать</i>
@@ -58,7 +59,7 @@
             <form id="saveForm" method="post">
                 <div class="modal-header">
                     <h5 class="modal-title" id="createModalLabel">Добавить инструкцию</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 
                 </div>
                 <div class="modal-body">
@@ -145,55 +146,56 @@
 {
     <script>
         $(document).ready(function () {
-                $('#btnSave').click(function () {
-                    var newsForm = $('#saveForm').serialize();
-                    $.ajax({
-                        type: "POST",
-                        url: "/Instructions/Create/",
-                        data: newsForm,
-                        success: function () {
-                            $('#CreateModal').modal('hide');
+            $('#btnSave').click(function () {
+            var newsForm = $('#saveForm').serialize();
+            $.ajax({
+                type: "POST",
+                url: "/Instructions/Create/",
+                data: newsForm,
+                success: function () {
+                    $('#CreateModal').modal('hide');
+                    window.location.href = "/Instructions";
+                }
+            })
+        })
+        
+        $('#btnDelete').click(function () {
+            var idD = $('#NewsId').val();
+                $.ajax({
+                    type: "POST",
+                    url: "/Instructions/Delete/",
+                    data: { id: idD },
+                    success: function (result) {
+                        if (result) {
+                            $('#NewsId').val(null);
+                            $('#DeleteModal').modal('hide');
                             window.location.href = "/Instructions";
                         }
-                    })
+                        else {
+                            alert("Не удалось удалить инструкцию");
+                        }
+                    }
                 })
-                $('#btnDelete').click(function () {
-                                            var idD = $('#NewsId').val();
-                                            $.ajax({
-                                                type: "POST",
-                                                url: "/Instructions/Delete/",
-                                                data: { id: idD },
-                                                success: function (result) {
-                                                    if (result) 
-                                                    {
-                                                        $('#NewsId').val(null);
-                                                        $('#DeleteModal').modal('hide');
-                                                        window.location.href = "/Instructions";
-                                                    }
-                                                    else {
-                                                        alert("Не удалось удалить инструкцию");
-                                                    }
-                                                }
-                                            })
-                                        })
             })
-                    var ConfirmDelete = function (id) {
-                        $('#NewsId').val(id);
-                        $('#DeleteModal').modal('show');
-                    }
-                    
-                    var EditForm = function (id) {
-                        $.ajax({
-                            type: "POST",
-                            url: "/Instructions/GetInstructions/",
-                            data: { id: id },
-                            success: function (news) {
-                                $('#EditModal').modal('show');
-                                $('#newsTitle').val(news.title);
-                                $('#newsContent').val(news.imageUrl);
-                                $('.updateId').val(news.id);
-                            }
-                        })
-                    }
-</script>
+        })
+        
+        var ConfirmDelete = function (id) {
+            $('#NewsId').val(id);
+            $('#DeleteModal').modal('show');
+        }
+        
+        var EditForm = function (id) {
+            $.ajax({
+                type: "POST",
+                url: "/Instructions/GetInstructions/",
+                data: { id: id },
+                success: function (news) {
+                    $('#EditModal').modal('show');
+                    $('#newsTitle').val(news.title);
+                    $('#newsContent').val(news.imageUrl);
+                    $('.updateId').val(news.id);
+                }
+            })
+        }
+    </script>
 }
