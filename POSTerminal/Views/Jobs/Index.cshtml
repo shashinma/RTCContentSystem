@@ -52,17 +52,21 @@
                     <div class="postcard__preview-txt">
                         @jobsItem.Requirements
                     </div>
-                        @if (User.Identity.Name == "admin@rtc.ru")
-                        {
+                    
+                    @if (User.Identity.Name == "admin@rtc.ru")
+                    {
+                        <br/>
+                        <div style="width: 100%; display: inline-flex; flex-wrap: nowrap">
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#EditModal"
-                                    onclick="event.stopPropagation(); EditForm(@jobsItem.Id);" id="showModal">
+                                    onclick="event.stopPropagation(); EditForm(@jobsItem.Id);" id="showModal" style="width: 100%; margin-right: 5px">
                                 <i class="actionsBtn far fa-trash-alt"> Редактировать</i>
                             </button>
                             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#DeleteModal"
-                                    onclick="event.stopPropagation(); ConfirmDelete(@jobsItem.Id);" id="showModal">
+                                    onclick="event.stopPropagation(); ConfirmDelete(@jobsItem.Id);" id="showModal" style="width: 100%">
                                 <i class="actionsBtn far fa-trash-alt"> Удалить</i>
                             </button>
-                        }
+                        </div>
+                    }
                 </div>
             </article>
         }
