@@ -39,7 +39,7 @@ public class NewsController : Controller
     [HttpPost]
     public async Task<IActionResult> CreateNews(NewsItem model, IFormFile image)
     {
-        ImageModel imageModel = null;
+        ImageModel? imageModel = null;
 
         if (image != null)
         {
@@ -95,7 +95,7 @@ public class NewsController : Controller
     [HttpPost]
     public async Task<IActionResult> EditNews(int id, NewsItem model, IFormFile image)
     {
-        ImageModel imageModel = null;
+        ImageModel? imageModel = null;
         var news = await _context.NewsItems.FindAsync(id);
 
         if (image != null)
@@ -141,6 +141,7 @@ public class NewsController : Controller
 
         return RedirectToAction(nameof(Index));
     }    
+    
     // TODO: Добавить вывод актуальных значений в базу данных
     // [HttpPost]
     // public async Task<IActionResult> EditNews(int id, NewsItem model, IFormFile image)
