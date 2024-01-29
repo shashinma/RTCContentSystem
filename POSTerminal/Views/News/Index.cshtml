@@ -117,7 +117,7 @@
 {
     @* Add new news *@
     <div class="modal fade" id="CreateModal" tabindex="0" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true" style="">
-        <form id="saveForm"  asp-controller="News" asp-action="CreateNews" method="post" enctype="multipart/form-data">
+        <form id="saveForm" asp-controller="News" asp-action="CreateNews" method="post" enctype="multipart/form-data">
             <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -140,20 +140,13 @@
                         <div class="form-group">
                             <label asp-for="Image" class="control-label">Загрузить изображение</label>
                             <div class="input-group mb-3">
-                                <label asp-for="Image"class="btn btn-light border" for="inputGroupFile02">С устройства</label>
-                                <input asp-for="Image" type="file" class="form-control" id="inputGroupFile02" style="display: none;">
-                                @* <label asp-for="PicSrc" class="btn btn-secondary disabled">Изображение по ссылке</label> *@
+                                <label class="btn btn-light border">
+                                    С устройства
+                                    <input asp-for="Image" type="file" class="form-control" id="inputGroupFile02" style="opacity: 0; position: absolute;">
+                                </label>
                                 <input asp-for="PicSrc" type="text" class="form-control" id="newsPicSrc" placeholder="Или адрес для загрузки по ссылке">
                             </div>
-                            @* <span asp-validation-for="Image" class="text-danger"></span> *@
                         </div>
-                        @* <div class="form-group"> *@
-                        @*     <input asp-for="Id" class="updateId" type="hidden" /> *@
-                        @*     <label asp-for="PicSrc" class="control-label">Изображение по ссылке</label> *@
-                        @*     <input asp-for="PicSrc" type="text" class="form-control" id="newsPicSrc"> *@
-                        @*     <span asp-validation-for="PicSrc" class="text-danger"></span> *@
-                        @*     $1$ <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> #1# *@
-                        @* </div> *@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
@@ -166,9 +159,8 @@
 
     @* Edit news *@
     <div class="modal fade" id="EditModal" tabindex="0" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true" style="">
-                <form id="EditForm" asp-controller="News" asp-action="EditNews" method="post" enctype="multipart/form-data">
-
-    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+        <form id="EditForm" asp-controller="News" asp-action="EditNews" method="post" enctype="multipart/form-data">
+            <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title">Редактировать новость</h5>
@@ -176,31 +168,27 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <input asp-for="Id" class="updateId" type="hidden" />
+                            <input asp-for="Id" class="updateId" type="hidden"/>
                             <label asp-for="Title" class="control-label">Заголовок</label>
                             <input asp-for="Title" class="form-control" id="newsTitle">
                             <span asp-validation-for="Title" class="text-danger"></span>
                         </div>
                         <div class="form-group">
-                            <input asp-for="Id" class="updateId" type="hidden" />
+                            <input asp-for="Id" class="updateId" type="hidden"/>
                             <label asp-for="Content" class="control-label">Содержимое</label>
                             <textarea asp-for="Content" class="form-control" rows="18" id="newsContent"></textarea>
                             <span asp-validation-for="Content" class="text-danger"></span>
-                        </div>
+                        </div>                        
+                        <br/>
                         <div class="form-group">
-                            <label asp-for="Image" class="control-label">Изображение с устройства</label>
+                            <label asp-for="Image" class="control-label">Загрузить изображение</label>
                             <div class="input-group mb-3">
-                                <input asp-for="Image" type="file" class="form-control" id="inputGroupFile02">
-                                <label class="input-group-text" for="inputGroupFile02">Upload</label>
+                                <label class="btn btn-light border">
+                                   С устройства
+                                   <input asp-for="Image" type="file" class="form-control" id="inputGroupFile02" style="opacity: 0; position: absolute;">
+                                </label>
+                                <input asp-for="PicSrc" type="text" class="form-control" id="newsPicSrc" placeholder="Или адрес для загрузки по ссылке">
                             </div>
-                            <span asp-validation-for="Image" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <input asp-for="Id" class="updateId" type="hidden" />
-                            <label asp-for="PicSrc" class="control-label">Изображение по сссылке</label>
-                            <input asp-for="PicSrc" type="text" class="form-control" id="newsPicSrc">
-                            <span asp-validation-for="PicSrc" class="text-danger"></span>
-                            @* <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> *@
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -208,9 +196,8 @@
                         <button id="btnSave" type="submit" class="btn btn-primary">Изменить</button>
                     </div>
                 </div>
-                </div>
-            </form>
-        
+            </div>
+        </form>
     </div>
     
     @* Delete news *@
