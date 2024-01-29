@@ -34,7 +34,6 @@ public class ImageService : IImageService
         }
         catch (Exception ex)
         {
-            // Log the exception here
             return false;
         }
 
