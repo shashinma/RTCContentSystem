@@ -1,47 +1,56 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
-namespace POSTerminal.Data;
+namespace PhoneEdit.Data;
 
 public class SampleData
 {
-    private static IConfiguration _configuration;
+    private readonly DefaultUserOptions _options;
 
-    public SampleData(IConfiguration configuration)
+    public SampleData(IOptions<DefaultUserOptions> optionsAccessor)
     {
-        _configuration = configuration;
+        _options = optionsAccessor.Value;
     }
-    // Creates default app's admin
+
     public static async Task CreateDefaultUser(IServiceProvider serviceProvider)
     {
         var userManager = serviceProvider.GetRequiredService<UserManager<IdentityUser>>();
-        var configuration = serviceProvider.GetRequiredService<IConfiguration>();
-        
-        var defaultAdminUsername = configuration.GetValue<string>("ADMIN_USERNAME");
-        var defaultAdminPassword = configuration.GetValue<string>("ADMIN_PASSWORD");
-        var defaultTerminalUsername = configuration.GetValue<string>("TERMINAL_USERNAME");
-        var defaultTerminalPassword = configuration.GetValue<string>("TERMINAL_PASSWORD");
+        var optionsAccessor = serviceProvider.GetRequiredService<IOptions<DefaultUserOptions>>();
+        var options = optionsAccessor.Value;
 
         var userCheck = await userManager.Users.AnyAsync();
         if (!userCheck)
         {
             var adminUser = new IdentityUser()
             {
-                UserName = Environment.GetEnvironmentVariable("ADMIN_USERNAME") ?? defaultAdminUsername,
-                Email = Environment.GetEnvironmentVariable("ADMIN_USERNAME") ?? defaultAdminUsername,
-                EmailConfirmed = true
-            };         
-            
-            await userManager.CreateAsync(adminUser, (Environment.GetEnvironmentVariable("ADMIN_PASSWORD") ?? defaultAdminPassword) ?? throw new InvalidOperationException());
-
-            var terminalUser = new IdentityUser()
-            {
-                UserName = Environment.GetEnvironmentVariable("TERMINAL_USERNAME") ?? defaultTerminalUsername,
-                Email = Environment.GetEnvironmentVariable("TERMINAL_USERNAME") ?? defaultTerminalUsername,
+                UserName = options.AdminUser.Username,
+                Email = options.AdminUser.Username,
                 EmailConfirmed = true
             };
 
-            await userManager.CreateAsync(terminalUser, (Environment.GetEnvironmentVariable("TERMINAL_PASSWORD") ?? defaultTerminalPassword) ?? throw new InvalidOperationException());
+            await userManager.CreateAsync(adminUser, options.AdminUser.Password ?? throw new InvalidOperationException());
+
+            var terminalUser = new IdentityUser()
+            {
+                UserName = options.TerminalUser.Username,
+                Email = options.TerminalUser.Username,
+                EmailConfirmed = true
+            };
+
+            await userManager.CreateAsync(terminalUser, options.TerminalUser.Password ?? throw new InvalidOperationException());
         }
+    }
+}
+
+public class DefaultUserOptions
+{
+    public User AdminUser { get; set; }
+    public User TerminalUser { get; set; }
+
+    public class User
+    {
+        public string Username { get; set; }
+        public string Password { get; set; }
     }
 }
