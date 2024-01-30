@@ -15,7 +15,9 @@ public class ApplicationDbContext : DbContext
     
     public DbSet<NewsItem> NewsItems { get; set; }
     
-    public DbSet<ImageModel?> ImageItems { get; set; }
+    public DbSet<ImageModel> ImageItems { get; set; }
+    
+    public DbSet<DocumentModel> DocumentItems { get; set; }
     
     public DbSet<JobsItem> JobsItems { get; set; }
     
@@ -24,6 +26,8 @@ public class ApplicationDbContext : DbContext
     public DbSet<ShortcutItems> ShortcutItems { get; set; }
     
     public DbSet<InstructionItem> InstructionItems { get; set; }
+    
+    public DbSet<ViewerItem> ViewerItems { get; set; }
     
     public DbSet<FeedbackItem> FeedbackItems { get; set; }
     
