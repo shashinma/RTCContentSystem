@@ -1,12 +1,68 @@
 ﻿@{
     Layout = "_LayoutPDF";
 }
-@model ViewerModel
+@using POSTerminal.Services
+@using Microsoft.IdentityModel.Tokens
+@using Microsoft.CodeAnalysis
+@model InstructionItem
+@inject IInstructionsService InstructionsService
 
 <link rel="stylesheet" href="~/lib/font-awesome-5.15.4/css/all.css">
 
 <body>
-<object>
-    <embed src="@Url.Content("~/pdf/" + Model.Page.name + ".pdf")" width="100%" height="100%"/>
-</object>
+@if (ViewBag.searchString != null && ViewBag.searchStringDocumentId != null)
+{
+    @foreach (var instructionItem in InstructionsService.GetInstructions()
+                  .Where(n => n.LinkToPage == ViewBag.searchString 
+                              && n.DocumentId == ViewBag.searchStringDocumentId))
+    {
+        @if (instructionItem.Document != null)
+        {
+            var base64Image = Convert.ToBase64String(instructionItem.Document.Document);
+            <object>
+                @* <embed src="data:application/pdf;base64,@base64Image" width="100%" height="100%" /> *@
+                <iframe src="data:application/pdf;base64,@base64Image" width="100%" height="100%"></iframe>
+            </object>
+        }
+        else
+        {
+            <object>
+                @* <embed src="@instructionItem.LinkToPage" width="100%" height="100%"/> *@
+                @* <iframe src="@instructionItem.LinkToPage" width="100%" height="100%"></iframe> *@
+                <iframe src="@Url.Content("~/pdf/" + instructionItem.LinkToPage + ".pdf")" width="100%" height="100%"></iframe>
+            </object>
+        }
+    }
+}
+else if (ViewBag.searchString != null && ViewBag.referer == "Instructions")
+{
+    @foreach (var instructionItem in InstructionsService.GetInstructions()
+                  .Where(n => n.LinkToPage == ViewBag.searchString))
+    {
+        @if (instructionItem.Document != null)
+        {
+            var base64Image = Convert.ToBase64String(instructionItem.Document.Document);
+            <object>
+                @* <embed src="data:application/pdf;base64,@base64Image" width="100%" height="100%" /> *@
+                <iframe src="data:application/pdf;base64,@base64Image" width="100%" height="100%"></iframe>
+            </object>
+        }
+        else
+        {
+            <object>
+                @* <embed src="@instructionItem.LinkToPage" width="100%" height="100%"/> *@
+                @* <iframe src="@instructionItem.LinkToPage" width="100%" height="100%"></iframe> *@
+                <iframe src="@Url.Content("~/pdf/" + instructionItem.LinkToPage + ".pdf")" width="100%" height="100%"></iframe>
+            </object>
+        }
+    }
+}
+else
+{
+    <object>
+        @* <embed src="@instructionItem.LinkToPage" width="100%" height="100%"/> *@
+        @* <iframe src="@instructionItem.LinkToPage" width="100%" height="100%"></iframe> *@
+        <iframe src="@Url.Content("~/pdf/" + ViewBag.searchString + ".pdf")" width="100%" height="100%"></iframe>
+    </object>
+}
 </body>
