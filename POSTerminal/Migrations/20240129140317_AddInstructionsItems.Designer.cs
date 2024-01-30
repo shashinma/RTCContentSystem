@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using POSTerminal.Data;
 
@@ -10,9 +11,11 @@ using POSTerminal.Data;
 namespace POSTerminal.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240129140317_AddInstructionsItems")]
+    partial class AddInstructionsItems
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.0");
@@ -54,6 +57,7 @@ namespace POSTerminal.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<byte[]>("Document")
+                        .IsRequired()
                         .HasColumnType("BLOB");
 
                     b.Property<string>("Name")
@@ -283,7 +287,7 @@ namespace POSTerminal.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("DocumentId")
+                    b.Property<int>("InstructionItemsId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("name")
@@ -291,7 +295,7 @@ namespace POSTerminal.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DocumentId");
+                    b.HasIndex("InstructionItemsId");
 
                     b.ToTable("ViewerItems");
                 });
@@ -333,11 +337,13 @@ namespace POSTerminal.Migrations
 
             modelBuilder.Entity("POSTerminal.Models.ViewerItem", b =>
                 {
-                    b.HasOne("POSTerminal.Models.DocumentModel", "Document")
+                    b.HasOne("POSTerminal.Models.InstructionItem", "InstructionItems")
                         .WithMany()
-                        .HasForeignKey("DocumentId");
+                        .HasForeignKey("InstructionItemsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("Document");
+                    b.Navigation("InstructionItems");
                 });
 
             modelBuilder.Entity("POSTerminal.Models.MenuItem", b =>

@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using POSTerminal.Data;
 
@@ -10,9 +11,11 @@ using POSTerminal.Data;
 namespace POSTerminal.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240129134955_AddViewerId")]
+    partial class AddViewerId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.0");
@@ -54,6 +57,7 @@ namespace POSTerminal.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<byte[]>("Document")
+                        .IsRequired()
                         .HasColumnType("BLOB");
 
                     b.Property<string>("Name")
@@ -283,15 +287,10 @@ namespace POSTerminal.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("DocumentId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("name")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("DocumentId");
 
                     b.ToTable("ViewerItems");
                 });
@@ -329,15 +328,6 @@ namespace POSTerminal.Migrations
                         .IsRequired();
 
                     b.Navigation("MenuItem");
-                });
-
-            modelBuilder.Entity("POSTerminal.Models.ViewerItem", b =>
-                {
-                    b.HasOne("POSTerminal.Models.DocumentModel", "Document")
-                        .WithMany()
-                        .HasForeignKey("DocumentId");
-
-                    b.Navigation("Document");
                 });
 
             modelBuilder.Entity("POSTerminal.Models.MenuItem", b =>
