@@ -127,9 +127,9 @@ public class NewsController : Controller
             if (result)
             {
                 imageModel = await _context.ImageItems.FirstOrDefaultAsync(i => i.Name == Path.GetFileName(model.PicSrc));
+                
                 news.ImageId = imageModel.Id;
                 news.Image = imageModel;
-    
                 news.PicSrc = model.PicSrc;
             }
         }
