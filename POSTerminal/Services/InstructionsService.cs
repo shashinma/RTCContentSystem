@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using POSTerminal.Data;
 using POSTerminal.Models;
 
@@ -19,6 +20,9 @@ public class InstructionsService : IInstructionsService
 
     public List<InstructionItem> GetInstructions()
     {
-        return _context.InstructionItems.ToList();
+        return _context.InstructionItems
+            .Include(n => n.Image)
+            .Include(n=> n.Document)
+            .ToList();
     }
 }
