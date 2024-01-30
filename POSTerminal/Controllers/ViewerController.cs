@@ -1,8 +1,11 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using POSTerminal.Data;
 using POSTerminal.Models;
+using Westwind.AspNetCore.Markdown.Utilities;
 
 namespace POSTerminal.Controllers;
 
@@ -20,21 +23,20 @@ public class ViewerController : Controller
     [Authorize]
     public IActionResult Index([FromRoute(Name = "searchString")] string? searchString)
     {
-        if (searchString == null) return RedirectToAction("Index");
+        ViewBag.searchString = searchString;
+        ViewBag.referer = Request.Headers["Referer"].ToString().Split('/').Last();
 
-        var layoutModel = new MenuItem();
-        var pageModel = new ViewerItem
+        string[] subs = searchString.Split('_');
+        
+        ViewBag.searchString = subs[0];
+        ViewBag.searchStringDocumentId = null;
+        
+        if (subs.Length >= 2)
         {
-            name = searchString
-        };
-
-        var viewerModel = new ViewerModel
-        {
-            Layout = layoutModel,
-            Page = pageModel
-        };
-
-        return View(viewerModel);
+            ViewBag.searchStringDocumentId = int.Parse(subs[1]);
+        }
+        
+        return View();
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
