@@ -97,9 +97,17 @@ app.MapRazorPages();
 
 using (var scope = app.Services.CreateScope())
 {
-    var appDbContext = scope.ServiceProvider.GetRequiredService<IdentityContext>();
+    var identityContext = scope.ServiceProvider.GetRequiredService<IdentityContext>();
+    var pendingIdentityContextMigrations = identityContext.Database.GetPendingMigrations().ToList();
+
+    var appDbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
     var pendingAppDbContextMigrations = appDbContext.Database.GetPendingMigrations().ToList();
 
+    if (pendingIdentityContextMigrations.Count > 0)
+    {
+        identityContext.Database.Migrate();
+    }
+    
     if (pendingAppDbContextMigrations.Count > 0)
     {
         appDbContext.Database.Migrate();
