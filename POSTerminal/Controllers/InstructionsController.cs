@@ -109,24 +109,8 @@ public class InstructionsController : Controller
 
         return RedirectToAction(nameof(Index));
     }
-
     
-    public JsonResult Delete(int id)
-    {
-        bool result = false;
-        var instructions = _context.InstructionItems.Find(id);
-
-        if (instructions != null)
-        {
-            result = true;
-            _context.InstructionItems.Remove(instructions);
-            _context.SaveChanges();
-        }
-        
-        return Json(result);
-    }
-    
-        [HttpPost]
+    [HttpPost]
     public async Task<IActionResult> Update(InstructionItem model, IFormFile image, IFormFile document)
     {
         ImageModel? imageModel = null;
@@ -208,6 +192,21 @@ public class InstructionsController : Controller
         return RedirectToAction(nameof(Index));
     }
     
+    public JsonResult Delete(int id)
+    {
+        bool result = false;
+        var instructions = _context.InstructionItems.Find(id);
+
+        if (instructions != null)
+        {
+            result = true;
+            _context.InstructionItems.Remove(instructions);
+            _context.SaveChanges();
+        }
+        
+        return Json(result);
+    }
+
     // public IActionResult GetInstructions(int id)
     // {
     //     var news = _context.InstructionItems.Find(id);
