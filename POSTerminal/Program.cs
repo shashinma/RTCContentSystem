@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using PhoneEdit.Data;
 using POSTerminal.Data;
 using POSTerminal.Services;
 using Westwind.AspNetCore.Markdown;
@@ -49,6 +50,8 @@ builder.Services.AddSession(options =>
     options.Cookie.IsEssential = true;
 });
 
+builder.Services.Configure<DefaultUserOptions>(builder.Configuration);
+
 builder.Services.AddMarkdown();
 
 builder.Services.AddRazorPages();
@@ -94,28 +97,15 @@ app.MapRazorPages();
 
 using (var scope = app.Services.CreateScope())
 {
-    var services = scope.ServiceProvider;
-    var configuration = services.GetRequiredService<IConfiguration>();
-    try
+    var appDbContext = scope.ServiceProvider.GetRequiredService<IdentityContext>();
+    var pendingAppDbContextMigrations = appDbContext.Database.GetPendingMigrations().ToList();
+
+    if (pendingAppDbContextMigrations.Count > 0)
     {
-        var context = services.GetRequiredService<IdentityContext>();
-        context.Database.Migrate();
-    }
-    catch (Exception ex)
-    {
-        var logger = services.GetRequiredService<ILogger<Program>>();
-        logger.LogError(ex, "An error occurred while migrating the database.");
+        appDbContext.Database.Migrate();
     }
     
-    try
-    {
-        await DefaultUsers.InitializeAsync(services, configuration);
-    }
-    catch (Exception ex)
-    {
-        var logger = services.GetRequiredService<ILogger<Program>>();
-        logger.LogError(ex, "An error occurred seeding the DB.");
-    }
+    await SampleData.CreateDefaultUser(scope.ServiceProvider);
 }
 
 app.UseSession();
