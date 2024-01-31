@@ -6,7 +6,7 @@ namespace POSTerminal.Services;
 
 public interface IInstructionsService
 {
-    List<InstructionItem> GetInstructions();
+    IEnumerable<InstructionItem> GetInstructions();
 }
 
 public class InstructionsService : IInstructionsService
@@ -18,7 +18,7 @@ public class InstructionsService : IInstructionsService
         _context = context;
     }
 
-    public List<InstructionItem> GetInstructions()
+    public IEnumerable<InstructionItem> GetInstructions()
     {
         return _context.InstructionItems
             .Include(n => n.Image)
