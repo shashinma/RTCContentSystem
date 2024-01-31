@@ -118,7 +118,7 @@
     @* Add new news *@
     <div class="modal fade" id="CreateModal" tabindex="0" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true" style="">
         <form id="saveForm" asp-controller="News" asp-action="CreateNews" method="post" enctype="multipart/form-data">
-            <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+            <div class="modal-dialog modal-dialog-scrollable modal-xl" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="createModalLabel">Добавить новость</h5>
@@ -126,14 +126,14 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            @* <label asp-for="Title" class="control-label">Заголовок</label> *@
+                            <label asp-for="Title" class="control-label">Заголовок</label>
                             <input asp-for="Title" type="text" class="form-control" placeholder="Заголовок новости" required />
                             <span asp-validation-for="Title" class="text-danger"></span>
                         </div>
                         <br/>
                         <div class="form-group">
-                            @* <label asp-for="Content" class="control-label">Содержимое</label> *@
-                            <textarea asp-for="Content" type="text" rows="15" class="form-control" placeholder="Содержимое" required ></textarea>
+                            <label asp-for="Content" class="control-label">Содержимое</label>
+                            <textarea asp-for="Content" type="text" rows="14" class="form-control" placeholder="Содержимое" required ></textarea>
                             <span asp-validation-for="Content" class="text-danger"></span>
                         </div>
                         <br/>
@@ -160,7 +160,7 @@
     @* Edit news *@
     <div class="modal fade" id="EditModal" tabindex="0" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true" style="">
         <form id="EditForm" asp-controller="News" asp-action="EditNews" method="post" enctype="multipart/form-data">
-            <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+            <div class="modal-dialog modal-dialog-scrollable modal-xl" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title">Редактировать новость</h5>
@@ -173,18 +173,19 @@
                             <input asp-for="Title" class="form-control" id="newsTitle">
                             <span asp-validation-for="Title" class="text-danger"></span>
                         </div>
+                        <br/>
                         <div class="form-group">
                             <input asp-for="Id" class="updateId" type="hidden"/>
                             <label asp-for="Content" class="control-label">Содержимое</label>
-                            <textarea asp-for="Content" class="form-control" rows="18" id="newsContent"></textarea>
+                            <textarea asp-for="Content" class="form-control" rows="14" id="newsContent"></textarea>
                             <span asp-validation-for="Content" class="text-danger"></span>
-                        </div>                        
+                        </div> 
                         <br/>
                         <div class="form-group">
-                            <label asp-for="Image" class="control-label">Загрузить изображение</label>
+                        <label asp-for="Image" class="control-label">Загрузить обложку (изображение)</label>
                             <div class="input-group mb-3">
                                 <label class="btn btn-light border">
-                                   С устройства
+                                Нажмите, чтобы загрузить с устройства
                                    <input asp-for="Image" type="file" class="form-control" id="inputGroupFile02" style="opacity: 0; position: absolute;">
                                 </label>
                                 <input asp-for="PicSrc" type="text" class="form-control" id="newsPicSrc" placeholder="Или адрес для загрузки по ссылке">
