@@ -12,9 +12,8 @@ builder.WebHost.UseStaticWebAssets();
 var identityConnectionString = builder.Configuration.GetConnectionString("IdentityConnection") ??
                                throw new InvalidOperationException("Connection string 'IdentityConnection' not found.");
 
-var applicationDbConnectionString =
-    builder.Configuration.GetConnectionString("ApplicationDbConnection") ??
-    throw new InvalidOperationException("Connection string 'ApplicationDbConnection' not found.");
+var applicationDbConnectionString = builder.Configuration.GetConnectionString("ApplicationDbConnection") ??
+                                    throw new InvalidOperationException("Connection string 'ApplicationDbConnection' not found.");
 
 builder.Services.AddDbContext<IdentityContext>(options =>
     options.UseSqlite(identityConnectionString));
