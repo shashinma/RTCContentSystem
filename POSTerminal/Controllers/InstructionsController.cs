@@ -111,16 +111,16 @@ public class InstructionsController : Controller
     }
     
     [HttpPost]
-    public async Task<IActionResult> Update(InstructionItem model, IFormFile image, IFormFile document)
+    public async Task<IActionResult> Update(int id, InstructionItem model, IFormFile image, IFormFile document)
     {
         ImageModel? imageModel = null;
         DocumentModel? documentModel = null;
+        var instructions = await _context.InstructionItems.FindAsync(id);
 
         if (image != null)
         {
             byte[] imageData = null;
 
-            // считываем переданный файл в массив байт
             using (var binaryReader = new BinaryReader(image.OpenReadStream()))
             {
                 imageData = binaryReader.ReadBytes((int)image.Length);
@@ -134,16 +134,22 @@ public class InstructionsController : Controller
 
             _context.ImageItems.Add(imageModel);
             await _context.SaveChangesAsync();
+
+            instructions.ImageId = imageModel.Id;
+            instructions.Image = imageModel;
+            instructions.ImageUrl = null;
         }
         else if (!string.IsNullOrEmpty(model.ImageUrl))
         {
-            // If image file was not provided, but URL for image (PicSrc) is present, use the ImageService to download and save the image
             var result = await _imageService.DownloadAndSaveImage(model.ImageUrl);
 
             if (result)
             {
-                // If image is downloaded and saved successfuly, retrieve the ImageModel that we just saved
                 imageModel = await _context.ImageItems.FirstOrDefaultAsync(i => i.Name == Path.GetFileName(model.ImageUrl));
+                
+                instructions.ImageId = imageModel.Id;
+                instructions.Image = imageModel;
+                instructions.ImageUrl = model.ImageUrl;
             }
         }
         
@@ -165,28 +171,13 @@ public class InstructionsController : Controller
 
             _context.DocumentItems.Add(documentModel);
             await _context.SaveChangesAsync();
-        }
-        
-        var instruction = new InstructionItem()
-        {
-            Title = model.Title,
-            ImageUrl = model.ImageUrl,
-        };
-    
-        if (imageModel != null)
-        {
-            instruction.ImageId = imageModel.Id;
-            instruction.Image = imageModel;
+
+            instructions.DocumentId = documentModel.Id;
+            instructions.Document = documentModel;
         }
 
-        if (documentModel != null)
-        {
-            instruction.DocumentId = documentModel.Id;
-            instruction.Document = documentModel;
-            instruction.LinkToPage = Path.GetFileNameWithoutExtension(documentModel.Name);
-        }
+        instructions.Title = model.Title;
 
-        _context.InstructionItems.Add(instruction);
         await _context.SaveChangesAsync();
 
         return RedirectToAction(nameof(Index));
@@ -205,6 +196,12 @@ public class InstructionsController : Controller
         }
         
         return Json(result);
+    }
+    
+    public IActionResult GetInstructions(int id)
+    {
+        var instruction = _context.InstructionItems.Find(id);
+        return Json(instruction);
     }
 
     // public IActionResult GetInstructions(int id)
