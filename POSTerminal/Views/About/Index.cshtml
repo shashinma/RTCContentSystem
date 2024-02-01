@@ -23,10 +23,9 @@
     <section style="max-width: 100%;">
         <div class="container-sm">
             <text id="content-container">
-                @if (ViewBag.Content != default(string))
-                {
+                <text>
                     @Html.Raw(ViewBag.Content)
-                }
+                </text>
             </text>
         </div>
     </section>
@@ -71,7 +70,7 @@
             .then(editor => {
                 const toolbarContainer = document.querySelector('#toolbar-container');
                 toolbarContainer.appendChild(editor.ui.view.toolbar.element);
-
+                
                 // Синхронизация содержимого редактора с textarea при каждом изменении
                 editor.model.document.on('change:data', () => {
                     document.querySelector('#content').value = editor.getData();
@@ -79,13 +78,8 @@
                 
                 // Установка начального содержимого из textarea в редактор
                 // editor.setData(document.querySelector('#content-container').value);
-                
-                @if (ViewBag.Content != default(string))
-                {
-                    <text>
-                        editor.setData(`@Html.Raw(ViewBag.Content)`);
-                    </text>
-                }
+                editor.setData(`@Html.Raw(ViewBag.Content)`);
+
             })
             .catch(error => {
                 console.error(error);
