@@ -21,21 +21,33 @@ public class AboutController : Controller
     
     public IActionResult Index()
     {
+        var aboutItem = _context.AboutItems.FirstOrDefault(item => item.Id == 1); // получаем запись с id = 1
+        ViewBag.Content = aboutItem.Content;
+        
         return View();
     }
     
     [HttpPost]
     public IActionResult SaveContent(IFormCollection content)
     {
-        AboutItem aboutItem = new AboutItem();
-        aboutItem.Content = content["content"];
-        _context.AboutItems.Add(aboutItem);
-        _context.SaveChanges();
+        var aboutItem = _context.AboutItems.FirstOrDefault(item => item.Id == 1); // попытка найти запись с id = 1
+        if (aboutItem != null) // если запись найдена
+        {
+            aboutItem.Content = content["content"];
+        } 
+        else // Если запись не найдена...
+        {
+            aboutItem = new AboutItem // создаем новую запись 
+            {
+                Id = 1, // установка Id в 1
+                Content = content["content"]
+            };
+            _context.AboutItems.Add(aboutItem); // добавляем запись в контекст DbContext
+        }
+
+        _context.SaveChanges(); // сохраняем изменения
         return RedirectToAction("Index", "About");
-        // return View();
     }
-    
- 
     
     // public IActionResult Create(string contentString)
     // {
