@@ -110,8 +110,8 @@ public class JobsController : Controller
             _context.ImageItems.Add(imageModel);
             await _context.SaveChangesAsync();
         
-            // jobs.ImageId = imageModel.Id;
-            // jobs.Image = imageModel;
+            jobs.ImageId = imageModel.Id;
+            jobs.Image = imageModel;
             jobs.PicSrc = null;
         }
         else if (!string.IsNullOrEmpty(model.PicSrc))
@@ -122,8 +122,8 @@ public class JobsController : Controller
             {
                 imageModel = await _context.ImageItems.FirstOrDefaultAsync(i => i.Name == Path.GetFileName(model.PicSrc));
                 
-                // jobs.ImageId = imageModel.Id;
-                // jobs.Image = imageModel;
+                jobs.ImageId = imageModel.Id;
+                jobs.Image = imageModel;
                 jobs.PicSrc = model.PicSrc;
             }
         }
