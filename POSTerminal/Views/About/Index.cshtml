@@ -7,77 +7,70 @@
     var title = "О нас";
 }
 
+<head>
+    <meta charset="UTF-8">
+</head>
+
 <link rel="stylesheet" href="~/lib/font-awesome-5.15.4/css/all.css">
 
 <div class="h1 text-center text-dark" id="pageHeaderTitle">@title</div>
-    @if (User.Identity.Name == "admin@rtc.ru")
-    {
-        <div class="newsActions">
-            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#CreateModal">
-                <i class="actionsBtn far fa-plus"> Добавить описание</i>
-            </button>
-        </div>
-    }
 
 <div class="container py-2">
     <section style="max-width: 100%;">
         <div class="container-sm">
-            <text id="content-container">
-                <text>
-                    @Html.Raw(ViewBag.Content)
-                </text>
-            </text>
+            @if (User.Identity.Name == "admin@rtc.ru")
+            {
+                @using (Html.BeginForm("SaveContent", "About", FormMethod.Post))
+                {
+                    <form id="saveForm" method="post">
+                        <button id="btnSave" type="submit" class="btn btn-primary">Сохранить</button>
+                        <br/>
+                        <br/>
+                        @* <textarea name="content" id="content" style="display: none;"></textarea> *@
+                        @* <div class="editor"></div> *@
+
+                        <body data-editor="ClassicEdit" data-collaboration="false" data-revision-history="false">
+                        <div class="centered">
+                            <div class="row row-editor">
+                                <div class="editor-container">
+                                    <textarea name="content" id="content" style="display: none;"></textarea>
+                                    <div class="editor">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </body>
+                    </form>
+                    <button id="btnSave" type="submit" class="btn btn-primary">Сохранить</button>
+                }
+                <br/>
+                <br/>
+            }
+
+            @Html.Raw(ViewBag.Content)
         </div>
     </section>
 </div>
 
-<div class="modal fade" id="CreateModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
-        <div class="modal-content">
-            @using (Html.BeginForm("SaveContent", "About", FormMethod.Post))
-            {
-                <form id="saveForm" method="post">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="createModalLabel">Добавить описание</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <div id="toolbar-container"></div>
-                            <!-- This container will become the editable. -->
-                            <textarea name="content" id="content" style="display: none;"></textarea>
-                            <div id="editor"></div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary btnCancel" data-bs-dismiss="modal">Закрыть</button>
-                        <button id="btnSave" type="submit" class="btn btn-primary">Сохранить</button>
-                    </div>
-                </form>
-            }
-        </div>
-    </div>
-</div>
+<script src="~/modules/ckeditor5-doc/build/ckeditor.js"></script>
+@* <script src="~/modules/ckeditor5-custom/build/ckeditor.js"></script> *@
+@* <script src="~/modules/ckeditor5-41.0.0/build/ckeditor.js"></script> *@
 
-<script src="~/modules/ckeditor5-document/ckeditor.js"></script>
 <script src="/Views/About/Index.cshtml.js" asp-append-version="true"></script>
 
 @section Scripts
 {
     <script>
-        DecoupledEditor
-            .create(document.querySelector('#editor'))
+        ClassicEditor
+            .create(document.querySelector('.editor'))
             .then(editor => {
-                const toolbarContainer = document.querySelector('#toolbar-container');
-                toolbarContainer.appendChild(editor.ui.view.toolbar.element);
-                
                 // Синхронизация содержимого редактора с textarea при каждом изменении
                 editor.model.document.on('change:data', () => {
                     document.querySelector('#content').value = editor.getData();
                 });
-                
+
                 // Установка начального содержимого из textarea в редактор
-                // editor.setData(document.querySelector('#content-container').value);
                 editor.setData(`@Html.Raw(ViewBag.Content)`);
 
             })
@@ -85,39 +78,4 @@
                 console.error(error);
             });
     </script>
-    
-    @* <script> *@
-    @*     // $(document).ready(function () { *@
-    @*     //         $('#btnSave').click(function () { *@
-    @*     //             var newsForm = $('#saveForm').serialize(); *@
-    @*     //             $.ajax({ *@
-    @*     //                 type: "POST", *@
-    @*     //                 url: "/About/Create/", *@
-    @*     //                 data: newsForm, *@
-    @*     //                 success: function () { *@
-    @*     //                     $('#CreateModal').modal('hide'); *@
-    @*     //                     window.location.href = "/About"; *@
-    @*     //                 } *@
-    @*     //             }) *@
-    @*     //         }) *@
-    @*     //     }); *@
-    @*          *@
-    @*         let editor; *@
-    @*          *@
-    @*         ClassicEditor *@
-    @*             .create( document.querySelector( '#content' ) ) *@
-    @*             .then( newEditor => { *@
-    @*                 editor = newEditor; *@
-    @*             } ) *@
-    @*             .catch( error => { *@
-    @*                 console.error( error ); *@
-    @*             } ); *@
-    @*          *@
-    @*         // Assuming there is a <button id="submit">Submit</button> in your application. *@
-    @*         document.querySelector( '#submit' ).addEventListener( 'click', () => { *@
-    @*             const editorData = editor.getData(); *@
-    @*          *@
-    @*             // ... *@
-    @*         } ); *@
-    @* </script> *@
 }

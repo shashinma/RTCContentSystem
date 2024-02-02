@@ -1,718 +1,539 @@
-.line {
-    border-bottom: 1px solid rgba(82, 82, 82, 0.5); /* Параметры линии */
-    padding-top: 50px;
+:root {
+    --ck-color-image-caption-background: hsl(0, 0%, 97%);
+    --ck-color-image-caption-text: hsl(0, 0%, 20%);
+    --ck-color-mention-background: hsla(341, 100%, 30%, 0.1);
+    --ck-color-mention-text: hsl(341, 100%, 30%);
+    --ck-color-selector-caption-background: hsl(0, 0%, 97%);
+    --ck-color-selector-caption-text: hsl(0, 0%, 20%);
+    --ck-highlight-marker-blue: hsl(201, 97%, 72%);
+    --ck-highlight-marker-green: hsl(120, 93%, 68%);
+    --ck-highlight-marker-pink: hsl(345, 96%, 73%);
+    --ck-highlight-marker-yellow: hsl(60, 97%, 73%);
+    --ck-highlight-pen-green: hsl(112, 100%, 27%);
+    --ck-highlight-pen-red: hsl(0, 85%, 49%);
+    --ck-image-style-spacing: 1.5em;
+    --ck-inline-image-style-spacing: calc(var(--ck-image-style-spacing) / 2);
+    --ck-todo-list-checkmark-size: 16px;
 }
 
-.newsActions {
-    display: flex;
-    justify-content: end;
-    align-items: flex-end;
-    flex-wrap: wrap;
-    height: 40px;
-    margin-right: 10px;
+/* @ckeditor/ckeditor5-table/theme/tablecolumnresize.css */
+.ck-content .table .ck-table-resized {
+    table-layout: fixed;
 }
-
-.actionsBtn {
-    display: inline-block;
-    background-color: transparent;
-    cursor: pointer;
-    font-weight: bold;
+/* @ckeditor/ckeditor5-table/theme/tablecolumnresize.css */
+.ck-content .table table {
+    overflow: hidden;
 }
-
-/*CARDS 1 STYLES*/
-
-h1 {
-    font-size: 3.2rem;
-    padding-top: 2rem;
+/* @ckeditor/ckeditor5-table/theme/tablecolumnresize.css */
+.ck-content .table td,
+.ck-content .table th {
+    overflow-wrap: break-word;
+    position: relative;
 }
-
-h1 + p {
-    font-size: 1.8rem;
-    padding: 2rem 0 3rem;
+/* @ckeditor/ckeditor5-table/theme/table.css */
+.ck-content .table {
+    margin: 0.9em auto;
+    display: table;
 }
-
-.main_c {
-    display: inline-grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(1, 1fr);
+/* @ckeditor/ckeditor5-table/theme/table.css */
+.ck-content .table table {
+    border-collapse: collapse;
+    border-spacing: 0;
     width: 100%;
-    flex-wrap: wrap;
+    height: 100%;
+    border: 1px double hsl(0, 0%, 70%);
+}
+/* @ckeditor/ckeditor5-table/theme/table.css */
+.ck-content .table table td,
+.ck-content .table table th {
+    min-width: 2em;
+    padding: .4em;
+    border: 1px solid hsl(0, 0%, 75%);
+}
+/* @ckeditor/ckeditor5-table/theme/table.css */
+.ck-content .table table th {
+    font-weight: bold;
+    background: hsla(0, 0%, 0%, 5%);
+}
+/* @ckeditor/ckeditor5-table/theme/table.css */
+.ck-content[dir="rtl"] .table th {
+    text-align: right;
+}
+/* @ckeditor/ckeditor5-table/theme/table.css */
+.ck-content[dir="ltr"] .table th {
+    text-align: left;
+}
+/* @ckeditor/ckeditor5-table/theme/tablecaption.css */
+.ck-content .table > figcaption {
+    display: table-caption;
+    caption-side: top;
+    word-break: break-word;
+    text-align: center;
+    color: var(--ck-color-selector-caption-text);
+    background-color: var(--ck-color-selector-caption-background);
+    padding: .6em;
+    font-size: .75em;
+    outline-offset: -1px;
+}
+/* @ckeditor/ckeditor5-page-break/theme/pagebreak.css */
+.ck-content .page-break {
+    position: relative;
+    clear: both;
+    padding: 5px 0;
+    display: flex;
+    align-items: center;
     justify-content: center;
-    align-items: stretch;
 }
-
-.wrap {
-    /*margin: 1rem;*/
-    display: flex;
-    margin: 0 -5px;
-
-    transform-style: preserve-3d;
-    transform: perspective(100rem);
-
-    cursor: pointer;
-}
-
-.container_c {
-    --rX: 0;
-    --rY: 0;
-    --bX: 50%;
-    --bY: 80%;
-
-    width: 100%;
-    height: 100%;
-    border: 1px solid;
-    border-radius: 1.6rem;
-    padding: 4rem;
-
-    display: flex;
-    align-items: flex-end;
-
-    position: relative;
-    transform: rotateX(calc(var(--rX) * 1deg)) rotateY(calc(var(--rY) * 1deg));
-
-    background: linear-gradient(hsla(0, 0%, 100%, .1), hsla(0, 0%, 100%, .1)), url("https://images.unsplash.com/photo-1559113513-d5e09c78b9dd?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjF9");
-    background-position: var(--bX) var(--bY);
-    background-size: 40rem auto;
-    box-shadow: 0 0 3rem .5rem hsla(0, 0%, 0%, .2);
-
-    transition: transform .6s 1s;
-}
-
-.container_c::before,
-.container_c::after {
-    content: "";
-
-    width: 2rem;
-    height: 2rem;
-    border: 1px solid #fff;
-
+/* @ckeditor/ckeditor5-page-break/theme/pagebreak.css */
+.ck-content .page-break::after {
+    content: '';
     position: absolute;
-    z-index: 2;
-
-    opacity: .3;
-    transition: .3s;
-}
-
-.container_c::before {
-    top: 2rem;
-    right: 2rem;
-
-    border-bottom-width: 0;
-    border-left-width: 0;
-}
-
-.container_c::after {
-    bottom: 2rem;
-    left: 2rem;
-
-    border-top-width: 0;
-    border-right-width: 0;
-}
-
-.container_c--active {
-    transition: none;
-}
-
-.container--2 {
-    filter: hue-rotate(80deg) saturate(140%);
-}
-
-.container--3 {
-    filter: hue-rotate(160deg) saturate(140%);
-}
-
-.container_c p {
-    color: hsla(0, 0%, 100%, .6);
-    font-size: 2.2rem;
-}
-
-.wrap:hover .container_c::before,
-.wrap:hover .container_c::after {
-    width: calc(100% - 4rem);
-    height: calc(100% - 4rem);
-}
-
-
-/*CARDS 2 STYLES*/
-
-.cards-list {
-    /*display: grid;*/
-    place-items: center;
+    border-bottom: 2px dashed hsl(0, 0%, 77%);
     width: 100%;
-    margin: 0 auto;
-    /*display: inline-grid;*/
-    display: inline-grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(1, 1fr);
-    justify-content: space-around;
-    align-content: space-between;
-    position: relative; /* If you want text inside of it */
 }
-
-.card {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    margin: auto 15px;
-    box-shadow: 0 4px 21px -12px rgba(0, 0, 0, 0.66);
-    cursor: pointer;
-    transition: 0.4s;
-    max-height: 300px;
-    max-width: 300px;
-    border: 0;
-    border-radius: 10px;
-}
-
-.card .card_image {
-    width: 100%;
-    height: 100%;
-}
-
-.card .card_image img {
-    width: 100%;
-    height: 100%;
-    border-radius: 10px;
-    object-fit: inherit
-}
-
-.card .card_title {
-    text-align: center;
-    border-radius: 0px 0px 40px 40px;
-    font-family: sans-serif;
-    font-weight: bold;
-    font-size: 30px;
-    margin-top: -80px;
-    height: 40px;
-}
-
-.card:hover {
-    transform: scale(0.9, 0.9);
-    box-shadow: 5px 5px 30px 15px rgba(0, 0, 0, 0.25),
-    -5px -5px 30px 15px rgba(0, 0, 0, 0.22);
-}
-
-.title-white {
-    color: white;
-}
-
-.title-black {
-    color: black;
-}
-
-@media all and (max-width: 500px) {
-    .card-list {
-        /* On small screens, we are no longer using row direction but column */
-        flex-direction: column;
-    }
-}
-
-
-/*
-.card {
-  margin: 30px auto;
-  width: 300px;
-  height: 300px;
-  border-radius: 40px;
-  background-image: url('https://i.redd.it/b3esnz5ra34y.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-repeat: no-repeat;
-box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);
-  transition: 0.4s;
-}
-*/
-
-/*NEWS STYLES*/
-
-/* This pen */
-body {
-    font-family: "Baloo 2", cursive;
-    font-size: 16px;
-    /*color: #ffffff;*/
-    text-rendering: optimizeLegibility;
-    font-weight: initial;
-}
-
-.dark {
-    /*background: #110f16;*/
-    background: transparent;
-}
-
-.light {
-    /*background: #f3f5f7;*/
-    /*background: #ffffff;*/
-    background: transparent;
-}
-
-i {
-    padding-right: 7px;
-}
-
-a, a:hover {
-    text-decoration: none;
-    transition: color 0.3s ease-in-out;
-}
-
-#pageHeaderTitle {
-    margin: 2rem 0;
+/* @ckeditor/ckeditor5-page-break/theme/pagebreak.css */
+.ck-content .page-break__label {
+    position: relative;
+    z-index: 1;
+    padding: .3em .6em;
+    display: block;
     text-transform: uppercase;
-    text-align: center;
-    font-size: 2.5rem;
-}
-
-/* Cards */
-.postcard {
-    display: flex;
-    flex-wrap: wrap;
-    box-shadow: 0 4px 21px -12px rgba(0, 0, 0, 0.66);
-    border-radius: 10px;
-    margin: 0 0 2rem 0;
-    overflow: hidden;
-    position: relative;
-    color: #ffffff;
-}
-
-.postcard.dark {
-    background-color: #18151f;
-}
-
-.postcard.light {
-    background-color: #e1e5ea;
-}
-
-.postcard .t-dark {
-    color: #18151f;
-}
-
-.postcard a {
-    color: inherit;
-}
-
-.postcard h1, .postcard .h1 {
-    margin-bottom: 0.5rem;
-    font-weight: 500;
-    line-height: 1.2;
-}
-
-.postcard .small {
-    font-size: 80%;
-}
-
-.postcard .postcard__title {
-    font-size: 1.75rem;
-}
-
-.postcard .postcard__img {
-    max-height: 180px;
-    width: 100%;
-    object-fit: cover;
-    position: relative;
-}
-
-.postcard .postcard__img_link {
-    display: contents;
-}
-
-.postcard .postcard__bar {
-    width: 50px;
-    height: 10px;
-    margin: 10px 0;
-    border-radius: 5px;
-    background-color: #424242;
-    transition: width 0.2s ease;
-}
-
-.postcard .postcard__text {
-    padding: 1.5rem;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-}
-
-.postcard .postcard__preview-txt {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    text-align: justify;
-    height: 100%;
-}
-
-/*.postcard .postcard__preview-txt p{*/
-/*    margin-bottom: 0 !important;*/
-/*}*/
-
-.postcard .postcard__tagbox {
-    display: flex;
-    flex-flow: row wrap;
-    font-size: 14px;
-    font-weight: 500;
-    margin: 20px 0 0 0;
-    padding: 0;
-    justify-content: left;
-}
-
-.postcard .postcard__tagbox .tag__item {
-    display: inline-block;
-    background: rgba(83, 83, 83, 0.4);
-    border-radius: 3px;
-    padding: 2.5px 10px;
-    margin: 0 5px 5px 0;
-    cursor: default;
+    border: 1px solid hsl(0, 0%, 77%);
+    border-radius: 2px;
+    font-family: Helvetica, Arial, Tahoma, Verdana, Sans-Serif;
+    font-size: 0.75em;
+    font-weight: bold;
+    color: hsl(0, 0%, 20%);
+    background: hsl(0, 0%, 100%);
+    box-shadow: 2px 2px 1px hsla(0, 0%, 0%, 0.15);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
     user-select: none;
-    transition: background-color 0.3s;
 }
-
-.postcard .postcard__tagbox .tag__item:hover {
-    background: rgba(83, 83, 83, 0.8);
+/* @ckeditor/ckeditor5-media-embed/theme/mediaembed.css */
+.ck-content .media {
+    clear: both;
+    margin: 0.9em 0;
+    display: block;
+    min-width: 15em;
 }
-
-.postcard .postcard__tagbox .play {
-    margin-left: auto;
-    font-size: 16px;
-    font-weight: 700;
+/* @ckeditor/ckeditor5-list/theme/todolist.css */
+.ck-content .todo-list {
+    list-style: none;
 }
-
-.postcard:before {
-    content: "";
+/* @ckeditor/ckeditor5-list/theme/todolist.css */
+.ck-content .todo-list li {
+    position: relative;
+    margin-bottom: 5px;
+}
+/* @ckeditor/ckeditor5-list/theme/todolist.css */
+.ck-content .todo-list li .todo-list {
+    margin-top: 5px;
+}
+/* @ckeditor/ckeditor5-list/theme/todolist.css */
+.ck-content .todo-list .todo-list__label > input {
+    -webkit-appearance: none;
+    display: inline-block;
+    position: relative;
+    width: var(--ck-todo-list-checkmark-size);
+    height: var(--ck-todo-list-checkmark-size);
+    vertical-align: middle;
+    border: 0;
+    left: -25px;
+    margin-right: -15px;
+    right: 0;
+    margin-left: 0;
+}
+/* @ckeditor/ckeditor5-list/theme/todolist.css */
+.ck-content[dir=rtl] .todo-list .todo-list__label > input {
+    left: 0;
+    margin-right: 0;
+    right: -25px;
+    margin-left: -15px;
+}
+/* @ckeditor/ckeditor5-list/theme/todolist.css */
+.ck-content .todo-list .todo-list__label > input::before {
+    display: block;
     position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-image: linear-gradient(-70deg, #424242, transparent 50%);
-    opacity: 1;
-    border-radius: 10px;
+    box-sizing: border-box;
+    content: '';
+    width: 100%;
+    height: 100%;
+    border: 1px solid hsl(0, 0%, 20%);
+    border-radius: 2px;
+    transition: 250ms ease-in-out box-shadow;
 }
-
-.postcard:hover .postcard__bar {
-    width: 100px;
-}
-
-@media screen and (min-width: 769px) {
-    .postcard {
-        flex-wrap: inherit;
-    }
-
-    .postcard .postcard__title {
-        font-size: 2rem;
-    }
-
-    .postcard .postcard__tagbox {
-        justify-content: start;
-    }
-
-    .postcard .postcard__img {
-        max-width: 300px;
-        max-height: 100%;
-        transition: transform 0.3s ease;
-    }
-
-    .postcard .postcard__text {
-        padding: 3rem;
-        width: 100%;
-    }
-
-    .postcard .media.postcard__text:before {
-        content: "";
-        position: absolute;
-        display: block;
-        background: #18151f;
-        top: -20%;
-        height: 130%;
-        width: 55px;
-    }
-
-    .postcard:hover .postcard__img {
-        transform: scale(1.1);
-    }
-
-    .postcard:nth-child(2n + 1) {
-        /*flex-direction: row;*/
-        flex-direction: row;
-    }
-
-    .postcard:nth-child(2n + 0) {
-        flex-direction: row-reverse;
-    }
-
-    .postcard:nth-child(2n + 1) .postcard__text::before {
-        left: -12px !important;
-        transform: rotate(4deg);
-    }
-
-    .postcard:nth-child(2n + 0) .postcard__text::before {
-        right: -12px !important;
-        transform: rotate(-4deg);
-    }
-}
-
-@media screen and (min-width: 1024px) {
-    .postcard__text {
-        padding: 2rem 3.5rem;
-    }
-
-    .postcard__text:before {
-        content: "";
-        position: absolute;
-        display: block;
-        top: -20%;
-        height: 130%;
-        width: 55px;
-    }
-
-    .postcard.dark .postcard__text:before {
-        background: #18151f;
-    }
-
-    .postcard.light .postcard__text:before {
-        background: #e1e5ea;
-    }
-}
-
-/* COLORS */
-.postcard .postcard__tagbox .green.play {
-    background: rgba(121, 221, 9, 0.5);
-    color: black;
-    justify-content: flex-end;
-}
-
-.postcard .postcard__tagbox .green.play:hover {
-    background: #79dd09;
-    color: black;
-    justify-content: flex-end;
-}
-
-.green .postcard__bar {
-    background-color: #79dd09;
-}
-
-.green::before {
-    background-image: linear-gradient(-30deg, rgba(121, 221, 9, 0.1), transparent 50%);
-}
-
-.green:nth-child(2n)::before {
-    background-image: linear-gradient(30deg, rgba(121, 221, 9, 0.1), transparent 50%);
-}
-
-.postcard .postcard__tagbox .blue.play {
-    background: rgba(0, 118, 189, 0.5);
-}
-
-.postcard .postcard__tagbox .blue.play:hover {
-    background: #0076bd;
-}
-
-.blue .postcard__title:hover {
-    color: #0076bd;
-}
-
-.blue .postcard__bar {
-    background-color: #0076bd;
-}
-
-.blue::before {
-    background-image: linear-gradient(-30deg, rgba(0, 118, 189, 0.1), transparent 50%);
-}
-
-.blue:nth-child(2n)::before {
-    background-image: linear-gradient(30deg, rgba(0, 118, 189, 0.1), transparent 50%);
-}
-
-.postcard .postcard__tagbox .red.play {
-    background: rgba(189, 21, 11, 0.5);
-}
-
-.postcard .postcard__tagbox .red.play:hover {
-    background: #bd150b;
-}
-
-.red .postcard__title:hover {
-    color: #bd150b;
-}
-
-.red .postcard__bar {
-    background-color: #bd150b;
-}
-
-.red::before {
-    background-image: linear-gradient(-30deg, rgba(189, 21, 11, 0.1), transparent 50%);
-}
-
-.red:nth-child(2n)::before {
-    background-image: linear-gradient(30deg, rgba(189, 21, 11, 0.1), transparent 50%);
-}
-
-.postcard .postcard__tagbox .yellow.play {
-    background: rgba(189, 187, 73, 0.5);
-    color: black;
-}
-
-.postcard .postcard__tagbox .yellow.play:hover {
-    background: #bdbb49;
-    color: black;
-}
-
-.yellow .postcard__title:hover {
-    color: #bdbb49;
-}
-
-.yellow .postcard__bar {
-    background-color: #bdbb49;
-}
-
-.yellow::before {
-    background-image: linear-gradient(-30deg, rgba(189, 187, 73, 0.1), transparent 50%);
-}
-
-.yellow:nth-child(2n)::before {
-    background-image: linear-gradient(30deg, rgba(189, 187, 73, 0.1), transparent 50%);
-}
-
-@media screen and (min-width: 769px) {
-    .green::before {
-        background-image: linear-gradient(-80deg, rgba(121, 221, 9, 0.1), transparent 50%);
-    }
-
-    .green:nth-child(2n)::before {
-        background-image: linear-gradient(80deg, rgba(121, 221, 9, 0.1), transparent 50%);
-    }
-
-    .blue::before {
-        background-image: linear-gradient(-80deg, rgba(0, 118, 189, 0.1), transparent 50%);
-    }
-
-    .blue:nth-child(2n)::before {
-        background-image: linear-gradient(80deg, rgba(0, 118, 189, 0.1), transparent 50%);
-    }
-
-    .red::before {
-        background-image: linear-gradient(-80deg, rgba(189, 21, 11, 0.1), transparent 50%);
-    }
-
-    .red:nth-child(2n)::before {
-        background-image: linear-gradient(80deg, rgba(189, 21, 11, 0.1), transparent 50%);
-    }
-
-    .yellow::before {
-        background-image: linear-gradient(-80deg, rgba(189, 187, 73, 0.1), transparent 50%);
-    }
-
-    .yellow:nth-child(2n)::before {
-        background-image: linear-gradient(80deg, rgba(189, 187, 73, 0.1), transparent 50%);
-    }
-}
-
-/* ------- Modal -------- */
-
-.itc-modal {
-    --itc-modal-margin: 0.5rem;
-}
-
-@media (min-width: 576px) {
-    .itc-modal {
-        --itc-modal-margin: 1.75rem;
-    }
-}
-
-.itc-modal-backdrop {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: -1;
-    background: rgb(0 0 0 / 50%);
-    opacity: 0;
-    transition: opacity 0.2s ease-in;
+/* @ckeditor/ckeditor5-list/theme/todolist.css */
+.ck-content .todo-list .todo-list__label > input::after {
+    display: block;
+    position: absolute;
+    box-sizing: content-box;
     pointer-events: none;
+    content: '';
+    left: calc( var(--ck-todo-list-checkmark-size) / 3 );
+    top: calc( var(--ck-todo-list-checkmark-size) / 5.3 );
+    width: calc( var(--ck-todo-list-checkmark-size) / 5.3 );
+    height: calc( var(--ck-todo-list-checkmark-size) / 2.6 );
+    border-style: solid;
+    border-color: transparent;
+    border-width: 0 calc( var(--ck-todo-list-checkmark-size) / 8 ) calc( var(--ck-todo-list-checkmark-size) / 8 ) 0;
+    transform: rotate(45deg);
 }
-
-.itc-modal-content {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    width: auto;
-    margin: var(--itc-modal-margin);
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid rgb(0 0 0 / 20%);
-    border-radius: 0.3rem;
-    box-shadow: 0 0 7px 0 rgb(0 0 0 / 30%);
-    transition: opacity 0.3s ease-in;
+/* @ckeditor/ckeditor5-list/theme/todolist.css */
+.ck-content .todo-list .todo-list__label > input[checked]::before {
+    background: hsl(126, 64%, 41%);
+    border-color: hsl(126, 64%, 41%);
 }
-
-@media (min-width: 576px) {
-    .itc-modal-content {
-        max-width: 500px;
-        margin: var(--itc-modal-margin) auto;
-    }
+/* @ckeditor/ckeditor5-list/theme/todolist.css */
+.ck-content .todo-list .todo-list__label > input[checked]::after {
+    border-color: hsl(0, 0%, 100%);
 }
-
-.itc-modal-show .itc-modal-backdrop,
-.itc-modal-show .itc-modal-content {
-    z-index: 1050;
-    overflow-y: auto;
-    opacity: 1;
-    pointer-events: auto;
+/* @ckeditor/ckeditor5-list/theme/todolist.css */
+.ck-content .todo-list .todo-list__label .todo-list__label__description {
+    vertical-align: middle;
 }
-
-.itc-modal-scrollable {
-    height: calc(100% - var(--itc-modal-margin) * 2);
-    max-height: 100%;
-    overflow: hidden;
+/* @ckeditor/ckeditor5-list/theme/todolist.css */
+.ck-content .todo-list .todo-list__label.todo-list__label_without-description input[type=checkbox] {
+    position: absolute;
 }
-
-.itc-modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px;
-    border-bottom: 1px solid #eceeef;
-}
-
-.itc-modal-title {
-    margin-top: 0;
-    margin-bottom: 0;
-    font-weight: 500;
-    font-size: 1.25rem;
-    line-height: 1.5;
-}
-
-.itc-modal-btn-close {
-    float: right;
-    color: #000;
-    font-weight: 700;
-    font-size: 24px;
-    font-family: sans-serif;
-    line-height: 1;
-    text-decoration: none;
-    text-shadow: 0 1px 0 #fff;
-    opacity: 0.5;
-}
-
-.itc-modal-btn-close:focus,
-.itc-modal-btn-close:hover {
-    color: #000;
-    text-decoration: none;
+/* @ckeditor/ckeditor5-list/theme/todolist.css */
+.ck-editor__editable.ck-content .todo-list .todo-list__label > input,
+.ck-editor__editable.ck-content .todo-list .todo-list__label > span[contenteditable=false] > input {
     cursor: pointer;
-    opacity: 0.75;
 }
-
-.itc-modal-body {
+/* @ckeditor/ckeditor5-list/theme/todolist.css */
+.ck-editor__editable.ck-content .todo-list .todo-list__label > input:hover::before, .ck-editor__editable.ck-content .todo-list .todo-list__label > span[contenteditable=false] > input:hover::before {
+    box-shadow: 0 0 0 5px hsla(0, 0%, 0%, 0.1);
+}
+/* @ckeditor/ckeditor5-list/theme/todolist.css */
+.ck-editor__editable.ck-content .todo-list .todo-list__label > span[contenteditable=false] > input {
+    -webkit-appearance: none;
+    display: inline-block;
     position: relative;
-    flex: 1 1 auto;
-    padding: 1rem;
-    overflow-y: auto;
-    overflow-wrap: anywhere;
+    width: var(--ck-todo-list-checkmark-size);
+    height: var(--ck-todo-list-checkmark-size);
+    vertical-align: middle;
+    border: 0;
+    left: -25px;
+    margin-right: -15px;
+    right: 0;
+    margin-left: 0;
 }
-
-.itc-modal-footer {
+/* @ckeditor/ckeditor5-list/theme/todolist.css */
+.ck-editor__editable.ck-content[dir=rtl] .todo-list .todo-list__label > span[contenteditable=false] > input {
+    left: 0;
+    margin-right: 0;
+    right: -25px;
+    margin-left: -15px;
+}
+/* @ckeditor/ckeditor5-list/theme/todolist.css */
+.ck-editor__editable.ck-content .todo-list .todo-list__label > span[contenteditable=false] > input::before {
+    display: block;
+    position: absolute;
+    box-sizing: border-box;
+    content: '';
+    width: 100%;
+    height: 100%;
+    border: 1px solid hsl(0, 0%, 20%);
+    border-radius: 2px;
+    transition: 250ms ease-in-out box-shadow;
+}
+/* @ckeditor/ckeditor5-list/theme/todolist.css */
+.ck-editor__editable.ck-content .todo-list .todo-list__label > span[contenteditable=false] > input::after {
+    display: block;
+    position: absolute;
+    box-sizing: content-box;
+    pointer-events: none;
+    content: '';
+    left: calc( var(--ck-todo-list-checkmark-size) / 3 );
+    top: calc( var(--ck-todo-list-checkmark-size) / 5.3 );
+    width: calc( var(--ck-todo-list-checkmark-size) / 5.3 );
+    height: calc( var(--ck-todo-list-checkmark-size) / 2.6 );
+    border-style: solid;
+    border-color: transparent;
+    border-width: 0 calc( var(--ck-todo-list-checkmark-size) / 8 ) calc( var(--ck-todo-list-checkmark-size) / 8 ) 0;
+    transform: rotate(45deg);
+}
+/* @ckeditor/ckeditor5-list/theme/todolist.css */
+.ck-editor__editable.ck-content .todo-list .todo-list__label > span[contenteditable=false] > input[checked]::before {
+    background: hsl(126, 64%, 41%);
+    border-color: hsl(126, 64%, 41%);
+}
+/* @ckeditor/ckeditor5-list/theme/todolist.css */
+.ck-editor__editable.ck-content .todo-list .todo-list__label > span[contenteditable=false] > input[checked]::after {
+    border-color: hsl(0, 0%, 100%);
+}
+/* @ckeditor/ckeditor5-list/theme/todolist.css */
+.ck-editor__editable.ck-content .todo-list .todo-list__label.todo-list__label_without-description input[type=checkbox] {
+    position: absolute;
+}
+/* @ckeditor/ckeditor5-list/theme/list.css */
+.ck-content ol {
+    list-style-type: decimal;
+}
+/* @ckeditor/ckeditor5-list/theme/list.css */
+.ck-content ol ol {
+    list-style-type: lower-latin;
+}
+/* @ckeditor/ckeditor5-list/theme/list.css */
+.ck-content ol ol ol {
+    list-style-type: lower-roman;
+}
+/* @ckeditor/ckeditor5-list/theme/list.css */
+.ck-content ol ol ol ol {
+    list-style-type: upper-latin;
+}
+/* @ckeditor/ckeditor5-list/theme/list.css */
+.ck-content ol ol ol ol ol {
+    list-style-type: upper-roman;
+}
+/* @ckeditor/ckeditor5-list/theme/list.css */
+.ck-content ul {
+    list-style-type: disc;
+}
+/* @ckeditor/ckeditor5-list/theme/list.css */
+.ck-content ul ul {
+    list-style-type: circle;
+}
+/* @ckeditor/ckeditor5-list/theme/list.css */
+.ck-content ul ul ul {
+    list-style-type: square;
+}
+/* @ckeditor/ckeditor5-list/theme/list.css */
+.ck-content ul ul ul ul {
+    list-style-type: square;
+}
+/* @ckeditor/ckeditor5-image/theme/image.css */
+.ck-content .image {
+    display: table;
+    clear: both;
+    text-align: center;
+    margin: 0.9em auto;
+    min-width: 50px;
+}
+/* @ckeditor/ckeditor5-image/theme/image.css */
+.ck-content .image img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    min-width: 100%;
+    height: auto;
+}
+/* @ckeditor/ckeditor5-image/theme/image.css */
+.ck-content .image-inline {
+    /*
+     * Normally, the .image-inline would have "display: inline-block" and "img { width: 100% }" (to follow the wrapper while resizing).;
+     * Unfortunately, together with "srcset", it gets automatically stretched up to the width of the editing root.
+     * This strange behavior does not happen with inline-flex.
+     */
+    display: inline-flex;
+    max-width: 100%;
+    align-items: flex-start;
+}
+/* @ckeditor/ckeditor5-image/theme/image.css */
+.ck-content .image-inline picture {
     display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding: 1rem;
-    border-top: 1px solid #e9ecef;
-    border-bottom-right-radius: 0.3rem;
-    border-bottom-left-radius: 0.3rem;
+}
+/* @ckeditor/ckeditor5-image/theme/image.css */
+.ck-content .image-inline picture,
+.ck-content .image-inline img {
+    flex-grow: 1;
+    flex-shrink: 1;
+    max-width: 100%;
+}
+/* @ckeditor/ckeditor5-image/theme/imageresize.css */
+.ck-content img.image_resized {
+    height: auto;
+}
+/* @ckeditor/ckeditor5-image/theme/imageresize.css */
+.ck-content .image.image_resized {
+    max-width: 100%;
+    display: block;
+    box-sizing: border-box;
+}
+/* @ckeditor/ckeditor5-image/theme/imageresize.css */
+.ck-content .image.image_resized img {
+    width: 100%;
+}
+/* @ckeditor/ckeditor5-image/theme/imageresize.css */
+.ck-content .image.image_resized > figcaption {
+    display: block;
+}
+/* @ckeditor/ckeditor5-image/theme/imagecaption.css */
+.ck-content .image > figcaption {
+    display: table-caption;
+    caption-side: bottom;
+    word-break: break-word;
+    color: var(--ck-color-image-caption-text);
+    background-color: var(--ck-color-image-caption-background);
+    padding: .6em;
+    font-size: .75em;
+    outline-offset: -1px;
+}
+/* @ckeditor/ckeditor5-image/theme/imagestyle.css */
+.ck-content .image-style-block-align-left,
+.ck-content .image-style-block-align-right {
+    max-width: calc(100% - var(--ck-image-style-spacing));
+}
+/* @ckeditor/ckeditor5-image/theme/imagestyle.css */
+.ck-content .image-style-align-left,
+.ck-content .image-style-align-right {
+    clear: none;
+}
+/* @ckeditor/ckeditor5-image/theme/imagestyle.css */
+.ck-content .image-style-side {
+    float: right;
+    margin-left: var(--ck-image-style-spacing);
+    max-width: 50%;
+}
+/* @ckeditor/ckeditor5-image/theme/imagestyle.css */
+.ck-content .image-style-align-left {
+    float: left;
+    margin-right: var(--ck-image-style-spacing);
+}
+/* @ckeditor/ckeditor5-image/theme/imagestyle.css */
+.ck-content .image-style-align-center {
+    margin-left: auto;
+    margin-right: auto;
+}
+/* @ckeditor/ckeditor5-image/theme/imagestyle.css */
+.ck-content .image-style-align-right {
+    float: right;
+    margin-left: var(--ck-image-style-spacing);
+}
+/* @ckeditor/ckeditor5-image/theme/imagestyle.css */
+.ck-content .image-style-block-align-right {
+    margin-right: 0;
+    margin-left: auto;
+}
+/* @ckeditor/ckeditor5-image/theme/imagestyle.css */
+.ck-content .image-style-block-align-left {
+    margin-left: 0;
+    margin-right: auto;
+}
+/* @ckeditor/ckeditor5-image/theme/imagestyle.css */
+.ck-content p + .image-style-align-left,
+.ck-content p + .image-style-align-right,
+.ck-content p + .image-style-side {
+    margin-top: 0;
+}
+/* @ckeditor/ckeditor5-image/theme/imagestyle.css */
+.ck-content .image-inline.image-style-align-left,
+.ck-content .image-inline.image-style-align-right {
+    margin-top: var(--ck-inline-image-style-spacing);
+    margin-bottom: var(--ck-inline-image-style-spacing);
+}
+/* @ckeditor/ckeditor5-image/theme/imagestyle.css */
+.ck-content .image-inline.image-style-align-left {
+    margin-right: var(--ck-inline-image-style-spacing);
+}
+/* @ckeditor/ckeditor5-image/theme/imagestyle.css */
+.ck-content .image-inline.image-style-align-right {
+    margin-left: var(--ck-inline-image-style-spacing);
+}
+/* @ckeditor/ckeditor5-highlight/theme/highlight.css */
+.ck-content .marker-yellow {
+    background-color: var(--ck-highlight-marker-yellow);
+}
+/* @ckeditor/ckeditor5-highlight/theme/highlight.css */
+.ck-content .marker-green {
+    background-color: var(--ck-highlight-marker-green);
+}
+/* @ckeditor/ckeditor5-highlight/theme/highlight.css */
+.ck-content .marker-pink {
+    background-color: var(--ck-highlight-marker-pink);
+}
+/* @ckeditor/ckeditor5-highlight/theme/highlight.css */
+.ck-content .marker-blue {
+    background-color: var(--ck-highlight-marker-blue);
+}
+/* @ckeditor/ckeditor5-highlight/theme/highlight.css */
+.ck-content .pen-red {
+    color: var(--ck-highlight-pen-red);
+    background-color: transparent;
+}
+/* @ckeditor/ckeditor5-highlight/theme/highlight.css */
+.ck-content .pen-green {
+    color: var(--ck-highlight-pen-green);
+    background-color: transparent;
+}
+/* @ckeditor/ckeditor5-block-quote/theme/blockquote.css */
+.ck-content blockquote {
+    overflow: hidden;
+    padding-right: 1.5em;
+    padding-left: 1.5em;
+    margin-left: 0;
+    margin-right: 0;
+    font-style: italic;
+    border-left: solid 5px hsl(0, 0%, 80%);
+}
+/* @ckeditor/ckeditor5-block-quote/theme/blockquote.css */
+.ck-content[dir="rtl"] blockquote {
+    border-left: 0;
+    border-right: solid 5px hsl(0, 0%, 80%);
+}
+/* @ckeditor/ckeditor5-basic-styles/theme/code.css */
+.ck-content code {
+    background-color: hsla(0, 0%, 78%, 0.3);
+    padding: .15em;
+    border-radius: 2px;
+}
+/* @ckeditor/ckeditor5-font/theme/fontsize.css */
+.ck-content .text-tiny {
+    font-size: .7em;
+}
+/* @ckeditor/ckeditor5-font/theme/fontsize.css */
+.ck-content .text-small {
+    font-size: .85em;
+}
+/* @ckeditor/ckeditor5-font/theme/fontsize.css */
+.ck-content .text-big {
+    font-size: 1.4em;
+}
+/* @ckeditor/ckeditor5-font/theme/fontsize.css */
+.ck-content .text-huge {
+    font-size: 1.8em;
+}
+/* @ckeditor/ckeditor5-mention/theme/mention.css */
+.ck-content .mention {
+    background: var(--ck-color-mention-background);
+    color: var(--ck-color-mention-text);
+}
+/* @ckeditor/ckeditor5-horizontal-line/theme/horizontalline.css */
+.ck-content hr {
+    margin: 15px 0;
+    height: 4px;
+    background: hsl(0, 0%, 87%);
+    border: 0;
+}
+/* @ckeditor/ckeditor5-code-block/theme/codeblock.css */
+.ck-content pre {
+    padding: 1em;
+    color: hsl(0, 0%, 20.8%);
+    background: hsla(0, 0%, 78%, 0.3);
+    border: 1px solid hsl(0, 0%, 77%);
+    border-radius: 2px;
+    text-align: left;
+    direction: ltr;
+    tab-size: 4;
+    white-space: pre-wrap;
+    font-style: normal;
+    min-width: 200px;
+}
+/* @ckeditor/ckeditor5-code-block/theme/codeblock.css */
+.ck-content pre code {
+    background: unset;
+    padding: 0;
+    border-radius: 0;
+}
+@media print {
+    /* @ckeditor/ckeditor5-page-break/theme/pagebreak.css */
+    .ck-content .page-break {
+        padding: 0;
+    }
+    /* @ckeditor/ckeditor5-page-break/theme/pagebreak.css */
+    .ck-content .page-break::after {
+        display: none;
+    }
 }
