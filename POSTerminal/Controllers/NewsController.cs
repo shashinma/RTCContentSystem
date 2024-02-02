@@ -30,12 +30,6 @@ public class NewsController : Controller
         return View();
     }
     
-    public IActionResult GetNews(int id)
-    {
-        var news = _context.NewsItems.Find(id);
-        return Json(news);
-    }
-    
     [HttpPost]
     public async Task<IActionResult> CreateNews(NewsItem model, IFormFile image)
     {
@@ -212,6 +206,11 @@ public class NewsController : Controller
         return Json(result);
     }
     
+    public IActionResult GetNews(int id)
+    {
+        var news = _context.NewsItems.Find(id);
+        return Json(news);
+    }
     
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
