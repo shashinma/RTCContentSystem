@@ -11,4 +11,8 @@ public class JobsItem
     public string Responsibilities { get; set; }
 
     public string? PicSrc { get; set; }
+    
+    public int? ImageId { get; set; }
+    
+    public ImageModel? Image { get; set; }
 }
