@@ -127,91 +127,90 @@
 
 @* Edit news *@
 <div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
-    
     <form id="EditForm" asp-controller="Jobs" asp-action="Update" method="post" enctype="multipart/form-data">
+        <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+            <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Редактировать инструкцию</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 
-    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
-        <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Редактировать инструкцию</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <input asp-for="Id" class="updateId" type="hidden"/>
-                        <label asp-for="Vacancy" class="control-label">Вакансия</label>
-                        <input asp-for="Vacancy" type="text" id="formControlVacancy" class="form-control">
-                        <span asp-validation-for="Vacancy" class="text-danger"></span>
-                        @* <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> *@
                     </div>
-                    <div class="form-group">
-                        <input asp-for="Id" class="updateId" type="hidden" />
-                        <label asp-for="Requirements" class="control-label">Требования</label>
-                        <textarea asp-for="Requirements" class="form-control" id="formControlRequirements" rows="3" placeholder="Ваше сообщение" required></textarea>
-                        <span asp-validation-for="Requirements" class="text-danger"></span>
-                        @* <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> *@
-                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <input asp-for="Id" class="updateId" type="hidden"/>
+                            <label asp-for="Vacancy" class="control-label">Вакансия</label>
+                            <input asp-for="Vacancy" type="text" id="formControlVacancy" class="form-control">
+                            <span asp-validation-for="Vacancy" class="text-danger"></span>
+                            @* <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> *@
+                        </div>
 
-                    @* <div class="form-group"> *@
-                    @*     <body data-editor="ClassicEdit" data-collaboration="false" data-revision-history="false"> *@
-                    @*     <div class="centered"> *@
-                    @*         <div class="row row-editor"> *@
-                    @*             <div class="editor-container"> *@
-                    @*                 <textarea asp-for="Requirements" name="editorREQP" class="form-control" id="editorREQP" style="display: none;"></textarea> *@
-                    @*                 <div class="editorREQP"></div> *@
-                    @*             </div> *@
-                    @*         </div> *@
-                    @*     </div> *@
-                    @*     </body> *@
-                    @* </div> *@
+                        <div class="form-group">
+                            <input asp-for="Id" class="updateId" type="hidden" />
+                            <label asp-for="Responsibilities" class="control-label">Обязанности</label>
+                            <textarea asp-for="Responsibilities" class="form-control" id="formControlResponsibilities" rows="3" placeholder="Ваше сообщение" required></textarea>
+                            <span asp-validation-for="Responsibilities" class="text-danger"></span>
+                            @* <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> *@
+                        </div>
+                        
+                        @* <div class="form-group"> *@
+                        @*     <body data-editor="ClassicEdit" data-collaboration="false" data-revision-history="false"> *@
+                        @*     <div class="centered"> *@
+                        @*         <div class="row row-editor"> *@
+                        @*             <div class="editor-container"> *@
+                        @*                 <textarea asp-for="Requirements" name="editorREQP" class="form-control" id="editorREQP" style="display: none;"></textarea> *@
+                        @*                 <div class="editorREQP"></div> *@
+                        @*             </div> *@
+                        @*         </div> *@
+                        @*     </div> *@
+                        @*     </body> *@
+                        @* </div> *@
+                        
+                        <div class="form-group">
+                            <input asp-for="Id" class="updateId" type="hidden" />
+                            <label asp-for="Requirements" class="control-label">Требования</label>
+                            <textarea asp-for="Requirements" class="form-control" id="formControlRequirements" rows="3" placeholder="Ваше сообщение" required></textarea>
+                            <span asp-validation-for="Requirements" class="text-danger"></span>
+                            @* <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> *@
+                        </div>
 
-                    <div class="form-group">
-                        <input asp-for="Id" class="updateId" type="hidden" />
-                        <label asp-for="Responsibilities" class="control-label">Обязанности</label>
-                        <textarea asp-for="Responsibilities" class="form-control" id="formControlResponsibilities" rows="3" placeholder="Ваше сообщение" required></textarea>
-                        <span asp-validation-for="Responsibilities" class="text-danger"></span>
-                        @* <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> *@
-                    </div>
+                        @* <div class="form-group"> *@
+                        @*     <body data-editor="ClassicEdit" data-collaboration="false" data-revision-history="false"> *@
+                        @*     <div class="centered"> *@
+                        @*         <div class="row row-editor"> *@
+                        @*             <div class="editor-container"> *@
+                        @*                 <textarea asp-for="Responsibilities" name="editorREQS" class="form-control" id="editorREQS" style="display: none;"></textarea> *@
+                        @*                 <div class="editorREQS"></div> *@
+                        @*             </div> *@
+                        @*         </div> *@
+                        @*     </div> *@
+                        @*     </body> *@
+                        @* </div> *@
 
-                    @* <div class="form-group"> *@
-                    @*     <body data-editor="ClassicEdit" data-collaboration="false" data-revision-history="false"> *@
-                    @*     <div class="centered"> *@
-                    @*         <div class="row row-editor"> *@
-                    @*             <div class="editor-container"> *@
-                    @*                 <textarea asp-for="Responsibilities" name="editorREQS" class="form-control" id="editorREQS" style="display: none;"></textarea> *@
-                    @*                 <div class="editorREQS"></div> *@
-                    @*             </div> *@
-                    @*         </div> *@
-                    @*     </div> *@
-                    @*     </body> *@
-                    @* </div> *@
-
-                    @* <div class="form-group"> *@
-                    @*     <input asp-for="Id" class="updateId" type="hidden"/> *@
-                    @*     <label asp-for="PicSrc" class="control-label">Путь к изображению</label> *@
-                    @*     <input asp-for="PicSrc" type="text" id="formPicSrc" class="form-control"> *@
-                    @*     <span asp-validation-for="PicSrc" class="text-danger"></span> *@
-                    @*     $1$ <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> #1# *@
-                    @* </div> *@
-                    
-                    <div class="form-group">
-                        <label asp-for="Image" class="control-label">Загрузить обложку (изображение)</label>
-                        <div class="input-group mb-3">
-                            <label class="btn btn-light border">
-                                Нажмите, чтобы загрузить с устройства
-                                <input asp-for="Image" type="file" class="form-control" id="inputGroupFile02" style="opacity: 0; position: absolute;">
-                            </label>
-                            <input asp-for="PicSrc" type="text" class="form-control" id="newsPicSrc" placeholder="Или адрес для загрузки по ссылке">
+                        @* <div class="form-group"> *@
+                        @*     <input asp-for="Id" class="updateId" type="hidden"/> *@
+                        @*     <label asp-for="PicSrc" class="control-label">Путь к изображению</label> *@
+                        @*     <input asp-for="PicSrc" type="text" id="formPicSrc" class="form-control"> *@
+                        @*     <span asp-validation-for="PicSrc" class="text-danger"></span> *@
+                        @*     $1$ <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> #1# *@
+                        @* </div> *@
+                        
+                        <div class="form-group">
+                            <label asp-for="Image" class="control-label">Загрузить обложку (изображение)</label>
+                            <div class="input-group mb-3">
+                                <label class="btn btn-light border">
+                                    Нажмите, чтобы загрузить с устройства
+                                    <input asp-for="Image" type="file" class="form-control" id="inputGroupFile02" style="opacity: 0; position: absolute;">
+                                </label>
+                                <input asp-for="PicSrc" type="text" class="form-control" id="newsPicSrc" placeholder="Или адрес для загрузки по ссылке">
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary btnCancel" data-bs-dismiss="modal">Закрыть</button>
-                    <button id="btnSave" type="submit" class="btn btn-primary">Изменить</button>
-                </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary btnCancel" data-bs-dismiss="modal">Закрыть</button>
+                        <button id="btnSave" type="submit" class="btn btn-primary">Изменить</button>
+                    </div>
+            </div>
         </div>
-    </div>
     </form>
 </div>
 
