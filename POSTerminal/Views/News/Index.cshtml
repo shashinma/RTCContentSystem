@@ -131,11 +131,25 @@
                             <span asp-validation-for="Title" class="text-danger"></span>
                         </div>
                         <br/>
+                        @* <div class="form-group"> *@
+                        @*     <label asp-for="Content" class="control-label">Содержимое</label> *@
+                        @*     <textarea asp-for="Content" type="text" rows="14" class="form-control" placeholder="Содержимое" required ></textarea> *@
+                        @*     <span asp-validation-for="Content" class="text-danger"></span> *@
+                        @* </div> *@
+                        
                         <div class="form-group">
-                            <label asp-for="Content" class="control-label">Содержимое</label>
-                            <textarea asp-for="Content" type="text" rows="14" class="form-control" placeholder="Содержимое" required ></textarea>
-                            <span asp-validation-for="Content" class="text-danger"></span>
+                            <body data-editor="ClassicEdit" data-collaboration="false" data-revision-history="false">
+                            <div class="centered">
+                                <div class="row row-editor">
+                                    <div class="editor-container">
+                                        <textarea asp-for="Content" class="form-control" id="editorN" style="display: none;"></textarea>
+                                        <div class="editorN"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            </body>
                         </div>
+                        
                         <br/>
                         <div class="form-group">
                             <label asp-for="Image" class="control-label">Загрузить изображение</label>
@@ -174,19 +188,34 @@
                             <span asp-validation-for="Title" class="text-danger"></span>
                         </div>
                         <br/>
+                        
+                        @* <div class="form-group"> *@
+                        @*     <input asp-for="Id" class="updateId" type="hidden"/> *@
+                        @*     <label asp-for="Content" class="control-label">Содержимое</label> *@
+                        @*     <textarea asp-for="Content" class="form-control" rows="14" id="newsContent"></textarea> *@
+                        @*     <span asp-validation-for="Content" class="text-danger"></span> *@
+                        @* </div> *@
+                        
                         <div class="form-group">
-                            <input asp-for="Id" class="updateId" type="hidden"/>
-                            <label asp-for="Content" class="control-label">Содержимое</label>
-                            <textarea asp-for="Content" class="form-control" rows="14" id="newsContent"></textarea>
-                            <span asp-validation-for="Content" class="text-danger"></span>
-                        </div> 
+                            <body data-editor="ClassicEdit" data-collaboration="false" data-revision-history="false">
+                            <div class="centered">
+                                <div class="row row-editor">
+                                    <div class="editor-container">
+                                        <textarea asp-for="Content" name="content" class="form-control" id="newsContent" style="display: none;"></textarea>
+                                        <div class="editor"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            </body>
+                        </div>
+                        
                         <br/>
                         <div class="form-group">
                         <label asp-for="Image" class="control-label">Загрузить обложку (изображение)</label>
                             <div class="input-group mb-3">
                                 <label class="btn btn-light border">
-                                Нажмите, чтобы загрузить с устройства
-                                   <input asp-for="Image" type="file" class="form-control" id="inputGroupFile02" style="opacity: 0; position: absolute;">
+                                    Нажмите, чтобы загрузить с устройства
+                                    <input asp-for="Image" type="file" class="form-control" id="inputGroupFile02" style="opacity: 0; position: absolute;">
                                 </label>
                                 <input asp-for="PicSrc" type="text" class="form-control" id="newsPicSrc" placeholder="Или адрес для загрузки по ссылке">
                             </div>
@@ -227,9 +256,29 @@
 <script src="/Views/News/Index.cshtml.js" asp-append-version="true"></script>
 <script src="~/js/site.js" asp-append-version="true"></script>
 
+<script src="https://cdn.ckeditor.com/ckeditor5/41.0.0/classic/ckeditor.js"></script>
+@* <script src="~/modules/ckeditor5-doc/build/ckeditor.js"></script> *@
+
 @section Scripts
 {
     <script>
+        ClassicEditor
+            .create(document.querySelector('.editorN'))
+            .then(editor => {
+                // Синхронизация содержимого редактора с textarea при каждом изменении
+                editor.model.document.on('change:data', () => {
+                    document.querySelector('#editorN').value = editor.getData();
+                });
+
+                // Установка начального содержимого из textarea в редактор
+                editor.setData(``);
+
+            })
+            .catch(error => {
+                console.error(error);
+            });
+        
+    
         $(document).ready(function () {
             $('#btnDelete').click(function () {
                 var idD = $('#NewsId').val();
@@ -261,16 +310,47 @@
             $('#DeleteModal').modal('show');
         }
         
-        var EditForm = function (id) {
+        // var EditForm = function (id) {
+        //     $.ajax({
+        //         type: "POST",
+        //         url: "/News/GetNews/",
+        //         data: { id: id },
+        //         success: function (news) {
+        //             $('#EditModal').modal('show');
+        //             $('#newsTitle').val(news.title);
+        //             $('#newsContent').val(news.content);
+        //             $('.updateId').val(news.id);
+        //         }
+        //     })
+        // }
+        
+        
+        var EditForm = function(id) {
             $.ajax({
                 type: "POST",
                 url: "/News/GetNews/",
                 data: { id: id },
-                success: function (news) {
+                success: function(news) {
                     $('#EditModal').modal('show');
                     $('#newsTitle').val(news.title);
-                    $('#newsContent').val(news.content);
                     $('.updateId').val(news.id);
+        
+                    // Установите данные в ckeditor
+                    document.querySelectorAll('.editor').forEach(editorElement => {
+                        ClassicEditor
+                            .create(editorElement)
+                            .then(editor => {  
+                                // Установка начального содержимого из news.content в редактор
+                                editor.setData(news.content);
+                                
+                                editor.model.document.on('change:data', () => {
+                                    document.querySelector('#newsContent').value = editor.getData();
+                                });
+                            })
+                            .catch(error => {
+                                console.error(error);
+                            });
+                    });
                 }
             })
         }
