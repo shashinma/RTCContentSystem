@@ -1,4 +1,5 @@
-﻿using POSTerminal.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using POSTerminal.Data;
 using POSTerminal.Models;
 
 namespace POSTerminal.Services;
@@ -19,6 +20,6 @@ public class JobsService : IJobsService
 
     public List<JobsItem> getJobs()
     {
-        return _context.JobsItems.ToList();
+        return _context.JobsItems.Include(n => n.Image).ToList();
     }
 }
