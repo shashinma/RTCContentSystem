@@ -155,7 +155,7 @@
                             <label asp-for="Image" class="control-label">Загрузить изображение</label>
                             <div class="input-group mb-3">
                                 <label class="btn btn-light border">
-                                    С устройства
+                                    Нажмите, чтобы загрузить с устройства
                                     <input asp-for="Image" type="file" class="form-control" id="inputGroupFile02" style="opacity: 0; position: absolute;">
                                 </label>
                                 <input asp-for="PicSrc" type="text" class="form-control" id="newsPicSrc" placeholder="Или адрес для загрузки по ссылке">
@@ -278,7 +278,6 @@
                 console.error(error);
             });
         
-    
         $(document).ready(function () {
             $('#btnDelete').click(function () {
                 var idD = $('#NewsId').val();
