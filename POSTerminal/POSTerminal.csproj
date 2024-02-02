@@ -36,7 +36,6 @@
     
     <ItemGroup>
         <None Include="wwwroot\css\keyboard.css" />
-        <None Include="wwwroot\js\auth.js" />
     </ItemGroup>
 
     <ItemGroup>
@@ -49,7 +48,105 @@
     <ItemGroup>
         <_JsFileModuleStaticWebAsset Include="Views\Shared\_MenuPartialPDF.cshtml.js" />
         <_JsFileModuleStaticWebAsset Include="Views\Shared\_NavBar.cshtml.js" />
-        <_JsFileModuleStaticWebAsset Include="Views\Shared\_Layout.cshtml.js" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\ckeditor.d.ts" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\ckeditor.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\ckeditor.js.map" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\af.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\ar.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\ast.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\az.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\bg.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\bn.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\bs.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\ca.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\cs.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\da.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\de-ch.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\de.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\el.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\en-au.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\en-gb.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\en.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\eo.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\es-co.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\es.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\et.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\eu.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\fa.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\fi.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\fr.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\gl.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\gu.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\he.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\hi.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\hr.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\hu.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\hy.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\id.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\it.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\ja.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\jv.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\km.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\kn.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\ko.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\ku.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\lt.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\lv.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\ms.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\nb.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\ne.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\nl.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\no.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\oc.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\pl.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\pt-br.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\pt.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\ro.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\si.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\sk.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\sl.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\sq.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\sr-latn.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\sr.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\sv.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\th.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\tk.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\tr.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\tt.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\ug.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\uk.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\ur.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\uz.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\vi.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\zh-cn.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\build\translations\zh.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\LICENSE.md" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\package.json" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\README.md" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\sample\index.html" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\sample\script.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\sample\styles.css" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\src\ckeditor.ts" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\tsconfig.json" />
+      <_ContentIncludedByDefault Remove="wwwroot\modules\ckeditor5-test\webpack.config.js" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Update="Views\About\index.html">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="Views\About\script.js">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="Views\About\styles.css">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
     </ItemGroup>
 
 </Project>
