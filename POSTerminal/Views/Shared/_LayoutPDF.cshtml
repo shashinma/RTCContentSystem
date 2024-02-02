@@ -17,11 +17,11 @@
 <body class="mb-0">
 @await Html.PartialAsync("_MenuPartialPDF.cshtml")
 
-<section class="home-section">
+<section class="home-section z-0">
     <nav class="sticky">
         @await Html.PartialAsync("_NavBar.cshtml")
     </nav>
-    <div class="container p-0">
+    <div class="container p-0 ">
         <main role="main" class="p-0">
             @RenderBody()
         </main>
