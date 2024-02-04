@@ -136,7 +136,6 @@
                         @*     <textarea asp-for="Content" type="text" rows="14" class="form-control" placeholder="Содержимое" required ></textarea> *@
                         @*     <span asp-validation-for="Content" class="text-danger"></span> *@
                         @* </div> *@
-                        
                         <div class="form-group">
                             <body data-editor="ClassicEdit" data-collaboration="false" data-revision-history="false">
                             <div class="centered">
@@ -149,7 +148,6 @@
                             </div>
                             </body>
                         </div>
-                        
                         <br/>
                         <div class="form-group">
                             <label asp-for="Image" class="control-label">Загрузить изображение</label>
@@ -309,21 +307,6 @@
             $('#DeleteModal').modal('show');
         }
         
-        // var EditForm = function (id) {
-        //     $.ajax({
-        //         type: "POST",
-        //         url: "/News/GetNews/",
-        //         data: { id: id },
-        //         success: function (news) {
-        //             $('#EditModal').modal('show');
-        //             $('#newsTitle').val(news.title);
-        //             $('#newsContent').val(news.content);
-        //             $('.updateId').val(news.id);
-        //         }
-        //     })
-        // }
-        
-        
         var EditForm = function(id) {
             $.ajax({
                 type: "POST",
@@ -334,24 +317,33 @@
                     $('#newsTitle').val(news.title);
                     $('.updateId').val(news.id);
         
-                    // Установите данные в ckeditor
                     document.querySelectorAll('.editor').forEach(editorElement => {
-                        ClassicEditor
-                            .create(editorElement)
-                            .then(editor => {  
-                                // Установка начального содержимого из news.content в редактор
-                                editor.setData(news.content);
-                                
-                                editor.model.document.on('change:data', () => {
-                                    document.querySelector('#newsContent').value = editor.getData();
-                                });
-                            })
-                            .catch(error => {
-                                console.error(error);
-                            });
+                        if (editorElement.ckeditorInstance)
+                        {
+                            editorElement.ckeditorInstance.destroy().then(() => createEditorInstance(editorElement, news.content))
+                                .catch(error => console.error(error));
+                        }
+                        else
+                        {
+                            createEditorInstance(editorElement, news.content);
+                        }
                     });
                 }
             })
+        }
+        
+        function createEditorInstance(element, content) {
+            ClassicEditor.create(element)
+                .then(editor => {
+                    editor.setData(content);
+        
+                    editor.model.document.on('change:data', () => {
+                        document.querySelector('#newsContent').value = editor.getData();
+                    });
+        
+                    element.ckeditorInstance = editor;
+                })
+                .catch(error => console.error(error));
         }
     </script>
 }
