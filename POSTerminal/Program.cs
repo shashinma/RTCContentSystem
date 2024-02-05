@@ -28,6 +28,9 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
     .AddEntityFrameworkStores<IdentityContext>();
+
+builder.Services.Configure<DefaultUserOptions>(builder.Configuration.GetSection("DefaultUserOptions"));
+
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddScoped<IHomeService, HomeService>();
