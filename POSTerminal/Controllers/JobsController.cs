@@ -129,8 +129,8 @@ public class JobsController : Controller
         }
 
         jobs.Vacancy = model.Vacancy;
-        jobs.Responsibilities = model.Responsibilities;
         jobs.Requirements = model.Requirements;
+        jobs.Responsibilities = model.Responsibilities;
 
         await _context.SaveChangesAsync();
 
@@ -157,22 +157,6 @@ public class JobsController : Controller
         var jobs = _context.JobsItems.Find(id);
         return Json(jobs);
     }
-    
-    
-    
-    // public IActionResult Update(JobsItem model)
-    // {
-    //     var jobsFromDb = _context.JobsItems.Find(model.Id);
-    //     jobsFromDb.Vacancy = model.Vacancy;
-    //     jobsFromDb.Requirements = model.Requirements;
-    //     jobsFromDb.Responsibilities = model.Responsibilities;
-    //     jobsFromDb.PicSrc = model.PicSrc;
-    //     
-    //     _context.JobsItems.Update(jobsFromDb);
-    //     _context.SaveChanges();
-    //     
-    //     return RedirectToAction("Index");
-    // }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
