@@ -76,50 +76,6 @@
 </div>
 
 @* Add new news *@
-@* <div class="modal fade" id="CreateModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true"> *@
-@*     <div class="modal-dialog modal-dialog-centered" role="document"> *@
-@*         <div class="modal-content"> *@
-@*             <form id="saveForm" method="post"> *@
-@*                 <div class="modal-header"> *@
-@*                     <h5 class="modal-title" id="createModalLabel">Добавить инструкцию</h5> *@
-@*                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> *@
-@* *@
-@*                 </div> *@
-@*                 <div class="modal-body"> *@
-@*                     <div class="form-group"> *@
-@*                         <label asp-for="Title" class="control-label">Заголовок</label> *@
-@*                         <input asp-for="Title" type="text" class="form-control"> *@
-@*                         <span asp-validation-for="Title" class="text-danger"></span> *@
-@*                         $1$ <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> #1# *@
-@*                     </div> *@
-@*                     $1$ <div class="form-group"> #1# *@
-@*                     $1$     <label asp-for="ImageUrl" class="control-label">Путь к изображению</label> #1# *@
-@*                     $1$     <input asp-for="ImageUrl" type="text" class="form-control"> #1# *@
-@*                     $1$     <span asp-validation-for="ImageUrl" class="text-danger"></span> #1# *@
-@*                     $1$     $2$ <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> #2# #1# *@
-@*                     $1$ </div> #1# *@
-@*                     <div class="form-group"> *@
-@*                         <label asp-for="Image" class="control-label">Загрузить изображение</label> *@
-@*                         <div class="input-group mb-3"> *@
-@*                             <label class="btn btn-light border"> *@
-@*                                 С устройства *@
-@*                                 <input asp-for="Image" type="file" class="form-control" id="inputGroupFile02" style="opacity: 0; position: absolute;"> *@
-@*                             </label> *@
-@*                             <input asp-for="ImageUrl" type="text" class="form-control" id="newsPicSrc" placeholder="Или адрес для загрузки по ссылке"> *@
-@*                         </div> *@
-@*                     </div> *@
-@*                      *@
-@*                 </div> *@
-@*                 <div class="modal-footer"> *@
-@*                     <button type="button" class="btn btn-secondary btnCancel" data-bs-dismiss="modal">Закрыть</button> *@
-@*                     <button id="btnSave" type="button" class="btn btn-primary">Сохранить</button> *@
-@*                 </div> *@
-@*             </form> *@
-@*         </div> *@
-@*     </div> *@
-@* </div> *@
-
-@* Add new news *@
 <div class="modal fade" id="CreateModal" tabindex="0" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true" style="">
     <form id="saveForm" asp-controller="Instructions" asp-action="Create" method="post" enctype="multipart/form-data">
         <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
@@ -159,38 +115,6 @@
         </div>
     </form>
 </div>
-
-@* Edit news *@
-@* <div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true"> *@
-@*     <div class="modal-dialog modal-dialog-centered modal-xl" role="document"> *@
-@*         <div class="modal-content"> *@
-@*             <form asp-action="Update" id="EditForm" method="post"> *@
-@*                 <div class="modal-header"> *@
-@*                     <h5 class="modal-title">Редактировать инструкцию</h5> *@
-@*                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> *@
-@*                 </div> *@
-@*                 <div class="modal-body"> *@
-@*                     <div class="form-group"> *@
-@*                         <input asp-for="Id" class="updateId" type="hidden" /> *@
-@*                         <label asp-for="Title" class="control-label">Заголовок</label> *@
-@*                         <input asp-for="Title" class="form-control" id="newsTitle"> *@
-@*                         <span asp-validation-for="Title" class="text-danger"></span> *@
-@*                     </div> *@
-@*                     <div class="form-group"> *@
-@*                         <input asp-for="Id" class="updateId" type="hidden" /> *@
-@*                         <label asp-for="ImageUrl" class="control-label">Путь к изображению</label> *@
-@*                         <textarea asp-for="ImageUrl" class="form-control" rows="18" id="newsContent"></textarea> *@
-@*                         <span asp-validation-for="ImageUrl" class="text-danger"></span> *@
-@*                     </div> *@
-@*                 </div> *@
-@*                 <div class="modal-footer"> *@
-@*                     <button type="button" class="btn btn-secondary btnCancel" data-bs-dismiss="modal">Закрыть</button> *@
-@*                     <button id="btnSave" type="submit" class="btn btn-primary">Изменить</button> *@
-@*                 </div> *@
-@*             </form> *@
-@*         </div> *@
-@*     </div> *@
-@* </div> *@
 
 @* Delete news *@
 
