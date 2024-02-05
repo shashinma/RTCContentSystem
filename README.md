@@ -24,16 +24,26 @@
 > Создать docker-compose.yml
 > ```yml
 > version: '3.8'
-> name: rtcservices
+>
+> name: rtccontentsystem
 > services:
-> posterminal:
->   container_name: rtccontentsystem.posterminal
->   image: ghcr.io/shashinma/rtccontentsystem.posterminal:latest
->   build:
->     context: POSTerminal
->     dockerfile: Dockerfile
->   ports:
->     - 5000:80
+>  posterminal:
+>    container_name: rtccontentsystem.posterminal
+>    image: ghcr.io/shashinma/rtccontentsystem.posterminal:latest
+>    restart: unless-stopped
+>    build:
+>      context: POSTerminal
+>      dockerfile: Dockerfile
+>    ports:
+>      - "5133:8080"
+>    environment:
+>      ASPNETCORE_ENVIRONMENT: Production
+>      ConnectionStrings__IdentityConnection: DataSource=identity.db;Cache=Shared
+>      ConnectionStrings__ApplicationDbConnection: DataSource=app.db;Cache=Shared
+>      DefaultUserOptions__AdminUser__Username: admin@rtc.ru
+>      DefaultUserOptions__AdminUser__Password: $$phhY0qldz
+>      DefaultUserOptions__TerminalUser__Username: a@rtc.ru
+>      DefaultUserOptions__TerminalUser__Password: Upefif13!
 > ```
 
 > [!NOTE]
