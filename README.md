@@ -40,10 +40,10 @@
 >      ASPNETCORE_ENVIRONMENT: Production
 >      ConnectionStrings__IdentityConnection: DataSource=identity.db;Cache=Shared
 >      ConnectionStrings__ApplicationDbConnection: DataSource=app.db;Cache=Shared
->      DefaultUserOptions__AdminUser__Username: admin@rtc.ru
->      DefaultUserOptions__AdminUser__Password: $$phhY0qldz
->      DefaultUserOptions__TerminalUser__Username: a@rtc.ru
->      DefaultUserOptions__TerminalUser__Password: Upefif13!
+>      DefaultUserOptions__AdminUser__Username: admin_username@mail.com
+>      DefaultUserOptions__AdminUser__Password: admin_password
+>      DefaultUserOptions__TerminalUser__Username: terminal_usename@mail.com
+>      DefaultUserOptions__TerminalUser__Password: terminal_password
 > ```
 
 > [!NOTE]
