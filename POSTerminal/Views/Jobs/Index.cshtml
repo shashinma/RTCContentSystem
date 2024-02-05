@@ -61,7 +61,7 @@
                         <div style="width: 100%; display: inline-flex; flex-wrap: nowrap">
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#EditModal"
                                     onclick="event.stopPropagation(); EditForm(@jobsItem.Id);" id="showModal" style="width: 100%; margin-right: 5px">
-                                <i class="actionsBtn far fa-trash-alt"> Редактировать</i>
+                                <i class="actionsBtn far fa-edit"> Редактировать</i>
                             </button>
                             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#DeleteModal"
                                     onclick="event.stopPropagation(); ConfirmDelete(@jobsItem.Id);" id="showModal" style="width: 100%">
@@ -159,56 +159,36 @@
                             <span asp-validation-for="Vacancy" class="text-danger"></span>
                             @* <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> *@
                         </div>
+                        <br/>
 
-                        @* <div class="form-group"> *@
-                        @*     <input asp-for="Id" class="updateId" type="hidden" /> *@
-                        @*     <label asp-for="Responsibilities" class="control-label">Обязанности</label> *@
-                        @*     <textarea asp-for="Responsibilities" class="form-control" id="formControlResponsibilities" rows="3" placeholder="Ваше сообщение" required></textarea> *@
-                        @*     <span asp-validation-for="Responsibilities" class="text-danger"></span> *@
-                        @*     $1$ <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> #1# *@
-                        @* </div> *@
 
                         <div class="form-group">
                             <body data-editor="ClassicEdit" data-collaboration="false" data-revision-history="false">
                             <div class="centered">
                                 <div class="row row-editor">
                                     <div class="editor-container">
-                                        <textarea asp-for="Requirements" name="editorREQP" class="form-control" id="formControlRequirements" style="display: none;"></textarea>
-                                        <div class="editorREQP"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            </body>
-                        </div>
-
-                        @* <div class="form-group"> *@
-                        @*     <input asp-for="Id" class="updateId" type="hidden" /> *@
-                        @*     <label asp-for="Requirements" class="control-label">Требования</label> *@
-                        @*     <textarea asp-for="Requirements" class="form-control" id="formControlRequirements" rows="3" placeholder="Ваше сообщение" required></textarea> *@
-                        @*     <span asp-validation-for="Requirements" class="text-danger"></span> *@
-                        @*     $1$ <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> #1# *@
-                        @* </div> *@
-
-                        <div class="form-group">
-                            <body data-editor="ClassicEdit" data-collaboration="false" data-revision-history="false">
-                            <div class="centered">
-                                <div class="row row-editor">
-                                    <div class="editor-container">
-                                        <textarea asp-for="Responsibilities" name="editorREQS" class="form-control" id="formControlResponsibilities" style="display: none;"></textarea>
+                                        <textarea asp-for="Requirements" class="form-control" id="formControlRequirements" style="display: none;"></textarea>
                                         <div class="editorREQS"></div>
                                     </div>
                                 </div>
                             </div>
                             </body>
                         </div>
+                        <br/>
 
-                        @* <div class="form-group"> *@
-                        @*     <input asp-for="Id" class="updateId" type="hidden"/> *@
-                        @*     <label asp-for="PicSrc" class="control-label">Путь к изображению</label> *@
-                        @*     <input asp-for="PicSrc" type="text" id="formPicSrc" class="form-control"> *@
-                        @*     <span asp-validation-for="PicSrc" class="text-danger"></span> *@
-                        @*     $1$ <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> #1# *@
-                        @* </div> *@
+                        <div class="form-group">
+                            <body data-editor="ClassicEdit" data-collaboration="false" data-revision-history="false">
+                            <div class="centered">
+                                <div class="row row-editor">
+                                    <div class="editor-container">
+                                        <textarea asp-for="Responsibilities" class="form-control" id="formControlResponsibilities" style="display: none;"></textarea>
+                                        <div class="editorRESP"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            </body>
+                        </div>
+                        <br/>
 
                         <div class="form-group">
                             <label asp-for="Image" class="control-label">Загрузить обложку (изображение)</label>
@@ -275,7 +255,7 @@
                     console.error(error);
                 });
         }
-        
+
         setupEditor('.EditorREQ', '#EditorREQ');
         setupEditor('.EditorRES', '#EditorRES');
 
@@ -306,61 +286,133 @@
                         $('#NewsId').val(id);
                         $('#DeleteModal').modal('show');
                     }
-                    
-        var EditForm = function (id) {
-            $.ajax({
+
+        var EditForm = function(id) {
+            fetchJobs(id)
+                .done(handleJobSuccess)
+                .fail(handleJobError);
+        }
+        
+        function fetchJobs(id) {
+            return $.ajax({
                 type: "POST",
                 url: "/Jobs/GetJobs/",
                 data: { id: id },
-                success: function (jobs) {
-                    $('#EditModal').modal('show');
-                    $('#formControlVacancy').val(jobs.vacancy);
-                    $('#formPicSrc').val(jobs.picSrc);
-                    $('#formControlResponsibilities').val(jobs.responsibilities);
-                    $('#formControlRequirements').val(jobs.requirements);
-                    $('.updateId').val(jobs.id);
-                    
-                                
-                    document.querySelectorAll('.editorREQP').forEach(editorElement => {
-                                    ClassicEditor
-                                        .create(editorElement)
-                                        .then(editor => {  
-                                            // Установка начального содержимого из news.content в редактор
-                                            editor.setData(jobs.editorREQP);
-
-                                            editor.model.document.on('change:data', () => {
-                                                document.querySelector('#editorREQP').value = editor.getData();
-                                            });
-                                        })
-                                        .catch(error => {
-                                            console.error(error);
-                                        });
-                                                    editor.destroy();
-
-
-                                    ClassicEditor.destroy();
-                                });
-
-                    document.querySelectorAll('.editorREQS').forEach(editorElement => {
-                                    ClassicEditor
-                                        .create(editorElement)
-                                        .then(editor => {  
-                                            // Установка начального содержимого из news.content в редактор
-                                            editor.setData(jobs.editorREQS);
-
-                                            editor.model.document.on('change:data', () => {
-                                                document.querySelector('#editorREQS').value = editor.getData();
-                                            });
-                                        })
-                                        .catch(error => {
-                                            console.error(error);
-                                        });
-
-                                    ClassicEditor.destroy();
-                                });
-                    
-                }
-            })
+            });
         }
+        
+        function handleJobSuccess(jobs) {
+            $('#EditModal').modal('show');
+            $('#formControlVacancy').val(jobs.vacancy);
+            $('.updateId').val(jobs.id);
+            updateEditorInstances(['.editorREQS', '.editorRESP'], [jobs.requirements, jobs.responsibilities]);
+        }
+        
+        function handleJobError() {
+            console.error("There was an error with the ajax request.");
+        }
+        
+        function updateEditorInstances(selectors, contents) {
+            selectors.forEach((selector, index) => {
+                const content = contents[index];
+                const targetId = selector === '.editorREQS' 
+                    ? '#formControlRequirements' 
+                    : '#formControlResponsibilities';
+                    
+                document.querySelectorAll(selector).forEach(editorElement => {
+                    if (editorElement.ckeditorInstance) {
+                        editorElement.ckeditorInstance.destroy()
+                            .then(() => initOrResetEditorInstance(editorElement, content, targetId))
+                            .catch(console.error);
+                    } else {
+                        initOrResetEditorInstance(editorElement, content, targetId);
+                    }
+                });
+            });
+        }
+        
+        function initOrResetEditorInstance(editorElement, content, targetId) {
+            function updateTargetValueFromEditorData(editor) {
+                document.querySelector(targetId).value = editor.getData();
+            }
+        
+            ClassicEditor.create(editorElement)
+                .then(editor => {
+                    editor.setData(content);
+                    updateTargetValueFromEditorData(editor);
+                    editor.model.document.on('change:data', () => {
+                        updateTargetValueFromEditorData(editor);
+                    });
+                    editorElement.ckeditorInstance = editor;
+                })
+                .catch(console.error);
+        }
+
+                // var EditForm = function(id) {
+                //     $.ajax({
+                //         type: "POST",
+                //         url: "/Jobs/GetJobs/",
+                //         data: { id: id },
+                //         success: function(jobs) {
+                //             $('#EditModal').modal('show');
+                //             $('#formControlVacancy').val(jobs.vacancy);
+                //             $('#formPicSrc').val(jobs.picSrc);
+                //             $('.updateId').val(jobs.id);
+                //
+                //             document.querySelectorAll('.editorREQS').forEach(editorElement => {
+                //                 if (editorElement.ckeditorInstance)
+                //                 {
+                //                     editorElement.ckeditorInstance.destroy().then(() => createEditorInstanceREQS(editorElement, jobs.requirements))
+                //                         .catch(error => console.error(error));
+                //                 }
+                //                 else
+                //                 {
+                //                     createEditorInstanceREQS(editorElement, jobs.requirements);
+                //                 }
+                //             });
+                //            
+                //             document.querySelectorAll('.editorRESP').forEach(editorElement => {
+                //                 if (editorElement.ckeditorInstance)
+                //                 {
+                //                     editorElement.ckeditorInstance.destroy().then(() => createEditorInstanceRESP(editorElement, jobs.responsibilities))
+                //                         .catch(error => console.error(error));
+                //                 }
+                //                 else
+                //                 {
+                //                     createEditorInstanceRESP(editorElement, jobs.responsibilities);
+                //                 }
+                //             });
+                //         }
+                //     })
+                // }
+                //
+                // function createEditorInstanceREQS(element, content) {
+                //     ClassicEditor.create(element)
+                //         .then(editor => {
+                //             editor.setData(content);
+                //
+                //             editor.model.document.on('change:data', () => {
+                //                 console.log(editor.getData())
+                //                 document.querySelector('#formControlRequirements').value = editor.getData();
+                //             });
+                //
+                //             element.ckeditorInstance = editor;
+                //         })
+                //         .catch(error => console.error(error));
+                // }
+                //
+                // function createEditorInstanceRESP(element, content) {
+                //     ClassicEditor.create(element)
+                //         .then(editor => {
+                //             editor.setData(content);
+                //
+                //             editor.model.document.on('change:data', () => {
+                //                 document.querySelector('#formControlResponsibilities').value = editor.getData();
+                //             });
+                //
+                //             element.ckeditorInstance = editor;
+                //         })
+                //         .catch(error => console.error(error));
+                // }
 </script>
 }
