@@ -92,6 +92,20 @@
                             <span asp-validation-for="Vacancy" class="text-danger"></span>
                         </div>
                         <br/>
+                        
+                        <div class="form-group">
+                            <body data-editor="ClassicEdit" data-collaboration="false" data-revision-history="false">
+                            <div class="centered">
+                                <div class="row row-editor">
+                                    <div class="editor-container">
+                                        <textarea asp-for="Responsibilities" class="form-control" id="EditorRES" style="display: none;"></textarea>
+                                        <div class="EditorRES"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            </body>
+                        </div>
+                        <br/>
 
                         <div class="form-group">
                             <body data-editor="ClassicEdit" data-collaboration="false" data-revision-history="false">
@@ -107,20 +121,6 @@
                         </div>
                         <br/>
                         
-                        <div class="form-group">
-                            <body data-editor="ClassicEdit" data-collaboration="false" data-revision-history="false">
-                            <div class="centered">
-                                <div class="row row-editor">
-                                    <div class="editor-container">
-                                        <textarea asp-for="Responsibilities" class="form-control" id="EditorRES" style="display: none;"></textarea>
-                                        <div class="EditorRES"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            </body>
-                        </div>
-
-                        <br/>
                         <div class="form-group">
                             <label asp-for="Image" class="control-label">Загрузить изображение</label>
                             <div class="input-group mb-3">
@@ -161,14 +161,13 @@
                         </div>
                         <br/>
 
-
                         <div class="form-group">
                             <body data-editor="ClassicEdit" data-collaboration="false" data-revision-history="false">
                             <div class="centered">
                                 <div class="row row-editor">
                                     <div class="editor-container">
-                                        <textarea asp-for="Requirements" class="form-control" id="formControlRequirements" style="display: none;"></textarea>
-                                        <div class="editorREQS"></div>
+                                        <textarea asp-for="Responsibilities" class="form-control" id="formControlResponsibilities" style="display: none;"></textarea>
+                                        <div class="editorRESP"></div>
                                     </div>
                                 </div>
                             </div>
@@ -181,8 +180,8 @@
                             <div class="centered">
                                 <div class="row row-editor">
                                     <div class="editor-container">
-                                        <textarea asp-for="Responsibilities" class="form-control" id="formControlResponsibilities" style="display: none;"></textarea>
-                                        <div class="editorRESP"></div>
+                                        <textarea asp-for="Requirements" class="form-control" id="formControlRequirements" style="display: none;"></textarea>
+                                        <div class="editorREQS"></div>
                                     </div>
                                 </div>
                             </div>
