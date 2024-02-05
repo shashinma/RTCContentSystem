@@ -131,11 +131,7 @@
                             <span asp-validation-for="Title" class="text-danger"></span>
                         </div>
                         <br/>
-                        @* <div class="form-group"> *@
-                        @*     <label asp-for="Content" class="control-label">Содержимое</label> *@
-                        @*     <textarea asp-for="Content" type="text" rows="14" class="form-control" placeholder="Содержимое" required ></textarea> *@
-                        @*     <span asp-validation-for="Content" class="text-danger"></span> *@
-                        @* </div> *@
+
                         <div class="form-group">
                             <body data-editor="ClassicEdit" data-collaboration="false" data-revision-history="false">
                             <div class="centered">
@@ -186,13 +182,6 @@
                             <span asp-validation-for="Title" class="text-danger"></span>
                         </div>
                         <br/>
-                        
-                        @* <div class="form-group"> *@
-                        @*     <input asp-for="Id" class="updateId" type="hidden"/> *@
-                        @*     <label asp-for="Content" class="control-label">Содержимое</label> *@
-                        @*     <textarea asp-for="Content" class="form-control" rows="14" id="newsContent"></textarea> *@
-                        @*     <span asp-validation-for="Content" class="text-danger"></span> *@
-                        @* </div> *@
                         
                         <div class="form-group">
                             <body data-editor="ClassicEdit" data-collaboration="false" data-revision-history="false">
@@ -336,7 +325,8 @@
             ClassicEditor.create(element)
                 .then(editor => {
                     editor.setData(content);
-        
+
+                    document.querySelector('#newsContent').value = editor.getData();
                     editor.model.document.on('change:data', () => {
                         document.querySelector('#newsContent').value = editor.getData();
                     });
