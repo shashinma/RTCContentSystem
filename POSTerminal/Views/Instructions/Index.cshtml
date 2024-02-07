@@ -86,7 +86,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group mb-3">
-                        @* <label asp-for="Title" class="control-label">Заголовок</label> *@
+                        <label asp-for="Title" class="control-label">Заголовок</label>
                         <input asp-for="Title" type="text" class="form-control" placeholder="Название инструкции" required />
                         <span asp-validation-for="Title" class="text-danger"></span>
                     </div>
@@ -128,7 +128,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        @* <label asp-for="Title" class="control-label">Заголовок</label> *@
+                        <label asp-for="Title" class="control-label">Заголовок</label>
                         <input asp-for="Id" class="updateId" type="hidden"/>
                         <input asp-for="Title" type="text" class="form-control" id="newsTitle" placeholder="Название инструкции" required />
                         <span asp-validation-for="Title" class="text-danger"></span>
