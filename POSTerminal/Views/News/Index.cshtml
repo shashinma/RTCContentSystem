@@ -263,7 +263,7 @@
 
                 // Установка начального содержимого из textarea в редактор
                 editor.setData(``);
-
+                editor.ui.view.editable.element.style.height = '300px';
             })
             .catch(error => {
                 console.error(error);
