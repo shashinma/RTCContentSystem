@@ -4,7 +4,7 @@
 @inject IAboutService AboutService
 
 @{
-    var title = "О нас";
+    var title = "Музей ЦНИИ РТК";
 }
 
 <head>
@@ -20,7 +20,7 @@
         <div class="container-sm">
             @if (User.Identity.Name == "admin@rtc.ru")
             {
-                @using (Html.BeginForm("SaveContent", "About", FormMethod.Post))
+                @using (Html.BeginForm("SaveContent", "Museum", FormMethod.Post))
                 {
                     <form id="saveForm" method="post">
                         <button id="btnSave" type="submit" class="btn btn-primary">Сохранить</button>
