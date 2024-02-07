@@ -136,7 +136,8 @@
                             <body data-editor="ClassicEdit" data-collaboration="false" data-revision-history="false">
                             <div class="centered">
                                 <div class="row row-editor">
-                                    <div class="editor-container">
+                                    <div class="editor-container">                            
+                                        <label asp-for="Content" class="control-label">Новость</label>
                                         <textarea asp-for="Content" class="form-control" id="editorN" style="display: none;"></textarea>
                                         <div class="editorN"></div>
                                     </div>
@@ -188,6 +189,7 @@
                             <div class="centered">
                                 <div class="row row-editor">
                                     <div class="editor-container">
+                                        <label asp-for="Content" class="control-label">Новость</label>
                                         <textarea asp-for="Content" name="content" class="form-control" id="newsContent" style="display: none;"></textarea>
                                         <div class="editor"></div>
                                     </div>
