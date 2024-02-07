@@ -6,7 +6,7 @@ namespace POSTerminal.Services;
 
 public interface IJobsService
 {
-    List<JobsItem> getJobs();
+    IEnumerable<JobsItem> getJobs();
 }
 
 public class JobsService : IJobsService
@@ -18,7 +18,7 @@ public class JobsService : IJobsService
         _context = context;
     }
 
-    public List<JobsItem> getJobs()
+    public IEnumerable<JobsItem> getJobs()
     {
         return _context.JobsItems.Include(n => n.Image).ToList();
     }
