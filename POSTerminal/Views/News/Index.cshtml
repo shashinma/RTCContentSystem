@@ -254,6 +254,8 @@
         ClassicEditor
             .create(document.querySelector('.editorN'))
             .then(editor => {
+                editor.ui.view.editable.element.style.height = '300px';
+
                 // Синхронизация содержимого редактора с textarea при каждом изменении
                 editor.model.document.on('change:data', () => {
                     document.querySelector('#editorN').value = editor.getData();
@@ -326,6 +328,7 @@
         function createEditorInstance(element, content) {
             ClassicEditor.create(element)
                 .then(editor => {
+                    editor.ui.view.editable.element.style.height = '300px';
                     editor.setData(content);
 
                     document.querySelector('#newsContent').value = editor.getData();
