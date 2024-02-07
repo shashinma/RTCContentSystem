@@ -1,104 +1,81 @@
 @using POSTerminal.Services
-@model MuseumItem
+@model AboutItem
 
-@inject IMuseumService MuseumService
+@inject IAboutService AboutService
 
 @{
-    var title = "Музей";
+    var title = "О нас";
 }
+
+<head>
+    <meta charset="UTF-8">
+</head>
 
 <link rel="stylesheet" href="~/lib/font-awesome-5.15.4/css/all.css">
 
 <div class="h1 text-center text-dark" id="pageHeaderTitle">@title</div>
-    @if (User.Identity.Name == "admin@rtc.ru")
-    {
-        <div class="newsActions">
-            <button class="btn btn-danger" onclick="ConfirmDelete();" id="showModal">
-                <i class="actionsBtn far fa-plus"> Добавить описание</i>
-            </button>
-            
-            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#CreateModal">
-                <i class="actionsBtn far fa-plus"> Добавить описание</i>
-            </button>
-        </div>
-    }
 
 <div class="container py-2">
-    <section>
-        <markdown>
-            @foreach (var museumItem in MuseumService.getMuseumItems())
+    <section style="max-width: 100%;">
+        <div class="container-sm">
+            @if (User.Identity.Name == "admin@rtc.ru")
             {
-                @museumItem.Content
+                @using (Html.BeginForm("SaveContent", "About", FormMethod.Post))
+                {
+                    <form id="saveForm" method="post">
+                        <button id="btnSave" type="submit" class="btn btn-primary">Сохранить</button>
+                        <br/>
+                        <br/>
+                        @* <textarea name="content" id="content" style="display: none;"></textarea> *@
+                        @* <div class="editor"></div> *@
+
+                        <body data-editor="ClassicEdit" data-collaboration="false" data-revision-history="false">
+                        <div class="centered">
+                            <div class="row row-editor">
+                                <div class="editor-container">
+                                    <textarea name="content" id="content" style="display: none;"></textarea>
+                                    <div class="editor">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </body>
+                    </form>
+                    <button id="btnSave" type="submit" class="btn btn-primary">Сохранить</button>
+                }
+                <br/>
+                <br/>
             }
-        </markdown>
+
+            @Html.Raw(ViewBag.Content)
+        </div>
     </section>
 </div>
 
-
-    @* Add new news *@
-<div class="modal fade" id="CreateModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
-        <div class="modal-content">
-            <form id="saveForm" method="post">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="createModalLabel">Добавить описание</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label asp-for="Content" class="control-label">Содержание</label>
-                        <textarea asp-for="Content" type="text" rows="15" class="form-control"></textarea>
-                        <span asp-validation-for="Content" class="text-danger"></span>
-                        @* <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> *@
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary btnCancel" data-bs-dismiss="modal">Закрыть</button>
-                    <button id="btnSave" type="button" class="btn btn-primary">Сохранить</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
+<script src="~/modules/ckeditor5-doc/build/ckeditor.js"></script>
+@* <script src="~/modules/ckeditor5-custom/build/ckeditor.js"></script> *@
+@* <script src="~/modules/ckeditor5-41.0.0/build/ckeditor.js"></script> *@
 
 <script src="/Views/About/Index.cshtml.js" asp-append-version="true"></script>
 
 @section Scripts
 {
     <script>
-        $(document).ready(function () {
-                $('#btnSave').click(function () {
-                    var newsForm = $('#saveForm').serialize();
-                    $.ajax({
-                        type: "POST",
-                        url: "/Museum/Create/",
-                        data: newsForm,
-                        success: function () {
-                            $('#CreateModal').modal('hide');
-                            window.location.href = "/Museum";
-                        }
-                    })
-                })
-                $('#btnDelete').click(function () {
-                    var idD = $('#NewsId').val();
-                    $.ajax({
-                        type: "POST",
-                        url: "/News/DeleteAll/",
-                        data: { id: idD, deleteAll: true }, // Add deleteAll parameter
-                        success: function (result) {
-                            if (result) 
-                            {
-                                $('#NewsId').val(null);
-                                $('#DeleteModal').modal('hide');
-                                window.location.href = "/News";
-                            }
-                            else {
-                                alert("Не удалось удалить новость");
-                            }
-                        }
-                    })
-                })
+        ClassicEditor
+            .create(document.querySelector('.editor'))
+            .then(editor => {
+                // Синхронизация содержимого редактора с textarea при каждом изменении
+                editor.model.document.on('change:data', () => {
+                    document.querySelector('#content').value = editor.getData();
+                });
+
+                // Установка начального содержимого из textarea в редактор
+                editor.setData(`@Html.Raw(ViewBag.Content)`);
+
             })
+            .catch(error => {
+                console.error(error);
+            });
     </script>
 }
