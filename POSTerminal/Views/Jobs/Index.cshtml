@@ -27,7 +27,7 @@
 
     <input type="hidden" id="NewsId"/>
     <div class="container py-2">
-        @foreach (var jobsItem in JobsService.getJobs())
+        @foreach (var jobsItem in JobsService.getJobs().Reverse())
         {
             @* <article class="postcard light blue" data-bs-toggle="modal" data-bs-target="#modal-@jobsItem.Id"> *@
             <article class="postcard light blue">
