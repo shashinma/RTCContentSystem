@@ -29,7 +29,7 @@
             <PrivateAssets>all</PrivateAssets>
         </PackageReference>
         
-        <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.3" />
+        <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.4" />
         <PackageReference Include="System.DirectoryServices.Protocols" Version="8.0.0" />
         <PackageReference Include="Westwind.AspNetCore.Markdown" Version="3.20.0" />
     </ItemGroup>
