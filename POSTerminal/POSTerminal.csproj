@@ -30,7 +30,7 @@
         </PackageReference>
         
         <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.6" />
-        <PackageReference Include="System.DirectoryServices.Protocols" Version="8.0.0" />
+        <PackageReference Include="System.DirectoryServices.Protocols" Version="9.0.0" />
         <PackageReference Include="Westwind.AspNetCore.Markdown" Version="3.21.0" />
     </ItemGroup>
     
